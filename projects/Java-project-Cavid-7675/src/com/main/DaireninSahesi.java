@@ -1,8 +1,6 @@
-
 package com.main;
 
 import java.util.Scanner;
-
 
 public class DaireninSahesi {
 
@@ -12,7 +10,7 @@ public class DaireninSahesi {
         System.out.println("Dairenin radiusunu de");
         int radius = s.nextInt();
         int radiusunkvadrati = radius * radius;
- double  daireninsahesi = pi * radiusunkvadrati;
+        double daireninsahesi = pi * radiusunkvadrati;
         System.out.println("dairenin sahesi " + daireninsahesi + " dir");
     }
 
