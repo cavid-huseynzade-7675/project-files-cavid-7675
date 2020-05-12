@@ -1,0 +1,42 @@
+1. Java-da tək sətirli komment necə yazılır? (açıq sual)
+// (bele yazilir)
+2. Şəhər adı yazmaq üçün hansı verilən tipi istifadə etmək olar?
+a) int
+b) double
+c) String +++
+d) boolean
+
+4. Bu fikirlərdən hansı doğrudur?
+a) int tipi sətirlər üçün istifadə olunur
+b) double tipi sətirlər üçün istifadə olunur
+c) boolean  tipi məntiqi dəyərlər üçün istifadə olunur +++
+d) char tipi ədədlər üçün istifadə olunur
+
+5. Java-da proqramların giriş nöqtəsi olan metod necə yazılır? (açıq sual)
+meslen int name= 12;
+6. Java-da metodların daxilində neçə ədəd local dəyişən yaratmaq olar?
+a) 2
+b) 1 ++
+c) Metodun parametr sayı qədər
+d) Nəzəri olaraq sonsuz 
+
+7. Java-da hər hansı yazını konsola çıxarmaq üçün nə etmək lazımdır? (açıq sual)
+ JOptionPane ile olur
+8. Java-da metod geriyə neçə ədəd dəyər qaytara bilər? (açıq sual)
+   bir eded qaytara biler
+9. Aşağıdakılardan hansılar giriş-icazə modifikatorlarıdır?
+1. final
+2. public ++
+3. private ++
+4. static  ++
+
+10. Java-da təsadüfi ədədlər yaratmaq üçün hansı sinifdən istifadə olunur?
+a) Scanner
+b) Random +++
+c) String
+
+11. Java-da metod haqqında aşağıdakılardan hansılar doğrudur?
+1. Java sintaksisinə görə metod adları kiçik hərflə başlamalıdır. ++
+2. Java sintaksisinə görə metod adları böyük hərflə başlamalıdır.
+3. Metodlar geriyə dəyər qaytara bilər ++
+4. Metodlar geriyə dəyər qaytara bilməz
