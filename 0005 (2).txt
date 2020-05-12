@@ -1,0 +1,37 @@
+1. Aşağıdakı fikirlərdən hansılar doğrudur?
+
+1. String, byte primitiv tiplərdir
+2. int, double primitiv tiplərdir  +
+3. Java-da metodların daxilində dəyişən yaratmaq olmaz
+4. Java-da siniflərin daxilində dəyişən yaratmaq olmaz
+5. Java-da metodların daxilində yaratdığımız dəyişənlərə sinif dəyişənləri deyilir
+6. Java-da siniflərin daxilində yaratdığımız (static olmayan) dəyişənlərə obyekt dəyişənləri deyilir 
+7. Java-da siniflərin daxilində yaratdığımız (static olmayan) dəyişənlərə sinif dəyişənləri deyilir +
+
+2. Aşağıdakı kodların Java-da icra olunması zamanı age dəyişəninin dəyəri neçə olacaq?
+
+int age=4;
+for(int i=4;i<=20;i+=2){
+if(i%3==0){age++;}
+}
+System.out.print(age);
+
+a) Yuxarıdakı kod kompilyasiya olunmayacaq
+b) Yuxarıdakı kod kompilyasiya olunacaq amma, runtime zamanı error baş verəcək
+c) 4
+d) 7 ++++
+e) Yuxarıdakı kod sonsuz dövrə səbəb olacaq
+
+3. Aşağıdakı kodların Java-da icra olunması zamanı name dəyişəninin dəyəri nə olacaq?
+
+int name="Apple";
+for(int i=4;i<=20;i+=2){
+if(i%3==0){name=name+"a";}
+}
+System.out.print(name);
+
+a) Yuxarıdakı kod kompilyasiya olunmayacaq ++++
+b) Yuxarıdakı kod kompilyasiya olunacaq amma, runtime zamanı error baş verəcək
+c) aaa
+d) Apple
+e) Appleaaa
