@@ -16,9 +16,9 @@ d) char tipi ədədlər üçün istifadə olunur
 meslen int name= 12;
 6. Java-da metodların daxilində neçə ədəd local dəyişən yaratmaq olar?
 a) 2
-b) 1 ++
+b) 1 
 c) Metodun parametr sayı qədər
-d) Nəzəri olaraq sonsuz 
+d) Nəzəri olaraq sonsuz +
 
 7. Java-da hər hansı yazını konsola çıxarmaq üçün nə etmək lazımdır? (açıq sual)
  JOptionPane ile olur
