@@ -1,0 +1,40 @@
+1. Java-da constructor-lar nə üçün istifadə olunur? (açıq sual)
+constructor-lar metohdo oxsuyur. geriye eded qaytara bilmir.bir isi var sinifden obyekt(ler) yaratmaq
+
+2. Sinif daxilində neçə ədəd constructor yaratmaq olar?
+
+a) 1
+b) 2
+c) Nəzəri olaraq sonsuz+
+
+
+3. Bu fikirlərdən hansılar doğrudur?
+
+1. Java-da constructor-lar metodlardır. Metodlarla fərqi yoxdur
+2. Java-da constructor-lar metod deyil
+3. Java-da constructor-ların adını istənilən ad qoymaq olar+
+4. Java-da constructor-ların adını sinif adı ilə eyni qoymaq lazımdır+
+5. Java-da biz sinif daxilində heç bir constructor yazmasaqda, avtomatik "default constructor" yaradılır+
+6. Java-da constructor-lar metodlar kimi geriyə dəyər qaytarmır++
+7. Java-da constructor-lar metodlar kimi geriyə dəyər qaytarır
+
+
+4. Java-da default constructor digərləri ilə nə ilə fərqlənir? (açıq sual)
+java da konskuruktor obyekt yaradilanda movcud olur
+
+5. Aşağıda verilmiş kodun icra olunması zamanı age-in dəyəri neçə olacaq?
+
+public class Dog{
+public int age;
+}
+
+public class MainClass{
+public static void main(String[] args){
+Dog d=new Dog(4);
+d.age=5;
+}
+}
+
+a) 4
+b) 5
+c) Kod kompilyasiya olmayacaq+
