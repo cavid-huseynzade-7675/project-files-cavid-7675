@@ -1,0 +1,89 @@
+1. Aşağıda sadalananlardan hansılar Java-da açar sözdür?
+
+1. oracle
+2. void
+3. variable
+4. eclipse
+5. main
+6. public+
+7. system
+8. int+
+9. string+
+
+
+2. Aşağıda sadalananlardan hansılar metod haqqında doğrudur?
+
+1. Metodların adları olmaya bilər
+2. Metodlar 1-dən çox parametr qəbul edə bilməz
+3. Metodların daxilində yaradılan dəyişənlər qlobal dəyişənlər adlanır
+4. Metodların daxilində yaradılan dəyişənlər lokal dəyişənlər adlanır ++
+5. Metodlar 1-dən çox parametr qəbul edə bilər ++
+
+
+3. Aşağıda verilmiş kodların hansı kompilyasiya olmayacaq?
+
+1. String name=Adil;
+2. String age=15; ++
+3. String age="15";
+4. String name="15";
+5. int age="12"; ++
+6. int age=12;
+
+
+4. Aşağıda sadalananlardan fikirlərdən hansılar doğrudur?
+
+1. Biz boolean və int dəyişənləri müqayisə edə bilərik
+2. java faylının daxilində 1-dən çox public class ola bilər
+3. java faylının daxilində 1-dən çox public class ola bilməz ++
+4. Bir sinifdə 2 ədəd main metod ola bilər ++
+5. Sinif obyektlərin yaradılması üçün şablondur ++
+6. Obyekt siniflərin yaradılması üçün şablondur
+7. Primitiv dəyişənlər stack yaddaşda saxlanır
+
+
+5. int dəyişənin default dəyəri nədir?
+
+a) 0  +
+b) 0.0
+c) null
+d) not defined
+
+
+6. Aşağıdakılardan hansı Java-da açar söz deyil?
+
+a) static
+b) Boolean
+c) void ++
+d) private
+
+
+7. byte dəyişəni müvəqqəti yaddaşda nə qədər yer tutur?
+
+a) 8 bit ++
+b) 16 bit
+c) 32 bit
+d) 64 bit
+
+
+8. long dəyişəni müvəqqəti yaddaşda nə qədər yer tutur?
+
+a) 8 bit
+b) 16 bit
+c) 32 bit
+d) 64 bit ++
+
+
+9. float dəyişəni müvəqqəti yaddaşda nə qədər yer tutur?
+
+a) 8 bit
+b) 16 bit
+c) 32 bit ++
+d) 64 bit
+
+
+10. 1 ədəd .java faylının daxilində neçə ədəd public olmayan sinif yaratmaq olar?
+
+a) 1+
+b) 2
+c) 3
+d) Nəzəri olaraq sonsuz
