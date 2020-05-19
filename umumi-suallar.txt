@@ -1,14 +1,14 @@
 1. Aşağıda sadalananlardan hansılar Java-da açar sözdür?
 
 1. oracle
-2. void
+2. void ++
 3. variable
 4. eclipse
 5. main
 6. public+
 7. system
 8. int+
-9. string+
+9. string
 
 
 2. Aşağıda sadalananlardan hansılar metod haqqında doğrudur?
@@ -22,7 +22,7 @@
 
 3. Aşağıda verilmiş kodların hansı kompilyasiya olmayacaq?
 
-1. String name=Adil;
+1. String name=Adil; ++
 2. String age=15; ++
 3. String age="15";
 4. String name="15";
@@ -35,10 +35,10 @@
 1. Biz boolean və int dəyişənləri müqayisə edə bilərik
 2. java faylının daxilində 1-dən çox public class ola bilər
 3. java faylının daxilində 1-dən çox public class ola bilməz ++
-4. Bir sinifdə 2 ədəd main metod ola bilər ++
+4. Bir sinifdə 2 ədəd main metod ola bilər 
 5. Sinif obyektlərin yaradılması üçün şablondur ++
 6. Obyekt siniflərin yaradılması üçün şablondur
-7. Primitiv dəyişənlər stack yaddaşda saxlanır
+7. Primitiv dəyişənlər stack yaddaşda saxlanır ++
 
 
 5. int dəyişənin default dəyəri nədir?
@@ -83,7 +83,7 @@ d) 64 bit
 
 10. 1 ədəd .java faylının daxilində neçə ədəd public olmayan sinif yaratmaq olar?
 
-a) 1+
+a) 1
 b) 2
 c) 3
-d) Nəzəri olaraq sonsuz
+d) Nəzəri olaraq sonsuz ++
