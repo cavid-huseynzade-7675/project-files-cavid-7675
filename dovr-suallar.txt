@@ -1,0 +1,52 @@
+1. Aşağıdakı kodların icra olunmasından hansı nəticə çıxacaq?
+
+for ( int j = 0;  j <  5; j++ )
+{
+  System.out.print( j + " " );
+}
+
+a. 0 1 2 3 4 5
+b. 0 1 2 3 4 ++
+c. 0 1 2 3 4 5
+d. j j j j j
+
+
+2. Aşağıdakı kodların icra olunmasından hansı nəticə çıxacaq?
+
+for ( int j = 10;  j >  5; j-- )
+{
+  System.out.print( j + " " );
+}
+
+a. 10 11 12 13 14 15
+b. 9 8 7 6 5 4 3 2 1 0
+c. 10 9 8 7 6 5
+d. 10 9 8 7 6 ++
+
+
+3. Aşağıda verilmiş kodun daxilində olan ________ simvollarının yerinə
+hansı kodu yerləşdirmək lazımdır ki, 5-dən başlayaraq, 15-ə kimi ədədlər
+konsolda çap olunsun? (açıq sual)
+
+for ( int j = 5;  j<15 ; j++ ) (j<15 yazdim}
+{
+  System.out.print( j + " " );
+}
+
+
+4. Aşağıda verilmiş kodun kompilyasiya oluna bilməsi üçün
+əksik olanı düzəldin. (açıq sual)
+
+for (int j = 10;  j >  5; j-- )  (j nin tipini yazdim"int")
+{
+  System.out.print( j + " " );
+}
+
+5. Aşağıda verilmiş kodun kompilyasiya oluna bilməsi üçün
+əksik olanı düzəldin. (açıq sual)
+
+for ( int counter = 3;  counter <  15; counter++ )  (moterize yox idi  " ) ")
+{
+  System.out.print( counter + " " );
+}
+
