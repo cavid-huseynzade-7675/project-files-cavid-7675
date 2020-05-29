@@ -10,7 +10,7 @@ public class suallar {
         q1.setQuestion("javada tek setirli comment nece yazilir?");
 
         String[] q1answer = new String[4];
-         q1answer[0] = "zehmet olmasa cavabini sec";
+        q1answer[0] = "zehmet olmasa cavabini sec";
         q1answer[1] = "\"/*\"(1 bu cavabi secmek ucun )";
         q1answer[2] = "\"//\"(2 bu cavabi secmek ucun )";
         q1answer[3] = "\"/**\"(3 bu cavabi secmek ucun )";
@@ -21,7 +21,7 @@ public class suallar {
         SuallarSablon q2 = new SuallarSablon();
         q2.setQuestion("stringin deafault deyeri  nedir");
         String[] q2answer = new String[4];
-        q2answer[0]="zehmet olmasa cavabini sec";
+        q2answer[0] = "zehmet olmasa cavabini sec";
         q2answer[1] = "\"null\"(1 bu cavabi secmek ucun )";
         q2answer[2] = "\"0\"(2 bu cavabi secmek ucun )";
         q2answer[3] = "\"false\"(3bu cavabi secmek ucun )";
@@ -32,7 +32,7 @@ public class suallar {
         SuallarSablon q3 = new SuallarSablon();
         q3.setQuestion("obyekt harda saxlanir");
         String[] q3answer = new String[4];
-         q3answer[0]="zehmet olmasa cavabini sec";
+        q3answer[0] = "zehmet olmasa cavabini sec";
         q3answer[1] = "\"ram\"(1 bu cavabi secmek ucun ) ";
         q3answer[2] = "\"heap\"(2 bu cavabi secmek ucun )";
         q3answer[3] = "\"stack\"(3 bu cavabi secmek ucun )";
@@ -55,7 +55,7 @@ public class suallar {
         System.out.println("adini yaz ");
         String sagirdAdi = skaner.nextLine();
         System.out.println("teste baslandi");
- int topladigibal=0;
+        int topladigibal = 0;
 
         for (SuallarSablon question : questions) {
 
@@ -63,16 +63,16 @@ public class suallar {
             for (String aanswer : question.getAnswer()) {
                 System.out.println(aanswer);
             }
-           
-            int secdiyicavab=skaner.nextInt();
-            if(secdiyicavab==question.getDogrucavab()){
-              
-              topladigibal++;  
+
+            int secdiyicavab = skaner.nextInt();
+            if (secdiyicavab == question.getDogrucavab()) {
+
+                topladigibal++;
             }
-            
+
             System.out.println("--------------------------------");
         }
-        System.out.println("topladigi bal"+topladigibal);
+        System.out.println("topladigi bal " + topladigibal);
     }
 
 }
