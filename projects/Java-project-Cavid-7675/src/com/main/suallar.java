@@ -72,7 +72,7 @@ public class suallar {
 
             System.out.println("--------------------------------");
         }
-        System.out.println("topladigi bal " + topladigibal);
+        System.out.println("topladigi bal 100 uzerinden " + topladigibal*25);
     }
 
 }
