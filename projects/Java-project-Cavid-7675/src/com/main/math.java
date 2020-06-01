@@ -11,7 +11,7 @@ public class math {
         System.out.println("int tipinde eded yazin");
         String s = skaner.nextLine();
         int i = Integer.parseInt(s);
-        System.out.println("magazada" + i + "kq et var");
+        System.out.println("magazada " + i + "kq et var");
         System.out.println("--------------------------");
         //2. Bir ədəd sətir dəyişəni yaradın və sonra bu
         //dəyişəni double dəyişəninə parse edin. (açıq sual)
@@ -33,7 +33,7 @@ public class math {
         int r = skaner.nextInt();
         System.out.println("qüvvət üstünü dusen eded yazin");
         int e = skaner.nextInt();
-        System.out.print(Math.pow(e, b));
+        System.out.print(Math.pow(r, e));
         System.out.print("cavab budur");
     }
 
