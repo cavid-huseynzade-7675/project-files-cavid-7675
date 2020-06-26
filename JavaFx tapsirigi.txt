@@ -1,0 +1,21 @@
+1. JavaFX platforması nə üçün istifadə olunur?
+ 
+JavaFX ile biz proyektiyimize dizayn vere biler ve basqalarida bundan istifadə ede biler
+
+2. GUİ nə deməkdir?
+
+ GUİ acilisi  Graphical User Interface
+bütün pəncərələrə, düymələrə və panellərə istinad etmək üçün istifadə olunan ümumi addır.
+
+3. MVC patternini açıqlayın
+
+MVC nin acilisi  Model-View-Controller
+
+Model: melumatlar burda saxlanilir ve alinir(sablon sinif kimi )
+
+View: istifadəcilər tərəfindən gorulən hissədir(yəni interfeys)
+
+Controller: Model ve View arasındakı hərəkəti həyata keçirir.
+
+
+
