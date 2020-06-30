@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="195.0" prefWidth="452.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="toplama2.ToplamaaController">
+   <children>
+      <Button layoutX="286.0" layoutY="93.0" mnemonicParsing="false" onAction="#Equal" text="=" />
+      <Label fx:id="Answer" layoutX="337.0" layoutY="97.0" text="Cavab" />
+      <TextField fx:id="FirstNumber" layoutX="67.0" layoutY="93.0" prefHeight="25.0" prefWidth="80.0" />
+      <TextField fx:id="SecondNumber" layoutX="200.0" layoutY="93.0" prefHeight="25.0" prefWidth="80.0" />
+      <TextField fx:id="Emel" layoutX="154.0" layoutY="93.0" prefHeight="25.0" prefWidth="39.0" />
+   </children>
+</AnchorPane>
