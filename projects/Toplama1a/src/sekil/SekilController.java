@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package sekil;
 
 import java.io.FileInputStream;
@@ -18,19 +14,13 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-/**
- * FXML Controller class
- *
- * @author Cavid
- */
+
 public class SekilController implements Initializable {
 @FXML
 Label SeklinAdi;
 @FXML
 ImageView Sekil;
-    /**
-     * Initializes the controller class.
-     */
+   
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         FileInputStream input = null;
