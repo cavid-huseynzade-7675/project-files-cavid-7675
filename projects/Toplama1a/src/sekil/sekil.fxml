@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="sekil.SekilController">
+   <children>
+      <Label fx:id="SeklinAdi" layoutX="544.0" layoutY="137.0" text="Seklin adi" />
+      <Button layoutX="120.0" layoutY="41.0" mnemonicParsing="false" onAction="#Evvelki" text="Evvelki sekil" />
+      <Button layoutX="262.0" layoutY="41.0" mnemonicParsing="false" onAction="#Sonraki" text="Sonraki sekil" />
+      <ImageView fx:id="Sekil" fitHeight="226.0" fitWidth="541.0" layoutX="29.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>
