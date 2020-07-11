@@ -59,7 +59,7 @@ public class FlagController implements Initializable {
         String selected = images.getSelectionModel().getSelectedItem().toString();
         if(selected==Imagenames[currentImageIndex]){
          showimage();   
-            
+            break;
         }else{
            currentImageIndex++; 
         }
