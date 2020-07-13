@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="aprel11.listview.pkg7675.ListviewController">
+   <children>
+      <ListView fx:id="cedvel" layoutX="22.0" layoutY="14.0" prefHeight="376.0" prefWidth="200.0" />
+      <Button layoutX="282.0" layoutY="41.0" mnemonicParsing="false" onAction="#elaveet" text="Elave Et">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Button>
+      <Button layoutX="403.0" layoutY="41.0" mnemonicParsing="false" onAction="#hamisinisil" text="Hamisini Sil">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Button>
+      <Label fx:id="cem" layoutX="367.0" layoutY="191.0" text="0">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
