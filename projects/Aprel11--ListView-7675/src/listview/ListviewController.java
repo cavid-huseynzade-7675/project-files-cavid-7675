@@ -15,7 +15,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
 public class ListviewController implements Initializable {
-
+long cem1;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -32,13 +32,23 @@ public class ListviewController implements Initializable {
     @FXML
     void elaveet(ActionEvent event) {
 String selected=eded.getText();
+
 int Selected=Integer.parseInt(selected);
+
+Integer secilmis=Selected;
+cem1+=secilmis;
+String cemstring=String.valueOf(cem1);
+cem.setText(cemstring);
+
 cedvel.getItems().add(Selected);
+
+
     }
 
     @FXML
     void hamisinisil(ActionEvent event) {
 cedvel.getItems().clear();
+cem.setText("0");
     }
 
 }
