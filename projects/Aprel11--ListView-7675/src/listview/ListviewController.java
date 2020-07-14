@@ -49,6 +49,7 @@ cedvel.getItems().add(Selected);
     void hamisinisil(ActionEvent event) {
 cedvel.getItems().clear();
 cem.setText("0");
+cem1=0;
     }
 
 }
