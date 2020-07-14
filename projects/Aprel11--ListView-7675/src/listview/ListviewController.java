@@ -6,6 +6,7 @@
 package listview;
 
 import java.net.URL;
+import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,13 +17,12 @@ import javafx.scene.control.TextField;
 
 public class ListviewController implements Initializable {
 long cem1;
-    
+    Random dice=new Random();
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
     } 
-    @FXML
-    private TextField eded;
+    
      @FXML
     private ListView<Integer> cedvel;
 
@@ -31,9 +31,9 @@ long cem1;
 
     @FXML
     void elaveet(ActionEvent event) {
-String selected=eded.getText();
 
-int Selected=Integer.parseInt(selected);
+
+int Selected=dice.nextInt(100);
 
 Integer secilmis=Selected;
 cem1+=secilmis;
