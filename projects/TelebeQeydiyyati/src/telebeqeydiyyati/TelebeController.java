@@ -6,36 +6,47 @@
 package telebeqeydiyyati;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javax.swing.JOptionPane;
 
-/**
- * FXML Controller class
- *
- * @author Cavid
- */
+
 public class TelebeController implements Initializable {
+  @FXML
+    private ListView<String> listTarix;
 
+    @FXML
+    private DatePicker date;
     @FXML
     private TextField ad;
 
-    @FXML
-    private TextField yas;
+    
 
     @FXML
     private ListView<String> list;
 
     @FXML
     void elave(ActionEvent event) {
+        boolean allowRegister=true;
+       
         String Ad = ad.getText();
-        String Yas = yas.getText();
-        String son = "Ad "+Ad +"-"+"Yas "+ Yas;
-        list.getItems().add(son);
-
+       LocalDate Yas = date.getValue();
+       if(Yas==null){
+           allowRegister=false;
+           JOptionPane.showMessageDialog(null,"Tevvellud secmek lazimdir");
+           
+       }
+       if(allowRegister){
+       String yas=Yas.toString();
+        list.getItems().add(Ad);
+        listTarix.getItems().add(yas);
+       }
     }
 
     @Override

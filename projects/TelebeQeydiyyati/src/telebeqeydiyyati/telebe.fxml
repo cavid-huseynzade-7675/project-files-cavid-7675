@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -7,34 +8,59 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="telebeqeydiyyati.TelebeController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="telebeqeydiyyati.TelebeController">
    <children>
-      <ListView fx:id="list" layoutX="27.0" layoutY="28.0" prefHeight="342.0" prefWidth="200.0" />
-      <TextField fx:id="ad" layoutX="390.0" layoutY="28.0">
+      <ListView fx:id="list" layoutX="49.0" layoutY="185.0" prefHeight="200.0" prefWidth="200.0" />
+      <TextField fx:id="ad" layoutX="86.0" layoutY="22.0">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
-      <TextField fx:id="yas" layoutX="390.0" layoutY="69.0">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </TextField>
-      <Label layoutX="286.0" layoutY="32.0" text="Ad">
+      <Label layoutX="49.0" layoutY="28.0" text="Ad">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label layoutX="286.0" layoutY="70.0" text="Yas">
+      <Label layoutX="47.0" layoutY="70.0" text="Yas">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Button layoutX="390.0" layoutY="131.0" mnemonicParsing="false" onAction="#elave" text="Elave et">
+      <Button layoutX="372.0" layoutY="32.0" mnemonicParsing="false" onAction="#elave" prefHeight="60.0" prefWidth="119.0" text="Elave et">
          <font>
             <Font size="25.0" />
          </font>
       </Button>
+      <ListView fx:id="listTarix" layoutX="345.0" layoutY="185.0" prefHeight="200.0" prefWidth="200.0" />
+      <DatePicker fx:id="date" layoutX="86.0" layoutY="70.0" prefHeight="25.0" prefWidth="200.0" />
+      <Label layoutX="76.0" layoutY="149.0" text="Telebelerin adlari">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <textFill>
+            <RadialGradient centerX="0.45" centerY="0.8571428571428572" radius="0.5">
+               <stops>
+                  <Stop color="BLACK" />
+                  <Stop color="#3a3963" offset="0.23407196745269973" />
+                  <Stop color="#3b3965" offset="0.7048623454595725" />
+                  <Stop color="#071cff" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </textFill>
+      </Label>
+      <Label layoutX="356.0" layoutY="149.0" text="Telebelerin tevelludu">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="BLACK" />
+                  <Stop color="#dd0b16" offset="0.7010309278350516" />
+                  <Stop color="#e19797" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
    </children>
 </AnchorPane>
