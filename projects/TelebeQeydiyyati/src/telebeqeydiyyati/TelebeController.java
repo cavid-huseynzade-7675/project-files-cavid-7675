@@ -37,10 +37,7 @@ public class TelebeController implements Initializable {
        
         String Ad = ad.getText();
        LocalDate Yas = date.getValue();
-       if(Ad==null){
-           allowRegister=false;
-           JOptionPane.showMessageDialog(null,"Ad yazmzaqlazimdir"); 
-       }
+    
        if(Yas==null){
            allowRegister=false;
            JOptionPane.showMessageDialog(null,"Tevvellud secmek lazimdir");
