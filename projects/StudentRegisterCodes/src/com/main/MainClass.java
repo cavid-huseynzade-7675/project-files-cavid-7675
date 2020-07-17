@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
 public class MainClass extends Application {
-
+int eded=1;
     public static void main(String[] args) {
         launch(args);
     }
@@ -60,9 +60,11 @@ public class MainClass extends Application {
        }
        if(allowRegister){
        String Yas1=Yas.toString();
-        listview.getItems().add(Ad);
-        listview1.getItems().add(Yas1);
+        listview.getItems().add(eded+"."+Ad);
+        listview1.getItems().add(eded+"."+Yas1);
+        eded++;
        }
+       
         });
         
         VBox vBox = new VBox();
