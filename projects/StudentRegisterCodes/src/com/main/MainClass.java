@@ -7,25 +7,38 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
 public class MainClass extends Application {
-int eded=1;
+
+    int eded = 1;
+
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
+
     public void start(Stage ps) throws Exception {
         Label label = new Label("              Ad           ");
         TextField ad = new TextField();
         HBox hBox = new HBox();
         hBox.getChildren().add(label);
         hBox.getChildren().add(ad);
+
+        RadioButton goy = new RadioButton("Goy reng");
+        RadioButton qirmizi = new RadioButton("Qirmizi reng");
+        RadioButton yasil = new RadioButton("Yasil reng");
+        ToggleGroup qrup1 = new ToggleGroup();
+        goy.setToggleGroup(qrup1);
+        qirmizi.setToggleGroup(qrup1);
+        yasil.setToggleGroup(qrup1);
 
         Label label1 = new Label("      Tevellud          ");
         DatePicker yas = new DatePicker();
@@ -34,6 +47,11 @@ int eded=1;
         hBox1.getChildren().add(yas);
 
         Button myButton = new Button("Elave et");
+        HBox hBox7 = new HBox();
+        hBox7.getChildren().add(myButton);
+        hBox7.getChildren().add(goy);
+        hBox7.getChildren().add(qirmizi);
+        hBox7.getChildren().add(yasil);
 
         Label label2 = new Label("                             Ad           ");
         Label label3 = new Label("                            Tevellud          ");
@@ -43,37 +61,56 @@ int eded=1;
 
         ListView<String> listview = new ListView<>();
         ListView<String> listview1 = new ListView<>();
-         HBox hBox4= new HBox();
+        HBox hBox4 = new HBox();
         hBox4.getChildren().add(listview);
         hBox4.getChildren().add(listview1);
-        
-        myButton.setOnAction((e)->{
-            boolean allowRegister=true;
-       
-        String Ad = ad.getText();
-       LocalDate Yas = yas.getValue();
-    
-       if(Yas==null){
-           allowRegister=false;
-           JOptionPane.showMessageDialog(null,"Tevvellud secmek lazimdir");
-           
-       }
-       if(allowRegister){
-       String Yas1=Yas.toString();
-        listview.getItems().add(eded+"."+Ad);
-        listview1.getItems().add(eded+"."+Yas1);
-        eded++;
-       }
-       
+
+        myButton.setOnAction((e) -> {
+            boolean allowRegister = true;
+
+            String Ad = ad.getText();
+            LocalDate Yas = yas.getValue();
+
+            if (Yas == null) {
+                allowRegister = false;
+                JOptionPane.showMessageDialog(null, "Tevvellud secmek lazimdir");
+
+            }
+            if (allowRegister) {
+                String Yas1 = Yas.toString();
+                listview.getItems().add(eded + "." + Ad);
+                listview1.getItems().add(eded + "." + Yas1);
+                eded++;
+            }
+
         });
-        
+
         VBox vBox = new VBox();
         vBox.getChildren().add(hBox);
         vBox.getChildren().add(hBox1);
-        vBox.getChildren().add(myButton);
+        vBox.getChildren().add(hBox7);
         vBox.getChildren().add(hBox3);
         vBox.getChildren().add(hBox4);
-        Scene scene = new Scene(vBox, 430, 430);
+        Scene scene = new Scene(vBox, 700,700);
+
+        goy.setOnAction((e) -> {
+   vBox.setStyle("-fx-background-color:blue");
+        });
+     
+
+
+    
+
+       
+           qirmizi.setOnAction((e) -> {
+        vBox.setStyle("-fx-background-color:red");
+  });
+           
+           
+       
+  yasil.setOnAction((e) -> {
+ vBox.setStyle("-fx-background-color:green");
+        });
 
         ps.setScene(scene);
         ps.setTitle("StudentRegister");
