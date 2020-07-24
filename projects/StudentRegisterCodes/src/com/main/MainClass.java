@@ -2,12 +2,14 @@ package com.main;
 
 import java.time.LocalDate;
 import javafx.application.Application;
+import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
@@ -58,8 +60,7 @@ public class MainClass extends Application {
         hBox7.getChildren().add(yasil);
         hBox7.getChildren().add(ag);
         hBox7.getChildren().add(visible);
-        
-        
+
         Label label2 = new Label("                             Ad           ");
         Label label3 = new Label("                            Tevellud          ");
         HBox hBox3 = new HBox();
@@ -68,9 +69,22 @@ public class MainClass extends Application {
 
         ListView<String> listview = new ListView<>();
         ListView<String> listview1 = new ListView<>();
+        Slider slider = new Slider(0, 100, 100);
+        slider.orientationProperty().set(Orientation.VERTICAL);
+        slider.setShowTickMarks(true);
+        slider.setShowTickLabels(true);
+        slider.setSnapToTicks(true);
+        slider.setMajorTickUnit(10);
+        slider.setMinorTickCount(9);
         HBox hBox4 = new HBox();
         hBox4.getChildren().add(listview);
         hBox4.getChildren().add(listview1);
+        hBox4.getChildren().add(slider);
+        slider.valueProperty().addListener((observable, oldValue, newValue) -> {
+            listview.setOpacity(newValue.doubleValue() / 100);
+            listview1.setOpacity(newValue.doubleValue() / 100);
+
+        });
 
         myButton.setOnAction((e) -> {
             boolean allowRegister = true;
@@ -91,37 +105,33 @@ public class MainClass extends Application {
             }
 
         });
-   visible.setOnAction((e) -> {
-      boolean secili=visible.isSelected();
-      if(!secili){
-hBox.setVisible(secili);
-hBox1.setVisible(secili);
-hBox3.setVisible(secili);
-hBox4.setVisible(secili);
-myButton.setVisible(secili);
-goy.setVisible(secili);
-qirmizi.setVisible(secili);
-yasil.setVisible(secili);
-ag.setVisible(secili);
-visible.setText("Goster");
+        visible.setOnAction((e) -> {
+            boolean secili = visible.isSelected();
+            if (!secili) {
+                hBox.setVisible(secili);
+                hBox1.setVisible(secili);
+                hBox3.setVisible(secili);
+                hBox4.setVisible(secili);
+                myButton.setVisible(secili);
+                goy.setVisible(secili);
+                qirmizi.setVisible(secili);
+                yasil.setVisible(secili);
+                ag.setVisible(secili);
+                visible.setText("Goster");
 
-      }else{
- hBox.setVisible(secili);
-hBox1.setVisible(secili);
-hBox3.setVisible(secili);
-hBox4.setVisible(secili);
-myButton.setVisible(secili);
-goy.setVisible(secili);
-qirmizi.setVisible(secili);
-yasil.setVisible(secili);
-ag.setVisible(secili);
-  visible.setText("Gizlet");
-      }
-          
-          
-      
-          
-          
+            } else {
+                hBox.setVisible(secili);
+                hBox1.setVisible(secili);
+                hBox3.setVisible(secili);
+                hBox4.setVisible(secili);
+                myButton.setVisible(secili);
+                goy.setVisible(secili);
+                qirmizi.setVisible(secili);
+                yasil.setVisible(secili);
+                ag.setVisible(secili);
+                visible.setText("Gizlet");
+            }
+
         });
         VBox vBox = new VBox();
         vBox.getChildren().add(hBox);
@@ -129,7 +139,8 @@ ag.setVisible(secili);
         vBox.getChildren().add(hBox7);
         vBox.getChildren().add(hBox3);
         vBox.getChildren().add(hBox4);
-        Scene scene = new Scene(vBox, 700, 700);
+
+        Scene scene = new Scene(vBox, 700, 500);
 
         goy.setOnAction((e) -> {
             vBox.setStyle("-fx-background-color:blue");
