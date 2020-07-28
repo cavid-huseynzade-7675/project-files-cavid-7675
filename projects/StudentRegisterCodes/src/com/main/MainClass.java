@@ -53,8 +53,10 @@ public class MainClass extends Application {
         hBox1.getChildren().add(yas);
 
         Button myButton = new Button("Elave et");
+        Button myButton1 = new Button("Hamisini sil");
         HBox hBox7 = new HBox();
         hBox7.getChildren().add(myButton);
+         hBox7.getChildren().add(myButton1);
         hBox7.getChildren().add(goy);
         hBox7.getChildren().add(qirmizi);
         hBox7.getChildren().add(yasil);
@@ -156,7 +158,11 @@ public class MainClass extends Application {
         ag.setOnAction((e) -> {
             vBox.setStyle("-fx-background-color:white");
         });
-
+ myButton1.setOnAction((e) -> {
+            listview.getItems().clear();
+                listview1.getItems().clear();
+                eded=1;
+        });
         ps.setScene(scene);
         ps.setTitle("StudentRegister");
         ps.show();
