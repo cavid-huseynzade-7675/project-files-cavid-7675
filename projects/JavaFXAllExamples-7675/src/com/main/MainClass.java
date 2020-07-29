@@ -54,14 +54,46 @@ public class MainClass extends Application {
 
         hBox.getChildren().add(textAreaExample);
         
+        Button choiceBoxExample = new Button("choiceBox Example");
+        choiceBoxExample.setOnAction((e) -> {
+            Examples.choiceBoxExample();
+        });
+
+        hBox.getChildren().add(choiceBoxExample);
         
+         Button ComboBoxExample = new Button("ComboBoxExample");
+       ComboBoxExample.setOnAction((e) -> {
+            Examples.ComboBoxExample();
+        });
+
+        hBox.getChildren().add(ComboBoxExample);
+        
+         Button listviewExample = new Button("listviewExample");
+        listviewExample.setOnAction((e) -> {
+            Examples.listviewExample();
+        });
+
+        hBox.getChildren().add(listviewExample);
+        
+         Button  datepickerExample = new Button("datepickerExample");
+        datepickerExample.setOnAction((e) -> {
+            Examples.datepickerExample();
+        });
+
+        hBox.getChildren().add(datepickerExample);
+         Button ColorPickerExample = new Button("ColorPickerExample" );
+        ColorPickerExample.setOnAction((e) -> {
+            Examples.ColorPickerExample ();
+        });
+
+        hBox.getChildren().add(ColorPickerExample );
         
 
         VBox vBox = new VBox();
         hBox.setSpacing(2); 
         vBox.setSpacing(2);
         vBox.getChildren().addAll(hBox);
-        Scene scene = new Scene(vBox, 800, 500);
+        Scene scene = new Scene(vBox, 1000, 500);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
