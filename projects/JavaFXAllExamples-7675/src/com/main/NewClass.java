@@ -34,14 +34,15 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 class Examples {
-static  String cavab;
+
+    static String cavab;
     static String[] Imagenames = new String[6];
     static String[] Imagepaths = new String[6];
     static int currentImageIndex = 0;
     static int sliderCount = 0;
-   static ImageView flag;
-  static Label results;
-   static ComboBox images;
+    static ImageView flag;
+    static Label results;
+    static ComboBox images;
 
     static void sliderExample() {
 
@@ -162,124 +163,112 @@ static  String cavab;
         choiceBox.getItems().add("1 ci sual");
         choiceBox.getItems().add("2 ci sual");
         choiceBox.getItems().add("3 cu sual");
-        
-       
-        
-        
-        Label  lb=new Label("        sual");
-        Label  lwe=new Label();
-        RadioButton bir=new RadioButton();
-         RadioButton iki=new RadioButton();
-          RadioButton uc=new RadioButton();
-           RadioButton dord=new RadioButton();
-        ToggleGroup tg=new ToggleGroup();
+
+        Label lb = new Label("        sual");
+        Label lwe = new Label();
+        RadioButton bir = new RadioButton();
+        RadioButton iki = new RadioButton();
+        RadioButton uc = new RadioButton();
+        RadioButton dord = new RadioButton();
+        ToggleGroup tg = new ToggleGroup();
         bir.setToggleGroup(tg);
-          iki.setToggleGroup(tg);
-            uc.setToggleGroup(tg);
-             dord.setToggleGroup(tg);
-            Button btn=new Button("cavabi tesdiqle");
-        HBox hb=new HBox(bir,iki,uc,dord,btn);
+        iki.setToggleGroup(tg);
+        uc.setToggleGroup(tg);
+        dord.setToggleGroup(tg);
+        Button btn = new Button("cavabi tesdiqle");
+        HBox hb = new HBox(bir, iki, uc, dord, btn);
         hb.setSpacing(7.5);
-        
+
         primaryStage1.setTitle("choiceBoxExample");
         VBox vbox = new VBox(choiceBox);
-           vbox.getChildren().addAll(lb,lwe);
+        vbox.getChildren().addAll(lb, lwe);
         vbox.getChildren().add(hb);
         vbox.setSpacing(30);
-         choiceBox.setOnAction((e) -> {;
-  
-        if (choiceBox.getValue()=="1 ci sual"){
-           lb.setText("HAnsi primitiv tip degil");
-           bir.setText("int");
-              iki.setText("double");
-                uc.setText("string");
-                     dord.setText("char");
-         }else if(choiceBox.getValue()=="2 ci sual"){
-            lb.setText("Button haradan import olunur"); 
-           bir.setText("import javafx.stage.control.Button");
-              iki.setText("javafx.awt.Button");
-                uc.setText("import javafx.scene.node.Button");
-                     dord.setText(" import javafx.scene.control.Button");
+        choiceBox.setOnAction((e) -> {;
 
-             
-             
-         }else{
-           lb.setText("nece for dovru var");
-           bir.setText("1");
-              iki.setText("4");
+            if (choiceBox.getValue() == "1 ci sual") {
+                lb.setText("HAnsi primitiv tip degil");
+                bir.setText("int");
+                iki.setText("double");
+                uc.setText("string");
+                dord.setText("char");
+            } else if (choiceBox.getValue() == "2 ci sual") {
+                lb.setText("Button haradan import olunur");
+                bir.setText("import javafx.stage.control.Button");
+                iki.setText("javafx.awt.Button");
+                uc.setText("import javafx.scene.node.Button");
+                dord.setText(" import javafx.scene.control.Button");
+
+            } else {
+                lb.setText("nece for dovru var");
+                bir.setText("1");
+                iki.setText("4");
                 uc.setText("2");
-                     dord.setText("3");
-   
-             
-         }
-         });
-              bir.setOnAction((e) -> {
-                 if (choiceBox.getValue()=="1 ci sual"){
-          cavab="sehv";
-         }else if(choiceBox.getValue()=="2 ci sual"){
-           
-             
-              cavab="Sehv";
-             
-         }else{
-           
-           cavab="Sehv";   
-         }        
-              });
-   iki.setOnAction((e) -> {
-                  
-                  if (choiceBox.getValue()=="1 ci sual"){
-           cavab="sehv";
-         }else if(choiceBox.getValue()=="2 ci sual"){
-           
-              cavab="sehv";
-             
-             
-         }else{
-            cavab="duz";
-             
-         }              
-              });
-   uc.setOnAction((e) -> {
-                  
-                      if (choiceBox.getValue()=="1 ci sual"){
-           cavab="Duz";
-         }else if(choiceBox.getValue()=="2 ci sual"){
-           
-              cavab="sehv";
-             
-             
-         }else{
-           
-             cavab="sehv"; 
-         }          
-              });
-     dord.setOnAction((e) -> {
-                     if (choiceBox.getValue()=="1 ci sual"){
-            cavab="Sehv";
-         }else if(choiceBox.getValue()=="2 ci sual"){
-           
-             
-               cavab="Duz";
-             
-         }else{
-           
-              cavab="Sehv"; 
-         }           
-                  
-              });
+                dord.setText("3");
+
+            }
+        });
+        bir.setOnAction((e) -> {
+            if (choiceBox.getValue() == "1 ci sual") {
+                cavab = "sehv";
+            } else if (choiceBox.getValue() == "2 ci sual") {
+
+                cavab = "Sehv";
+
+            } else {
+
+                cavab = "Sehv";
+            }
+        });
+        iki.setOnAction((e) -> {
+
+            if (choiceBox.getValue() == "1 ci sual") {
+                cavab = "sehv";
+            } else if (choiceBox.getValue() == "2 ci sual") {
+
+                cavab = "sehv";
+
+            } else {
+                cavab = "duz";
+
+            }
+        });
+        uc.setOnAction((e) -> {
+
+            if (choiceBox.getValue() == "1 ci sual") {
+                cavab = "Duz";
+            } else if (choiceBox.getValue() == "2 ci sual") {
+
+                cavab = "sehv";
+
+            } else {
+
+                cavab = "sehv";
+            }
+        });
+        dord.setOnAction((e) -> {
+            if (choiceBox.getValue() == "1 ci sual") {
+                cavab = "Sehv";
+            } else if (choiceBox.getValue() == "2 ci sual") {
+
+                cavab = "Duz";
+
+            } else {
+
+                cavab = "Sehv";
+            }
+
+        });
         btn.setOnAction((e) -> {
-         lwe.setText(cavab);
+            lwe.setText(cavab);
         });
 
-      
-      
         Scene scene = new Scene(vbox, 900, 500);
         primaryStage1.setScene(scene);
         primaryStage1.show();
     }
 
-    static void ComboBoxExample(){
+    static void ComboBoxExample() {
         Stage primaryStage2 = new Stage();
 
         primaryStage2.setTitle("ComboBoxExample");
@@ -296,7 +285,7 @@ static  String cavab;
         images.getItems().add("Ingiltere");
         images.getItems().add("Almaniya");
 
-       Imagenames[0] = "Az";
+        Imagenames[0] = "Az";
         Imagenames[1] = "Rus";
         Imagenames[2] = "Turkiye";
         Imagenames[3] = "Amerika";
@@ -311,17 +300,17 @@ static  String cavab;
         Imagepaths[5] = "C:\\Users\\Cavid\\Documents\\Github\\project-files-cavid-7675\\projects\\JavaFXAllExamples-7675\\images\\Almaniya.png";
 
         images.setOnAction((e) -> {
-          
+
             for (int i = 0; i <= Imagenames.length; i++) {
 
                 String selected = images.getSelectionModel().getSelectedItem().toString();
                 if (selected == Imagenames[currentImageIndex]) {
                     try {
-                          System.out.println("com.main.Examples.ComboBoxExample()");
-                         FileInputStream input2 = new FileInputStream(Imagepaths[currentImageIndex]);
-        Image image2 = new Image(input2);
-        flag.setImage(image2);
-        results.setText(Imagenames[currentImageIndex]);
+                        System.out.println("com.main.Examples.ComboBoxExample()");
+                        FileInputStream input2 = new FileInputStream(Imagepaths[currentImageIndex]);
+                        Image image2 = new Image(input2);
+                        flag.setImage(image2);
+                        results.setText(Imagenames[currentImageIndex]);
                     } catch (FileNotFoundException ex) {
                         Logger.getLogger(Examples.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -332,7 +321,7 @@ static  String cavab;
             }
             currentImageIndex = 0;
         });
-        HBox hbox = new HBox(images,flag,results);
+        HBox hbox = new HBox(images, flag, results);
         Scene scene = new Scene(hbox, 500, 500);
         primaryStage2.setScene(scene);
         primaryStage2.show();
@@ -400,7 +389,5 @@ static  String cavab;
         primaryStage5.setScene(scene);
         primaryStage5.show();
     }
-
-   
 
 }
