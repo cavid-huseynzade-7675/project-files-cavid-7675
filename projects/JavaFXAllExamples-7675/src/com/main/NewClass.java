@@ -1,10 +1,12 @@
 package com.main;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.scene.Scene;
@@ -17,11 +19,14 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.Separator;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.ToolBar;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -31,6 +36,8 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.TextAlignment;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 class Examples {
@@ -388,6 +395,142 @@ class Examples {
         Scene scene = new Scene(vbox, 500, 500);
         primaryStage5.setScene(scene);
         primaryStage5.show();
+    }
+
+   static void toolBarExample() {
+        Stage primaryStage = new Stage();
+        primaryStage.setTitle("ToolBar");
+
+        ToolBar toolBar = new ToolBar();
+
+        Button button1 = new Button("Button 1");
+        toolBar.getItems().add(button1);
+        toolBar.getItems().add(new Separator());
+        Button button2 = new Button("Button 2");
+        toolBar.getItems().add(button2);
+
+        VBox vBox = new VBox(toolBar);
+        toolBar.setOrientation(Orientation.VERTICAL);
+        Scene scene = new Scene(vBox, 960, 600);
+
+        primaryStage.setScene(scene);
+        primaryStage.show();
+
+    }
+
+    static void toolTipExample() {
+        Stage primaryStage = new Stage();
+        primaryStage.setTitle("Tool tip");
+
+        Button myButtonLeft = new Button("My Button text alignment left");
+        Tooltip myToolTipLeft = new Tooltip("bu yazi duymede gorunecek");
+        myToolTipLeft.setTextAlignment(TextAlignment.LEFT);
+        myButtonLeft.setTooltip(myToolTipLeft);
+        myToolTipLeft.setWidth(400);
+
+        Button myButtonRight = new Button("My Button text alignment right");
+        Tooltip myToolTipRight = new Tooltip("bu yazi duymede gorunecek");
+        myToolTipRight.setTextAlignment(TextAlignment.RIGHT);
+        myButtonRight.setTooltip(myToolTipRight);
+        myToolTipRight.setWidth(400);
+  
+        Button myButtonCenter = new Button("My Button text alignment Center");
+        Tooltip myToolTipCenter = new Tooltip("bu yazi duymede gorunecek");
+        myToolTipCenter.setTextAlignment(TextAlignment.CENTER);
+        myButtonCenter.setTooltip(myToolTipCenter);
+        myToolTipCenter.setWidth(400);
+
+        Button myButtonJustify = new Button("My Button text alignment Justify");
+        Tooltip myToolTipJustify = new Tooltip("bu yazi duymede gorunecek");
+        myToolTipJustify.setTextAlignment(TextAlignment.JUSTIFY);
+        myButtonJustify.setTooltip(myToolTipJustify);
+        myToolTipJustify.setWidth(400);
+
+        VBox vBox = new VBox(myButtonLeft, myButtonRight, myButtonCenter, myButtonJustify);
+
+        Scene scene = new Scene(vBox, 960, 600);
+
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+    static void progressBarExample() {
+        Stage primaryStage = new Stage();
+        primaryStage.setTitle("ProgressBar");
+
+        ProgressBar progressBar = new ProgressBar(0);
+
+        progressBar.setProgress(0.5);
+
+        Button button = new Button("dovru baslat");
+        button.setOnAction((e) -> {
+
+            Thread alma = new Thread(new Runnable() {
+                @Override
+                public void run() {
+
+                    double progress = 0;
+                    for (int i = 1; i <= 100; i++) {
+
+                        try {
+                            Thread.sleep(50);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
+                        progress += 0.01;
+                        final double reportedProgress = progress;
+
+                        Platform.runLater(new Runnable() {
+                            @Override
+                            public void run() {
+                                progressBar
+                                        .setProgress(reportedProgress);
+                            }
+                        });
+                    }
+
+                }
+            });
+
+            alma.start();
+
+        });
+
+        VBox vBox = new VBox();
+        vBox.getChildren().addAll(progressBar, button);
+        Scene scene = new Scene(vBox, 960, 600);
+
+        primaryStage.setScene(scene);
+        primaryStage.show();
+
+    }
+
+    static void fileChooserExample() {
+
+        Stage primaryStage = new Stage();
+        primaryStage.setTitle("FileChooser");
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Text Files", "*.txt"),
+                 new FileChooser.ExtensionFilter("HTML Files", "*.htm")
+        );
+        Button button = new Button("Select File");
+        button.setOnAction(e -> {
+            File selectedFile = fileChooser.showOpenDialog(primaryStage);
+            System.out.println(selectedFile
+            .getAbsolutePath());
+            System.out.println(selectedFile.getPath());
+          
+        });
+
+        VBox vBox = new VBox(button);
+        Scene scene = new Scene(vBox, 960, 600);
+
+        primaryStage.setScene(scene);
+        primaryStage.show();
+
     }
 
 }

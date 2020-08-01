@@ -14,7 +14,7 @@ public class MainClass extends Application {
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("JavaFX Examples Aprel 11");
         HBox hBox = new HBox();
-
+HBox hBox1 = new HBox();
         Button sliderExample = new Button("Slider");
         sliderExample.setOnAction((e) -> {
             Examples.sliderExample();
@@ -74,13 +74,47 @@ public class MainClass extends Application {
         ColorPickerExample.setOnAction((e) -> {
             Examples.ColorPickerExample();
         });
-
         hBox.getChildren().add(ColorPickerExample);
+        Button toolBarExample = new Button("tool bar Example");
+        toolBarExample.setOnAction((e) -> {
+            Examples.toolBarExample();
+        });
+
+        hBox1.getChildren().add(toolBarExample);
+        
+        
+         Button toolTipExample = new Button("tool tip Example");
+        toolTipExample.setOnAction((e) -> {
+            Examples.toolTipExample();
+        });
+
+        hBox1.getChildren().add(toolTipExample);
+        
+        
+        
+        
+        
+         Button progressBarExample = new Button("progressBarExample");
+        progressBarExample.setOnAction((e) -> {
+            Examples.progressBarExample();
+        });
+
+        hBox1.getChildren().add(progressBarExample);
+        
+        
+         Button fileChooserExample = new Button("fileChooserExample");
+        fileChooserExample.setOnAction((e) -> {
+            Examples.fileChooserExample();
+        });
+
+        hBox1.getChildren().add(fileChooserExample);
+
+        
 
         VBox vBox = new VBox();
         hBox.setSpacing(2);
         vBox.setSpacing(2);
-        vBox.getChildren().addAll(hBox);
+        vBox.getChildren().addAll(hBox,hBox1);
         Scene scene = new Scene(vBox, 1000, 500);
         primaryStage.setScene(scene);
         primaryStage.show();
