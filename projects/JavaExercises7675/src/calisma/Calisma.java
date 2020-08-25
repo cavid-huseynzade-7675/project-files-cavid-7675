@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Calisma {
   static Random random=new Random();
  static int sira=1;
-   private static void show() {
+    static void show() {
       
         System.out.println(sira+"ci calisma");
         sira++;
@@ -27,6 +27,40 @@ Calisma7(); //İstifadəçidən 1 ədəd qəbul edən və bu ədədi 1-dən 30-a
 Calisma8();  // Aşağıda verilmiş nəticəni konsolda çap edən proqram yazın
 Calisma9();// Aşağıda verilmiş əməliyyatın nəticəsini hesablayan Java proqram yazın ((25.5 * 3.5 - 3.5 * 3.5) / (40.5 - 4.5))
 Calisma10(); //Aşağıda verilmiş əməliyyatın nəticəsini hesablayan Java proqram yazın 4.0 * (1 - (1.0/3) + (1.0/5) - (1.0/7) + (1.0/9) - (1.0/11))
+  Calisma11();  
+  Calisma12();
+  Calisma13();
+  Calisma14();
+  Calisma15();
+Calisma2.Calisma16();
+Calisma2.Calisma17(); 
+Calisma2.Calisma18(); 
+Calisma2.Calisma19(); 
+Calisma2.Calisma20(); 
+Calisma2.Calisma21(); 
+Calisma2.Calisma22(); 
+Calisma2.Calisma23(); 
+Calisma2.Calisma24(); 
+Calisma2.Calisma25();
+Calisma2.Calisma26();
+Calisma2.Calisma27();
+Calisma2.Calisma28();
+Calisma2.Calisma29();
+Calisma2.Calisma30();
+Calisma2.Calisma31();
+Calisma2.Calisma32();
+Calisma2.Calisma33();
+Calisma2.Calisma34();
+Calisma2.Calisma35();
+Calisma2.Calisma36();
+Calisma2.Calisma37();
+Calisma2.Calisma38();
+Calisma2.Calisma39();
+
+
+
+
+
     }
 
     private static void Calisma1() {
@@ -113,5 +147,74 @@ Calisma10(); //Aşağıda verilmiş əməliyyatın nəticəsini hesablayan Java 
       private static void Calisma10() {
     show();
         System.out.println(4.0 * (1 - (1.0/3) + (1.0/5) - (1.0/7) + (1.0/9) - (1.0/11)));
+    }
+
+    private static void Calisma11() {
+        show();
+         Scanner io = new Scanner(System.in);
+  System.out.println("Dairenin radisunu yaz ");
+  double radius = io.nextDouble();
+  System.out.println("perimeter is = " + (2 * radius * Math.PI));
+  System.out.println("Area is = " + (Math.PI * radius * radius));       
+    }
+
+    private static void Calisma12() {
+      show();
+      double num = 0;
+  double x = 1;
+  Scanner sc = new Scanner(System.in);
+  System.out.println("eded yaz ");
+  int n = sc.nextInt();
+  while (x <= n) {
+   System.out.println("daxil etdiyin eded" + "("+ (int) x +")" + ":");
+   num += sc.nextInt();
+   x += 1;
+  }
+  double avgn = (num / n);
+
+  System.out.println("hasil" + avgn);
+    }
+
+    private static void Calisma13() {
+        show();
+          final double width = 5.6;
+        final double height = 8.5;
+
+        double perimeter = 2*(height + width);
+		
+        double area = width * height;			
+		
+		System.out.printf("Perimeter  2*(%.1f + %.1f) = %.2f \n", height, width, perimeter);
+
+        System.out.printf("sahe  %.1f * %.1f = %.2f \n", width, height, area);
+    }
+    private static void Calisma14(){
+        show();
+      String p1 = "* * * * * * ==================================\n * * * * *  ==================================";
+  String p2 = "==============================================";
+  for (int i = 0; i < 4; i++) {
+   System.out.println(p1);
+  }
+  System.out.println("* * * * * * ==================================");
+  for (int i = 0; i < 6; i++) {
+   System.out.println(p2);   
+    }
+    }
+
+    private static void Calisma15() {
+       show();
+       int x, y, z;
+   Scanner in = new Scanner(System.in);
+
+   System.out.println("birinci eded: ");
+   x = in.nextInt();
+   System.out.println("ikinci eded: ");
+   y = in.nextInt();
+
+   z = x;
+   x = y;
+   y = z;
+
+   System.out.println(" Dəyişdirilmiş dəyərlər sahəsi:" + x + " ve " + y);
     }
 }
