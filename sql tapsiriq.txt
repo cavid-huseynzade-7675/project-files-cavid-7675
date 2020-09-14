@@ -1,0 +1,56 @@
+1.sql-də tanıdığınız açar sözləri yazılı olaraq sadalayın
+
+1.between 
+2.Create	
+3.database
+4Delete
+5.drop
+6. from
+7.in
+8.insert into
+9.like
+10.not
+11.or
+12.Select
+13.table
+14.update
+15.Where
+
+2.sql nədir sualına yazılı olaraq cavab yazın
+Sql den database ucun istifade edirik.Cunki java sadece ramda isleyir ona gorede komputer
+sonende butun melumatlar gedir.ancaq sql da butun melumatlar yaddasda saxlanilir ve biz 
+bununla meselen axtaris sistemi qura bilerik
+
+3."shopping-database" adında yeni baza yaratmaq üçün hansı sql komandasını yazmaq lazımdır?
+
+create database shopping-database;
+
+4."students" adında yeni cədvəl yaratmaq üçün hansı sql komandasını yazmaq lazımdır?
+cədvəl-də olan sütunlar və tipləri aşağıdakılar olmalıdır:
+id-Bu sütun cəfvəlin əsas açar sütunudur.
+name-Bu sütunda tələbənin adı yadda saxlanacaq
+surname-Bu sütunda tələbənin soyadı yadda saxlanacaq
+birthday-Bu sütunda tələbənin doğum tarixi yadda saxlanacaq
+
+create table students
+(id INT NOT NULL auto_increment,
+name varchar(60),
+surname varchar(60),
+birthday DATE
+primary key(id)
+);
+
+5."students" cədvəlinə 5 ədəd tələbə qeydiyyat edin.
+Bunu etmək üçün insert into komandasından istifadə edin.
+Bu komandanı yazılı olaraq göstərin
+
+insert into students(name,surname,birthday)
+values('Adil,'Qafarov,'2003-12-05')
+insert into students(name,surname,birthday)
+values('Celal','huseyn,2003-12-05'')
+insert into students(name,surname,birthday)
+values(Cavid','Huseynzade','2003-12-05'')
+insert into students(name,surname,birthday)
+values('serxan','babayev','2003-12-05'')
+insert into students(name,surname,birthday)
+values('mehemmed,'babayev','2003-12-05')
