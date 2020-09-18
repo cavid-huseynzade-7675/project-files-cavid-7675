@@ -1,0 +1,33 @@
+1.Customers cədvəlini şəhərə görə əlifba sırasında azalan sıra ilə sıralamaq üçün hansı sorğunu yazmaq lazımdır?
+
+SELECT * FROM Customers
+ORDER BY  City DESC;
+
+2.Order by ilə nələr etmək olar?
+
+her bir sutunu elifba sirasi ile artan ve ya azalan kimi sortlasdirir
+
+3.insert into komandasının sintaksisi necədir? və Customers cədvəlinə yeni sətir əlavə etmək üçün yazılmalı olan insert into komandasını yazın
+IZah;
+INSERT INTO(bura cedvel adi yazilir) table_name      (column1, column2, column3, ...)bura sutunlarin adlari yazilir (id (primerykey)sutunu yazilmir)
+
+VALUES (value1, value2, value3, ...);bura deyerler yazilir
+
+numune;
+INSERT INTO table_name (ad, soyad, seher, )
+VALUES (eli,huseynov, baki );
+
+4.null nədir? və Customers cədvəlinə yeni sətir əlavə edin, amma, bu zaman address-i null olaraq saxlayın
+
+null bosluq demekdir (yeni hecne )
+
+INSERT INTO table_name (ad, soyad, seher, )
+VALUES (eli,huseynov);
+
+5.Customers cədvəlində olan müştərilərin London şəhərindən olanların adlarını null edin
+
+update Customers set city=null where city='London'
+
+6.Customers cədvəlində olan müştərilərin USA-dən olanlarını cədvəldən tamamilə silin
+
+DELETE FROM Customers WHERE country='USA';
