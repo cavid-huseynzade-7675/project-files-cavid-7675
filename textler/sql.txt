@@ -21,8 +21,8 @@ VALUES (eli,huseynov, baki );
 
 null bosluq demekdir (yeni hecne )
 
-INSERT INTO table_name (ad, soyad, seher, )
-VALUES (eli,huseynov);
+INSERT INTO table_name (ad, soyad, seher)
+VALUES (eli,huseynov,null);
 
 5.Customers cədvəlində olan müştərilərin London şəhərindən olanların adlarını null edin
 
