@@ -1,21 +1,33 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package jsdbcexample;
 
-/**
- *
- * @author Cavid
- */
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 public class Jsdbcexample {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
     
+   public static void main(String[] args) {
+        try {
+            Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/aprel11-database", "root", "");
+            Statement s = c.createStatement();
+
+            s.execute("create schema 'database'");
+            s.execute("create table sectors (id int not null auto_increment,product_count int,address varchar(30),price int, primary key (id))");
+            s.execute("insert into sectors (price,address ,product_count ) values (1500,'London',12);");
+            s.execute("insert into sectors (price,address ,product_count) values (1500,'Paris',45);");
+            s.execute("insert into sectors (price,address ,product_count) values (1250,'baku',15);");
+            s.execute("insert into sectors (price,address ,product_count) values (1250,'NEW YORK',47);");
+            s.execute("insert into sectors (price,address ,product_count) values (578,'IStanbul',51);");
+            s.close();
+          
+            
+            
+            c.close();
+        } catch (Exception exc) {
+            exc.printStackTrace();
+        }
+    
+}
 }
