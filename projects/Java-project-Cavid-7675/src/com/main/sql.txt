@@ -1,0 +1,25 @@
+1. limit nə üçün istifadə olunur? yazılı olaraq izah et və 3 ədəd misal göstər.
+limit ona gore lazimdir ki butun melumatlari bir anda oturmeyek mesenlen 10-10 gondermek
+
+Numune 1
+
+SELECT * FROM Customers LIMIT 3;
+
+numune 2
+SELECT * FROM Customers
+WHERE Country='Germany'
+LIMIT 3;
+
+numune 3
+ SELECT * FROM Customers Where City='London' LIMIT 10;
+
+2. products cədvəlində ən çox qiyməti olan məhsulu tapmaq üçün hansı sql sorğunu yazmaq lazımdır?
+SELECT MAX(Price) FROM Products; 
+
+3. Əgər employee cədvəlimiz varsa, və bu cədvəlin
+id
+name
+salary
+sütunları varsa, onda işçilərin ortalama maaşını tapmaq üçün hansı sql sorğunu yazmaq lazımdır?
+SELECT AVG(salary) 
+FROM Products; 
