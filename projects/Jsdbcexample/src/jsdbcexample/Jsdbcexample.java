@@ -10,10 +10,10 @@ public class Jsdbcexample {
     
    public static void main(String[] args) {
         try {
-            Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/aprel11-database", "root", "");
+            Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/aprel11-database-7675", "root", "1234");
             Statement s = c.createStatement();
 
-            s.execute("create schema 'database'");
+           
             s.execute("create table sectors (id int not null auto_increment,product_count int,address varchar(30),price int, primary key (id))");
             s.execute("insert into sectors (price,address ,product_count ) values (1500,'London',12);");
             s.execute("insert into sectors (price,address ,product_count) values (1500,'Paris',45);");
