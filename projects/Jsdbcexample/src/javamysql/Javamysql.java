@@ -45,9 +45,14 @@ public class Javamysql {
              ps2.setString(5, "050-054-12-12");
               ps2.setString(6, "LOndon");
               ps2.executeUpdate();
-              
+              //bu updatedir
               s.execute("UPDATE telebe set name='updade',surname='soydate' Where id=3");
+              // bu update
+              
+              
+              //bu deletedir
               s.execute("Delete FROM telebe Where id=3");
+               //bu deletedir
               ps2.close();
               ps1.close();
             ps.close();
