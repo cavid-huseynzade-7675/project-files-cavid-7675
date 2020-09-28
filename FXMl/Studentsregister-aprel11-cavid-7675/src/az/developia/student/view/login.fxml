@@ -1,11 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="az.developia.student.controller.LoginController">
-    
+
+<AnchorPane id="AnchorPane" prefHeight="201.0" prefWidth="355.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="az.developia.student.controller.LoginController">
+   <children>
+      <VBox layoutX="18.0" layoutY="11.0" prefHeight="180.0" prefWidth="309.0">
+         <children>
+            <HBox prefHeight="32.0" prefWidth="396.0">
+               <children>
+                  <Label text="Istifadeci adi:">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="usernameTF" />
+               </children>
+            </HBox>
+            <HBox prefHeight="38.0" prefWidth="396.0">
+               <children>
+                  <Label alignment="BOTTOM_CENTER" text="              Sifre:">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <PasswordField fx:id="passwordPF" />
+               </children>
+            </HBox>
+            <HBox prefHeight="50.0" prefWidth="309.0" spacing="10.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#LoginButtonPressed" prefHeight="14.0" prefWidth="62.0" text="Giris">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#CreateAccountButtonPressed" text="Hesab Yarat">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#DeleteAccountButtonPressed" text="Hesabi Sil">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox prefHeight="42.0" prefWidth="309.0">
+               <children>
+                  <Label fx:id="AlertsLabel" text="Bildiris:" textFill="RED">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
 </AnchorPane>
