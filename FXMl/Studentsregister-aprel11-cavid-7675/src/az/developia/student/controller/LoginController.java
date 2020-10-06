@@ -2,26 +2,27 @@ package az.developia.student.controller;
 
 
 
-import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
-import javafx.geometry.Orientation;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javax.swing.JOptionPane;
 
 public class LoginController implements Initializable {
+    private Stage thisStage;
+
+    public Stage getThisStage() {
+        return thisStage;
+    }
+
+    public void setThisStage(Stage thisStage) {
+        this.thisStage = thisStage;
+    }
 int eded = 1;
     @FXML
     private TextField usernameTF;
@@ -43,18 +44,22 @@ int eded = 1;
  boolean userExists = checkUserLogin(c, username, password);
             if (userExists) {
                 AlertsLabel.setText("Daxil oldunuz");
+((Node)event.getSource()).getScene().getWindow().hide();
                 Stage s=new Stage();
   
-                 s.setTitle("Main");
-        FXMLLoader loader=new FXMLLoader(getClass().getResource("/az/developia/student/view/main.fxml"));
-        Parent root=loader.load();
+                s.setTitle("Main");
+                
+    FXMLLoader loader=new FXMLLoader(getClass().getResource("/az/developia/student/view/main.fxml"));
+     Parent root=loader.load();
         Scene scene=new Scene(root);
-        s.setScene(scene);
+       s.setScene(scene);
                 
       
       
       s.show();
-               
+            MainController mainController=loader.getController();
+
+                mainController.setUsername(username);    
                 
             } else {
                 AlertsLabel.setText("Məlumatlar səhvdir");
@@ -62,9 +67,11 @@ int eded = 1;
 
             c.close();
 
-        } catch (Exception ex) {
+        } catch (LoadException ex) {
             ex.printStackTrace();
 
+        }catch(Exception ex){
+          ex.printStackTrace();
         }
     }
     @FXML

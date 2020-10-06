@@ -1,11 +1,137 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="az.developia.student.controller.MainController">
-    
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="904.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="az.developia.student.controller.MainController">
+   <children>
+      <VBox layoutX="16.0" layoutY="16.0" prefHeight="141.0" prefWidth="649.0" spacing="38.0">
+         <children>
+            <HBox prefHeight="40.0" prefWidth="670.0" spacing="10.0">
+               <children>
+                  <Label alignment="TOP_RIGHT" contentDisplay="TOP" prefHeight="35.0" prefWidth="99.0" text="Ad">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="name">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </TextField>
+                  <Label alignment="TOP_RIGHT" contentDisplay="TOP" prefHeight="35.0" prefWidth="153.0" text="Dogum Tarixi">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <DatePicker fx:id="birthday" prefHeight="32.0" prefWidth="173.0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="51.0" prefWidth="670.0" spacing="10.0">
+               <children>
+                  <Label alignment="TOP_RIGHT" contentDisplay="TOP" prefHeight="21.0" prefWidth="99.0" text="Soyad">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="surname">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </TextField>
+                  <Label alignment="TOP_RIGHT" contentDisplay="TOP" prefHeight="35.0" prefWidth="155.0" text="Telefon">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="telefon" prefHeight="31.0" prefWidth="172.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox prefHeight="62.0" prefWidth="649.0" spacing="10.0">
+               <children>
+                  <Label alignment="TOP_RIGHT" contentDisplay="TOP" prefHeight="35.0" prefWidth="102.0" text="Adres">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="adress">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </TextField>
+                  <Label alignment="TOP_RIGHT" contentDisplay="TOP" prefHeight="35.0" prefWidth="155.0" text="Valideyin Adi">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="vname" prefHeight="31.0" prefWidth="172.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <Button layoutX="670.0" layoutY="14.0" mnemonicParsing="false" onAction="#qeydiyyatB" prefHeight="51.0" prefWidth="215.0" text="Qeydiyyat Et">
+         <font>
+            <Font size="24.0" />
+         </font>
+         <effect>
+            <DropShadow color="#003cff" />
+         </effect>
+      </Button>
+      <TableView fx:id="studentsTable" layoutX="16.0" layoutY="221.0" prefHeight="414.0" prefWidth="628.0">
+        <columns>
+            <TableColumn fx:id="idTC" prefWidth="75.0" text="Id" />
+            <TableColumn fx:id="userlnameTC" prefWidth="75.0" text="Muellim adi" />
+            <TableColumn fx:id="nameTC" prefWidth="75.0" text="Ad" />
+            <TableColumn fx:id="surnameTC" prefWidth="75.0" text="Soyad" />
+            <TableColumn fx:id="dateTC" prefWidth="86.0" text="Dogum tarixi" />
+            <TableColumn fx:id="adressTC" prefWidth="64.0" text="Adress" />
+            <TableColumn fx:id="telefonn" prefWidth="75.0" text="Telefon" />
+            <TableColumn fx:id="valnameTC" prefWidth="102.0" text="Valideyin Adi" />
+        </columns>
+      </TableView>
+      <Button layoutX="670.0" layoutY="78.0" mnemonicParsing="false" onAction="#goster" prefHeight="51.0" prefWidth="215.0" text="Sagirdleri Goster">
+         <effect>
+            <DropShadow color="#003cff" />
+         </effect>
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button layoutX="670.0" layoutY="144.0" mnemonicParsing="false" onAction="#delete" prefHeight="51.0" prefWidth="215.0" text="Hamisini sil">
+         <effect>
+            <DropShadow color="#003cff" />
+         </effect>
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <TextField fx:id="deleteodin" layoutX="653.0" layoutY="213.0" prefHeight="31.0" prefWidth="221.0" promptText="Hansi ID-de duran ededi silsin">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </TextField>
+      <Button layoutX="803.0" layoutY="251.0" mnemonicParsing="false" onAction="#deleteodin" prefHeight="51.0" prefWidth="71.0" text="Sil ">
+         <effect>
+            <DropShadow color="#003cff" />
+         </effect>
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+   </children>
 </AnchorPane>
