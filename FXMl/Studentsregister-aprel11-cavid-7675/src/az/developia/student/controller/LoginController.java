@@ -26,7 +26,11 @@ public class LoginController implements Initializable {
 int eded = 1;
     @FXML
     private TextField usernameTF;
+@FXML
+    private TextField searchtx;
+@FXML
 
+    private ComboBox combox;
     @FXML
     private Label AlertsLabel;
 
@@ -138,6 +142,10 @@ int eded = 1;
             ex.printStackTrace();
 
         }
+    }
+@FXML
+     void searchbutton(ActionEvent event) {
+   
     }
 
     @Override
