@@ -1,0 +1,105 @@
+package com.main;     
+//Netbeans-də yeni JavaFX proyekti yaratmaq üçün hansı addımları etmək lazımdır?
+
+import javafx.application.Application;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
+import javafx.stage.Stage;
+
+
+
+public class tapsiriq extends Application{
+
+    @Override 
+    public void start(Stage ps) throws Exception {
+       ps.setTitle("JavaFx code Design");
+        MenuButton myMenuButton=new MenuButton();
+        MenuItem  createbutton=new MenuItem("Click here fore creating button");
+       MenuItem  createLabel=new MenuItem("Click here fore creating label");
+       myMenuButton.getItems().addAll(createbutton,createLabel);
+  
+       
+       
+       ps.show();
+    }
+    public static void main(String[] args) {
+        
+        launch(args);
+
+} 
+
+   
+}
+
+
+//JavaFX proyekti qurduğumuz zaman pəncərə qurmaq üçün hansı yollardan istifadə edə bilərik?
+
+import javafx.application.Application;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
+import javafx.stage.Stage;
+
+
+
+public class tapsiriq extends Application{
+
+    @Override 
+    public void start(Stage ps) throws Exception {
+       ps.setTitle("JavaFx code Design");
+        MenuButton myMenuButton=new MenuButton();
+        MenuItem  createbutton=new MenuItem("Click here fore creating button");
+       MenuItem  createLabel=new MenuItem("Click here fore creating label");
+       myMenuButton.getItems().addAll(createbutton,createLabel);
+  
+       
+       
+       ps.show();
+    }
+    public static void main(String[] args) {
+        
+        launch(args);
+
+} 
+
+   
+}
+//Yeni fxml faylı yaratmaq üçün hansı addımları etmək lazımdır?
+birinci javafx proyektini yaratiriq sonra ise new fxml yaratiriq ve dizayn ediriq
+
+//Yaratdığımız fxml faylı dizayn etmək üçün hansı proqramı istifadə edə bilərik?
+scene builder2.0
+
+//JavaFX-də qurduğumuz pəncərələrin kodlarını yazmaq üçün istifadə etdiyimiz sinif necə adlandırılır?
+giu
+//JavaFX-də mətn daxil etmək üçün hansı qrafik komponent istifadə edə bilərik?
+textArea
+
+//javaFX-də mətn göstərmək üçün hansı qrafik komponent istifadə edə bilərik?
+label
+
+//JavaFX-də TextField qrafik komponentinin daxilində yazılmış yazını onun hansı metodu vasitəsilə götürə bilərik?
+getText()
+//JavaFX-də TextField qrafik komponentinin daxilində yazılmış yazını qaytaran metod hansı tip məlumat qaytarır?
+String
+//JavaFX-də TextField qrafik komponentinin daxilində olan yazını təyin etmək üçün onun hansı metodunu istifadə edirik?
+setText()
+//JavaFX-də düymə yaratmaq üçün hansı qrafik komponentdən istifadə olunur?
+     Button button = new Button("My Button");
+//JavaFX-də Button qrafik komponentinə basıldığı zaman hansısa kodların icra olunmasını istəyiriksə, onda, hansı addımları etmək lazımdır?
+
+
+//JavaFX-də qrafik pəncərənin açılması zamanı hansısa kodların icra olunmasını istəyiriksə, onda, bu kodları hara yazmaq lazımdır?
+ @Override
+    public void initialize(URL url, ResourceBundle rb) {
+
+	
+	// bura
+    }
+//JavaFX-də 1-dən çox elementlərin daxilindən yalnız 1-ni seçmək üçün hansı qrafik komponentdən istifadə edə bilərik?
+getSelectionModel().getSelectedItem()
+//JavaFX-də şəkil göstərmək üçün hansı qrafik komponentdən istifadə edə bilərik? və onun daxilində göstərmək istədiyimiz şəkili təyin etmək üçün onun hansı metodunu istifadə etmək lazımdır?
+ ImageView
+//JavaFX-də tarix seçmək üçün hansı qrafik komponentdən istifadə olunur?
+datepicker
+//JavaFX-də tarix seçmək üçün olan qrafik komponentin daxilində olan tarixi götürmək üçün onun hansı metodunu istifadə etmək lazımdır?
+   getValue() metodu
