@@ -1,0 +1,17 @@
+Netbeans-də yeni JavaFX proyekti yaratmaq üçün hansı addımları etmək lazımdır?
+JavaFX proyekti qurduğumuz zaman pəncərə qurmaq üçün hansı yollardan istifadə edə bilərik?
+Yeni fxml faylı yaratmaq üçün hansı addımları etmək lazımdır?
+Yaratdığımız fxml faylı dizayn etmək üçün hansı proqramı istifadə edə bilərik?
+JavaFX-də qurduğumuz pəncərələrin kodlarını yazmaq üçün istifadə etdiyimiz sinif necə adlandırılır?
+JavaFX-də mətn daxil etmək üçün hansı qrafik komponent istifadə edə bilərik?
+JavaFX-də mətn göstərmək üçün hansı qrafik komponent istifadə edə bilərik?
+JavaFX-də TextField qrafik komponentinin daxilində yazılmış yazını onun hansı metodu vasitəsilə götürə bilərik?
+JavaFX-də TextField qrafik komponentinin daxilində yazılmış yazını qaytaran metod hansı tip məlumat qaytarır?
+JavaFX-də TextField qrafik komponentinin daxilində olan yazını təyin etmək üçün onun hansı metodunu istifadə edirik?
+JavaFX-də düymə yaratmaq üçün hansı qrafik komponentdən istifadə olunur?
+JavaFX-də Button qrafik komponentinə basıldığı zaman hansısa kodların icra olunmasını istəyiriksə, onda, hansı addımları etmək lazımdır?
+JavaFX-də qrafik pəncərənin açılması zamanı hansısa kodların icra olunmasını istəyiriksə, onda, bu kodları hara yazmaq lazımdır?
+JavaFX-də 1-dən çox elementlərin daxilindən yalnız 1-ni seçmək üçün hansı qrafik komponentdən istifadə edə bilərik?
+JavaFX-də şəkil göstərmək üçün hansı qrafik komponentdən istifadə edə bilərik? və onun daxilində göstərmək istədiyimiz şəkili təyin etmək üçün onun hansı metodunu istifadə etmək lazımdır?
+JavaFX-də tarix seçmək üçün hansı qrafik komponentdən istifadə olunur?
+JavaFX-də tarix seçmək üçün olan qrafik komponentin daxilində olan tarixi götürmək üçün onun hansı metodunu istifadə etmək lazımdır?
