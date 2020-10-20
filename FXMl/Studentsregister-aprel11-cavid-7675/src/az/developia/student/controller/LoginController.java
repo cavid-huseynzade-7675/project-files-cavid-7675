@@ -23,6 +23,7 @@ public class LoginController implements Initializable {
     public void setThisStage(Stage thisStage) {
         this.thisStage = thisStage;
     }
+    //burda dyerleri ve fxml kompenentlerini yazmisiq 
 int eded = 1;
     @FXML
     private TextField usernameTF;
@@ -36,10 +37,13 @@ int eded = 1;
 
     @FXML
     private PasswordField passwordPF;
- //Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/StudentRegister-Aprel11-7675", "root", "1234");
-
+ 
     @FXML
     void LoginButtonPressed(ActionEvent event) {
+  // burda duymeye basanda text field deyer goturub
+  //stringe verir sonra onu checkUserLogin metodu database gore yoxluyuruq 
+  //eger dogrudursa giris eleye bilirik dogru  deyilse giris eliye bilmirik ve label 
+  //vasitesile deyirikki sifre ve ad yanlisdir
  String username = usernameTF.getText();
         String password = passwordPF.getText(); 
         try {
@@ -80,11 +84,13 @@ int eded = 1;
     }
     @FXML
     void CreateAccountButtonPressed(ActionEvent event) {
+        // burda duymeye basanda text field deyer goturub
+        //stringe verir  checkUserCreateAccount metodu vasitesile yoxluyuruq
+        //eger databasede melumat varsa label vasitesi deyirki "İstifadəçi yaradıldı"
+        //eger yoxdursa teze account yaradir
         String username = usernameTF.getText();
         String password = passwordPF.getText();
-        //System.out.println("username = "+username);
-        //System.out.println("password = "+password);
-
+       
         try {
 
             Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/StudentRegister-Aprel11-7675", "root", "1234");
@@ -114,6 +120,9 @@ int eded = 1;
 
     @FXML
      void DeleteAccountButtonPressed(ActionEvent event) {
+         // burda duymeye basanda text field deyer goturub
+        //stringe verir checkUserLogin metodu ile yoxluyur
+        //eger varsa silir yoxdursa label vasitesile deyirki"Silinmədi"
     String username = usernameTF.getText();
         String password = passwordPF.getText();
        
@@ -143,10 +152,7 @@ int eded = 1;
 
         }
     }
-@FXML
-     void searchbutton(ActionEvent event) {
-   
-    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -154,6 +160,7 @@ int eded = 1;
     }
 
     private boolean checkUserCreateAccount(Connection c, String u) throws Exception {
+        // burda username gore yoxluyur
         boolean userExists = false;
         Statement stm = c.createStatement();
         ResultSet rs = stm.executeQuery("select * from users where username='" + u + "' ;");
@@ -166,6 +173,7 @@ int eded = 1;
     }
     
      private boolean checkUserLogin(Connection c, String u, String p) throws Exception {
+       //  burda hem username hemde paswword yoxluyur
         boolean userExists = false;
         Statement stm = c.createStatement();
         ResultSet rs = stm.executeQuery("select * from users where username='" + u + "' and pasword='" + p + "';");

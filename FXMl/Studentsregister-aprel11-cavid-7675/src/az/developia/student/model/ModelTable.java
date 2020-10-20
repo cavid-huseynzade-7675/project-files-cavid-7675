@@ -1,20 +1,30 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package az.developia.student.model;
 
 import java.sql.Date;
 
-/**
- *
- * @author Cavid
- */
-public class ModelTable {
- String id,username,name,surname,adress,phone,valname;
-String TBdt;
 
+public class ModelTable {
+    // burdaki deyerleri getter and setter eleyirik 
+ String id,username,name,surname,adress,phone,valname;
+String TBdt,sector1;
+
+    public String getSector1() {
+        return sector1;
+    }
+
+    public void setSector1(String sector1) {
+        this.sector1 = sector1;
+    }
+private String sector;
+
+    public String getSector() {
+        return sector;
+    }
+
+    public void setSector(String sector) {
+        this.sector = sector;
+    }
     
 
     public String getTBdt() {
@@ -81,7 +91,7 @@ String TBdt;
         this.valname = valname;
     }
 
-    public ModelTable(String id, String username, String name, String surname, String TBdt, String adress, String phone, String valname) {
+    public ModelTable(String id, String username, String name, String surname, String TBdt, String adress, String phone, String valname,String sector1) {
         this.id = id;
         this.username = username;
         this.name = name;
@@ -90,6 +100,8 @@ String TBdt;
         this.adress = adress;
         this.phone = phone;
         this.valname = valname;
+        this.sector1 =sector1;
+     
     }
          
 }

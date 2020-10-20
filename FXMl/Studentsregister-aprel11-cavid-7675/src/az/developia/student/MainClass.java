@@ -14,6 +14,7 @@ public class MainClass extends Application{
     }
     @Override
     public void start(Stage s) throws Exception {
+        // Biz burda fxml faylini aciriq
       s.setTitle("Studentregister");
         FXMLLoader loader=new FXMLLoader(getClass().getResource("view/login.fxml"));
         Parent root=loader.load();

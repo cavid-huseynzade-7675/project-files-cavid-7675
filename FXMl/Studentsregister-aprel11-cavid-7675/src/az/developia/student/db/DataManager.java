@@ -6,6 +6,8 @@ import java.sql.DriverManager;
 
 
 public class DataManager {
+    //burda mysqle connect eleyirik ki her defe tezden connect etmeyek lazim
+    //olanda metod cagirsinlar
   private static final DataManager dataManager =new DataManager();
   private Connection connection;
 

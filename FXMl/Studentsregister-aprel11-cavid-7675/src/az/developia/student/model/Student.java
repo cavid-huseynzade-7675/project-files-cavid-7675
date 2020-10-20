@@ -6,6 +6,7 @@ import java.time.LocalDate;
 
 
 public class Student {
+     // burdaki deyerleri getter and setter eleyirik 
   private int id;
   private String name;
   private String username;
@@ -13,7 +14,17 @@ public class Student {
   private String adres;
   private String telefon;
   private String vname;
+    private String sector2;
+
+    public String getSector2() {
+        return sector2;
+    }
+
+    public void setSector2(String sector2) {
+        this.sector2 = sector2;
+    }
  private Date birthday;
+ 
 
     public Date getBirthday() {
         return birthday;
