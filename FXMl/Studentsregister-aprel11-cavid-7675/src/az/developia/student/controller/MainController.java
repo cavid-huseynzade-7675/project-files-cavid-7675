@@ -109,6 +109,7 @@ combox.getItems().add("id");
         combox.getItems().add("adress");
         combox.getItems().add("telefon");
         combox.getItems().add("valideynadi");
+        combox.getItems().add("sector");
         adress.addEventHandler(KeyEvent.KEY_TYPED,  allowOnlyDecimalsOrLetters(10));
         surname.addEventHandler(KeyEvent.KEY_TYPED,  allowOnlyDecimalsOrLetters(10));
         name.addEventHandler(KeyEvent.KEY_TYPED,  allowOnlyDecimalsOrLetters(10));
@@ -206,7 +207,7 @@ combox.getItems().add("id");
            refreshSectors();
         
     }
-    String[] massiv = new String[8];
+    String[] massiv = new String[9];
   
   int searchint;
     @FXML
@@ -225,6 +226,7 @@ combox.getItems().add("id");
         massiv[5] = "adress";
         massiv[6] = "telefon";
         massiv[7] = "valideynadi";
+        massiv[8] = "sector";
        String combostr=combox.getSelectionModel().getSelectedItem().toString();
        for (int i = 0; massiv.length < 10; i++) {
     if (combostr == null ? massiv[searchint] == null : combostr.equals(massiv[searchint])) {
@@ -295,7 +297,7 @@ combox.getItems().add("id");
         adressTC.setCellValueFactory(new PropertyValueFactory<>("adress"));
         telefonn.setCellValueFactory(new PropertyValueFactory<>("phone"));
         valnameTC.setCellValueFactory(new PropertyValueFactory<>("valname"));
-
+ sectortb.setCellValueFactory(new PropertyValueFactory<>("sector1"));
         studentsTable.setItems(oblist);
     }
 
