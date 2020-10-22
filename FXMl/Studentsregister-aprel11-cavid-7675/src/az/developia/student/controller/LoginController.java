@@ -2,6 +2,7 @@ package az.developia.student.controller;
 
 
 
+import az.developia.student.db.DataManager;
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
@@ -15,7 +16,8 @@ import javafx.stage.Stage;
 
 public class LoginController implements Initializable {
     private Stage thisStage;
-
+ private DataManager dataManager = DataManager.getDataManager();
+   
     public Stage getThisStage() {
         return thisStage;
     }
@@ -48,8 +50,8 @@ int eded = 1;
         String password = passwordPF.getText(); 
         try {
 
-            Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/StudentRegister-Aprel11-7675", "root", "1234");
- boolean userExists = checkUserLogin(c, username, password);
+            Connection c = dataManager.getConnection();
+        boolean userExists = checkUserLogin(c, username, password);
             if (userExists) {
                 AlertsLabel.setText("Daxil oldunuz");
 ((Node)event.getSource()).getScene().getWindow().hide();
@@ -67,13 +69,15 @@ int eded = 1;
       s.show();
             MainController mainController=loader.getController();
 
-                mainController.setUsername(username);    
+                mainController.setUsername(username); 
+                
+               
                 
             } else {
                 AlertsLabel.setText("Məlumatlar səhvdir");
             }
 
-            c.close();
+         
 
         } catch (LoadException ex) {
             ex.printStackTrace();
@@ -93,8 +97,8 @@ int eded = 1;
        
         try {
 
-            Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/StudentRegister-Aprel11-7675", "root", "1234");
- boolean userExists = checkUserCreateAccount(c, username);
+           Connection c = dataManager.getConnection();
+        boolean userExists = checkUserCreateAccount(c, username);
             if (userExists) {
                 AlertsLabel.setText("Bu artıq qeydiyyat olub");
             } else {
@@ -109,7 +113,7 @@ int eded = 1;
                  AlertsLabel.setText("İstifadəçi yaradıldı");
             }
 
-            c.close();
+           
 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -128,8 +132,8 @@ int eded = 1;
        
         try {
 
-             Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/StudentRegister-Aprel11-7675", "root", "1234");
-
+             Connection c = dataManager.getConnection();
+       
             boolean userExists = checkUserLogin(c, username,password);
             if (userExists) {
                 
@@ -145,7 +149,7 @@ int eded = 1;
                AlertsLabel.setText("Silinmədi");
             }
 
-            c.close();
+            
 
         } catch (Exception ex) {
             ex.printStackTrace();

@@ -157,7 +157,6 @@
          </font>
       </Label>
       <ComboBox fx:id="comboxsector" layoutX="299.0" layoutY="211.0" prefHeight="25.0" prefWidth="62.0" />
-      <Button layoutX="390.0" layoutY="211.0" mnemonicParsing="false" onAction="#addSector" text="+" />
-      <Button layoutX="424.0" layoutY="211.0" mnemonicParsing="false" onAction="#deleteSector" text="-" />
+      <Button layoutX="390.0" layoutY="211.0" mnemonicParsing="false" onAction="#addSector" text="Sektor ayarlari" />
    </children>
 </AnchorPane>

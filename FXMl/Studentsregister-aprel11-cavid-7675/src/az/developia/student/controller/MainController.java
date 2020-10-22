@@ -4,6 +4,7 @@ import az.developia.student.DAO.StudentDAO;
 import az.developia.student.db.DataManager;
 import az.developia.student.model.ModelTable;
 import az.developia.student.model.Student;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.Date;
@@ -11,14 +12,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -27,7 +31,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
-import javax.swing.JOptionPane;
+import javafx.stage.Stage;
 
 public class MainController implements Initializable {
 
@@ -41,6 +45,7 @@ public class MainController implements Initializable {
 
     void setUsername(String username) {
         this.username = username;
+       findSectors();
 
     }
 //burda dyerleri ve fxml kompenentlerini yazmisiq 
@@ -93,11 +98,31 @@ public class MainController implements Initializable {
  @FXML
     private ComboBox combox;
  @FXML
-    private ComboBox comboxsector;
+    public ComboBox comboxsector;
+ 
     @FXML
     private TextField adress;
 
-    private StudentDAO studentDAO = new StudentDAO();
+    private StudentDAO studentDAO ;
+     public void findSectors() {
+         comboxsector.getItems().clear();
+        Connection c=dataManager.getConnection();
+     ArrayList<String> alist=new ArrayList<String>();
+          try {
+             Statement s=c.createStatement();
+            ResultSet rs=s.executeQuery("select sector from sectors where username='"+username+"';");
+             
+                  while(rs.next()){ 
+                alist.add(rs.getString("sector"));
+            } 
+              comboxsector.getItems().addAll(alist);
+              
+         
+          }catch(Exception ex){
+            ex.printStackTrace();
+          }
+        
+        }
  @Override
     public void initialize(URL url, ResourceBundle rb) {
         //burda combobox deyer elave edirik
@@ -116,7 +141,8 @@ combox.getItems().add("id");
         telefon.addEventHandler(KeyEvent.KEY_TYPED,  allowOnlyDecimalsOrLetters(10));
         vname.addEventHandler(KeyEvent.KEY_TYPED,  allowOnlyDecimalsOrLetters(10));
         searchtx.addEventHandler(KeyEvent.KEY_TYPED,  allowOnlyDecimalsOrLetters(10));
-        refreshSectors();
+        
+      
     }
     @FXML
     void qeydiyyatB(ActionEvent event) throws SQLException {
@@ -183,30 +209,30 @@ combox.getItems().add("id");
 
     }
      @FXML
-    void addSector(ActionEvent event) {
+    void addSector(ActionEvent event) throws IOException{
         //duymeye basnda  mysqle sectorlarin saxlanildigi table a addsector metodu ile setor elave edirik
-          
-        String newSector=JOptionPane.showInputDialog("Yeni sektorun adini daxil edin");
-         if (newSector==null) {
-             
-         }else{
-          studentDAO.addSector(newSector,username);
-        refreshSectors();
-         
-         }
-         System.out.println(newSector);
-        }
+         Stage s=new Stage();
+  
+                s.setTitle("Sektor Ayarlari");
+                
+    FXMLLoader loader=new FXMLLoader(getClass().getResource("/az/developia/student/view/sektorayarlar.fxml"));
+     Parent root=loader.load();
+        Scene scene=new Scene(root);
+       s.setScene(scene);
+       
+       SektorayarlarController sektorayarlarController=loader.getController();
+       
+       sektorayarlarController.setUsername(username);
+       
+       
+                
     
-    
-    @FXML
-    void deleteSector(ActionEvent event) {
-       //duymeye basnda  mysqle sectorlarin saxlanildigi tablede secdigimiz 
-       //deleteSector metodu ile secdigimizsectoru silir 
-        String selectedSector=(String) comboxsector.getSelectionModel().getSelectedItem();
-         studentDAO.deleteSector(selectedSector,username);
-           refreshSectors();
-        
+      
+      s.showAndWait();
+    findSectors();
     }
+    @FXML
+   
     String[] massiv = new String[9];
   
   int searchint;
@@ -301,17 +327,7 @@ combox.getItems().add("id");
         studentsTable.setItems(oblist);
     }
 
-    private void refreshSectors() {
-        //burda eger Comboboxa nese elave olunnanda yada silinende
-        //combobox deyerler silinir ve yeniden database den gelir 
-        //bu ele suretli olur ki gorsenmir
-         comboxsector.getItems().clear();
-        comboxsector.getItems().addAll(studentDAO.findAllSectorsByUsername(username));
-        if(comboxsector.getItems().size()>0){
-             comboxsector.getSelectionModel().select(0);
-        }
-   
-       }
+    
     public static EventHandler<KeyEvent> allowOnlyDecimalsOrLetters(final Integer maxLength) {
         // burda textfiellde limit qoyacayiq
         return new EventHandler<KeyEvent>() {
