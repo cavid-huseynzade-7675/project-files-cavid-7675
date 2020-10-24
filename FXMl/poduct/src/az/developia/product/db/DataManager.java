@@ -1,5 +1,5 @@
 
-package az.developia.student.db;
+package az.developia.product.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

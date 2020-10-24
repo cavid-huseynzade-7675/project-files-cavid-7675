@@ -1,5 +1,5 @@
 
-package product;
+package az.developia.product;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -12,15 +12,18 @@ public class MainClass extends Application{
     public static void main(String[] args) {
         launch(args);
     }
-
     @Override
     public void start(Stage s) throws Exception {
-        s.setTitle("Login");
-        FXMLLoader loader=new FXMLLoader(getClass().getResource("login.fxml"));
+        // Biz burda fxml faylini aciriq
+      s.setTitle("Studentregister");
+        FXMLLoader loader=new FXMLLoader(getClass().getResource("view/login.fxml"));
         Parent root=loader.load();
         Scene scene= new Scene(root);
         s.setScene(scene);
-        s.show(); 
-       }
+        s.show();  
+    
+    
+    
+    }
     
 }
