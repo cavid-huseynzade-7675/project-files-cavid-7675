@@ -1,0 +1,31 @@
+ListView komponentinin daxilində olan elementləri onun hansı metodu ilə təmizləmək olar?
+                                                                                                                               deyisen  @FXML
+                                                                                                                               private ListView<String> list;
+metod :  list.getItems().clear();
+
+
+------------------------------------------------------------------------
+ListView komponentinin daxilinə bir dəfəyə 1-dən çox elementləri daxil
+etmək üçün onun hansı metodunu istifadə etmək olar?
+ list.getItems().addAll(elements);
+
+---------------------------------------------------------------------------------------------------
+
+ListView komponentinin daxilinə 1 ədəd element daxil etmək
+üçün onun hansı metodunu istifadə etmək olar?
+ list.getItems().add(username);
+---------------------------------------------------------------------------------------------------
+TableView komponentinin daxilində olan sətirlərdən hansının seçildiyini onun 
+hansı metodu ilə tapmaq olar?
+
+
+   ModelTable selectedstudnbt = studentsTable.getSelectionModel().getSelectedItem();
+
+metod. getSelectionModel().getSelectedItem();
+
+----------------------------------------------------------------------------------
+TableView komponentinin daxilində olan sətirlərdən 1-dən çoxunu seçə 
+bilməyimiz üçün onun hansı metodunu istifadə etmək olar?
+
+
+studentsTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
