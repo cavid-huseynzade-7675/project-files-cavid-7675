@@ -5,7 +5,7 @@ import java.sql.Date;
 import java.time.LocalDate;
 
 
-public class Student {
+public class Studen {
      // burdaki deyerleri getter and setter eleyirik 
   int id;
   String name;

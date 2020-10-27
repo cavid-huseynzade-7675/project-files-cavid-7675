@@ -8,14 +8,14 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 
-public class MainClass extends Application{
+public class MaiClass extends Application{
     public static void main(String[] args) {
         launch(args);
     }
     @Override
     public void start(Stage s) throws Exception {
         // Biz burda fxml faylini aciriq
-      s.setTitle("Studentregister");
+      s.setTitle("Product");
         FXMLLoader loader=new FXMLLoader(getClass().getResource("view/login.fxml"));
         Parent root=loader.load();
         Scene scene= new Scene(root);

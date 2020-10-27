@@ -4,15 +4,26 @@ package az.developia.product.model;
 
 
 
-public class ModelTable {
+public class ModeTable {
     // burdaki deyerleri getter and setter eleyirik 
- String id,name,qiymet;
+ String id,name,qiymet,username;
 
-    public ModelTable(String id, String name, String qiymet) {
+    public ModeTable(String id, String name, String qiymet, String username) {
         this.id = id;
         this.name = name;
         this.qiymet = qiymet;
+        this.username = username;
     }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+   
 
     public String getId() {
         return id;

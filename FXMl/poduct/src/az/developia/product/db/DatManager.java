@@ -5,17 +5,17 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 
-public class DataManager {
+public class DatManager {
     //burda mysqle connect eleyirik ki her defe tezden connect etmeyek lazim
     //olanda metod cagirsinlar
-  private static final DataManager dataManager =new DataManager();
+  private static final DatManager dataManager =new DatManager();
   private Connection connection;
 
-    public static DataManager getDataManager() {
+    public static DatManager getDataManager() {
         return dataManager;
     }
   
-  private DataManager(){
+  private DatManager(){
 connect();
 }
 

@@ -1,8 +1,8 @@
 
 package az.developia.product.DAO;
 
-import az.developia.product.db.DataManager;
-import az.developia.product.model.Student;
+import az.developia.product.db.DatManager;
+import az.developia.product.model.Studen;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,9 +11,9 @@ import java.util.ArrayList;
 
 
 public class StudentDAO {
-   private DataManager dataManager=DataManager.getDataManager();
+   private DatManager dataManager=DatManager.getDataManager();
    
-   public void addStudent(Student student){
+   public void addStudent(Studen student){
        try {
            //burda telebelerinin melumatlarini mysqla yaziriq
           Connection c=dataManager.getConnection();

@@ -1,8 +1,8 @@
 package az.developia.product.controller;
 
-import az.developia.product.db.DataManager;
-import az.developia.product.model.ModelTable;
-import az.developia.product.model.Student;
+import az.developia.product.db.DatManager;
+import az.developia.product.model.ModeTable;
+import az.developia.product.model.Studen;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,8 +19,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 
-public class Main1Controller implements Initializable {
+public class ManController implements Initializable {
 String username;
 
     public String getUsername() {
@@ -34,35 +35,37 @@ String username;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
           }
-DataManager dataManager=DataManager.getDataManager();
+DatManager dataManager=DatManager.getDataManager();
      @FXML
     private TextField nameTX;
-
+  @FXML
+    private TextField searchTX;
     @FXML
     private TextField qiymaetTX;
 
     @FXML
-    private TableColumn<String, ModelTable> nameTC;
+    private TableColumn<String, ModeTable> nameTC;
 
     @FXML
-    private TableColumn<String, ModelTable> qiymetTC;
+    private TableColumn<String, ModeTable> qiymetTC;
 
     @FXML
-    private TableView<ModelTable> productTable;
+    private TableView<ModeTable> productTable;
 
     @FXML
-    private TableColumn<String, ModelTable> idTC;
+    private TableColumn<String, ModeTable> idTC;
 
     @FXML
     void deleteSagTik(ActionEvent event) throws SQLException {
-  Connection c=dataManager.getConnection();
+        
+             Connection c=dataManager.getConnection();
     
-      ObservableList<ModelTable> selectedStudents=productTable.getSelectionModel().getSelectedItems();
+      ObservableList<ModeTable> selectedStudents=productTable.getSelectionModel().getSelectedItems();
         System.out.println(selectedStudents);
       Statement s=c.createStatement();
-            ResultSet rs=s.executeQuery("select * from students where username='"+username+"';");
+            ResultSet rs=s.executeQuery("select * from product where username='"+username+"';");
             while(rs.next()){
-                Student st=new Student();
+                Studen st=new Studen();
                 System.out.println(rs.getInt("id"));
                 st.setId(rs.getInt("id"));
       }
@@ -72,6 +75,8 @@ DataManager dataManager=DataManager.getDataManager();
             
     }
               show();
+       
+ 
     }
      public void deleteById(String id) {
          try {
@@ -79,7 +84,7 @@ DataManager dataManager=DataManager.getDataManager();
             // mysqle bazada id ye gore telebenin melematini silir
             Connection c=dataManager.getConnection();
             Statement s=c.createStatement();
-            s.execute("delete from students where id="+id+"");
+            s.execute("delete from product where id="+id+"");
             s.close();
         } catch (Exception e) {
             e.printStackTrace();
@@ -100,24 +105,34 @@ DataManager dataManager=DataManager.getDataManager();
       
         show();
     }
+ @FXML
+    void searchbutton(KeyEvent event) throws SQLException {
+      
+            System.out.println(searchTX.getText());
+      showsearch();
+
+    }
 
     @FXML
-    void delete(ActionEvent event) throws SQLException {
+    void delete(ActionEvent event) throws SQLException  {
+      
  Connection c = dataManager.getConnection();
         Statement s = c.createStatement();
         s.execute("delete FROM  product where id>0 and username='" + getUsername() + "' ;");
        productTable.setItems(oblist);
         show();
+       
     }
-ObservableList <ModelTable>oblist=FXCollections.observableArrayList();
-    private void show() throws SQLException {
-         productTable.getItems().clear();
+ObservableList <ModeTable>oblist=FXCollections.observableArrayList();
+    private void show() throws SQLException  {
+        System.out.println(getUsername());
+            productTable.getItems().clear();
         Connection c = dataManager.getConnection();
         ResultSet rs = c.createStatement().executeQuery("SELECT * FROM  product where username='" + getUsername() + "' ");
      
 
         while (rs.next()) {
-            oblist.add( new ModelTable(rs.getString("id"), rs.getString("name"),rs.getString("salary")));
+            oblist.add(new ModeTable(rs.getString("id"), rs.getString("name"),rs.getString("salary"),rs.getString("username")));
 
         }
         
@@ -126,10 +141,35 @@ ObservableList <ModelTable>oblist=FXCollections.observableArrayList();
 
         idTC.setCellValueFactory(new PropertyValueFactory<>("id"));
         nameTC.setCellValueFactory(new PropertyValueFactory<>("name"));
-        //qiymetTC.setCellFactory(new PropertyValueFactory<>("qiymet"));
+      qiymetTC.setCellValueFactory(new PropertyValueFactory<>("qiymet")); 
+       productTable.setItems(oblist);
+        
       
         }
-   
+   private void showsearch() throws SQLException {
+      //burda database sorgu gonderirik ve cavablari ResultSete veririk 
+        //while vasitesi ile  Observable liste modeltable vasitesile deyer veririk
+        //sonra deyerleri Tableviewe qoyuruq
+     String str = searchTX.getText();
+       
+        productTable.getItems().clear();
+        Connection c = dataManager.getConnection();
+        ResultSet rs = c.createStatement().executeQuery("select * from product where username='"+username+"' and concat(name,salary) like '%"+str+"%';");
+     
+
+         while (rs.next()) {
+            oblist.add(new ModeTable(rs.getString("id"), rs.getString("name"),rs.getString("salary"),rs.getString("username")));
+
+        }
+        
+        rs.close();
+      
+
+        idTC.setCellValueFactory(new PropertyValueFactory<>("id"));
+        nameTC.setCellValueFactory(new PropertyValueFactory<>("name"));
+      qiymetTC.setCellValueFactory(new PropertyValueFactory<>("qiymet")); 
+       productTable.setItems(oblist);
+    }
             
    
 }

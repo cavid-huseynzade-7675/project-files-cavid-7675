@@ -10,9 +10,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="422.0" prefWidth="349.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="az.developia.student.controller.MainController">
+<AnchorPane id="AnchorPane" prefHeight="422.0" prefWidth="349.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="az.developia.product.controller.ManController">
    <children>
-      <TableView fx:id="productTable" layoutX="64.0" layoutY="174.0" prefHeight="200.0" prefWidth="229.0">
+      <TableView fx:id="productTable" layoutX="48.0" layoutY="211.0" prefHeight="200.0" prefWidth="229.0">
         <columns>
           <TableColumn fx:id="idTC" prefWidth="75.0" text="Id" />
           <TableColumn fx:id="nameTC" prefWidth="75.0" text="Adi" />
@@ -48,5 +48,7 @@
       </VBox>
       <Button layoutX="274.0" layoutY="32.0" mnemonicParsing="false" onAction="#qeydiyyat" text="Qeydiyyat et" />
       <Button layoutX="277.0" layoutY="71.0" mnemonicParsing="false" onAction="#delete" text="Hamisini sil" />
+      <TextField fx:id="searchTX" layoutX="104.0" layoutY="160.0" onKeyReleased="#searchbutton" />
+      <Label layoutX="46.0" layoutY="154.0" prefHeight="38.0" prefWidth="47.0" text="Axtaris" />
    </children>
 </AnchorPane>

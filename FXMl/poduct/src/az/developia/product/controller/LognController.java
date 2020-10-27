@@ -2,7 +2,7 @@ package az.developia.product.controller;
 
 
 
-import az.developia.product.db.DataManager;
+import az.developia.product.db.DatManager;
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
@@ -14,9 +14,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
-public class Login1Controller implements Initializable {
+public class LognController implements Initializable {
     private Stage thisStage;
- private DataManager dataManager = DataManager.getDataManager();
+ private DatManager dataManager = DatManager.getDataManager();
    
     public Stage getThisStage() {
         return thisStage;
@@ -59,7 +59,7 @@ int eded = 1;
   
                 s.setTitle("Main");
                 
-    FXMLLoader loader=new FXMLLoader(getClass().getResource("/az/developia/student/view/main.fxml"));
+    FXMLLoader loader=new FXMLLoader(getClass().getResource("/az/developia/product/view/main.fxml"));
      Parent root=loader.load();
         Scene scene=new Scene(root);
        s.setScene(scene);
@@ -67,7 +67,7 @@ int eded = 1;
       
       
       s.show();
-            Main1Controller m=loader.getController();
+            ManController m=loader.getController();
 
                 m.setUsername(username); 
                 
