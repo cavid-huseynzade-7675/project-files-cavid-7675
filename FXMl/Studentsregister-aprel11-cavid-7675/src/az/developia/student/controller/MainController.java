@@ -23,6 +23,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
@@ -34,6 +35,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import org.controlsfx.control.Notifications;
 
 public class MainController implements Initializable {
 
@@ -60,8 +62,7 @@ public class MainController implements Initializable {
     private TextField deleteodin;
     @FXML
     private TextField searchtx;
-    @FXML
-    private Label alerts;
+  
     @FXML
     TableColumn<ModelTable, String> surnameTC;
 
@@ -109,7 +110,8 @@ public class MainController implements Initializable {
     private StudentDAO studentDAO;
 
     @FXML
-    void deletect(ActionEvent event) throws SQLException {
+    void deletect(ActionEvent event)  {
+        try{
         Connection c = dataManager.getConnection();
 
         ObservableList<ModelTable> selectedStudents = studentsTable.getSelectionModel().getSelectedItems();
@@ -127,8 +129,11 @@ public class MainController implements Initializable {
 
         }
         show();
+        Notifications.create().position(Pos.CENTER).title("Məlumat").text("Secdiginiz telebe silindi").showConfirm();
+    }catch(Exception e){
+        Notifications.create().position(Pos.CENTER).title("Məlumat").text("Secdiginiz telebe silinmedi").showError();
     }
-
+    }
     public void deleteById(String id) {
         try {
 
@@ -229,8 +234,9 @@ public class MainController implements Initializable {
         ps1.close();
 
         show();
+         Notifications.create().position(Pos.CENTER).title("Məlumat").text("Tələbə qeydiyyat olundu").showConfirm();
 
-        alerts.setText("Qeydiyyat olundu");
+    
     }
     ObservableList<ModelTable> oblist = FXCollections.observableArrayList();
 
@@ -244,7 +250,8 @@ public class MainController implements Initializable {
         s.execute("delete FROM  students where id>0 and username='" + getUsername() + "' ;");
         studentsTable.setItems(oblist);
         show();
-        alerts.setText("Hamisi silindi");
+         Notifications.create().position(Pos.CENTER).title("Məlumat").text("Butun telebeler silindi").showConfirm();
+     
     }
 
     @FXML
@@ -295,7 +302,7 @@ public class MainController implements Initializable {
         }
 
         rs.close();
-        alerts.setText("Sagirdler Gosterildi");
+     
 
         idTC.setCellValueFactory(new PropertyValueFactory<>("id"));
         userlnameTC.setCellValueFactory(new PropertyValueFactory<>("username"));
@@ -324,7 +331,7 @@ public class MainController implements Initializable {
 
         }
         rs.close();
-        alerts.setText("Sagirdler Gosterildi");
+       
 
         idTC.setCellValueFactory(new PropertyValueFactory<>("id"));
         userlnameTC.setCellValueFactory(new PropertyValueFactory<>("username"));

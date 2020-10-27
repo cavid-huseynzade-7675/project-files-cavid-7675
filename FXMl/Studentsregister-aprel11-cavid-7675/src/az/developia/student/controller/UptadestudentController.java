@@ -18,6 +18,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
@@ -25,6 +26,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import jdk.nashorn.internal.objects.NativeDate;
+import org.controlsfx.control.Notifications;
 
 
 public class UptadestudentController implements Initializable {
@@ -146,6 +148,7 @@ Statement s=c.createStatement();
  + "telefon='"+telefonTX.getText()+"', valideynadi='"+vnameTX.getText()+"',"
          + "sector='"+comboxsector.getValue()+"' Where id='"+getId()+"';");
 s.close();
+ Notifications.create().position(Pos.CENTER).title("Məlumat").text("Secdiginiz telebenin melumatlari deyisdirildi").showConfirm();
 
     }
     

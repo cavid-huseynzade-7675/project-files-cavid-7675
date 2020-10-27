@@ -13,8 +13,10 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import org.controlsfx.control.Notifications;
 
 
 public class SektorayarlarController implements Initializable {
@@ -48,6 +50,7 @@ Connection c = dataManager.getConnection();
             s.close();
        
         findSectors();
+         Notifications.create().position(Pos.CENTER).title("Məlumat").text("Sektor artirildi").showConfirm();
     }
 
     @FXML
@@ -58,6 +61,7 @@ Connection c = dataManager.getConnection();
             s.execute("delete from sectors where sector='"+selectedSector+"' and username='"+username+"'  ;");
             s.close();
             findSectors();
+             Notifications.create().position(Pos.CENTER).title("Məlumat").text("Secdiginiz sektor silindi").showConfirm();
     }
 
     @FXML
@@ -66,6 +70,7 @@ Connection c = dataManager.getConnection();
         Statement s = c.createStatement();
         s.execute("delete FROM  sectors where id>0 and username='" + getUsername() + "' ;");
         list.getItems().clear();
+         Notifications.create().position(Pos.CENTER).title("Məlumat").text("Butun sektorlar silindi").showConfirm();
     }
     
     @Override

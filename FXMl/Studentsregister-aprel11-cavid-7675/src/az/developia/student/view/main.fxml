@@ -121,11 +121,7 @@
             <Font size="24.0" />
          </font>
       </Button>
-      <Label fx:id="alerts" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="725.0" layoutY="312.0" prefHeight="35.0" prefWidth="246.0" text="Bildirimlər" textFill="#5f8d3e">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
+     
       <TextField fx:id="searchtx" layoutX="247.0" layoutY="258.0" onKeyReleased="#searchbutton">
          <font>
             <Font size="15.0" />
