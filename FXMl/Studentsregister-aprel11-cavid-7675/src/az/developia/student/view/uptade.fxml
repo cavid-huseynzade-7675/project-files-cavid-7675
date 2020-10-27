@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="665.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="az.developia.student.controller.UptadestudentController">
+   <children>
+         <VBox layoutX="16.0" layoutY="16.0" prefHeight="141.0" prefWidth="649.0" spacing="38.0">
+            <children>
+               <HBox prefHeight="40.0" prefWidth="670.0" spacing="10.0">
+                  <children>
+                     <Label alignment="TOP_RIGHT" contentDisplay="TOP" prefHeight="35.0" prefWidth="99.0" text="Ad">
+                        <font>
+                           <Font size="24.0" />
+                        </font>
+                     </Label>
+                     <TextField fx:id="nameTX">
+                        <font>
+                           <Font size="15.0" />
+                        </font>
+                     </TextField>
+                     <Label alignment="TOP_RIGHT" contentDisplay="TOP" prefHeight="35.0" prefWidth="153.0" text="Dogum Tarixi">
+                        <font>
+                           <Font size="24.0" />
+                        </font>
+                     </Label>
+                     <DatePicker fx:id="birthdayDt" prefHeight="32.0" prefWidth="173.0" />
+                  </children>
+               </HBox>
+               <HBox prefHeight="51.0" prefWidth="670.0" spacing="10.0">
+                  <children>
+                     <Label alignment="TOP_RIGHT" contentDisplay="TOP" prefHeight="21.0" prefWidth="99.0" text="Soyad">
+                        <font>
+                           <Font size="24.0" />
+                        </font>
+                     </Label>
+                     <TextField fx:id="surnameTX">
+                        <font>
+                           <Font size="15.0" />
+                        </font>
+                     </TextField>
+                     <Label alignment="TOP_RIGHT" contentDisplay="TOP" prefHeight="35.0" prefWidth="155.0" text="Telefon">
+                        <font>
+                           <Font size="24.0" />
+                        </font>
+                     </Label>
+                     <TextField fx:id="telefonTX" prefHeight="31.0" prefWidth="172.0">
+                        <font>
+                           <Font size="15.0" />
+                        </font>
+                     </TextField>
+                  </children>
+               </HBox>
+               <HBox prefHeight="62.0" prefWidth="649.0" spacing="10.0">
+                  <children>
+                     <Label alignment="TOP_RIGHT" contentDisplay="TOP" prefHeight="35.0" prefWidth="100.0" text="Adress">
+                        <font>
+                           <Font size="24.0" />
+                        </font>
+                     </Label>
+                     <TextField fx:id="adressTX">
+                        <font>
+                           <Font size="15.0" />
+                        </font>
+                     </TextField>
+                     <Label alignment="TOP_RIGHT" contentDisplay="TOP" prefHeight="35.0" prefWidth="155.0" text="Valideyin Adi">
+                        <font>
+                           <Font size="24.0" />
+                        </font>
+                     </Label>
+                     <TextField fx:id="vnameTX" prefHeight="31.0" prefWidth="172.0">
+                        <font>
+                           <Font size="15.0" />
+                        </font>
+                     </TextField>
+                  </children>
+               </HBox>
+            </children>
+         </VBox>
+      <Button layoutX="244.0" layoutY="292.0" mnemonicParsing="false" onAction="#uptade" prefHeight="79.0" prefWidth="193.0" text="Uptade">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Button>
+      <ComboBox fx:id="comboxsector" layoutX="283.0" layoutY="225.0" prefHeight="25.0" prefWidth="99.0" />
+      <Label alignment="TOP_RIGHT" contentDisplay="TOP" layoutX="165.0" layoutY="220.0" prefHeight="35.0" prefWidth="100.0" text="Sector">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Button layoutX="404.0" layoutY="225.0" mnemonicParsing="false" onAction="#sektorayarlar" text="Sektor Ayarlar" />
+   </children>
+</AnchorPane>

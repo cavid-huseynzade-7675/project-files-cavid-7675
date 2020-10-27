@@ -56,8 +56,9 @@ public class StudentDAO {
             e.printStackTrace();
         }
        }
-    public void deleteById(int id) {
+    public void deleteById(String id) {
          try {
+           
             // mysqle bazada id ye gore telebenin melematini silir
             Connection c=dataManager.getConnection();
             Statement s=c.createStatement();

@@ -6,8 +6,8 @@ import java.sql.Date;
 
 public class ModelTable {
     // burdaki deyerleri getter and setter eleyirik 
- String id,username,name,surname,adress,phone,valname;
-String TBdt,sector1;
+ String id,username,name,surname,adress,phone,valname ,TBdt,sector1;
+
 
     public String getSector1() {
         return sector1;
@@ -16,15 +16,9 @@ String TBdt,sector1;
     public void setSector1(String sector1) {
         this.sector1 = sector1;
     }
-private String sector;
 
-    public String getSector() {
-        return sector;
-    }
 
-    public void setSector(String sector) {
-        this.sector = sector;
-    }
+   
     
 
     public String getTBdt() {

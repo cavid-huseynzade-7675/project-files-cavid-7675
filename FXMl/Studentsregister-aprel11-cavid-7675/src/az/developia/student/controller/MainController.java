@@ -8,11 +8,13 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -43,9 +45,10 @@ public class MainController implements Initializable {
 
     }
 
-    void setUsername(String username) {
+    void setUsername(String username) throws SQLException {
         this.username = username;
-       findSectors();
+        show();
+        findSectors();
 
     }
 //burda dyerleri ve fxml kompenentlerini yazmisiq 
@@ -60,7 +63,7 @@ public class MainController implements Initializable {
     @FXML
     private Label alerts;
     @FXML
-     TableColumn<ModelTable, String> surnameTC;
+    TableColumn<ModelTable, String> surnameTC;
 
     @FXML
     private TableColumn<ModelTable, String> valnameTC;
@@ -95,55 +98,115 @@ public class MainController implements Initializable {
 
     @FXML
     private TextField name;
- @FXML
+    @FXML
     private ComboBox combox;
- @FXML
-    public ComboBox comboxsector;
- 
+    @FXML
+    private ComboBox comboxsector;
+
     @FXML
     private TextField adress;
 
-    private StudentDAO studentDAO ;
-     public void findSectors() {
-         comboxsector.getItems().clear();
-        Connection c=dataManager.getConnection();
-     ArrayList<String> alist=new ArrayList<String>();
-          try {
-             Statement s=c.createStatement();
-            ResultSet rs=s.executeQuery("select sector from sectors where username='"+username+"';");
-             
-                  while(rs.next()){ 
-                alist.add(rs.getString("sector"));
-            } 
-              comboxsector.getItems().addAll(alist);
-              
-         
-          }catch(Exception ex){
-            ex.printStackTrace();
-          }
-        
+    private StudentDAO studentDAO;
+
+    @FXML
+    void deletect(ActionEvent event) throws SQLException {
+        Connection c = dataManager.getConnection();
+
+        ObservableList<ModelTable> selectedStudents = studentsTable.getSelectionModel().getSelectedItems();
+        System.out.println(selectedStudents);
+        Statement s = c.createStatement();
+        ResultSet rs = s.executeQuery("select * from students where username='" + username + "';");
+        while (rs.next()) {
+            Student st = new Student();
+            System.out.println(rs.getInt("id"));
+            st.setId(rs.getInt("id"));
         }
- @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        //burda combobox deyer elave edirik
-combox.getItems().add("id");
-        combox.getItems().add("username");
-         combox.getItems().add("name");
-         combox.getItems().add("surname");
-         combox.getItems().add("date");
-        combox.getItems().add("adress");
-        combox.getItems().add("telefon");
-        combox.getItems().add("valideynadi");
-        combox.getItems().add("sector");
-        adress.addEventHandler(KeyEvent.KEY_TYPED,  allowOnlyDecimalsOrLetters(10));
-        surname.addEventHandler(KeyEvent.KEY_TYPED,  allowOnlyDecimalsOrLetters(10));
-        name.addEventHandler(KeyEvent.KEY_TYPED,  allowOnlyDecimalsOrLetters(10));
-        telefon.addEventHandler(KeyEvent.KEY_TYPED,  allowOnlyDecimalsOrLetters(10));
-        vname.addEventHandler(KeyEvent.KEY_TYPED,  allowOnlyDecimalsOrLetters(10));
-        searchtx.addEventHandler(KeyEvent.KEY_TYPED,  allowOnlyDecimalsOrLetters(10));
-        
-      
+        for (int i = 0; i < selectedStudents.size(); i++) {
+
+            deleteById(selectedStudents.get(i).getId());
+
+        }
+        show();
     }
+
+    public void deleteById(String id) {
+        try {
+
+            // mysqle bazada id ye gore telebenin melematini silir
+            Connection c = dataManager.getConnection();
+            Statement s = c.createStatement();
+            s.execute("delete from students where id=" + id + "");
+            s.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void update(ActionEvent event) throws SQLException, IOException {
+
+        Stage s = new Stage();
+
+        s.setTitle("Uptade");
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/az/developia/student/view/uptade.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        s.setScene(scene);
+       
+        Connection c = dataManager.getConnection();
+        UptadestudentController uptadestudentController = loader.getController();
+       
+        ModelTable selectedstudnbt = studentsTable.getSelectionModel().getSelectedItem();
+         
+      
+            uptadestudentController.setId(selectedstudnbt.getId());
+            uptadestudentController.setName(selectedstudnbt.getName());
+            uptadestudentController.setDate(selectedstudnbt.getTBdt());
+            uptadestudentController.setAdres(selectedstudnbt.getAdress());
+            uptadestudentController.setSurname(selectedstudnbt.getSurname());
+            uptadestudentController.setTelefon(selectedstudnbt.getPhone());
+            uptadestudentController.setSector(selectedstudnbt.getSector1());
+            uptadestudentController.setValideynadi(selectedstudnbt.getValname());
+            uptadestudentController.setUsername(username);
+           
+ s.showAndWait();
+
+      show();
+
+    }
+
+    public void findSectors() {
+        comboxsector.getItems().clear();
+        Connection c = dataManager.getConnection();
+        ArrayList<String> alist = new ArrayList<String>();
+        try {
+            Statement s = c.createStatement();
+            ResultSet rs = s.executeQuery("select sector from sectors where username='" + username + "';");
+
+            while (rs.next()) {
+                alist.add(rs.getString("sector"));
+            }
+            comboxsector.getItems().addAll(alist);
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+
+        adress.addEventHandler(KeyEvent.KEY_TYPED, allowOnlyDecimalsOrLetters(10));
+        surname.addEventHandler(KeyEvent.KEY_TYPED, allowOnlyDecimalsOrLetters(10));
+        name.addEventHandler(KeyEvent.KEY_TYPED, allowOnlyDecimalsOrLetters(10));
+        telefon.addEventHandler(KeyEvent.KEY_TYPED, allowOnlyDecimalsOrLetters(10));
+        vname.addEventHandler(KeyEvent.KEY_TYPED, allowOnlyDecimalsOrLetters(10));
+        searchtx.addEventHandler(KeyEvent.KEY_TYPED, allowOnlyDecimalsOrLetters(10));
+
+    }
+
     @FXML
     void qeydiyyatB(ActionEvent event) throws SQLException {
         //burda aldigimiz melumatlari student sinifine gonderrik
@@ -152,32 +215,24 @@ combox.getItems().add("id");
         ////sonra show metodu ile yene table view melumat gonderilir
         LocalDate dt = birthday.getValue();
         Date dtw = Date.valueOf(dt);
-        Student s = new Student();
-        s.setName(name.getText());
-        s.setUsername(username);
-        s.setSurname(surname.getText());
-        s.setBirthday(dtw);
-        s.setAdres(adress.getText());
-        s.setTelefon(telefon.getText());
-        s.setVname(vname.getText());
-        s.setSector2((String) comboxsector.getSelectionModel().getSelectedItem());
-        studentDAO.addStudent(s);
+        Connection c = dataManager.getConnection();
+        PreparedStatement ps1 = c.prepareStatement("insert into students (username, name,surname, date, adress, telefon,valideynadi,sector) values (?,?,?,?,?,?,?,?);");
+        ps1.setString(1, username);
+        ps1.setString(2, name.getText());
+        ps1.setString(3, surname.getText());
+        ps1.setDate(4, dtw);
+        ps1.setString(5, adress.getText());
+        ps1.setString(6, telefon.getText());
+        ps1.setString(7, vname.getText());
+        ps1.setString(8, (String) comboxsector.getSelectionModel().getSelectedItem());
+        ps1.executeUpdate();
+        ps1.close();
+
         show();
-         
-      
+
         alerts.setText("Qeydiyyat olundu");
     }
     ObservableList<ModelTable> oblist = FXCollections.observableArrayList();
-
-    @FXML
-
-    void goster(ActionEvent event) throws SQLException {
-        // show metodu ile  table viewe melumat gonderilir
-        Connection c = dataManager.getConnection();
-        studentsTable.getItems().clear();
-        show();
-        studentsTable.setItems(oblist);
-}
 
     @FXML
     void delete(ActionEvent event) throws SQLException {
@@ -193,81 +248,37 @@ combox.getItems().add("id");
     }
 
     @FXML
-    void deleteodin(ActionEvent event) throws SQLException {
-       //duymeye basanda databasedeki bu username ve idye sahib olan  olan telebe silinir 
-       ////sonra show metodu ile yene table view melumat gonderilir
-        Connection c = dataManager.getConnection();
-        String str = deleteodin.getText();
-        int strn = Integer.valueOf(str);
-        Statement s = c.createStatement();
-        s.execute("delete FROM  students where id=" + strn + ";");
-      ModelTable sa=studentsTable.getSelectionModel().getSelectedItem();
-        System.out.println(sa);
-        studentsTable.setItems(oblist);
-        show();
-        alerts.setText("silindi");
-
-    }
-     @FXML
-    void addSector(ActionEvent event) throws IOException{
+    void addSector(ActionEvent event) throws IOException {
         //duymeye basnda  mysqle sectorlarin saxlanildigi table a addsector metodu ile setor elave edirik
-         Stage s=new Stage();
-  
-                s.setTitle("Sektor Ayarlari");
-                
-    FXMLLoader loader=new FXMLLoader(getClass().getResource("/az/developia/student/view/sektorayarlar.fxml"));
-     Parent root=loader.load();
-        Scene scene=new Scene(root);
-       s.setScene(scene);
-       
-       SektorayarlarController sektorayarlarController=loader.getController();
-       
-       sektorayarlarController.setUsername(username);
-       
-       
-                
-    
-      
-      s.showAndWait();
-    findSectors();
+        Stage s = new Stage();
+
+        s.setTitle("Sektor Ayarlari");
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/az/developia/student/view/sektorayarlar.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        s.setScene(scene);
+
+        SektorayarlarController sektorayarlarController = loader.getController();
+
+        sektorayarlarController.setUsername(username);
+
+        s.showAndWait();
+        findSectors();
     }
     @FXML
-   
+
     String[] massiv = new String[9];
-  
-  int searchint;
+
+    int searchint;
+
     @FXML
-    void searchbutton(ActionEvent event) throws SQLException {
-        //burda yoxluyuq ki hamsi combobox secilib
-        //sonra show search metodu vasitesil ile table view melumatgonderilir
-        searchint=0;
-       String str = searchtx.getText();
-        Connection c = dataManager.getConnection();
-        Statement s = c.createStatement();
-        massiv[0] = "id";
-        massiv[1] = "username";
-        massiv[2] = "name";
-        massiv[3] = "surname";
-        massiv[4] = "date";
-        massiv[5] = "adress";
-        massiv[6] = "telefon";
-        massiv[7] = "valideynadi";
-        massiv[8] = "sector";
-       String combostr=combox.getSelectionModel().getSelectedItem().toString();
-       for (int i = 0; massiv.length < 10; i++) {
-    if (combostr == null ? massiv[searchint] == null : combostr.equals(massiv[searchint])) {
-                showsearch();
-      break;
-            }else{
-                searchint++;
-            }
-        }
-       
-        System.out.println(String.valueOf(massiv));
+    void searchbutton(KeyEvent event) throws SQLException {
+
+        System.out.println(searchtx.getText());
+        showsearch();
 
     }
-
-   
 
     private void show() throws SQLException {
         //burda database sorgu gonderirik ve cavablari ResultSete veririk 
@@ -279,10 +290,10 @@ combox.getItems().add("id");
         System.out.println(getUsername());
 
         while (rs.next()) {
-            oblist.add( new ModelTable(rs.getString("id"), rs.getString("username"), rs.getString("name"), rs.getString("surname"), rs.getString("date"), rs.getString("adress"), rs.getString("telefon"), rs.getString("valideynadi"),rs.getString("sector")));
+            oblist.add(new ModelTable(rs.getString("id"), rs.getString("username"), rs.getString("name"), rs.getString("surname"), rs.getString("date"), rs.getString("adress"), rs.getString("telefon"), rs.getString("valideynadi"), rs.getString("sector")));
 
         }
-        
+
         rs.close();
         alerts.setText("Sagirdler Gosterildi");
 
@@ -294,22 +305,22 @@ combox.getItems().add("id");
         adressTC.setCellValueFactory(new PropertyValueFactory<>("adress"));
         telefonn.setCellValueFactory(new PropertyValueFactory<>("phone"));
         valnameTC.setCellValueFactory(new PropertyValueFactory<>("valname"));
-      sectortb.setCellValueFactory(new PropertyValueFactory<>("sector1"));
+        sectortb.setCellValueFactory(new PropertyValueFactory<>("sector1"));
         studentsTable.setItems(oblist);
     }
- private void showsearch() throws SQLException {
-      //burda database sorgu gonderirik ve cavablari ResultSete veririk 
+
+    private void showsearch() throws SQLException {
+        //burda database sorgu gonderirik ve cavablari ResultSete veririk 
         //while vasitesi ile  Observable liste modeltable vasitesile deyer veririk
         //sonra deyerleri Tableviewe qoyuruq
-     String str = searchtx.getText();
-       
+        String str = searchtx.getText();
+
         studentsTable.getItems().clear();
         Connection c = dataManager.getConnection();
-        ResultSet rs = c.createStatement().executeQuery("Select * from students WHERE username='"+getUsername()+"'and "+massiv[searchint]+" LIKE '" + str + "%';");
-     
+        ResultSet rs = c.createStatement().executeQuery("select * from students where username='" + username + "' and concat(username,name,surname,date,adress,telefon,valideynadi,sector) like '%" + str + "%';");
 
         while (rs.next()) {
-            oblist.add(new ModelTable(rs.getString("id"), rs.getString("username"), rs.getString("name"), rs.getString("surname"), rs.getString("date"), rs.getString("adress"), rs.getString("telefon"), rs.getString("valideynadi"),rs.getString("sector")));
+            oblist.add(new ModelTable(rs.getString("id"), rs.getString("username"), rs.getString("name"), rs.getString("surname"), rs.getString("date"), rs.getString("adress"), rs.getString("telefon"), rs.getString("valideynadi"), rs.getString("sector")));
 
         }
         rs.close();
@@ -323,11 +334,10 @@ combox.getItems().add("id");
         adressTC.setCellValueFactory(new PropertyValueFactory<>("adress"));
         telefonn.setCellValueFactory(new PropertyValueFactory<>("phone"));
         valnameTC.setCellValueFactory(new PropertyValueFactory<>("valname"));
- sectortb.setCellValueFactory(new PropertyValueFactory<>("sector1"));
+        sectortb.setCellValueFactory(new PropertyValueFactory<>("sector1"));
         studentsTable.setItems(oblist);
     }
 
-    
     public static EventHandler<KeyEvent> allowOnlyDecimalsOrLetters(final Integer maxLength) {
         // burda textfiellde limit qoyacayiq
         return new EventHandler<KeyEvent>() {
@@ -337,8 +347,8 @@ combox.getItems().add("id");
                 if (text.getText().length() >= maxLength) {
                     e.consume();
                 }
-                if (e.getCharacter().matches("[0-9.a-zA-Z]") ) {
-                    if (text.getText().contains(".") && e.getCharacter().matches("[.]")  ) {
+                if (e.getCharacter().matches("[0-9.a-zA-Z]")) {
+                    if (text.getText().contains(".") && e.getCharacter().matches("[.]")) {
                         e.consume();
                     } else if (text.getText().length() == 0 && e.getCharacter().matches("[.]")) {
                         e.consume();

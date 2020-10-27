@@ -23,7 +23,7 @@ connect();
   
   private  void connect(){
       try {
-        this.connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/a", "root", "1234");
+        this.connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/studentregister-aprel11-7675", "root", "1234");
           System.out.println("succes connection"); 
           
       

@@ -7,14 +7,14 @@ import java.time.LocalDate;
 
 public class Student {
      // burdaki deyerleri getter and setter eleyirik 
-  private int id;
-  private String name;
-  private String username;
-  private String surname;
-  private String adres;
-  private String telefon;
-  private String vname;
-    private String sector2;
+  int id;
+  String name;
+ String username;
+  String surname;
+ String adres;
+   String telefon;
+   String vname;
+   String sector2;
 
     public String getSector2() {
         return sector2;
