@@ -162,7 +162,7 @@ public class MainController implements Initializable {
     }
     
     @FXML
-    void muqavilerigoster(ActionEvent event) throws IOException  {
+    void muqavilerigoster(ActionEvent event) throws IOException, SQLException  {
         Stage s = new Stage();
 
         s.setTitle("Muqavile goster");
@@ -171,6 +171,10 @@ public class MainController implements Initializable {
         Parent root = loader.load();
         Scene scene = new Scene(root);
         s.setScene(scene);
+        MuqavilegosterController muqavilegosterController=loader.getController();
+          ModelTable selectedstudnbt = studentsTable.getSelectionModel().getSelectedItem();
+          int i=Integer.parseInt(selectedstudnbt.getId());
+        muqavilegosterController.setStudentid(i);
          s.show();
     }
     @FXML

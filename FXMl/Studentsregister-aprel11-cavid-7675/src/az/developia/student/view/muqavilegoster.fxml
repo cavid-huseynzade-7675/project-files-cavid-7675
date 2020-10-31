@@ -6,6 +6,25 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="az.developia.student.controller.MuqavilegosterController">
-    
+
+<AnchorPane id="AnchorPane" prefHeight="207.0" prefWidth="587.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="az.developia.student.controller.MuqavilegosterController">
+   <children>
+      <TableView fx:id="muqaviletable" layoutX="3.0" layoutY="7.0" prefHeight="200.0" prefWidth="609.0">
+        <columns>
+            <TableColumn fx:id="idTC" minWidth="0.0" prefWidth="0.0" text="ID" />
+            <TableColumn fx:id="STudentTC" minWidth="0.0" prefWidth="0.0" text="StudentID" />
+          <TableColumn fx:id="muqavileadiTC" prefWidth="118.0" text="Muqavile adi" />
+          <TableColumn fx:id="muqavilestartTC" prefWidth="177.0" text="Muqavilenin baslama tarixi" />
+            <TableColumn fx:id="muqavileendTC" prefWidth="156.0" text="Muqavilenin bitme tarixi" />
+            <TableColumn fx:id="muqavilepriceTC" prefWidth="183.0" text="Muqavilenin qiymeti" />
+        </columns>
+         <contextMenu>
+            <ContextMenu>
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#deleteMI" text="Delete" />
+              </items>
+            </ContextMenu>
+         </contextMenu>
+      </TableView>
+   </children>
 </AnchorPane>
