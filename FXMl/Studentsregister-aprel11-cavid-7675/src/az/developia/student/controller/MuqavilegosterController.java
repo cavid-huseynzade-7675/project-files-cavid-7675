@@ -16,10 +16,12 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import org.controlsfx.control.Notifications;
 
 
 public class MuqavilegosterController implements Initializable {
@@ -63,6 +65,8 @@ ModelMuvaqile select=muqaviletable.getSelectionModel().getSelectedItem();
 Statement s=c.createStatement();
 s.execute("delete from  muqavile  where id="+select.getId()+";");
 show();
+ Notifications.create().position(Pos.CENTER).title("Məlumat").text("Muqavile silindi").showConfirm();
+   
     }
     ObservableList<ModelMuvaqile> oblist=FXCollections.observableArrayList();
  private void show() throws SQLException {
