@@ -113,8 +113,11 @@ public class MainController implements Initializable {
         Connection c = dataManager.getConnection();
 
         ObservableList<ModelTable> selectedStudents = studentsTable.getSelectionModel().getSelectedItems();
+        ModelTable select=studentsTable.getSelectionModel().getSelectedItem();
         System.out.println(selectedStudents);
         Statement s = c.createStatement();
+        Statement as=c.createStatement();
+        as.execute("delete FROM muqavile where studentid="+select.getId()+";");
         ResultSet rs = s.executeQuery("select * from students where username='" + username + "';");
         while (rs.next()) {
             Student st = new Student();
