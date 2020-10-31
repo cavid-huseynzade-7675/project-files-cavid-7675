@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="230.0" prefWidth="0.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="az.developia.student.controller.MuqavileetController">
+   <children>
+      <Label layoutX="119.0" layoutY="20.0" text="Muqavile adi">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="muqavilename" layoutX="228.0" layoutY="17.0" prefHeight="30.0" prefWidth="142.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <Label layoutX="33.0" layoutY="96.0" text="Muqavilenin baslama tarixi">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="muqavileend" layoutX="228.0" layoutY="138.0" prefHeight="25.0" prefWidth="142.0" />
+      <Label layoutX="10.0" layoutY="62.0" prefHeight="25.0" prefWidth="218.0" text="Muqavilenin qiymeti manat ile">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="muqavileprice" layoutX="228.0" layoutY="60.0" prefHeight="30.0" prefWidth="142.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <Label layoutX="51.0" layoutY="138.0" text="Muqavilenin bitme tarixi">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="muqavilestart" layoutX="228.0" layoutY="96.0" prefHeight="25.0" prefWidth="142.0" />
+      <Button layoutX="127.0" layoutY="179.0" mnemonicParsing="false" onAction="#muqavileet" text="Muqavile et">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

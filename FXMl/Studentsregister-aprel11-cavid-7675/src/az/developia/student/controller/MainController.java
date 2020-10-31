@@ -14,7 +14,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -28,7 +27,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -146,7 +144,35 @@ public class MainController implements Initializable {
             e.printStackTrace();
         }
     }
+@FXML
+    void muqavileet(ActionEvent event) throws IOException  {
+        Stage s = new Stage();
 
+        s.setTitle("Muqavile et");
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/az/developia/student/view/muqavileet.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        s.setScene(scene);
+        MuqavileetController muqavileetController=loader.getController();
+          ModelTable selectedstudnbt = studentsTable.getSelectionModel().getSelectedItem();
+          int i=Integer.parseInt(selectedstudnbt.getId());
+        muqavileetController.setStudentid(i);
+        s.show();
+    }
+    
+    @FXML
+    void muqavilerigoster(ActionEvent event) throws IOException  {
+        Stage s = new Stage();
+
+        s.setTitle("Muqavile goster");
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/az/developia/student/view/muqavilegoster.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        s.setScene(scene);
+         s.show();
+    }
     @FXML
     void update(ActionEvent event) throws SQLException, IOException {
 

@@ -109,6 +109,8 @@
               <items>
                 <MenuItem mnemonicParsing="false" onAction="#update" text="Update" />
                   <MenuItem mnemonicParsing="false" onAction="#deletect" text="Delete" />
+                  <MenuItem mnemonicParsing="false" onAction="#muqavileet" text="Muqavile et" />
+                  <MenuItem mnemonicParsing="false" onAction="#muqavilerigoster" text="Muqavileri goster" />
               </items>
             </ContextMenu>
          </contextMenu>
