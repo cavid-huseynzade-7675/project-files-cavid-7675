@@ -62,7 +62,7 @@ public class MainController implements Initializable {
     private TextField searchtx;
   
     @FXML
-    TableColumn<ModelTable, String> surnameTC;
+   private TableColumn<ModelTable, String> surnameTC;
 
     @FXML
     private TableColumn<ModelTable, String> valnameTC;

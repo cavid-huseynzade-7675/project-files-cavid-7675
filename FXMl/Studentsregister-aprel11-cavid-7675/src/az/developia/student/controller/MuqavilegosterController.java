@@ -34,12 +34,38 @@ public class MuqavilegosterController implements Initializable {
     public void setStudentid(int studentid) throws SQLException {
         this.studentid = studentid;
         show();
+        showStudent();
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        
     }    
-    
+    @FXML
+    private TableView<ModelTable> studentsTable;
+    @FXML
+    private TableColumn<ModelTable, String> nameTC;
+    @FXML
+   private TableColumn<ModelTable, String> surnameTC;
+
+    @FXML
+    private TableColumn<ModelTable, String> valnameTC;
+
+    @FXML
+    private TableColumn<ModelTable, String> adressTC;
+
+    @FXML
+    private TableColumn<ModelTable, String> dateTC;
+
+    @FXML
+    private TableColumn<ModelTable, String> userlnameTC;
+    @FXML
+    private TableColumn<ModelTable, String> idTC1;
+
+    @FXML
+    private TableColumn<ModelTable, String> telefonn;
+    @FXML
+    private TableColumn<ModelTable, String> sectortb;
+    //ayrima
     @FXML
     private TableColumn<Date, ModelMuvaqile> muqavileendTC;
 
@@ -94,7 +120,34 @@ show();
        
         muqaviletable.setItems(oblist);
     }
+  ObservableList<ModelTable> oblist1=FXCollections.observableArrayList();
+ private void showStudent() throws SQLException {
+        //burda database sorgu gonderirik ve cavablari ResultSete veririk 
+        //while vasitesi ile  Observable liste modeltable vasitesile deyer veririk
+        //sonra deyerleri Tableviewe qoyuruq
+        studentsTable.getItems().clear();
+        Connection c = dataManager.getConnection();
+        ResultSet rs = c.createStatement().executeQuery("SELECT * FROM  students where id='" + getStudentid()+ "' ");
+       
+        while (rs.next()) {
+            oblist1.add(new ModelTable(rs.getString("id"), rs.getString("username"), rs.getString("name"), rs.getString("surname"), rs.getString("date"), rs.getString("adress"), rs.getString("telefon"), rs.getString("valideynadi"), rs.getString("sector")));
 
+        }
+
+        rs.close();
+     
+
+        idTC1.setCellValueFactory(new PropertyValueFactory<>("id"));
+        userlnameTC.setCellValueFactory(new PropertyValueFactory<>("username"));
+        nameTC.setCellValueFactory(new PropertyValueFactory<>("name"));
+        surnameTC.setCellValueFactory(new PropertyValueFactory<>("surname"));
+        dateTC.setCellValueFactory(new PropertyValueFactory<>("TBdt"));
+        adressTC.setCellValueFactory(new PropertyValueFactory<>("adress"));
+        telefonn.setCellValueFactory(new PropertyValueFactory<>("phone"));
+        valnameTC.setCellValueFactory(new PropertyValueFactory<>("valname"));
+        sectortb.setCellValueFactory(new PropertyValueFactory<>("sector1"));
+        studentsTable.setItems(oblist1);
+    }
 }
 
 
