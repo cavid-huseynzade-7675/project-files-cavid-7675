@@ -5,7 +5,11 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -47,15 +51,37 @@ public class MuqavileetController implements Initializable {
     @FXML
     void muqavileet(ActionEvent event) throws SQLException {
         Connection c = dataManager.getConnection();
-  PreparedStatement ps=c.prepareStatement("insert into muqavile  (studentid,opendate,price,lenght,muqavileadi) values (?,?,?,?,?);");
+        Statement stmt = c.createStatement();
+  PreparedStatement ps=c.prepareStatement("insert into muqavile  (studentid,opendate,price,lenght,muqavileadi) values (?,?,?,?,?);",Statement.RETURN_GENERATED_KEYS);
   ps.setInt(1, getStudentid());
   ps.setDate(2, Date.valueOf(muqavilestart.getValue()));
   ps.setDouble(3,Double.valueOf(muqavileprice.getText()) );
   ps.setDate(4, Date.valueOf(muqavileend.getValue()));
   ps.setString(5, muqavilename.getText());
   ps.executeUpdate();
-  ps.close();
-   Notifications.create().position(Pos.CENTER).title("Məlumat").text("Muqavile "+getStudentid()+" IDsine qeydiyyat olundu").showConfirm();
+  
+  
+    LocalDate date = muqavilestart.getValue();
+ Notifications.create().position(Pos.CENTER).title("Məlumat").text("Muqavile "+getStudentid()+" IDsine qeydiyyat olundu").showConfirm();
+        ResultSet rs=ps.getGeneratedKeys();
+         if (rs.next()) {
+                int id = rs.getInt(1);
+
+              long contractLength =   ChronoUnit.MONTHS.between(muqavilestart.getValue(),muqavileend.getValue());
+
+                for (int i = 1; i <= contractLength; i++) {
+                   stmt.execute("delete from  contract_plan  where contract_id ="+id+"");
+                    stmt.execute("insert into contract_plan"
+                            + " (contract_id,payment_amount,paid_amount,payment_date,count) "
+                            + " values (" + id + ",'" + muqavileprice.getText() + "','0','" + date.plusMonths(i) + "'," + i + ");");
+                      
+                }
+            }
+
+            rs.close();
+            stmt.close();
+ps.close();
+    
     }
 
 }
