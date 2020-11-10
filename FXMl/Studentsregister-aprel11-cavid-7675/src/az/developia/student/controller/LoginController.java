@@ -3,6 +3,7 @@ package az.developia.student.controller;
 
 
 import az.developia.student.db.DataManager;
+import az.developia.student.util.UtilClass;
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
@@ -129,7 +130,7 @@ int eded = 1;
         //eger varsa silir yoxdursa label vasitesile deyirki"Silinmədi"
     String username = usernameTF.getText();
         String password = passwordPF.getText();
-       
+     if(UtilClass.confirmDialog("Əminsiniz?")){
         try {
 
              Connection c = dataManager.getConnection();
@@ -154,7 +155,11 @@ int eded = 1;
         } catch (Exception ex) {
             ex.printStackTrace();
 
-        }
+        }   
+         
+     }
+      
+        
     }
 
 

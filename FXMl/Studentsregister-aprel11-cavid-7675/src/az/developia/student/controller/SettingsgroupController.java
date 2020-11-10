@@ -6,7 +6,7 @@
 package az.developia.student.controller;
 
 import az.developia.student.db.DataManager;
-import az.developia.student.model.ModelTable;
+import az.developia.student.util.UtilClass;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -65,25 +65,31 @@ Connection c = dataManager.getConnection();
 
     @FXML
     void delete(ActionEvent event) throws SQLException {
-      String selectedGroup=list.getSelectionModel().getSelectedItem();
+        if(UtilClass.confirmDialog("Əminsiniz?")){
+            String selectedGroup=list.getSelectionModel().getSelectedItem();
   Connection c=dataManager.getConnection();
             Statement s=c.createStatement();
             s.execute("delete from group_table where group_name='"+selectedGroup+"' and username='"+getUsername()+"'  ;");
             s.close();
             findQrup(getUsername());
              Notifications.create().position(Pos.CENTER).title("Məlumat").text("Secdiginiz qrup silindi").showConfirm();
-    }
+   
+        }
+       }
 
   
 
     @FXML
     void deletehersey(ActionEvent event) throws SQLException {
- Connection c = dataManager.getConnection();
+        if(UtilClass.confirmDialog("Əminsiniz?")){
+           Connection c = dataManager.getConnection();
         Statement s = c.createStatement();
         s.execute("delete FROM  group_table where id>0 and username='" + getUsername()+ "' ;");
         list.getItems().clear();
          Notifications.create().position(Pos.CENTER).title("Məlumat").text("Butun qruplar silindi").showConfirm();
-    }
+      
+        }
+}
 
     private void findQrup(String username) {
            list.getItems().clear();

@@ -2,16 +2,14 @@
 package az.developia.student.controller;
 
 import az.developia.student.db.DataManager;
+import az.developia.student.util.UtilClass;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
-import java.time.Month;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -25,7 +23,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import jdk.nashorn.internal.objects.NativeDate;
 import org.controlsfx.control.Notifications;
 
 
@@ -141,7 +138,8 @@ DataManager dataManager=DataManager.getDataManager();
 
     @FXML
     void uptade(ActionEvent event) throws SQLException {
-Connection c=dataManager.getConnection();
+        if(UtilClass.confirmDialog("Əminsiniz?")){
+            Connection c=dataManager.getConnection();
 Statement s=c.createStatement();
  s.execute("update students set name='"+nameTX.getText()+"'  ,surname='"+surnameTX.getText()+"',"
   + "date='"+birthdayDt.getValue()+"' ,adress='"+adressTX.getText()+"',"
@@ -149,6 +147,8 @@ Statement s=c.createStatement();
          + "sector='"+comboxsector.getValue()+"' Where id='"+getId()+"';");
 s.close();
  Notifications.create().position(Pos.CENTER).title("Məlumat").text("Secdiginiz telebenin melumatlari deyisdirildi").showConfirm();
+
+        }
 
     }
     

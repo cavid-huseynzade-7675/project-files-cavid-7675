@@ -4,6 +4,7 @@ package az.developia.student.controller;
 import az.developia.student.db.DataManager;
 import az.developia.student.model.ModelMuvaqile;
 import az.developia.student.model.ModelTable;
+import az.developia.student.util.UtilClass;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.Date;
@@ -17,7 +18,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
-import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -88,14 +88,17 @@ public class MuqavilegosterController implements Initializable {
     private TableColumn<Integer, ModelMuvaqile> idTC;
      @FXML
     void deleteMI(ActionEvent event) throws SQLException {
-Connection c=dataManager.getConnection();
+         if (UtilClass.confirmDialog("Əminsiniz?")) {
+           Connection c=dataManager.getConnection();
 ModelMuvaqile select=muqaviletable.getSelectionModel().getSelectedItem();
 Statement s=c.createStatement();
 s.execute("delete from  muqavile  where id="+select.getId()+";");
 s.execute("delete from  contract_plan where contract_id="+select.getId()+";");
 show();
  Notifications.create().position(Pos.CENTER).title("Məlumat").text("Muqavile silindi").showConfirm();
-   
+    
+        }
+
     }
     ObservableList<ModelMuvaqile> oblist=FXCollections.observableArrayList();
  private void show() throws SQLException {

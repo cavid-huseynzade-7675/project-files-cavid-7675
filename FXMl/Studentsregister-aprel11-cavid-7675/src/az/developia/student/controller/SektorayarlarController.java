@@ -3,6 +3,7 @@ package az.developia.student.controller;
 
 import az.developia.student.DAO.StudentDAO;
 import az.developia.student.db.DataManager;
+import az.developia.student.util.UtilClass;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -55,23 +56,29 @@ Connection c = dataManager.getConnection();
 
     @FXML
     void delete(ActionEvent event) throws SQLException {
-        String selectedSector=list.getSelectionModel().getSelectedItem();
+        if(UtilClass.confirmDialog("Əminsiniz?")){
+           String selectedSector=list.getSelectionModel().getSelectedItem();
   Connection c=dataManager.getConnection();
             Statement s=c.createStatement();
             s.execute("delete from sectors where sector='"+selectedSector+"' and username='"+username+"'  ;");
             s.close();
             findSectors();
              Notifications.create().position(Pos.CENTER).title("Məlumat").text("Secdiginiz sektor silindi").showConfirm();
-    }
+    }   
+        }
+      
 
     @FXML
     void deletehersey(ActionEvent event) throws SQLException {
- Connection c = dataManager.getConnection();
+        if(UtilClass.confirmDialog("Əminsiniz?")){
+          Connection c = dataManager.getConnection();
         Statement s = c.createStatement();
         s.execute("delete FROM  sectors where id>0 and username='" + getUsername() + "' ;");
         list.getItems().clear();
          Notifications.create().position(Pos.CENTER).title("Məlumat").text("Butun sektorlar silindi").showConfirm();
-    }
+     
+        }
+  }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {

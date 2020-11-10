@@ -4,6 +4,7 @@ import az.developia.student.DAO.StudentDAO;
 import az.developia.student.db.DataManager;
 import az.developia.student.model.ModelTable;
 import az.developia.student.model.Student;
+import az.developia.student.util.UtilClass;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -114,7 +115,8 @@ public class MainController implements Initializable {
 
     @FXML
     void deletect(ActionEvent event)  {
-        try{
+        if (UtilClass.confirmDialog("Əminsiniz?")) {
+             try{
         Connection c = dataManager.getConnection();
 
         ObservableList<ModelTable> selectedStudents = studentsTable.getSelectionModel().getSelectedItems();
@@ -138,7 +140,9 @@ public class MainController implements Initializable {
         Notifications.create().position(Pos.CENTER).title("Məlumat").text("Secdiginiz telebe silindi").showConfirm();
     }catch(Exception e){
         Notifications.create().position(Pos.CENTER).title("Məlumat").text("Secdiginiz telebe silinmedi").showError();
-    }
+    }  
+        }
+     
     }
        @FXML
     void settingsGroup(ActionEvent event) throws IOException {
@@ -313,13 +317,16 @@ public class MainController implements Initializable {
         //duymeye basanda databasedeki bu username aid olan butun telebeler silinir
         //sonra show metodu ile yene table view melumat gonderilir melumat olmadigi
         //ucun table view de hecne olmur
-        Connection c = dataManager.getConnection();
+        if(UtilClass.confirmDialog("Əminsiniz?")){
+          Connection c = dataManager.getConnection();
         Statement s = c.createStatement();
         s.execute("delete FROM  students where id>0 and username='" + getUsername() + "' ;");
         studentsTable.setItems(oblist);
         show();
          Notifications.create().position(Pos.CENTER).title("Məlumat").text("Butun telebeler silindi").showConfirm();
      
+    }
+      
     }
 
     @FXML
