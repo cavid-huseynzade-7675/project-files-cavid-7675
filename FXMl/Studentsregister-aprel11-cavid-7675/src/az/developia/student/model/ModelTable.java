@@ -6,7 +6,17 @@ import java.sql.Date;
 
 public class ModelTable {
     // burdaki deyerleri getter and setter eleyirik 
- String id,username,name,surname,adress,phone,valname ,TBdt,sector1;
+ String id,username,name,surname,adress,phone,valname ,TBdt,sector1,group;
+
+    
+
+    public String getGroup() {
+        return group;
+    }
+
+    public void setGroup(String group) {
+        this.group = group;
+    }
 
 
     public String getSector1() {
@@ -85,17 +95,7 @@ public class ModelTable {
         this.valname = valname;
     }
 
-    public ModelTable(String id, String username, String name, String surname, String TBdt, String adress, String phone, String valname,String sector1) {
-        this.id = id;
-        this.username = username;
-        this.name = name;
-        this.surname = surname;
-       this.TBdt=TBdt; 
-        this.adress = adress;
-        this.phone = phone;
-        this.valname = valname;
-        this.sector1 =sector1;
-     
-    }
+
+
          
 }

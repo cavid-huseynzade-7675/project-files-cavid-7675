@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="258.0" prefWidth="493.0"  xmlns:fx="http://javafx.com/fxml/1" fx:controller="az.developia.student.controller.SettingsgroupController">
+  <children>
+      <ListView fx:id="list" layoutX="27.0" layoutY="28.0" prefHeight="200.0" prefWidth="200.0" />
+      <Button layoutX="299.0" layoutY="74.0" mnemonicParsing="false" onAction="#add" prefHeight="47.0" prefWidth="181.0" text="Elave et" />
+      <TextField fx:id="textfieldqrup" layoutX="299.0" layoutY="28.0" prefHeight="25.0" prefWidth="181.0" />
+      <Button layoutX="299.0" layoutY="128.0" mnemonicParsing="false" onAction="#delete" prefHeight="47.0" prefWidth="181.0" text="Sil" />
+      <Button layoutX="299.0" layoutY="181.0" mnemonicParsing="false" onAction="#deletehersey" prefHeight="47.0" prefWidth="181.0" text="Hamisini sil" />
+   </children>
+</AnchorPane>

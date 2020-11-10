@@ -49,6 +49,7 @@ public class MainController implements Initializable {
         this.username = username;
         show();
         findSectors();
+         findQrup();
 
     }
 //burda dyerleri ve fxml kompenentlerini yazmisiq 
@@ -82,7 +83,8 @@ public class MainController implements Initializable {
     private TableColumn<ModelTable, String> telefonn;
     @FXML
     private TableColumn<ModelTable, String> sectortb;
-
+  @FXML
+    private TableColumn<ModelTable, String> groupTC;
     @FXML
     private DatePicker birthday;
 
@@ -101,6 +103,9 @@ public class MainController implements Initializable {
     private ComboBox combox;
     @FXML
     private ComboBox comboxsector;
+    
+    @FXML
+    private ComboBox comboxgroup;
 
     @FXML
     private TextField adress;
@@ -134,6 +139,18 @@ public class MainController implements Initializable {
     }catch(Exception e){
         Notifications.create().position(Pos.CENTER).title("Məlumat").text("Secdiginiz telebe silinmedi").showError();
     }
+    }
+       @FXML
+    void settingsGroup(ActionEvent event) throws IOException {
+        Stage s=new  Stage();
+ FXMLLoader loader=new FXMLLoader(getClass().getResource("/az/developia/student/view/settingsgroup.fxml"));
+        Parent root=loader.load();
+        Scene scene= new Scene(root);
+        s.setScene(scene);
+        SettingsgroupController settingsgroupController=loader.getController();
+        settingsgroupController.setUsername(username);
+        s.showAndWait();
+        findQrup();
     }
     public void deleteById(String id) {
         try {
@@ -232,7 +249,24 @@ public class MainController implements Initializable {
         }
 
     }
+ public void findQrup() {
+        comboxgroup.getItems().clear();
+        Connection c = dataManager.getConnection();
+        ArrayList<String> alist = new ArrayList<String>();
+        try {
+            Statement s = c.createStatement();
+            ResultSet rs = s.executeQuery("select group_name from group_table where username='" + username + "';");
 
+            while (rs.next()) {
+                alist.add(rs.getString("group_name"));
+            }
+            comboxgroup.getItems().addAll(alist);
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
@@ -330,8 +364,20 @@ public class MainController implements Initializable {
         System.out.println(getUsername());
 
         while (rs.next()) {
-            oblist.add(new ModelTable(rs.getString("id"), rs.getString("username"), rs.getString("name"), rs.getString("surname"), rs.getString("date"), rs.getString("adress"), rs.getString("telefon"), rs.getString("valideynadi"), rs.getString("sector")));
-
+           ModelTable mt=new ModelTable();
+            mt.setId(rs.getString("id"));
+            mt.setUsername(rs.getString("username"));
+            mt.setGroup(rs.getString("group"));
+            mt.setName(rs.getString("name"));
+            mt.setSurname(rs.getString("surname"));
+            mt.setTBdt(rs.getString("date"));
+            mt.setAdress(rs.getString("adress"));
+            mt.setPhone(rs.getString("telefon"));
+            mt.setValname(rs.getString("valideynadi"));
+            mt.setSector1(rs.getString("sector"));
+            
+          
+            oblist.add(mt);
         }
 
         rs.close();
@@ -339,6 +385,7 @@ public class MainController implements Initializable {
 
         idTC.setCellValueFactory(new PropertyValueFactory<>("id"));
         userlnameTC.setCellValueFactory(new PropertyValueFactory<>("username"));
+        groupTC.setCellValueFactory(new  PropertyValueFactory<>("group"));
         nameTC.setCellValueFactory(new PropertyValueFactory<>("name"));
         surnameTC.setCellValueFactory(new PropertyValueFactory<>("surname"));
         dateTC.setCellValueFactory(new PropertyValueFactory<>("TBdt"));
@@ -360,14 +407,28 @@ public class MainController implements Initializable {
         ResultSet rs = c.createStatement().executeQuery("select * from students where username='" + username + "' and concat(username,name,surname,date,adress,telefon,valideynadi,sector) like '%" + str + "%';");
 
         while (rs.next()) {
-            oblist.add(new ModelTable(rs.getString("id"), rs.getString("username"), rs.getString("name"), rs.getString("surname"), rs.getString("date"), rs.getString("adress"), rs.getString("telefon"), rs.getString("valideynadi"), rs.getString("sector")));
-
+           ModelTable mt=new ModelTable();
+            mt.setId(rs.getString("id"));
+            mt.setUsername(rs.getString("username"));
+            mt.setGroup(rs.getString("group"));
+            mt.setName(rs.getString("name"));
+            mt.setSurname(rs.getString("surname"));
+            mt.setTBdt(rs.getString("date"));
+            mt.setAdress(rs.getString("adress"));
+            mt.setPhone(rs.getString("telefon"));
+            mt.setValname(rs.getString("valideynadi"));
+            mt.setSector1(rs.getString("sector"));
+            
+          
+            oblist.add(mt);
         }
+
         rs.close();
-       
+     
 
         idTC.setCellValueFactory(new PropertyValueFactory<>("id"));
         userlnameTC.setCellValueFactory(new PropertyValueFactory<>("username"));
+        groupTC.setCellValueFactory(new  PropertyValueFactory<>("group"));
         nameTC.setCellValueFactory(new PropertyValueFactory<>("name"));
         surnameTC.setCellValueFactory(new PropertyValueFactory<>("surname"));
         dateTC.setCellValueFactory(new PropertyValueFactory<>("TBdt"));

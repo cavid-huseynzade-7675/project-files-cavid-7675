@@ -70,7 +70,6 @@ public class MuqavileetController implements Initializable {
               long contractLength =   ChronoUnit.MONTHS.between(muqavilestart.getValue(),muqavileend.getValue());
 
                 for (int i = 1; i <= contractLength; i++) {
-                   stmt.execute("delete from  contract_plan  where contract_id ="+id+"");
                     stmt.execute("insert into contract_plan"
                             + " (contract_id,payment_amount,paid_amount,payment_date,count) "
                             + " values (" + id + ",'" + muqavileprice.getText() + "','0','" + date.plusMonths(i) + "'," + i + ");");

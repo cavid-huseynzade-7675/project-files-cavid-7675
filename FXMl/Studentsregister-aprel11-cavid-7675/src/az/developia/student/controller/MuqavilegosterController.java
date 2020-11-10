@@ -57,6 +57,8 @@ public class MuqavilegosterController implements Initializable {
     private TableColumn<ModelTable, String> dateTC;
 
     @FXML
+    private TableColumn<ModelTable, String> group;
+    @FXML
     private TableColumn<ModelTable, String> userlnameTC;
     @FXML
     private TableColumn<ModelTable, String> idTC1;
@@ -131,8 +133,20 @@ show();
         ResultSet rs = c.createStatement().executeQuery("SELECT * FROM  students where id='" + getStudentid()+ "' ");
        
         while (rs.next()) {
-            oblist1.add(new ModelTable(rs.getString("id"), rs.getString("username"), rs.getString("name"), rs.getString("surname"), rs.getString("date"), rs.getString("adress"), rs.getString("telefon"), rs.getString("valideynadi"), rs.getString("sector")));
-
+            ModelTable mt=new ModelTable();
+            mt.setId(rs.getString("id"));
+            mt.setUsername(rs.getString("username"));
+            mt.setGroup(rs.getString("group"));
+            mt.setName(rs.getString("name"));
+            mt.setSurname(rs.getString("surname"));
+            mt.setTBdt(rs.getString("date"));
+            mt.setAdress(rs.getString("adress"));
+            mt.setPhone(rs.getString("telefon"));
+            mt.setValname(rs.getString("valideynadi"));
+            mt.setSector1(rs.getString("sector"));
+            
+          
+            oblist1.add(mt);
         }
 
         rs.close();
@@ -140,6 +154,7 @@ show();
 
         idTC1.setCellValueFactory(new PropertyValueFactory<>("id"));
         userlnameTC.setCellValueFactory(new PropertyValueFactory<>("username"));
+        group.setCellValueFactory(new  PropertyValueFactory<>("group"));
         nameTC.setCellValueFactory(new PropertyValueFactory<>("name"));
         surnameTC.setCellValueFactory(new PropertyValueFactory<>("surname"));
         dateTC.setCellValueFactory(new PropertyValueFactory<>("TBdt"));
