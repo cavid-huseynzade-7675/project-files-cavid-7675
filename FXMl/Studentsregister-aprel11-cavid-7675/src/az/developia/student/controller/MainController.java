@@ -288,7 +288,7 @@ public class MainController implements Initializable {
         LocalDate dt = birthday.getValue();
         Date dtw = Date.valueOf(dt);
         Connection c = dataManager.getConnection();
-        PreparedStatement ps1 = c.prepareStatement("insert into students (username, name,surname, date, adress, telefon,valideynadi,sector) values (?,?,?,?,?,?,?,?);");
+        PreparedStatement ps1 = c.prepareStatement("insert into students (username, name,surname, date, adress, telefon,valideynadi,sector,qrup) values (?,?,?,?,?,?,?,?,?);");
         ps1.setString(1, username);
         ps1.setString(2, name.getText());
         ps1.setString(3, surname.getText());
@@ -297,6 +297,7 @@ public class MainController implements Initializable {
         ps1.setString(6, telefon.getText());
         ps1.setString(7, vname.getText());
         ps1.setString(8, (String) comboxsector.getSelectionModel().getSelectedItem());
+        ps1.setString(9, String.valueOf(comboxgroup.getSelectionModel().getSelectedItem()));
         ps1.executeUpdate();
         ps1.close();
 
@@ -367,7 +368,6 @@ public class MainController implements Initializable {
            ModelTable mt=new ModelTable();
             mt.setId(rs.getString("id"));
             mt.setUsername(rs.getString("username"));
-            mt.setGroup(rs.getString("group"));
             mt.setName(rs.getString("name"));
             mt.setSurname(rs.getString("surname"));
             mt.setTBdt(rs.getString("date"));
@@ -375,7 +375,7 @@ public class MainController implements Initializable {
             mt.setPhone(rs.getString("telefon"));
             mt.setValname(rs.getString("valideynadi"));
             mt.setSector1(rs.getString("sector"));
-            
+              mt.setGroup(rs.getString("qrup"));
           
             oblist.add(mt);
         }
@@ -385,7 +385,6 @@ public class MainController implements Initializable {
 
         idTC.setCellValueFactory(new PropertyValueFactory<>("id"));
         userlnameTC.setCellValueFactory(new PropertyValueFactory<>("username"));
-        groupTC.setCellValueFactory(new  PropertyValueFactory<>("group"));
         nameTC.setCellValueFactory(new PropertyValueFactory<>("name"));
         surnameTC.setCellValueFactory(new PropertyValueFactory<>("surname"));
         dateTC.setCellValueFactory(new PropertyValueFactory<>("TBdt"));
@@ -393,6 +392,7 @@ public class MainController implements Initializable {
         telefonn.setCellValueFactory(new PropertyValueFactory<>("phone"));
         valnameTC.setCellValueFactory(new PropertyValueFactory<>("valname"));
         sectortb.setCellValueFactory(new PropertyValueFactory<>("sector1"));
+        groupTC.setCellValueFactory(new  PropertyValueFactory<>("group"));
         studentsTable.setItems(oblist);
     }
 
@@ -404,13 +404,12 @@ public class MainController implements Initializable {
 
         studentsTable.getItems().clear();
         Connection c = dataManager.getConnection();
-        ResultSet rs = c.createStatement().executeQuery("select * from students where username='" + username + "' and concat(username,name,surname,date,adress,telefon,valideynadi,sector) like '%" + str + "%';");
+        ResultSet rs = c.createStatement().executeQuery("select * from students where username='" + username + "' and concat(username,name,surname,date,adress,telefon,valideynadi,sector,qrup) like '%" + str + "%';");
 
         while (rs.next()) {
            ModelTable mt=new ModelTable();
             mt.setId(rs.getString("id"));
-            mt.setUsername(rs.getString("username"));
-            mt.setGroup(rs.getString("group"));
+            mt.setUsername(rs.getString("username"));  
             mt.setName(rs.getString("name"));
             mt.setSurname(rs.getString("surname"));
             mt.setTBdt(rs.getString("date"));
@@ -418,6 +417,7 @@ public class MainController implements Initializable {
             mt.setPhone(rs.getString("telefon"));
             mt.setValname(rs.getString("valideynadi"));
             mt.setSector1(rs.getString("sector"));
+            mt.setGroup(rs.getString("qrup"));
             
           
             oblist.add(mt);
@@ -428,7 +428,6 @@ public class MainController implements Initializable {
 
         idTC.setCellValueFactory(new PropertyValueFactory<>("id"));
         userlnameTC.setCellValueFactory(new PropertyValueFactory<>("username"));
-        groupTC.setCellValueFactory(new  PropertyValueFactory<>("group"));
         nameTC.setCellValueFactory(new PropertyValueFactory<>("name"));
         surnameTC.setCellValueFactory(new PropertyValueFactory<>("surname"));
         dateTC.setCellValueFactory(new PropertyValueFactory<>("TBdt"));
@@ -436,6 +435,7 @@ public class MainController implements Initializable {
         telefonn.setCellValueFactory(new PropertyValueFactory<>("phone"));
         valnameTC.setCellValueFactory(new PropertyValueFactory<>("valname"));
         sectortb.setCellValueFactory(new PropertyValueFactory<>("sector1"));
+        groupTC.setCellValueFactory(new  PropertyValueFactory<>("group"));
         studentsTable.setItems(oblist);
     }
 
