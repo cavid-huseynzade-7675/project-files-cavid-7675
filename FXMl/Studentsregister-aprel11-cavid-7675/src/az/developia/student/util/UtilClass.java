@@ -1,8 +1,10 @@
 
 package az.developia.student.util;
 
+import javafx.geometry.Pos;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import org.controlsfx.control.Notifications;
 
 
 public class UtilClass {
@@ -23,4 +25,8 @@ public class UtilClass {
         }
         return result;
     } 
+     public static void showNotification(String title,String message,Pos position){
+         Notifications.create().position(position).title(title).text(message).showInformation();
+        
+    }
 }

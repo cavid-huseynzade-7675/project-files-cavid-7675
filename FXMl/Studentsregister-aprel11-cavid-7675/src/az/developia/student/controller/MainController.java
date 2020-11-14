@@ -32,6 +32,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import org.controlsfx.control.Notifications;
@@ -289,7 +290,49 @@ public class MainController implements Initializable {
         //ve sonra student sinifindendeki deyerler student dao
         //sinifinden addstudent metodu cagirilir ve database eleva olunur 
         ////sonra show metodu ile yene table view melumat gonderilir
-        LocalDate dt = birthday.getValue();
+        boolean allowSave=true;
+        String errorMessage="";
+        if(name.getText().trim().length()<2){
+            allowSave=false;
+            errorMessage+="Adi ,";
+       
+        }
+
+
+         if(surname.getText().trim().length()<2){
+            allowSave=false;
+            errorMessage+="Soyadi ,";
+        }
+         if(adress.getText().trim().length()<2){
+            allowSave=false;
+            errorMessage+="Adresi ,";
+        }
+if(telefon.getText().trim().length()<2){
+            allowSave=false;
+            errorMessage+="Telefon ,";
+        }
+if(vname.getText().trim().length()<2){
+            allowSave=false;
+            errorMessage+="Valideyn adini ";
+        }
+if(allowSave==false){
+errorMessage+="tam yazin.\n";
+}
+         if(birthday.getValue()==null){
+             allowSave=false;
+             
+             errorMessage+="Tevellud secin.\n";
+         }
+         if(comboxsector.getSelectionModel().getSelectedItem()==null){
+             allowSave=false;
+             errorMessage+="Sektor secin.\n";
+         }
+             if(comboxgroup.getSelectionModel().getSelectedItem()==null){
+             allowSave=false;
+             errorMessage+="Qrup secin.\n";
+         }
+             if (allowSave) {
+            LocalDate dt = birthday.getValue();
         Date dtw = Date.valueOf(dt);
         Connection c = dataManager.getConnection();
         PreparedStatement ps1 = c.prepareStatement("insert into students (username, name,surname, date, adress, telefon,valideynadi,sector,qrup) values (?,?,?,?,?,?,?,?,?);");
@@ -306,9 +349,13 @@ public class MainController implements Initializable {
         ps1.close();
 
         show();
-         Notifications.create().position(Pos.CENTER).title("Məlumat").text("Tələbə qeydiyyat olundu").showConfirm();
-
-    
+UtilClass.showNotification("Məlumat","Tələbə qeydiyyat olundu", Pos.BOTTOM_RIGHT);
+     
+        }else{
+                   UtilClass.showNotification("Məlumat", "Melumatlari tam yazin!\n"+errorMessage, Pos.BOTTOM_RIGHT);
+ 
+             }
+       
     }
     ObservableList<ModelTable> oblist = FXCollections.observableArrayList();
 
@@ -357,10 +404,12 @@ public class MainController implements Initializable {
     @FXML
     void searchbutton(KeyEvent event) throws SQLException {
 
-        System.out.println(searchtx.getText());
+       
+         if(event.getCode().equals(KeyCode.ENTER)){
+              System.out.println(searchtx.getText());
         showsearch();
 
-    }
+    }}
 
     private void show() throws SQLException {
         //burda database sorgu gonderirik ve cavablari ResultSete veririk 
@@ -411,7 +460,7 @@ public class MainController implements Initializable {
 
         studentsTable.getItems().clear();
         Connection c = dataManager.getConnection();
-        ResultSet rs = c.createStatement().executeQuery("select * from students where username='" + username + "' and concat(username,name,surname,date,adress,telefon,valideynadi,sector,qrup) like '%" + str + "%';");
+        ResultSet rs = c.createStatement().executeQuery("select * from students where username='" + username + "' and concat(id,ifnull(username,\"\"),ifnull(name,\"\"),ifnull(surname,\"\"),ifnull(date,\"\"),ifnull(adress,\"\"),ifnull(telefon,\"\"),ifnull(valideynadi,\"\"),ifnull(sector,\"\"),ifnull(qrup,\"\")) like '%" + str + "%';");
 
         while (rs.next()) {
            ModelTable mt=new ModelTable();
