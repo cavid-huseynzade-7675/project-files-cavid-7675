@@ -51,7 +51,7 @@ Connection c = dataManager.getConnection();
             s.close();
        
         findSectors();
-         Notifications.create().position(Pos.CENTER).title("Məlumat").text("Sektor artirildi").showConfirm();
+         Notifications.create().position(Pos.BOTTOM_RIGHT).title("Məlumat").text("Sektor artirildi").showConfirm();
     }
 
     @FXML
@@ -63,7 +63,7 @@ Connection c = dataManager.getConnection();
             s.execute("delete from sectors where sector='"+selectedSector+"' and username='"+username+"'  ;");
             s.close();
             findSectors();
-             Notifications.create().position(Pos.CENTER).title("Məlumat").text("Secdiginiz sektor silindi").showConfirm();
+             Notifications.create().position(Pos.BOTTOM_RIGHT).title("Məlumat").text("Secdiginiz sektor silindi").showConfirm();
     }   
         }
       
@@ -75,7 +75,7 @@ Connection c = dataManager.getConnection();
         Statement s = c.createStatement();
         s.execute("delete FROM  sectors where id>0 and username='" + getUsername() + "' ;");
         list.getItems().clear();
-         Notifications.create().position(Pos.CENTER).title("Məlumat").text("Butun sektorlar silindi").showConfirm();
+         Notifications.create().position(Pos.BOTTOM_RIGHT).title("Məlumat").text("Butun sektorlar silindi").showConfirm();
      
         }
   }

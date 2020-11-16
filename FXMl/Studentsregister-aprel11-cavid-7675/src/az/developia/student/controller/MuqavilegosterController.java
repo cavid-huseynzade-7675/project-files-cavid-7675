@@ -95,7 +95,7 @@ Statement s=c.createStatement();
 s.execute("delete from  muqavile  where id="+select.getId()+";");
 s.execute("delete from  contract_plan where contract_id="+select.getId()+";");
 show();
- Notifications.create().position(Pos.CENTER).title("Məlumat").text("Muqavile silindi").showConfirm();
+ Notifications.create().position(Pos.BOTTOM_RIGHT).title("Məlumat").text("Muqavile silindi").showConfirm();
     
         }
 

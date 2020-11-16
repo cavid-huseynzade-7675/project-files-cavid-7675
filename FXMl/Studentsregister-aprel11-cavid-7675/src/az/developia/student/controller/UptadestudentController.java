@@ -146,7 +146,7 @@ Statement s=c.createStatement();
  + "telefon='"+telefonTX.getText()+"', valideynadi='"+vnameTX.getText()+"',"
          + "sector='"+comboxsector.getValue()+"' Where id='"+getId()+"';");
 s.close();
- Notifications.create().position(Pos.CENTER).title("Məlumat").text("Secdiginiz telebenin melumatlari deyisdirildi").showConfirm();
+ Notifications.create().position(Pos.BOTTOM_RIGHT).title("Məlumat").text("Secdiginiz telebenin melumatlari deyisdirildi").showConfirm();
 
         }
 

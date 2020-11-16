@@ -62,7 +62,7 @@ public class MuqavileetController implements Initializable {
   
   
     LocalDate date = muqavilestart.getValue();
- Notifications.create().position(Pos.CENTER).title("Məlumat").text("Muqavile "+getStudentid()+" IDsine qeydiyyat olundu").showConfirm();
+ Notifications.create().position(Pos.BOTTOM_RIGHT).title("Məlumat").text("Muqavile "+getStudentid()+" IDsine qeydiyyat olundu").showConfirm();
         ResultSet rs=ps.getGeneratedKeys();
          if (rs.next()) {
                 int id = rs.getInt(1);

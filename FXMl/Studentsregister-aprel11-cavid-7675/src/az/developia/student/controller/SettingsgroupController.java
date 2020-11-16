@@ -59,7 +59,7 @@ Connection c = dataManager.getConnection();
             s.close();
        
         findQrup(getUsername());
-         Notifications.create().position(Pos.CENTER).title("Məlumat").text("Qrup artirildi").showInformation();
+         Notifications.create().position(Pos.BOTTOM_RIGHT).title("Məlumat").text("Qrup artirildi").showInformation();
    
   }
 
@@ -72,7 +72,7 @@ Connection c = dataManager.getConnection();
             s.execute("delete from group_table where group_name='"+selectedGroup+"' and username='"+getUsername()+"'  ;");
             s.close();
             findQrup(getUsername());
-             Notifications.create().position(Pos.CENTER).title("Məlumat").text("Secdiginiz qrup silindi").showConfirm();
+             Notifications.create().position(Pos.BOTTOM_RIGHT).title("Məlumat").text("Secdiginiz qrup silindi").showConfirm();
    
         }
        }
@@ -86,7 +86,7 @@ Connection c = dataManager.getConnection();
         Statement s = c.createStatement();
         s.execute("delete FROM  group_table where id>0 and username='" + getUsername()+ "' ;");
         list.getItems().clear();
-         Notifications.create().position(Pos.CENTER).title("Məlumat").text("Butun qruplar silindi").showConfirm();
+         Notifications.create().position(Pos.BOTTOM_RIGHT).title("Məlumat").text("Butun qruplar silindi").showConfirm();
       
         }
 }

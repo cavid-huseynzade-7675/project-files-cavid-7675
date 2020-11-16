@@ -138,9 +138,9 @@ public class MainController implements Initializable {
 
         }
         show();
-        Notifications.create().position(Pos.CENTER).title("Məlumat").text("Secdiginiz telebe silindi").showConfirm();
+        Notifications.create().position(Pos.BOTTOM_RIGHT).title("Məlumat").text("Secdiginiz telebe silindi").showConfirm();
     }catch(Exception e){
-        Notifications.create().position(Pos.CENTER).title("Məlumat").text("Secdiginiz telebe silinmedi").showError();
+        Notifications.create().position(Pos.BOTTOM_RIGHT).title("Məlumat").text("Secdiginiz telebe silinmedi").showError();
     }  
         }
      
@@ -370,7 +370,7 @@ UtilClass.showNotification("Məlumat","Tələbə qeydiyyat olundu", Pos.BOTTOM_R
         s.execute("delete FROM  students where id>0 and username='" + getUsername() + "' ;");
         studentsTable.setItems(oblist);
         show();
-         Notifications.create().position(Pos.CENTER).title("Məlumat").text("Butun telebeler silindi").showConfirm();
+         Notifications.create().position(Pos.BOTTOM_RIGHT).title("Məlumat").text("Butun telebeler silindi").showConfirm();
      
     }
       
