@@ -6,7 +6,15 @@ import java.sql.Date;
 
 public class Model {
   int id,gun,necegunqalib;
-  String tapsiriq,kateqoriya,status;
+  String tapsiriq,kateqoriya,status,username;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
  Date tarix;
     public int getId() {
         return id;

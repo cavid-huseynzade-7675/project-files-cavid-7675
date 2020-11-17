@@ -58,6 +58,7 @@ public class LoginController implements Initializable {
      Parent root=loader.load();
         Scene scene=new Scene(root);
        s.setScene(scene);
+              MainController mainController=loader.getController();
                 
       
       
