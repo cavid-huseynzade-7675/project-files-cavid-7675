@@ -59,7 +59,7 @@ public class LoginController implements Initializable {
         Scene scene=new Scene(root);
        s.setScene(scene);
               MainController mainController=loader.getController();
-                
+                mainController.setUsername(username);
       
       
       s.show();

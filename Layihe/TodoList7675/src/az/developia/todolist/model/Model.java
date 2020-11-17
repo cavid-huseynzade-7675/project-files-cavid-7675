@@ -5,9 +5,17 @@ import java.sql.Date;
 
 
 public class Model {
-  int id,gun,necegunqalib;
+  int id,gun;
   String tapsiriq,kateqoriya,status,username;
+long necegunqalib;
 
+    public long getNecegunqalib() {
+        return necegunqalib;
+    }
+
+    public void setNecegunqalib(long necegunqalib) {
+        this.necegunqalib = necegunqalib;
+    }
     public String getUsername() {
         return username;
     }
@@ -32,13 +40,7 @@ public class Model {
         this.gun = gun;
     }
 
-    public int getNecegunqalib() {
-        return necegunqalib;
-    }
-
-    public void setNecegunqalib(int necegunqalib) {
-        this.necegunqalib = necegunqalib;
-    }
+  
 
     public String getTapsiriq() {
         return tapsiriq;
