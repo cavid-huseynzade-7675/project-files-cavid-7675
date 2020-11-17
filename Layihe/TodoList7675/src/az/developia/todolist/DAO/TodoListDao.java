@@ -1,14 +1,28 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package az.developia.todolist.DAO;
 
-/**
- *
- * @author Cavid
- */
+import az.developia.todolist.db.DataManager;
+import az.developia.todolist.model.Model;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.Statement;
+
 public class TodoListDao {
-    
+    DataManager dataManager=DataManager.getDataManager();
+   public void addtask(Model tasks){
+        try {
+            Connection c=dataManager.getConnection();
+           PreparedStatement s=c.prepareStatement("insert into tasks (username,task,gun,date,kateqoriya,status) values (?,?,?,?,?,?)");
+            s.setString(1,tasks.getUsername());
+            s.setString(2, tasks.getTapsiriq());
+            s.setInt(3, tasks.getGun());
+            s.setDate(4, tasks.getTarix());
+            s.setString(5, tasks.getKateqoriya());
+            s.setString(6, tasks.getStatus());
+            s.executeUpdate();
+               s.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }  
 }
