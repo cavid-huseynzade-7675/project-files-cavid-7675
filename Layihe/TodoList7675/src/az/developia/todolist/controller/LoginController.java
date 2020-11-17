@@ -10,10 +10,17 @@ import java.sql.ResultSet;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import org.controlsfx.control.Notifications;
 
 
 public class LoginController implements Initializable {
@@ -35,8 +42,23 @@ public class LoginController implements Initializable {
           boolean userexist=checkUserLogin( username, password);
           if (userexist) {
               alerts.setText("Daxil oldunuz");
+              ((Node)event.getSource()).getScene().getWindow().hide();
+                Stage s=new Stage();
+  
+                s.setTitle("Main");
+                
+    FXMLLoader loader=new FXMLLoader(getClass().getResource("/az/developia/todolist/view/main.fxml"));
+     Parent root=loader.load();
+        Scene scene=new Scene(root);
+       s.setScene(scene);
+                
+      
+      
+      s.show();
+              Notifications.create().title("Melumat").position(Pos.BOTTOM_RIGHT).text("Daxil oldunuz").showInformation();
           }else{
               alerts.setText("Məlumatlar sehvdir!");
+              Notifications.create().title("Melumat").position(Pos.BOTTOM_RIGHT).text("Məlumatlar sehvdir!").showInformation();
           }
       } catch (Exception ex) {
           
@@ -64,6 +86,7 @@ public class LoginController implements Initializable {
 
                 ps.close();
                 alerts.setText("İstifadəçi yaradıldı");
+                Notifications.create().title("Melumat").position(Pos.BOTTOM_RIGHT).text("İstifadəçi yaradıldı").showInformation();
             }
 
            
@@ -95,8 +118,11 @@ public class LoginController implements Initializable {
 
                 ps.close();
                 alerts.setText("Silindi");
+                Notifications.create().title("Melumat").position(Pos.BOTTOM_RIGHT).text("Silindi").showInformation();
             } else {
-               alerts.setText("Silinmədi");
+               alerts.setText("Silinmədi Melumatlar sehvdir");
+               Notifications.create().title("Melumat").position(Pos.BOTTOM_RIGHT).text("Silinmədi Melumatlar sehvdir").showInformation();
+          
             }
 
             

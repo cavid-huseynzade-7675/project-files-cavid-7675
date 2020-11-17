@@ -15,7 +15,7 @@ public class MainClass extends Application {
 
     @Override
     public void start(Stage s) throws Exception {
-          s.setTitle("TodoList");
+          s.setTitle("Login");
         FXMLLoader loader=new FXMLLoader(getClass().getResource("view/login.fxml"));
         Parent root=loader.load();
         Scene scene= new Scene(root);

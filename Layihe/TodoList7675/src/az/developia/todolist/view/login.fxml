@@ -24,6 +24,9 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="alerts" layoutX="22.0" layoutY="134.0" text="Xeberdarliq" />
+      <Label fx:id="alerts" layoutX="22.0" layoutY="134.0" text="Xeberdarliq">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
    </children>
 </AnchorPane>
