@@ -3,6 +3,7 @@ package az.developia.todolist.controller;
 
 import az.developia.todolist.db.DataManager;
 import az.developia.todolist.util.UtilClass;
+import java.io.FileInputStream;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,6 +20,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.controlsfx.control.Notifications;
 
@@ -45,8 +47,13 @@ public class LoginController implements Initializable {
               ((Node)event.getSource()).getScene().getWindow().hide();
                 Stage s=new Stage();
   
-                s.setTitle("Main");
-                
+                s.setTitle("Tasks");
+                 FileInputStream input=new FileInputStream("C:\\Users\\Cavid\\Documents\\Github\\project-files-cavid-7675\\Layihe\\TodoList7675\\image\\tasks.png");
+          Image image=new Image(input);
+         
+        Image[] elements = new Image[1];
+        elements[0]=image;
+          s.getIcons().setAll(elements);
     FXMLLoader loader=new FXMLLoader(getClass().getResource("/az/developia/todolist/view/main.fxml"));
      Parent root=loader.load();
         Scene scene=new Scene(root);
