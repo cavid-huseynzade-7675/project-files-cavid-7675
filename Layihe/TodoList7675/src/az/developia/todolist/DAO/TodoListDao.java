@@ -12,7 +12,7 @@ public class TodoListDao {
    public void addtask(Model tasks){
         try {
             Connection c=dataManager.getConnection();
-           PreparedStatement s=c.prepareStatement("insert into tasks (username,task,gun,date,kateqoriya,status) values (?,?,?,?,?,?)");
+           PreparedStatement s=c.prepareStatement("insert into tasks (username,taskname,gun,date,kateqoriya,status) values (?,?,?,?,?,?)");
             s.setString(1,tasks.getUsername());
             s.setString(2, tasks.getTapsiriq());
             s.setInt(3, tasks.getGun());

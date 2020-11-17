@@ -6,6 +6,20 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="az.developia.todolist.view.KategoriyasettingsController">
-    
+
+<AnchorPane id="AnchorPane" prefHeight="225.0" prefWidth="377.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="az.developia.todolist.controller.KategoriyasettingsController">
+   <children>
+      <ListView fx:id="kategoriyatable" layoutX="14.0" layoutY="27.0" prefHeight="175.0" prefWidth="169.0">
+         <contextMenu>
+            <ContextMenu>
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#delete" text="Delete" />
+              </items>
+            </ContextMenu>
+         </contextMenu>
+      </ListView>
+      <Button layoutX="215.0" layoutY="96.0" mnemonicParsing="false" onAction="#save" prefHeight="38.0" prefWidth="149.0" text="Yadda saxla" />
+      <Button layoutX="215.0" layoutY="147.0" mnemonicParsing="false" onAction="#deleteevery" prefHeight="38.0" prefWidth="149.0" text="Hamisini sil" />
+      <TextField fx:id="textfield" layoutX="215.0" layoutY="58.0" />
+   </children>
 </AnchorPane>
