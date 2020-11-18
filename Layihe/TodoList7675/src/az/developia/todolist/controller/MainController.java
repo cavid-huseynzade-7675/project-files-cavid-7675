@@ -55,7 +55,7 @@ public class MainController implements Initializable {
         this.username = username;
         findKategoriya();
         try {
-            show();
+            show("SELECT * FROM  tasks where username='" + getUsername() + "' ");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -91,7 +91,7 @@ private ToggleGroup toggle=new  ToggleGroup();
     private TableColumn<Model, Date> tarixTC;
 
     @FXML
-    private TableColumn<Model, Long> necegunqalibTC;
+    private TableColumn<Model, String> necegunqalibTC;
 
     @FXML
     private DatePicker tarixDatePicker;
@@ -135,7 +135,8 @@ private ToggleGroup toggle=new  ToggleGroup();
      uptdeController.setUsername(username);
      uptdeController.setModel(selected);
        s.showAndWait();
-       show();
+       show("SELECT * FROM  tasks where username='" + getUsername() + "' ");
+       alerts.setText("Secdiginiz tapsirigin melumatlari deyisdirildi");
         }catch(Exception ex){
             ex.printStackTrace();
     }
@@ -148,7 +149,7 @@ if(UtilClass.confirmDialog("Eminsiniz")){
     Connection c=dataManager.getConnection();
     Statement s=c.createStatement();
     s.execute("delete FROM tasks where id="+selected.getId()+";");
-    show();
+    show("SELECT * FROM  tasks where username='" + getUsername() + "' ");
 }
     }
 
@@ -169,13 +170,13 @@ if(UtilClass.confirmDialog("Eminsiniz")){
   
     }
         
-    show();
+    show("SELECT * FROM  tasks where username='" + getUsername() + "' ");
 }
     }
      @FXML
-    void searchenter(KeyEvent event) {
+    void searchenter(KeyEvent event) throws SQLException {
  if(event.getCode().equals(KeyCode.ENTER)){
-             
+       show("select * from tasks where username='" + username + "' and concat(id,username,taskname,gun,date,kateqoriya,status) like '%" + searchTExtField.getText() + "%';");
 
     }
     }
@@ -244,16 +245,14 @@ if(UtilClass.confirmDialog("Eminsiniz")){
             m.setGun(Date.valueOf(gunDatePicker1.getValue()));
            m.setUsername(getUsername());
            m.setTarix(Date.valueOf(tarixDatePicker.getValue()));
-             LocalDate tarix=tarixDatePicker.getValue();
-             LocalDate gun=gunDatePicker1.getValue();
-           m.setNecegunqalib(ChronoUnit.DAYS.between(tarix, gun));
+          
             m.setKateqoriya((String) kategoriyaCombobox.getSelectionModel().getSelectedItem());
             m.setStatus("Hell olunmayib");
              TodoListDao dao=new TodoListDao();
              dao.addtask(m);
                Notifications.create().title("Melumat").position(Pos.BOTTOM_RIGHT).text("Tapsiriq qeydiyyat olundu").showInformation();
          alerts.setText("Tapsiriq qeydiyyat olundu");
-         show();
+         show("SELECT * FROM  tasks where username='" + getUsername() + "' ");
         }else{
              Notifications.create().title("Melumat").position(Pos.BOTTOM_RIGHT).text("Melumatlari tam yazin\n"+xeta).showInformation();
          alerts.setText("Melumatlari tam yazin");
@@ -268,7 +267,7 @@ if(UtilClass.confirmDialog("Eminsiniz")){
         Statement s = c.createStatement();
         s.execute("delete FROM  tasks where id>0 and username='" + getUsername() + "' ;");
         
-        show();
+        show("SELECT * FROM  tasks where username='" + getUsername() + "' ");
          Notifications.create().position(Pos.BOTTOM_RIGHT).title("Məlumat").text("Butun tapsiriqlar silindi").showConfirm();
      alerts.setText("Butun tapsiriqlar silindi");
     }
@@ -276,22 +275,26 @@ if(UtilClass.confirmDialog("Eminsiniz")){
     }
 
     @FXML
-    void hellolanlarRadiobutton(ActionEvent event) {
-
+    void hellolanlarRadiobutton(ActionEvent event) throws SQLException {
+         String hellolunub="Hell olunub";
+    
+        show("SELECT * FROM  tasks where username='" + getUsername() + "'and status='"+hellolunub+"' ");
     }
 
     @FXML
-    void hamisiRadiobutton(ActionEvent event) {
-
+    void hamisiRadiobutton(ActionEvent event) throws SQLException {
+        show("SELECT * FROM  tasks where username='" + getUsername() + "' ");
     }
 
     @FXML
-    void hellolmayanlarRadiobutton(ActionEvent event) {
-
+    void hellolmayanlarRadiobutton(ActionEvent event) throws SQLException {
+String hellolunmuyub="Hell olunmayib";
+        show("SELECT * FROM  tasks where username='" + getUsername() + "'and status='"+hellolunmuyub+"' ");
     }
 
     @FXML
-    void search(ActionEvent event) {
+    void search(ActionEvent event) throws SQLException {
+  show("select * from tasks where username='" + getUsername()+ "' and concat(id,username,taskname,gun,date,kateqoriya,status) like '%" + searchTExtField.getText() + "%';");
 
     }
     @Override
@@ -352,12 +355,12 @@ if(UtilClass.confirmDialog("Eminsiniz")){
         } }
        ObservableList<Model> oblist = FXCollections.observableArrayList();
 
-     private void show() throws SQLException {
+     private void show(String execute) throws SQLException {
         
         tapsiriqTableView.getItems().clear();
         Connection c = dataManager.getConnection();
         Statement s=c.createStatement();
-        ResultSet result = s.executeQuery("SELECT * FROM  tasks where username='" + getUsername() + "' ");
+        ResultSet result = s.executeQuery(execute);
         System.out.println(getUsername());
 
         while (result.next()) {
@@ -371,7 +374,14 @@ if(UtilClass.confirmDialog("Eminsiniz")){
             System.out.println(da);
            LocalDate tarix=LocalDate.parse(da);
              LocalDate gun=LocalDate.now();
-           mt.setNecegunqalib(ChronoUnit.DAYS.between( gun,tarix));
+             Long l=ChronoUnit.DAYS.between( gun,tarix);
+             if (l<0) {
+               mt.setNecegunqalib("Tapsirigin vaxti kecib"); 
+            }else{
+                mt.setNecegunqalib(String.valueOf(l)); 
+           
+             }
+           
            mt.setKateqoriya(result.getString("kateqoriya"));
            mt.setStatus(result.getString("status"));
             System.out.println("s");

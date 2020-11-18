@@ -120,7 +120,7 @@ findKategoriya();    }
 Statement s=c.createStatement();
  s.execute("update tasks set taskname='"+tapsiriqTextFieldu.getText()+"',gun='"+gunDatePickeru1.getValue()+"',date='"+tarixDatePickeru.getValue()+"',kateqoriya='"+kategoriyaCombobox.getSelectionModel().getSelectedItem()+"' Where id='"+model.getId()+"';");
 s.close();
- Notifications.create().position(Pos.BOTTOM_RIGHT).title("Məlumat").text("Secdiginiz telebenin melumatlari deyisdirildi").showConfirm();
+ Notifications.create().position(Pos.BOTTOM_RIGHT).title("Məlumat").text("Secdiginiz tapsirigin melumatlari deyisdirildi").showConfirm();
 
     }}
      private void findKategoriya() {

@@ -7,13 +7,13 @@ import java.sql.Date;
 public class Model {
   int id;
   String tapsiriq,kateqoriya,status,username;
-long necegunqalib;
+String necegunqalib;
 
-    public long getNecegunqalib() {
+    public String getNecegunqalib() {
         return necegunqalib;
     }
 
-    public void setNecegunqalib(long necegunqalib) {
+    public void setNecegunqalib(String necegunqalib) {
         this.necegunqalib = necegunqalib;
     }
     public String getUsername() {
