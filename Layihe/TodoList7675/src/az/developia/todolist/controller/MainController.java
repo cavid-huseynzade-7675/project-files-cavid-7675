@@ -79,13 +79,13 @@ private ToggleGroup toggle=new  ToggleGroup();
     private TableView<Model> tapsiriqTableView;
 
     @FXML
-    private TableColumn<Model, Integer> gunTC;
+    private TableColumn<Model, Date> gunTC;
 
     @FXML
     private TextField searchTExtField;
 
     @FXML
-    private TextField gunTextField;
+    private DatePicker gunDatePicker1;
 
     @FXML
     private TableColumn<Model, Date> tarixTC;
@@ -122,7 +122,23 @@ private ToggleGroup toggle=new  ToggleGroup();
     private ImageView searchimage;
       @FXML
     void uptade(ActionEvent event) {
-
+  try{
+ Stage s=new Stage();
+  
+                s.setTitle("Uptade");
+             Model selected=tapsiriqTableView.getSelectionModel().getSelectedItem();
+    FXMLLoader loader=new FXMLLoader(getClass().getResource("/az/developia/todolist/view/uptde.fxml"));
+     Parent root=loader.load();
+        Scene scene=new Scene(root);
+       s.setScene(scene);
+      UptdeController uptdeController=loader.getController();
+     uptdeController.setUsername(username);
+     uptdeController.setModel(selected);
+       s.showAndWait();
+       show();
+        }catch(Exception ex){
+            ex.printStackTrace();
+    }
     }
 
     @FXML
@@ -182,6 +198,7 @@ if(UtilClass.confirmDialog("Eminsiniz")){
        KategoriyasettingsController kategoriyasettingsController=loader.getController();
        kategoriyasettingsController.setUsername(username);
        s.showAndWait();
+       findKategoriya();
         }catch(Exception ex){
             ex.printStackTrace();
     }
@@ -196,11 +213,7 @@ if(UtilClass.confirmDialog("Eminsiniz")){
           xeta+="Tapsirigi ";
                             
         }
-        if (gunTextField.getText().trim().length()==0) {
-            allowsave=false;
-          xeta+="nece gun erzinde yetiriceyinizi";
-                            
-        }
+       
         if (!allowsave){
         xeta+="tam yazin\n";
         }
@@ -209,19 +222,31 @@ if(UtilClass.confirmDialog("Eminsiniz")){
           xeta+=" Ne vaxt qeyd etdiyinizi secin\n";
                             
         }
+         if (gunDatePicker1.getValue()==null) {
+            allowsave=false;
+          xeta+="ne vaxt bitceyini secin";
+                            
+        }
         if (kategoriyaCombobox.getSelectionModel().getSelectedItem()==null) {
            allowsave=false;
           xeta+="Kategoriyani secin";
                             
     }
+       LocalDate tarixLocalDate=tarixDatePicker.getValue();
+       LocalDate gunlocaldate=gunDatePicker1.getValue();
+       long uzunluq=ChronoUnit.DAYS.between(tarixLocalDate,gunlocaldate );
+               if (uzunluq<0) {
+             allowsave=false;
+          xeta+="Tarixleri DogruSecin\n bitireceyiniz vaxt tapsirigi qoydugunuz\nvaxtdan evvel ola bilmez";
+        }
          if (allowsave) {
             m.setTapsiriq(tapsiriqTextField.getText());
-            m.setGun(Integer.parseInt(gunTextField.getText()));
+            m.setGun(Date.valueOf(gunDatePicker1.getValue()));
            m.setUsername(getUsername());
            m.setTarix(Date.valueOf(tarixDatePicker.getValue()));
-             LocalDate date=tarixDatePicker.getValue();
-             LocalDate date1=date.plusDays(Integer.parseInt(gunTextField.getText()));
-           m.setNecegunqalib(ChronoUnit.DAYS.between(date, date1));
+             LocalDate tarix=tarixDatePicker.getValue();
+             LocalDate gun=gunDatePicker1.getValue();
+           m.setNecegunqalib(ChronoUnit.DAYS.between(tarix, gun));
             m.setKateqoriya((String) kategoriyaCombobox.getSelectionModel().getSelectedItem());
             m.setStatus("Hell olunmayib");
              TodoListDao dao=new TodoListDao();
@@ -281,7 +306,7 @@ if(UtilClass.confirmDialog("Eminsiniz")){
         FileInputStream input = new FileInputStream("C:\\Users\\Cavid\\Documents\\Github\\project-files-cavid-7675\\Layihe\\TodoList7675\\image\\setting.png");
           Image image = new Image(input);
         setingimage.setImage(image);
-        gunTextField.addEventHandler(KeyEvent.KEY_TYPED,allowOnlyDecimalsOrLetters(10));
+       
         }catch(Exception ex){
             
         }
@@ -309,9 +334,9 @@ if(UtilClass.confirmDialog("Eminsiniz")){
         };
     }
 
-    private void findKategoriya() {
+  private void findKategoriya() {
            kategoriyaCombobox.getItems().clear();
-        Connection c = dataManager.getConnection();
+         Connection c = dataManager.getConnection();
         ArrayList<String> alist = new ArrayList<String>();
         try {
             Statement s = c.createStatement();
@@ -340,13 +365,13 @@ if(UtilClass.confirmDialog("Eminsiniz")){
             mt.setId(result.getInt("id"));
            mt.setUsername(result.getString("username"));
            mt.setTapsiriq(result.getString("taskname"));
-           mt.setGun(result.getInt("gun"));
+           mt.setGun(result.getDate("gun"));
            mt.setTarix(result.getDate("date"));
-           String da=String.valueOf(result.getDate("date"));
-            LocalDate date=LocalDate.parse(da);
-             LocalDate date1=date.plusDays(result.getInt("gun"));
-             LocalDate date2=LocalDate.now();
-           mt.setNecegunqalib(ChronoUnit.DAYS.between(date2, date1));
+           String da=String.valueOf(result.getDate("gun"));
+            System.out.println(da);
+           LocalDate tarix=LocalDate.parse(da);
+             LocalDate gun=LocalDate.now();
+           mt.setNecegunqalib(ChronoUnit.DAYS.between( gun,tarix));
            mt.setKateqoriya(result.getString("kateqoriya"));
            mt.setStatus(result.getString("status"));
             System.out.println("s");

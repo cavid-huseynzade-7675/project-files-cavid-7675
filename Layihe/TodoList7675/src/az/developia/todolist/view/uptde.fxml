@@ -1,11 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="az.developia.todolist.controller.UptdeController">
-    
+
+<AnchorPane id="AnchorPane" prefHeight="216.0" prefWidth="452.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="az.developia.todolist.controller.UptdeController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="5.0" layoutY="2.0" prefHeight="201.0" prefWidth="488.0">
+         <children>
+            <Label layoutX="94.0" layoutY="15.0" text="Tapsiriq:" textFill="RED">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tapsiriqTextFieldu" layoutX="56.0" layoutY="46.0" prefHeight="25.0" prefWidth="150.0" />
+            <ComboBox fx:id="kategoriyaCombobox" layoutX="252.0" layoutY="50.0" prefWidth="150.0" />
+            <Label layoutX="279.0" layoutY="15.0" text="Kateqoriya:" textFill="RED">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Button layoutX="402.0" layoutY="47.0" mnemonicParsing="false" onAction="#kategoriyasettingsu" prefHeight="32.0" prefWidth="35.0">
+               <graphic>
+                  <ImageView fx:id="setingimageu" fitHeight="23.0" fitWidth="27.0">
+                     <image>
+                        <Image url="@../../../../../image/setting.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Label layoutX="22.0" layoutY="100.0" prefHeight="27.0" prefWidth="219.0" text="Tapsiriq ne vaxt qoyulub:" textFill="RED">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="tarixDatePickeru" layoutX="56.0" layoutY="137.0" prefHeight="25.0" prefWidth="150.0" />
+            <Label layoutX="260.0" layoutY="101.0" text="Ne vaxt bitmelidi:" textFill="RED">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="gunDatePickeru1" layoutX="261.0" layoutY="137.0" prefHeight="25.0" prefWidth="150.0" />
+         </children>
+      </AnchorPane>
+      <Button layoutX="175.0" layoutY="203.0" mnemonicParsing="false" onAction="#uptadeButtton" text="Uptade">
+         <font>
+            <Font name="System Bold" size="23.0" />
+         </font>
+      </Button>
+   </children>
 </AnchorPane>

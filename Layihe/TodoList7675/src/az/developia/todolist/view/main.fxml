@@ -10,19 +10,19 @@
 
 <AnchorPane id="AnchorPane" prefHeight="545.0" prefWidth="625.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="az.developia.todolist.controller.MainController">
    <children>
-      <Label layoutX="16.0" layoutY="14.0" text="Tapsiriq:" textFill="RED">
+      <Label layoutX="96.0" layoutY="3.0" text="Tapsiriq:" textFill="RED">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="tapsiriqTextField" layoutX="95.0" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
-      <ComboBox fx:id="kategoriyaCombobox" layoutX="355.0" layoutY="16.0" prefWidth="150.0" />
-      <Label layoutX="252.0" layoutY="15.0" text="Kateqoriya:" textFill="RED">
+      <TextField fx:id="tapsiriqTextField" layoutX="58.0" layoutY="33.0" prefHeight="25.0" prefWidth="150.0" />
+      <ComboBox fx:id="kategoriyaCombobox" layoutX="279.0" layoutY="33.0" prefWidth="150.0" />
+      <Label layoutX="300.0" layoutY="3.0" text="Kateqoriya:" textFill="RED">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Button layoutX="516.0" layoutY="13.0" mnemonicParsing="false" onAction="#kategoriyasettings" prefHeight="32.0" prefWidth="35.0">
+      <Button layoutX="439.0" layoutY="30.0" mnemonicParsing="false" onAction="#kategoriyasettings" prefHeight="32.0" prefWidth="35.0">
          <graphic>
             <ImageView fx:id="setingimage" fitHeight="23.0" fitWidth="27.0">
                <image>
@@ -31,23 +31,22 @@
             </ImageView>
          </graphic>
       </Button>
-      <Label layoutX="41.0" layoutY="66.0" text="Tarix:" textFill="RED">
+      <Label layoutX="25.0" layoutY="66.0" text="Tapsiriq ne vaxt qoyulub:" textFill="RED">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <DatePicker fx:id="tarixDatePicker" layoutX="95.0" layoutY="67.0" prefHeight="25.0" prefWidth="150.0" />
-      <Label layoutX="309.0" layoutY="66.0" text="Gun:" textFill="RED">
+      <DatePicker fx:id="tarixDatePicker" layoutX="57.0" layoutY="97.0" prefHeight="25.0" prefWidth="150.0" />
+      <Label layoutX="288.0" layoutY="66.0" text="Ne vaxt bitmelidi:" textFill="RED">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="gunTextField" layoutX="355.0" layoutY="67.0" />
       <TableView fx:id="tapsiriqTableView" layoutX="11.0" layoutY="229.0" prefHeight="200.0" prefWidth="605.0">
         <columns>
           <TableColumn fx:id="idTC" prefWidth="35.0" text="Id" />
           <TableColumn fx:id="tapsiriqTC" prefWidth="67.0" text="Tapsiriq" />
-            <TableColumn fx:id="gunTC" prefWidth="133.0" text="Nece gune edilmelidi" />
+            <TableColumn fx:id="gunTC" prefWidth="133.0" text="Ne vaxt hazir olmalidi" />
             <TableColumn fx:id="tarixTC" prefWidth="94.0" text="Tarix" />
             <TableColumn fx:id="necegunqalibTC" prefWidth="95.0" text="Nece gun qalib" />
             <TableColumn fx:id="kateqoriyaTC" prefWidth="82.0" text="Kateqoriya" />
@@ -63,8 +62,14 @@
             </ContextMenu>
          </contextMenu>
       </TableView>
-      <Button layoutX="361.0" layoutY="108.0" mnemonicParsing="false" onAction="#saveButtton" text="Daxil et" />
-      <Button layoutX="430.0" layoutY="108.0" mnemonicParsing="false" onAction="#deleteButton" text="Hamisini sil" />
+      <Button layoutX="507.0" layoutY="33.0" mnemonicParsing="false" onAction="#saveButtton" prefHeight="31.0" prefWidth="102.0" text="Daxil et">
+         <font>
+            <Font size="16.0" />
+         </font></Button>
+      <Button layoutX="509.0" layoutY="91.0" mnemonicParsing="false" onAction="#deleteButton" text="Hamisini sil">
+         <font>
+            <Font size="16.0" />
+         </font></Button>
       <RadioButton fx:id="hellolanlarRadiobutton" layoutX="37.0" layoutY="178.0" mnemonicParsing="false" onAction="#hellolanlarRadiobutton" text="Hell olanlar">
          <font>
             <Font size="14.0" />
@@ -105,5 +110,6 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
+      <DatePicker fx:id="gunDatePicker1" layoutX="289.0" layoutY="97.0" prefHeight="25.0" prefWidth="150.0" />
    </children>
 </AnchorPane>
