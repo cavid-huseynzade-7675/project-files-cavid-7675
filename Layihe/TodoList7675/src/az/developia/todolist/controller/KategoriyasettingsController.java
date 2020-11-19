@@ -50,6 +50,8 @@ DataManager dataManager=DataManager.getDataManager();
   Connection c=dataManager.getConnection();
             Statement s=c.createStatement();
             s.execute("delete from kateqoriyatable  where kateqoriyaname ='"+selectedSector+"' and username='"+getUsername()+"'  ;");
+            s.execute("delete from   tasks where username='" + getUsername() + "'and kateqoriya='"+selectedSector+"' " );
+           
             s.close();
             findKateqoriya();
              Notifications.create().position(Pos.BOTTOM_RIGHT).title("Məlumat").text("Secdiginiz kateqoriya silindi").showConfirm();

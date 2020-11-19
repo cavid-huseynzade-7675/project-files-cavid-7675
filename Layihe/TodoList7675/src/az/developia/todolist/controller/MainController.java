@@ -207,6 +207,7 @@ if(UtilClass.confirmDialog("Eminsiniz")){
        kategoriyasettingsController.setUsername(username);
        s.showAndWait();
        findKategoriya();
+            show("SELECT * FROM  tasks where username='" + getUsername() + "' ");
         }catch(Exception ex){
             ex.printStackTrace();
     }
