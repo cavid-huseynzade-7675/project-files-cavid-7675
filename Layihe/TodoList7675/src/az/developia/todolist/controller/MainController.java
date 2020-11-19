@@ -119,7 +119,7 @@ private ToggleGroup toggle=new  ToggleGroup();
     private ComboBox<String> kategoriyaCombobox1;
  @FXML
     private ImageView setingimage;
-
+long uzunluq;
   
     @FXML
     private ImageView searchimage;
@@ -216,6 +216,7 @@ if(UtilClass.confirmDialog("Eminsiniz")){
     @FXML
     void saveButtton(ActionEvent event) throws SQLException {
         boolean allowsave =true;
+        boolean save =true;
         String xeta="";
         Model m=new Model();
         if (tapsiriqTextField.getText().trim().length()<3) {
@@ -229,12 +230,14 @@ if(UtilClass.confirmDialog("Eminsiniz")){
         }
         if (tarixDatePicker.getValue()==null) {
             allowsave=false;
+            save=false;
           xeta+=" Ne vaxt qeyd etdiyinizi secin\n";
                             
         }
          if (gunDatePicker1.getValue()==null) {
             allowsave=false;
-          xeta+="ne vaxt bitceyini secin";
+            save=false;
+          xeta+="ne vaxt bitceyini secin\n";
                             
         }
         if (kategoriyaCombobox.getSelectionModel().getSelectedItem()==null) {
@@ -242,9 +245,11 @@ if(UtilClass.confirmDialog("Eminsiniz")){
           xeta+="Kategoriyani secin";
                             
     }
-       LocalDate tarixLocalDate=tarixDatePicker.getValue();
-       LocalDate gunlocaldate=gunDatePicker1.getValue();
-       long uzunluq=ChronoUnit.DAYS.between(tarixLocalDate,gunlocaldate );
+     
+        if (save) {
+          long uzunluq=ChronoUnit.DAYS.between(tarixDatePicker.getValue(),gunDatePicker1.getValue() );
+         
+        }
                if (uzunluq<0) {
              allowsave=false;
           xeta+="Tarixleri DogruSecin\n bitireceyiniz vaxt tapsirigi qoydugunuz\nvaxtdan evvel ola bilmez";
