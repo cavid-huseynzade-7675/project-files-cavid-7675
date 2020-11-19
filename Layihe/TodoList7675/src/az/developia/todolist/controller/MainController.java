@@ -141,6 +141,7 @@ private ToggleGroup toggle=new  ToggleGroup();
        show("SELECT * FROM  tasks where username='" + getUsername() + "' ");
        alerts.setText("Secdiginiz tapsirigin melumatlari deyisdirildi");
        findKategoriya();
+       show("SELECT * FROM  tasks where username='" + getUsername() + "' ");
         }catch(Exception ex){
             ex.printStackTrace();
     }

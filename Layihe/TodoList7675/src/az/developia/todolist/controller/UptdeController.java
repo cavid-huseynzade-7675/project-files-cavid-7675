@@ -115,6 +115,29 @@ findKategoriya();    }
 
     @FXML
     void uptadeButtton(ActionEvent event) throws SQLException {
+        Boolean allow=true;
+        String xeta="";        
+        if (tapsiriqTextFieldu.getText().trim().length()<3) {
+            allow=false;
+            xeta+="Tapsirigi bos qoymaq olmaz\n";
+        }
+        
+        if (tarixDatePickeru.getValue()==null) {
+            allow=false;
+            xeta+="Tapsiriginin ne vaxt qoyuldugunu qeyd etmek lazimdir\n";
+        }  
+          if (gunDatePickeru1.getValue()==null) {
+            allow=false;
+            xeta+="Tapsirigin biteceyi vaxti bos qoymaq olmaz\n";
+        }
+            if (kategoriyaCombobox.getSelectionModel().getSelectedItem()==null) {
+            allow=false;
+            xeta+="Kateqoriyani bos qoymaq olmaz";
+        }
+        
+        if (allow) {
+            
+        
    if(UtilClass.confirmDialog("Əminsiniz?")){
             Connection c=dataManager.getConnection();
 Statement s=c.createStatement();
@@ -122,7 +145,11 @@ Statement s=c.createStatement();
 s.close();
  Notifications.create().position(Pos.BOTTOM_RIGHT).title("Məlumat").text("Secdiginiz tapsirigin melumatlari deyisdirildi").showConfirm();
 
-    }}
+    }}else{
+         Notifications.create().position(Pos.BOTTOM_RIGHT).title("Məlumat").text("Melumatlari tam yazin\n"+xeta).showConfirm();
+   
+        }
+            }
      private void findKategoriya() {
            kategoriyaCombobox.getItems().clear();
          Connection c = dataManager.getConnection();
