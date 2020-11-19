@@ -114,6 +114,9 @@ private ToggleGroup toggle=new  ToggleGroup();
 
     @FXML
     private ComboBox<String> kategoriyaCombobox;
+    
+    @FXML
+    private ComboBox<String> kategoriyaCombobox1;
  @FXML
     private ImageView setingimage;
 
@@ -137,11 +140,15 @@ private ToggleGroup toggle=new  ToggleGroup();
        s.showAndWait();
        show("SELECT * FROM  tasks where username='" + getUsername() + "' ");
        alerts.setText("Secdiginiz tapsirigin melumatlari deyisdirildi");
+       findKategoriya();
         }catch(Exception ex){
             ex.printStackTrace();
     }
     }
-
+  @FXML
+    void filterkategoriya(ActionEvent event) throws SQLException {
+      show("SELECT * FROM  tasks where username='" + getUsername() + "' and kateqoriya='"+kategoriyaCombobox1.getSelectionModel().getSelectedItem()+"'");
+    }
     @FXML
     void deleteone(ActionEvent event) throws SQLException {
 if(UtilClass.confirmDialog("Eminsiniz")){
@@ -339,6 +346,7 @@ String hellolunmuyub="Hell olunmayib";
 
   private void findKategoriya() {
            kategoriyaCombobox.getItems().clear();
+           kategoriyaCombobox1.getItems().clear();
          Connection c = dataManager.getConnection();
         ArrayList<String> alist = new ArrayList<String>();
         try {
@@ -349,6 +357,7 @@ String hellolunmuyub="Hell olunmayib";
                 alist.add(rs.getString("kateqoriyaname"));
             }
             kategoriyaCombobox.getItems().addAll(alist);
+             kategoriyaCombobox1.getItems().addAll(alist);
 
         } catch (Exception ex) {
             ex.printStackTrace();

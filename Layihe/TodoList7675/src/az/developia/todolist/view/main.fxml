@@ -85,18 +85,18 @@
             <Font size="14.0" />
          </font>
       </RadioButton>
-      <Label layoutX="198.0" layoutY="187.0" text="Axtaris:" textFill="RED">
+      <Label layoutX="429.0" layoutY="162.0" text="Axtaris:" textFill="RED">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="searchTExtField" layoutX="280.0" layoutY="188.0" onKeyReleased="#searchenter" prefHeight="25.0" prefWidth="150.0" />
+      <TextField fx:id="searchTExtField" layoutX="386.0" layoutY="194.0" onKeyReleased="#searchenter" prefHeight="25.0" prefWidth="150.0" />
       <Label fx:id="setirsayi" layoutX="30.0" layoutY="429.0" text="Setir sayi:" textFill="RED">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Button layoutX="439.0" layoutY="183.0" mnemonicParsing="false" onAction="#search" prefHeight="25.0" prefWidth="23.0">
+      <Button layoutX="558.0" layoutY="189.0" mnemonicParsing="false" onAction="#search" prefHeight="25.0" prefWidth="23.0">
          <graphic>
             <ImageView fx:id="searchimage" fitHeight="33.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -110,6 +110,12 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <DatePicker fx:id="gunDatePicker1" layoutX="289.0" layoutY="97.0" prefHeight="25.0" prefWidth="150.0" />
+      <DatePicker fx:id="gunDatePicker1" layoutX="279.0" layoutY="97.0" prefHeight="25.0" prefWidth="150.0" />
+      <ComboBox fx:id="kategoriyaCombobox1" layoutX="199.0" layoutY="194.0" onAction="#filterkategoriya" prefWidth="150.0" />
+      <Label layoutX="169.0" layoutY="162.0" text=" Filter Kateqoriya gore:" textFill="RED">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
