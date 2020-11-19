@@ -47,9 +47,9 @@
           <TableColumn fx:id="idTC" prefWidth="35.0" text="Id" />
           <TableColumn fx:id="tapsiriqTC" prefWidth="67.0" text="Tapsiriq" />
             <TableColumn fx:id="gunTC" prefWidth="133.0" text="Ne vaxt hazir olmalidi" />
-            <TableColumn fx:id="tarixTC" prefWidth="94.0" text="Tarix" />
-            <TableColumn fx:id="necegunqalibTC" prefWidth="95.0" text="Nece gun qalib" />
-            <TableColumn fx:id="kateqoriyaTC" prefWidth="82.0" text="Kateqoriya" />
+            <TableColumn fx:id="tarixTC" prefWidth="101.0" text="Ne vaxt qoyulub" />
+            <TableColumn fx:id="necegunqalibTC" prefWidth="99.0" text="Nece gun qalib" />
+            <TableColumn fx:id="kateqoriyaTC" prefWidth="71.0" text="Kateqoriya" />
             <TableColumn fx:id="statusTC" prefWidth="97.0" text="Status" />
         </columns>
          <contextMenu>
@@ -113,6 +113,11 @@
       <DatePicker fx:id="gunDatePicker1" layoutX="279.0" layoutY="97.0" prefHeight="25.0" prefWidth="150.0" />
       <ComboBox fx:id="kategoriyaCombobox1" layoutX="199.0" layoutY="194.0" onAction="#filterkategoriya" prefWidth="150.0" />
       <Label layoutX="169.0" layoutY="162.0" text=" Filter Kateqoriya gore:" textFill="RED">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="15.0" layoutY="128.0" text=" Filter Statusa gore:" textFill="RED">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
