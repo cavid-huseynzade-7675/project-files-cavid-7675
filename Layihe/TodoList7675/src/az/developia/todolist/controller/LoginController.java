@@ -48,8 +48,8 @@ public class LoginController implements Initializable {
                 Stage s=new Stage();
   
                 s.setTitle("Tasks");
-                 FileInputStream input=new FileInputStream("C:\\Users\\Cavid\\Documents\\Github\\project-files-cavid-7675\\Layihe\\TodoList7675\\image\\tasks.png");
-          Image image=new Image(input);
+                // FileInputStream input=new FileInputStream("C:\\Users\\Cavid\\Documents\\Github\\project-files-cavid-7675\\Layihe\\TodoList7675\\image\\tasks.png");
+          Image image=new Image("images/login.png");
          
         Image[] elements = new Image[1];
         elements[0]=image;

@@ -18,8 +18,8 @@ public class MainClass extends Application {
     @Override
     public void start(Stage s) throws Exception {
           s.setTitle("Login");
-          FileInputStream input=new FileInputStream("C:\\Users\\Cavid\\Documents\\Github\\project-files-cavid-7675\\Layihe\\TodoList7675\\image\\login.png");
-          Image image=new Image(input);
+          //FileInputStream input=new FileInputStream("C:\\Users\\Cavid\\Documents\\Github\\project-files-cavid-7675\\Layihe\\TodoList7675\\image\\login.png");
+          Image image=new Image("images/login.png");
          
         Image[] elements = new Image[1];
         elements[0]=image;

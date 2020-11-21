@@ -194,8 +194,8 @@ if(UtilClass.confirmDialog("Eminsiniz")){
  Stage s=new Stage();
   
                 s.setTitle("Tasks");
-                 FileInputStream input=new FileInputStream("C:\\Users\\Cavid\\Documents\\Github\\project-files-cavid-7675\\Layihe\\TodoList7675\\image\\setting.png");
-          Image image=new Image(input);
+             //    FileInputStream input=new FileInputStream("C:\\Users\\Cavid\\Documents\\Github\\project-files-cavid-7675\\Layihe\\TodoList7675\\image\\setting.png");
+          Image image=new Image("images/login.png");
          
         Image[] elements = new Image[1];
         elements[0]=image;
@@ -318,10 +318,10 @@ String hellolunmuyub="Hell olunmayib";
         hellolanlarRadiobutton.setToggleGroup(toggle);
         hellolmayanlarRadiobutton.setToggleGroup(toggle);
          FileInputStream input2 = new FileInputStream("C:\\Users\\Cavid\\Documents\\Github\\project-files-cavid-7675\\Layihe\\TodoList7675\\image\\search s.png");
-          Image image2 = new Image(input2);
+          Image image2 = new Image("images/login.png");
         searchimage.setImage(image2);
         FileInputStream input = new FileInputStream("C:\\Users\\Cavid\\Documents\\Github\\project-files-cavid-7675\\Layihe\\TodoList7675\\image\\setting.png");
-          Image image = new Image(input);
+          Image image = new Image("images/login.png");
         setingimage.setImage(image);
        
         }catch(Exception ex){
