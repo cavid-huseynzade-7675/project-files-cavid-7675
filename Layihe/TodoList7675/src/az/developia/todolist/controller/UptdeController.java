@@ -61,8 +61,8 @@ findKategoriya();    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try{
-         FileInputStream input = new FileInputStream("C:\\Users\\Cavid\\Documents\\Github\\project-files-cavid-7675\\Layihe\\TodoList7675\\image\\setting.png");
-          Image image = new Image("images/login.png");
+         //FileInputStream input = new FileInputStream("C:\\Users\\Cavid\\Documents\\Github\\project-files-cavid-7675\\Layihe\\TodoList7675\\image\\setting.png");
+          Image image = new Image("images/setting.png");
         setingimageu.setImage(image);
         }catch(Exception ex){
             ex.printStackTrace();
@@ -92,9 +92,9 @@ findKategoriya();    }
         try{
  Stage s=new Stage();
   
-                s.setTitle("Tasks");
+                s.setTitle("Setting");
                 // FileInputStream input=new FileInputStream("C:\\Users\\Cavid\\Documents\\Github\\project-files-cavid-7675\\Layihe\\TodoList7675\\image\\setting.png");
-          Image image=new Image("images/login.png");
+          Image image=new Image("images/setting.png");
          
         Image[] elements = new Image[1];
         elements[0]=image;
