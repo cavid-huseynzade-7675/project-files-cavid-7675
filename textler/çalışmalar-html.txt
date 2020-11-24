@@ -1,0 +1,83 @@
+
+
+2.Web sayt nədir?
+
+Məntiqi olmayan web page lərdir. Məlumat xarakteri daşıyır. Məsələn, wikipedia
+Domen nədir?
+ Hostingə verilmiş addır 
+
+3.İP nədir?
+Komputerin unikal adıdır. Dinamik ip- hər dəfə dəyişəndir. Static ip – bu isə server adlanır. 
+4Hosting nədir?
+ Resurslara malik serverdir.
+
+5.Web sayt qurmaq üçün əsas istifadə olunan elementlər hansılardır?
+<!DOCTYPE html> html ve body
+<html>
+<body>
+ </body>
+</html>
+6.Başlıq yaratmaq üçün istifadə olunan elementlər hansılardır?
+<h1>Heading 1</h1>
+      <h2>Heading 2</h2>
+      <h3>Heading 3</h3>
+      <h4>Heading 4</h4>
+      <h5>Heading 5</h5>
+      <h6>Heading 6</h6> 
+6 novu var h1 en boyuyudur
+7.Üfiqi xətt yaratmaq üçün istifadə olunan element hansıdır?
+<hr>
+8.HTML-də kommentlər necə yaradılır?
+<!-- bura ne istesez yaza bilersiz -->
+9.head - elementinin daxilində nələr yazmaq olar?
+basliq ,sened haqqind MELUMAT KIMI SEYLER ELEYE BILERSIZ
+10.title - elementi nə üçün istifadə olunur?
+Senedin basligini teyin edir
+    11.  link - elementi nə üçün istifadə olunur?
+Sened ve lazimi resurslar ile elaqeni temin edir
+
+ 12script - elementi nə üçün istifadə olunur?
+Scriptleri mueyyen etmek ucun
+13.meta - elementi nə üçün istifadə olunur?
+sened haqqind MELUMAT vermek ucun
+14.style - elementi nə üçün istifadə olunur?
+elementin dizaynini teyin edir
+15.HTML-də hansı formatlama elementləri var?
+<b> 
+<strong> 
+<i> -
+<em> -
+<mark> 
+<small> -
+<del> - 
+<ins> -
+<sub> - 
+<sup> - 
+
+
+16.<b> elementi nə üçün istifadə olunur?
+<b> -Secilmis metni qalin edir
+17.<strong> elementi nə üçün istifadə olunur?
+<strong> - Secilmis metni hem metni qalin edir hemde menaca daha ustun olur
+18.<i> elementi nə üçün istifadə olunur?
+<i> -  Secilmis metni italic edir
+19.<em> elementi nə üçün istifadə olunur?
+<em> -  Secilmis metni menaca quvvetli edir
+.20<u> elementi nə üçün istifadə olunur?
+Secilmis metn altdan xett olaraq gorunecek 
+21.<del> elementi nə üçün istifadə olunur?
+<del> - Secilmis metn silinmis gorsenecek
+22.<sub> elementi nə üçün istifadə olunur?
+<sub> - Secilmis metn indexine yazilir
+23.<sup> elementi nə üçün istifadə olunur?
+<sup> - Secilmis metn quvvetineyazilir
+24.<small> elementi nə üçün istifadə olunur?
+25.<ins> elementi nə üçün istifadə olunur?
+<ins> -Secilmis metn elave edilimis kimi gorsenecek
+26.<center> elementi nə üçün istifadə olunur?
+secilmis  metni merkezde gosterir
+Yuxarıdakı suallara hazırlaşın
+
+Ev çalışması:
+şəkildə olanı HTML istifadə edərək qurun.
+
