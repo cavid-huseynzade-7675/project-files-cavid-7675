@@ -247,7 +247,7 @@ if(UtilClass.confirmDialog("Eminsiniz")){
     }
      
         if (save) {
-          long uzunluq=ChronoUnit.DAYS.between(tarixDatePicker.getValue(),gunDatePicker1.getValue() );
+          uzunluq=ChronoUnit.DAYS.between(tarixDatePicker.getValue(),gunDatePicker1.getValue() );
          
         }
                if (uzunluq<0) {
