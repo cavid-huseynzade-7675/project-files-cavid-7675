@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Developia Engineering Academy</title>
+    <style>
+        #main{
+          border: 2px solid black;  
+            border-collapse: collapse;
+            overflow: hidden;
+           
+        }
+        #menu{
+            overflow: hidden;
+            border: 2px solid black;
+            border-collapse: collapse;
+        }
+        #menu>ul>li{
+            float: left;
+            margin: 2px;
+
+
+        }
+        #menu>ul>li>a{
+            text-decoration: none;
+            display: block;
+            padding: 5px 10px;
+            background-color: cornflowerblue;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        #menu>ul>li>a:hover{
+           background-color: blue;
+        }
+        #menu>ul{
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        #nav{
+            width: 100%;
+            border: 2px solid black;
+            height: 400px;
+            margin-top: 2px;
+            float: left;
+            box-sizing: border-box;
+     
+    </style>
+
+
+</head>
+<body>
+ <div id="main">
+    <div id="menu">
+        <ul> 
+            <li><a target="my-frame" href="#">Əsas səhifə</a></li>
+        <li><a target="my-frame" href="kurslarimiz.html">Kurslarımız</a></li>
+        <li><a target="my-frame" href="elaqe.html">Əlaqə</a></li>
+            <li>    <a target="my-frame" href="haqqimizda.html"> Haqqımızda</a></li>
+            <li><a target="my-frame" href="en-cox-alinan-kurslarimiz.html">Ən çox alınan kurslarımız</a></li>
+        </ul>
+     </div>
+    <iframe id="nav" name="my-frame" style="height: 575px;"> </iframe>
+    </div>
+</body>
+</html> 
