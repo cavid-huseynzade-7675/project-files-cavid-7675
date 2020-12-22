@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+   <head>
+<style>
+    #student-form{
+     width:600 px;margin: auto;border: 2 px solid black;padding: 10px;    
+        
+    }
+    fieldset{padding: 10px;}
+    fieldset>*{margin: 5px}
+    .form-control{box-sizing: border-box;width: 100%;}
+    #best-lang-radios{list-style-type: none;margin: 0px;padding: 0px;}
+     #cins{list-style-type: none;margin: 0px;padding: 0px;}
+    #prog-langs-checkbox{list-style-type: none;margin: 0px;padding: 0px;}
+    #header-text{text-align: center;}
+    #register-button{color: white;background-color: lightgreen;padding: 5px;font-weight:bold;}
+       </style>
+    </head>
+    <body>
+        <h1 id="header-text">Telebe Qeydiyyati</h1>
+        <form id="student-form">
+            <fieldset>
+            <legend>Sexsi Melumatlar:</legend>
+            <label for="student-name">Ad:</label>
+            <input class="form-control" id="student-name" placeholder="bura adinizi yazin">
+         <label for="student-surname">SoyAd:</label>
+            <input class="form-control" id="student-surname" placeholder="bura soyadinizi yazin">
+              <label for="student-birthday">Tevellud:</label>
+            <input type="date" class="form-control" id="student-birthday" >  
+                  <h4>Cinsi</h4>
+                <ul id="cins">
+                    <li><input type="radio" name="cins" id="kisi-cinsi">
+                        <label for="kisi-cinsi">Kisi</label>
+                    
+                    </li>
+                      <li><input type="radio" name="cins" id="qadin-cinsi">
+                           <label for="qadin-cinsi">Qadin</label>
+                    </li>
+                    </ul>
+                       
+                  <label for="student-phone">Telefon:</label>
+            <input type="tel" class="form-control" id="student-phone" >  
+                    <label for="student-adress">Adres:</label>
+                <textarea  class="form-control" id="student-adress" > </textarea>
+                  <label for="student-email">Email</label>
+            <input type="email" class="form-control" id="student-email" >  
+                 <label for="student-nationality">Milliyet:</label>
+                <select class="form-control" id="student-nationality"> 
+                <option>Azerbaycan</option>
+                     <option>Ingilis</option>
+                     <option>Rus</option>
+                </select>
+                     <label for="student-photo">Imtahan sekli:</label>
+            <input type="file" class="form-control" id="student-photo" >  
+        </fieldset>
+            <fieldset>
+            <legend> Tehsil</legend>
+                <h3>En yaxsi bildiyi dil</h3>
+                <ul id="best-lang-radios">
+                    <li><input type="radio" name="best-lang" id="eng-language">
+                        <label for="eng-language">Ingilis</label>
+                    
+                    
+                    </li>
+                      <li><input type="radio" name="best-lang" id="az-language">
+                        <label for="az-language">Azerbaycan</label>
+                    
+                    
+                    </li>
+                      <li><input type="radio" name="best-lang" id="rus-language">
+                        <label for="rus-language">Ru:</label>
+                    
+                    
+                    </li>
+                
+                </ul>
+                <h3>Bildiyi programlasdirma dilleri</h3>
+                 <ul id="prog-langs-checkbox">
+                    <li><input type="checkbox" id="java-lang">
+                        <label for="java-lang">Java</label>
+                    
+                    
+                    </li>
+                      <li><input type="checkbox" id="php-lang">
+                        <label for="php-language">PHP</label>
+                    
+                    
+                    </li>
+                      <li><input type="checkbox"  id="Python-lang">
+                        <label for="Python-lang">Python</label>
+                    
+                    
+                    </li>
+                
+                </ul>
+                  <h3 for="student-univer">Universtet</h3>
+                <select class="form-control" id="student-univer"> 
+                <option>Universtet 1</option>
+                     <option>Universtet 2</option>
+                     <option>Universtet3</option>
+                </select>
+            </fieldset>
+            <button id="register-button" type="submit"> Qeydiyyat et </button>
+             <button id="reset-button" type="reset"> Melumatlari sifirla </button>
+        </form>
+    </body>
+</html>
