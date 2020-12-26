@@ -34,7 +34,7 @@
             <fieldset>
             <legend>Kitab Haqqinda Melumatlar:</legend>
             <label for="book-name">Ktabin Adi:</label>
-            <input class="form-control" id="book-name" >
+            <input list="booknames" class="form-control" id="book-name" >
                 <label for="book-muellifi">Ktabin muellifi:</label>
             <input class="form-control" id="book-muellifi" >
          <label for="book-qiymeti">Kitabin Qiymeti:</label>
@@ -45,6 +45,13 @@
                      <label for="book-photo">Kitabin sekli:</label>
             <input type="file" class="form-control" id="book-photo" >  
         </fieldset>
+              <datalist id="booknames">
+    <option value="sherlock">
+    <option value="dedeqorqud">
+    <option value="harry potter">
+    <option value="sdsd">
+    <option value="sdfs">
+                  </datalist>
             
             <button id="register-button" type="submit"> Qeydiyyat et </button>
              <button id="reset-button" type="reset"> Melumatlari sifirla </button>

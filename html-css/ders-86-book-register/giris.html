@@ -34,11 +34,17 @@
             <fieldset>
             <legend> Melumatlar:</legend>
             <label for="book-name">Adiniz:</label>
-            <input class="form-control" id="book-name" >
+            <input list="names" class="form-control" id="book-name" >
                
          <label for="book-sehife">Sifreniz:</label>
             <input type="password"   class="form-control" id="book-sehife" >
-                   
+          <datalist id="names">
+    <option value="Cavid">
+    <option value="Ismayil">
+    <option value="seid">
+    <option value="alii">
+    <option value="john">
+  </datalist>         
         </fieldset>
             
             <button id="register-button" type="submit"> Giris</button>

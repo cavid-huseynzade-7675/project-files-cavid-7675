@@ -34,15 +34,24 @@
             <fieldset>
             <legend> Melumatlar:</legend>
             <label for="book-name">Adiniz:</label>
-            <input class="form-control" id="book-name" >
+            <input list="names"  class="form-control" id="book-name" >
                
          <label for="book-sehife">Sifreniz:</label>
             <input type="password"   class="form-control" id="book-sehife" >
+                <label for="book-adr">Adres:</label>
+            <input   class="form-control" id="book-adr" >
                  <label for="book-kart">Key kodu:</label>
             <input type="password"   class="form-control" id="book-kart" >  
+                  <datalist id="names">
+    <option value="Cavid">
+    <option value="Ismayil">
+    <option value="seid">
+    <option value="alii">
+    <option value="john">
+                      </datalist>
         </fieldset>
             
-            <button id="register-button" type="submit"> Giris</button>
+            <button id="register-button" type="submit"> Satin Al</button>
              <button id="reset-button" type="reset"> Melumatlari sifirla </button>
         </form>
     </body>
