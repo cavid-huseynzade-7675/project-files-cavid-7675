@@ -23,7 +23,7 @@
     .form-control{box-sizing: border-box;width: 45%;margin-top: 15px}
      #header-text{text-align: center;}
     #register-button{color: white;background-color: lightgreen;padding: 5px;font-weight:bold;}
-    body{background-color: antiquewhite}
+    body{background-color:burlywood}
     #maindiv{}
     #divbook{border:1px solid black; width:40%;height:360px;max-height:360px;float: left;margin:10px;  }
     img{width:100%;height:100%; }
@@ -57,7 +57,7 @@
                    <br>
                      <label for="book-photo">Kitabin sekli:</label>
                 
-            <input type="file" onchange="loadFile(event)" class="form-control" id="book-photo" > 
+            <input type="file" onchange="loadFile()" class="form-control" id="book-photo" > 
                 <br>
                  <label for="book-tarix">Qeydiyyat Tarixi:</label>
                 
@@ -80,18 +80,18 @@
             
             <button id="register-button" type="submit"> Qeydiyyat et </button>
              <button id="reset-button" onclick="deleteimg" type="reset"> Melumatlari sifirla </button>
+   
         </form>
         </div>
-    <script>
-  var loadFie = function(event) {
+            <script>
+  var loadFile = function() {
     var output = document.getElementById('output');
     output.src = URL.createObjectURL(event.target.files[0]);
     output.onload = function() {
       URL.revokeObjectURL(output.src) // free memory
     }
   };
-       
-        
 </script>
     </body>
+   
 </html>
