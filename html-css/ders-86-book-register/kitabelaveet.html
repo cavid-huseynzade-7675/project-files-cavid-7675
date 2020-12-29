@@ -18,7 +18,7 @@
      width:50%;margin: auto;border: 2 px solid black;padding: 10px;    
         border:3px solid black; ; 
     }
-    fieldset{padding: 10px;height:350px; }
+    fieldset{padding: 10px;;}
     fieldset>*{margin: 5px}
     .form-control{box-sizing: border-box;width: 45%;margin-top: 15px}
      #header-text{text-align: center;}
@@ -69,6 +69,14 @@
                      <option>Rus</option>
                      <option>Azerbaycan</option>
                 </select>
+                 <br>
+                 <label for="book-color">Rengi(anlamadim niye lazimdir)</label>
+                
+            <input type="color" class="form-control" id="book-color" style="width:100px " >
+                        
+                          
+                   <br>
+               
         </fieldset>
               <datalist id="booknames">
     <option value="sherlock">
@@ -91,6 +99,7 @@
       URL.revokeObjectURL(output.src) // free memory
     }
   };
+           
 </script>
     </body>
    
