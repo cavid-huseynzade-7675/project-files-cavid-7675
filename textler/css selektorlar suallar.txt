@@ -1,0 +1,98 @@
+1.CSS selector-lar hansı qruplara ayrılır?
+	Simple selectors,Combinator selectors,Pseudo-class selectors,Pseudo-elements selectors,Attribute selectors
+2.Sadə selector-lar hansılardır?
+	id,class,element adi
+3.CSS combinator selector-lar hansılardır?
+	descendant selector (space)
+	child selector (>)
+	adjacent sibling selector (+)
+	general sibling selector (~)
+4.descendant selector nə üçündür və necə istifadə olunur?
+	meselen div p{}
+	icindeki p elementine daxildir harda olursa olsun
+
+5.child selector nə üçündür və necə istifadə olunur?
+	meselen div>p{}
+	icindeki p elementine daxildir sade oz daxilinde olsun
+6.adjacent sibling selector nə üçündür və necə istifadə olunur?
+	meselen div + p{}
+	burda demekdir div den sonra gelen sadece birinci p ye aiddi
+7.general sibling selector nə üçündür və necə istifadə olunur?
+	meselen div ~ p{}
+	burda demekdir div den sonra gelen  p lere  aiddi
+8.Pseudo-class selector-lar hansılardır?
+9.:active selector nə üçündür və necə istifadə olunur?
+	Aktiv linki seçir 
+10.:checked selector nə üçündür və necə istifadə olunur?
+	Hər bir yoxlanılmış elementini seçir(input checbox)
+11.disabled selector nə üçündür və necə istifadə olunur?
+	secilmemis inputlari secir
+12.:focus selector nə üçündür və necə istifadə olunur?
+	ustune basanda css kodu isleyir
+13.:empty selector nə üçündür və necə istifadə olunur?
+	icinde basqa element olmayan elementleri secir
+14.:enabled selector nə üçündür və necə istifadə olunur?
+	aktiv edilmis elementlere aiddir;
+15.:first-child selector nə üçündür və necə istifadə olunur?
+	sadece icindeki birinci elementi secir
+16.:first-of-type selector nə üçündür və necə istifadə olunur?
+	sadece secilmis elementden birinci olana isleyir
+17.:hover selector nə üçündür və necə istifadə olunur?
+	mouse ustune gelende css ise dusur
+18.:in-range selector nə üçündür və necə istifadə olunur?
+	mueyyen olan araligdaki elementlere aiddir
+19.:invalid selector nə üçündür və necə istifadə olunur?
+	eger inputun ici bosdursa css ise dusur
+20.:lang(language) selector nə üçündür və necə istifadə olunur?
+	her bir elementi lang artibutu secilmis lang artibutu beraberdirse css kodu ise dusur
+21.:last-child selector nə üçündür və necə istifadə olunur?
+	icindeki sonunucu elemente secir
+22.:last-of-type selector nə üçündür və necə istifadə olunur?
+	sadece secilmis elementden sonuncu olana isleyir
+23.:link selector nə üçündür və necə istifadə olunur?
+	baxilmammis linkleri secir
+24.:not(selector) selector nə üçündür və necə istifadə olunur?
+	secilen elementden basqa butun elementlere aiddir
+25.:nth-child(n) selector nə üçündür və necə istifadə olunur?
+	n yerinde hansi reqem yazilibsa o sirada durur
+26.:nth-last-child(n) selector nə üçündür və necə istifadə olunur?
+	n yerinde hansi reqem yazilibsa o tersden sirada durur
+27.:nth-last-of-type(n) selector nə üçündür və necə istifadə olunur?
+	n yerinde hansi reqem yazilibsa o sadece secilmis  tersden sirada durur
+28.:nth-of-type(n) selector nə üçündür və necə istifadə olunur?
+	n yerinde hansi reqem yazilibsa o sadece secilmis  sirada durur
+29.:only-of-type selector nə üçündür və necə istifadə olunur?
+	sadece secilmis elementden yazilan yerdekine olana isleyir
+30.:only-child selector nə üçündür və necə istifadə olunur?
+31.:optional selector nə üçündür və necə istifadə olunur?
+	required atributu olmayan elementleri secir
+32.:out-of-range selector nə üçündür və necə istifadə olunur?
+	mueyyen araligda olmayan elementlere aiddir
+33.:read-only selector nə üçündür və necə istifadə olunur?
+	Yalnızca oxunan atributu ilə olan elementlərini seçir
+34.:read-write selector nə üçündür və necə istifadə olunur?
+	Yalnızca oxunan atributu ilə olanelementlərini seçmir
+35.:required selector nə üçündür və necə istifadə olunur?
+	required atributu olan elementleri secir
+36.:root selector nə üçündür və necə istifadə olunur?
+	esas elementi secir
+37.:target selector nə üçündür və necə istifadə olunur?
+	secilmis elemente url elav olunur meselen target:iframe
+38.:valid selector nə üçündür və necə istifadə olunur?
+	inputda yazi dogru yazilanlara aiddir
+39.:visited selector nə üçündür və necə istifadə olunur?
+	girilmis linklere aiddir
+40.Pseudo-element selector-lar hansılardır?
+	::after,::before,::first-letter,::first-line,::selection 
+41.::after selector nə üçündür və necə istifadə olunur?
+	elementden sonra yazmaq ucundur
+42::before selector nə üçündür və necə istifadə olunur?
+	elementin evveline yazmaq ucundur
+43::first-letter selector nə üçündür və necə istifadə olunur?
+	birinci sozu aid olur
+44::first-line selector nə üçündür və necə istifadə olunur?
+	ilk setre ait olur
+45::selection selector nə üçündür və necə istifadə olunur?
+	secilende ait olur
+46Attribute selector-lar hansılardır?
+	target,a,title,lang
