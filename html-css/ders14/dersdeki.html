@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>   </title>
+<style>
+  .form-control[type]{color:red;}
+</style>
+</head>
+<body  >
+
+
+<input class="form-control" type="search"   value="Adil" >
+<input class="form-control" type="search"   value="Adil" >
+<input class="form-control" type="text"  value="Adil" >
+
+
+
+
+
+
+
+
+
+<input id="name" value=""   size="30" maxlength="20" autocomplete="off" >
+<input id="surname" value=""   size="30" maxlength="20" autocomplete="off" autofocus>
+<button onclick="document.getElementById('result').innerHTML=document.getElementById('name').value"> Duyme </button>
+<h1 id="result"> </h1>
+
+
+
+<form  id="form1">
+  <label for="fname">First name:</label>
+  <input type="text" id="fname" name="fname"><br><br>
+  
+  <label for="age">Age:</label>
+  <input placeholder="yasini yaz" step="0.5" min="-2" max="100" type="number" id="age" name="age"><br><br>
+  
+  
+  <input type="submit" value="server1-e gonder" formaction="server1">
+  <input type="submit" value="server2-e gonder" formaction="server2">
+</form>
+
+<p>The "Last name" field below is outside the form element, 
+but still part of the form.</p>
+
+<label for="lname">Last name:</label>
+<input type="text" id="lname" name="lname" form="form1">
+
+<hr>
+<pre> java dilini oyren         
+ve proqram yaz 
+ve sat 
+ve qazan ve yaz </pre>
+
+</body>
+</html>
