@@ -25,7 +25,7 @@
     #register-button{color: white;background-color: lightgreen;padding: 5px;font-weight:bold;}
     body{background-color:darkgoldenrod}
     #maindiv{}
-    #divbook{border:1px solid black; width:40%;height:200px;max-height:360px;float: left;margin:10px;  }
+    #divbook{border:1px solid black; width:40%;height:320px;max-height:360px;float: left;margin:10px;  }
     img{width:100%;height:100%; }
     </style>
     
@@ -39,7 +39,10 @@
             <div id="divbook"><img id="output"/></div>
             <fieldset>
             <legend>Paltar Haqqinda Melumatlar:</legend>
-           
+            <label for="book-a">Paltarin Adi:</label>
+                
+            <input class="form-control" id="book-a" >
+               <br>
          <label for="book-qiymeti">Paltarin Qiymeti:</label>
                 
             <input class="form-control" id="book-qiymeti" >
@@ -48,7 +51,28 @@
                 
             <input  class="form-control" id="book-sehife" >
                    <br>
-                     <label for="book-photo">paltarin sekli:</label>
+                  <label for="book-cinsi">Paltarin novu:</label>
+                
+           <ul id="book cinsi">
+                    <li><input type="radio" name="best-lang" id="eng-language">
+                        <label for="eng-language">Usaq</label>
+                    
+                    
+                    </li>
+                      <li><input type="radio" name="best-lang" id="az-language">
+                        <label for="az-language">Kisi</label>
+                    
+                    
+                    </li>
+                      <li><input type="radio" name="best-lang" id="rus-language">
+                        <label for="rus-language">Qadin</label>
+                    
+                    
+                    </li>
+                
+                </ul>
+                   
+                     <label for="book-photo">Paltarin sekli:</label>
                 
             <input type="file" onchange="loadFile()" class="form-control" id="book-photo" > 
                 <br>
