@@ -1,7 +1,7 @@
 fieldset{border: 0px solid black;width:28%; margin: auto ;box-sizing: border-box}
 legend{font-size:25px; }
-fieldset>legend{color: green; box-sizing: border-box}
-h2{text-align: center;}
+fieldset>legend{color: green; box-sizing: border-box;text-align: center}
+h2{text-align: center}
 .form-control{float: right}
 input:valid{border-left:10px solid yellowgreen} 
 input:invalid{border-left:10px solid red; }
