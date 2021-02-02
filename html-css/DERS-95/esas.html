@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Students-Table</title>
+    <style>
+       table{
+            width: 100%;
+             border-collapse: collapse;
+
+        }
+        tr{
+        background-color: black
+        }
+        td,th{
+       color: white;
+         font-size: 120%; 
+               width: 20%;
+     
+        }
+        caption{
+            background-color:aqua;
+            font-size: 140%;
+            
+        }
+        table,th,td{ 
+            border: 2px solid red;
+            padding: 5px;
+            text-align: center;
+        }
+        th{ 
+
+            vertical-align: middle;
+           
+
+
+        }
+        .del-btn{background-color: red;color: white;width: 80%;font-size: 120%;}
+    </style>
+    
+    </head>    
+
+      <body>
+          Ad :<input id="student-name"/>
+           Muellif :<input id="student-surname"/>
+            Qiymet :<input id="s-qiymet"/>
+          <button onclick="saveStudent()">Yadda Saxla</button>
+          <table>
+              <caption>Kitab Melumatlari</caption>
+          <thead>
+              <tr>
+              <th>ID</th>
+                   <th>Ad</th>
+                   <th>Muellif</th>
+                     <th>Qiymet</th>
+                   <th>Emeliyyat</th>
+              
+              </tr>
+              </thead>
+              <tbody id="students-tbody">
+              
+              </tbody>
+          
+          </table>
+          <script src="script.js"></script>
+    </body>
+</html>
