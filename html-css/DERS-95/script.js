@@ -2,7 +2,9 @@ var students=[];
 var studentName=document.getElementById('student-name');
 var studentSurname=document.getElementById('student-surname');
 var sqiymet=document.getElementById('s-qiymet');
+var ssekil=document.getElementById('s-sekil');
 var studentsTbody=document.getElementById('students-tbody');
+
 function saveStudent(){
     console.log('save 1');
 var id=0;
@@ -14,6 +16,7 @@ var id=0;
     var student={id:id,name:studentName.value,surname:studentSurname.value,qiymet:sqiymet.value};
     students.push(student);
     fillStudentTable(students);
+    
      console.log('save 2');
 }
 function fillStudentTable(students){
@@ -34,16 +37,31 @@ var s=students[i];
         
           var qTd=document.createElement('td');
         qTd.innerHTML=s.qiymet;
+          var sTd=document.createElement('td');
+        console.log(ssekil.getImageData);
+        sTd.innerHTML="<img src='"+ssekil.value+"'>";
+   
         
-          var opsTd=document.createElement('td');
+       
+        var pppTd=document.createElement('td');
+          var opsTd=document.createElement('div');
         opsTd.innerHTML="<button onclick='delStudent("+s.id+")' class='del-btn'>Sil</button>";
+        
+         var psTd=document.createElement('div');
+        psTd.innerHTML="<button onclick='redaStudent("+s.id+","+nTd+","+snTd+","+qTd+","+sTd+")' class='redak-btn'>Redakte</button>";
+        
+
         tr.appendChild(idTd);
          tr.appendChild(nTd);
          tr.appendChild(snTd);
         tr.appendChild(qTd);
-         tr.appendChild(opsTd);
+         tr.appendChild(sTd);
+        pppTd.appendChild(opsTd);
+          pppTd.appendChild(psTd);
+         tr.appendChild(pppTd);
         
         studentsTbody.appendChild(tr);
+    
          console.log('fill 2');
     }
 }
@@ -59,3 +77,20 @@ function delStudent(id){
   fillStudentTable(students);  
     console.log('del 2');
 }
+function redaStudent(id,nTd,snTd,qTd,sTd){
+     console.log('red 1');
+    for(var i=0;i<students.length;i++){
+        
+     if(students[i].id==id)   {
+         
+     
+         snTd.innerHTML=studentSurname.value;
+         qTd.innerHTML=sqiymet.value;
+         sTd.innerHTML=ssekil.value;
+          ntd.innerHTML=studentName.value; 
+     }
+    }
+
+    console.log('red 2');
+}
+
