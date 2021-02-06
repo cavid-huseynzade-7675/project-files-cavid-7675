@@ -18,6 +18,7 @@ var id=0;
     fillStudentTable(students);
     
      console.log('save 2');
+    
 }
 function fillStudentTable(students){
      console.log('fill 1');
@@ -39,17 +40,17 @@ var s=students[i];
         qTd.innerHTML=s.qiymet;
           var sTd=document.createElement('td');
         console.log(ssekil.getImageData);
-        sTd.innerHTML="<img src='"+ssekil.value+"'>";
+        sTd.innerHTML="<img src='"+ssekil.url+"' class='output'>";
    
-        
+    
        
         var pppTd=document.createElement('td');
           var opsTd=document.createElement('div');
         opsTd.innerHTML="<button onclick='delStudent("+s.id+")' class='del-btn'>Sil</button>";
-        
+       
          var psTd=document.createElement('div');
         psTd.innerHTML="<button onclick='redaStudent("+s.id+","+nTd+","+snTd+","+qTd+","+sTd+")' class='redak-btn'>Redakte</button>";
-        
+ 
 
         tr.appendChild(idTd);
          tr.appendChild(nTd);
@@ -93,4 +94,5 @@ function redaStudent(id,nTd,snTd,qTd,sTd){
 
     console.log('red 2');
 }
-
+  
+  
