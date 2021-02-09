@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+
+	<title>Modal</title>
+</head>
+<body>
+<!--HTML START -->
+<button id="new" onclick="showNewStudentModal()">Yeni Kitab</button>
+
+ 
+
+<div id="new-student-modal">
+	<div id="modal-content" >
+		<span id="modal-close-button">X</span>
+   <div id="input">
+             Ad:<input id="student-name"/><br>
+           Muellif:<input id="student-surname"/><br>
+          
+            Qiymet:<input id="s-qiymet"/><br>
+             Sekil:<input type="file" id="s-sekil"/><br>
+          <button onclick="saveStudent()">Yadda Saxla</button></div>
+         
+	</div>
+</div>
+<table>
+              <caption>Kitab Melumatlari</caption>
+          <thead>
+              <tr>
+              <th>ID</th>
+                   <th>Ad</th>
+                   <th>Muellif</th>
+                     <th>Qiymet</th>
+                  <th>Sekil</th>
+                   <th>Emeliyyat</th>
+              
+              </tr>
+              </thead>
+              <tbody id="students-tbody">
+              <tr><td>1</td><td>java</td><td>James</td><td>12.00</td><td><img src="undefined" class="output"></td><td><div><button onclick="delStudent(1)" class="del-btn">Sil</button></div><div><button onclick="redaStudent(1,[object HTMLTableCellElement],[object HTMLTableCellElement],[object HTMLTableCellElement],[object HTMLTableCellElement])" class="redak-btn">Redakte</button></div></td></tr>
+              </tbody>
+          
+          </table>
+
+<!--HTML END -->
+<script src="scripts.js" ></script>
+    <script src="sc.js" ></script>
+</body>
+</html>
