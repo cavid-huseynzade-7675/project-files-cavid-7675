@@ -4,28 +4,30 @@ var studentSurname=document.getElementById('student-surname');
 var sqiymet=document.getElementById('s-qiymet');
 var ssekil=document.getElementById('s-sekil');
 var studentsTbody=document.getElementById('students-tbody');
- var xeber=document.getElementById('alert');
-
+ var adalert=document.getElementById('ad-alert');
+ var muellifalert=document.getElementById('muellif-alert');
+ var qiymetalert=document.getElementById('qiymet-alert');
+var body=document.getElementById('bodys');
 function saveStudent(){
-    console.log('save 1');
+ 
 var id=1;
     for(var i=0;i<students.length;i++){
         
         if(students[i].id>id){id=students[i].id}
     }
    id++;
-var student={id:id,name:studentName.value,surname:studentSurname.value,qiymet:sqiymet.value}
+var student={id:id,name:studentName.value,surname:studentSurname.value,qiymet:sqiymet.value,sekil:ssekil.value}
    
     students.push(student);
     fillStudentTable(students);
     
-     console.log('save 2');
+    
     
 }
 
 function fillStudentTable(students){
     var xxxxx=true;
-     console.log('fill 1');
+     ;
     studentsTbody.innerHTML='';
     for(var i=0;i<students.length;i++){
 var s=students[i];
@@ -36,29 +38,29 @@ var s=students[i];
        
         
           var nTd=document.createElement('td');
-       if(validateForm(s.name,'Kitabin Adi')==true){   nTd.innerHTML=s.name;}else{xxxxx=false;}
+       if(validatead(s.name,'Kitabin Adi',"ad")==true){   nTd.innerHTML=s.name;}else{xxxxx=false;}
       
      
         
           var snTd=document.createElement('td');
-        if(validateForm(s.surname,'Muellifin adi')==true){    snTd.innerHTML=s.surname;}else{xxxxx=false;}
+        if(validatesoy(s.surname,'Muellifin adi',"soy")==true){    snTd.innerHTML=s.surname;}else{xxxxx=false;}
       
         
           var qTd=document.createElement('td');
         
          if(validatenumer(s.qiymet)==true){    qTd.innerHTML=s.qiymet;}else{xxxxx=false;}
           var sTd=document.createElement('td');
-        console.log(ssekil.getImageData);
-        sTd.innerHTML="<img src='"+ssekil.url+"' class='output'>";
+       
+        sTd.innerHTML="<img src='"+s.sekil+"' class='output'>";
    
     
        
         var pppTd=document.createElement('td');
           var opsTd=document.createElement('div');
-        opsTd.innerHTML="<button onclick='delStudent("+s.id+")' class='del-btn'>Sil</button>";
+        opsTd.innerHTML="<button onclick='delStudent("+s.id+")' class='btn btn-border btn-danger'>Sil</button>";
        
          var psTd=document.createElement('div');
-        psTd.innerHTML="<button onclick='redaStudent("+s.id+","+nTd+","+snTd+","+qTd+","+sTd+")' class='redak-btn'>Redakte</button>";
+        psTd.innerHTML="<button onclick='redaStudent("+s.id+","+nTd+","+snTd+","+qTd+","+sTd+")' class='btn btn-border btn-warning'>Redakte</button>";
  
 
         tr.appendChild(idTd);
@@ -72,13 +74,13 @@ var s=students[i];
         
         studentsTbody.appendChild(tr);
     
-         console.log('fill 2');
+        
         if(xxxxx==false){delStudent(s.id);}
         xxxxx=true;
     }
 }
 function delStudent(id){
-     console.log('del 1');
+    ;
     for(var i=0;i<students.length;i++){
         
      if(students[i].id==id)   {
@@ -87,31 +89,43 @@ function delStudent(id){
      }
     }
   fillStudentTable(students);  
-    console.log('del 2');
+  
 }
-function validateForm(yoxlama,yazi) {
+function validatead(yoxlama,yazi) {
     var y=yoxlama;
-    var i;
 var x=y.trim();
   if (x.length<2) {
   
-   alert(yazi+" 2 herfden balaca ola bilmez");
-      
-    
-return false;
-      
+       adalert.innerHTML="<p>"+yazi+" 2 herfden balaca ola bilmez</p>";
+return false;     
   }if( x.length>20){
-      
-      alert(yazi+" 20 herfden boyuk ola bilmez"); 
+     
+        adalert.innerHTML="<p>"+yazi+" 20 herfden boyuk ola bilmez</p>";
       return false;
   }else{
+       adalert.innerHTML="<p style='color: green' >Dogrudur</p>";
     return true;  
-      
+  }
+   
+}
+function validatesoy(yoxlama,yazi) {
+    var y=yoxlama;
+var x=y.trim();
+  if (x.length<2) {
+  muellifalert.innerHTML="<p>"+yazi+" 2 herfden balaca ola bilmez</p>";
+return false;     
+  }if( x.length>20){
+       muellifalert.innerHTML="<p>"+yazi+" 20 herfden boyuk ola bilmez</p>";
+      return false;
+  }else{
+  
+       muellifalert.innerHTML="<p style='color: green' >Dogrudur</p>";
+        return true;  
   }
    
 }
 function redaStudent(id,nTd,snTd,qTd,sTd){
-     console.log('red 1');
+    
     for(var i=0;i<students.length;i++){
         
      if(students[i].id==id)   {
@@ -124,20 +138,23 @@ function redaStudent(id,nTd,snTd,qTd,sTd){
      }
     }
 
-    console.log('red 2');
+  
 }
   function validatenumer(number) {
     var x=number;
- if ( x < 0 || x > 10000) {
-    alert("0 ile 1000  arasi eded yazin");
+ if ( x < 0 || x > 1000) {
+    qiymetalert.innerHTML="<p>0 ile 1000  arasi eded yazin</p>";
      return false;
   } if(x=="")  
   { 
-   alert("Qiymeti bos qoymaq olmaz");
+      qiymetalert.innerHTML="<p>Qiymeti bos qoymaq olmaz</p>";
      return false;
-  
+     
   }  else {
+     qiymetalert.innerHTML="<p style='color: green' >Dogrudur</p>";
+ 
    return true;
+     
   }
   }
       
