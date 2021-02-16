@@ -57,10 +57,10 @@ var s=students[i];
        
         var pppTd=document.createElement('td');
           var opsTd=document.createElement('div');
-        opsTd.innerHTML="<button onclick='delStudent("+s.id+")' class='btn btn-border btn-danger'>Sil</button>";
+        opsTd.innerHTML="<button onclick='delStudent("+s.id+")' style='float:left' class='btn btn-border btn-danger'>Sil</button>";
        
          var psTd=document.createElement('div');
-        psTd.innerHTML="<button onclick='redaStudent("+s.id+","+nTd+","+snTd+","+qTd+","+sTd+")' class='btn btn-border btn-warning'>Redakte</button>";
+        psTd.innerHTML="<button style='float:left;margin-left:5%' onclick='redaStudent("+s.id+","+nTd+","+snTd+","+qTd+","+sTd+")' class='btn btn-border btn-warning'>Redakte</button>";
  
 
         tr.appendChild(idTd);
