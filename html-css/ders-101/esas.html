@@ -4,47 +4,67 @@
 	<link rel="stylesheet" type="text/css" href="styles.css">
     
     <link rel="stylesheet" type="text/css" href="bootsrapt/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="bootsrapt/bootstrap-grid.css">
-    <link rel="stylesheet" type="text/css" href="bootsrapt/bootstrap-grid.min.css">
-    <link rel="stylesheet" type="text/css" href="bootsrapt/bootstrap-reboot.css">
-    <link rel="stylesheet" type="text/css" href="bootsrapt/bootstrap-reboot.min.css">
-    <link rel="stylesheet" type="text/css" href="bootsrapt/bootstrap.min.css">
-
+  
 	<title>Modal</title>
 </head>
 <body id="bodys" class="body" style="background-color: antiquewhite">
 <!--HTML START -->
-<button id="new" onclick="showNewStudentModal()" style="width: 100%;" class="btn btn-border btn-success ">Yeni Kitab</button>
+<button id="new" onclick="showNewStudentModal()" style="width: 100%;" class="btn btn-border btn-success ">Yeni Telebe</button>
 
  
 
 <div id="new-student-modal" class="modal modal-open modal body  " style="width: 60%;margin-left: 20%;margin-left: 20%;">
 	<div id="modal-content" class="modal-content" >
 		<span id="modal-close-button" class=" btn btn-border btn-danger">X</span>
-   <div id="input">
+   <div class="input">
              Ad:<input class="input form-control" id="student-name"/><br>
        <p id="ad-alert">Bos qoymaq olmaz</p>
-           Muellif:<input class="input form-control" id="student-surname"/><br>
+          Soyad:<input class="input form-control" id="student-surname"/><br>
           <p id="muellif-alert">Bos qoymaq olmaz</p>
-            Qiymet:<input class="input form-control" type="number" id="s-qiymet"/><br>
+            Tevellud:<input class="input form-control" type="date" id="s-qiymet"/><br>
        <p id="qiymet-alert">Bos qoymaq olmaz</p>
-             Sekil:<input type="file" class="input form-control" id="s-sekil"/><br>
+       Sektor:<select  class="input form-control" id="s-sekil"> 
+       <option>Az</option>
+        <option>Rus</option>
+        <option>Ing</option></select><br>
+       
           <button  class=" btn btn-bordered btn-success " style="width: 100%;" onclick="saveStudent()">Yadda Saxla</button></div>
        
         
          
 	</div>
 </div> 
-    <h1  style="text-align: center" class="">Kitab Melumatlari</h1>
+    <div id="new-student-modal1" class="modal modal-open modal body  " style="width: 60%;margin-left: 20%;margin-left: 20%;">
+	<div id="modal-content1" class="modal-content" >
+		<span id="modal-close-button1" class=" btn btn-border btn-danger">X</span>
+   <div class="input">
+             Ad:<input class="input form-control" id="student-name1"/><br>
+     
+          Soyad:<input class="input form-control" id="student-surname1"/><br>
+         
+            Tevellud:<input class="input form-control" type="date" id="s-qiymet1"/><br>
+       
+       Sektor:<select  class="input form-control" id="s-sekil1"> 
+       <option>Az</option>
+        <option>Rus</option>
+        <option>Ing</option></select><br>
+       
+          <button  class=" btn btn-bordered btn-warning " style="width: 100%;" onclick="saveReda()">Redakte</button></div>
+       
+        
+         
+	</div>
+</div> 
+    <h1  style="text-align: center" class="">Telebe Melumatlari</h1>
 <table class=" table table-dark table-column table-bordered" style="float:none">
        
           <thead class="">
               <tr>
               <th>ID</th>
                    <th>Ad</th>
-                   <th>Muellif</th>
-                     <th>Qiymet</th>
-                  <th>Sekil</th>
+                   <th>Soyad</th>
+                     <th>Tevellud</th>
+                  <th>Sektor</th>
                    <th>Emeliyyat</th>
               
               </tr>

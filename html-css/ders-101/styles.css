@@ -1,5 +1,5 @@
 #new-student-modal{   width: 40%;   }
 p{color: red;background-color: antiquewhite; width: 90%; margin: auto}
-#input{;border: 2px solid darkgoldenrod;width: 100%;box-sizing: border-box;background-color: tan}
+.input{;border: 2px solid darkgoldenrod;width: 100%;box-sizing: border-box;background-color: tan}
 body{background-color: burlywood;}
 img{max-width:50px }

@@ -8,6 +8,16 @@ var studentsTbody=document.getElementById('students-tbody');
  var muellifalert=document.getElementById('muellif-alert');
  var qiymetalert=document.getElementById('qiymet-alert');
 var body=document.getElementById('bodys');
+
+
+var studentName1=document.getElementById('student-name1');
+var studentSurname1=document.getElementById('student-surname1');
+var sqiymet1=document.getElementById('s-qiymet1');
+var ssekil1=document.getElementById('s-sekil1');
+
+ var adaler1=document.getElementById('ad-alert1');
+ var muellifalert1=document.getElementById('muellif-alert1');
+ var qiymetalert1=document.getElementById('qiymet-alert1');
 function saveStudent(){
  
 var id=1;
@@ -22,28 +32,33 @@ var student={id:id,name:studentName.value,surname:studentSurname.value,qiymet:sq
     fillStudentTable(students);
     
     
-    
+    newStudentModel.style.display="none";
 }
 
 function fillStudentTable(students){
     var xxxxx=true;
+    var idsss=1;
      ;
     studentsTbody.innerHTML='';
     for(var i=0;i<students.length;i++){
 var s=students[i];
         var tr=document.createElement('tr');
+        tr.innerHTML="<tr id="+idsss+"></tr>";
+       tr.setAttribute("id",idsss);
+        
+        
         
           var idTd=document.createElement('td');
         idTd.innerHTML=s.id;
        
         
           var nTd=document.createElement('td');
-       if(validatead(s.name,'Kitabin Adi',"ad")==true){   nTd.innerHTML=s.name;}else{xxxxx=false;}
+       if(validatead(s.name,'Adi',"ad")==true){   nTd.innerHTML=s.name;}else{xxxxx=false;}
       
      
         
           var snTd=document.createElement('td');
-        if(validatesoy(s.surname,'Muellifin adi',"soy")==true){    snTd.innerHTML=s.surname;}else{xxxxx=false;}
+        if(validatesoy(s.surname,'Soyadi',"soy")==true){    snTd.innerHTML=s.surname;}else{xxxxx=false;}
       
         
           var qTd=document.createElement('td');
@@ -51,7 +66,7 @@ var s=students[i];
          if(validatenumer(s.qiymet)==true){    qTd.innerHTML=s.qiymet;}else{xxxxx=false;}
           var sTd=document.createElement('td');
        
-        sTd.innerHTML="<img src='"+s.sekil+"' class='output'>";
+        sTd.innerHTML=s.sekil;
    
     
        
@@ -60,12 +75,12 @@ var s=students[i];
         opsTd.innerHTML="<button onclick='delStudent("+s.id+")' style='float:left' class='btn btn-border btn-danger'>Sil</button>";
        
          var psTd=document.createElement('div');
-        psTd.innerHTML="<button style='float:left;margin-left:5%' onclick='redaStudent("+s.id+","+nTd+","+snTd+","+qTd+","+sTd+")' class='btn btn-border btn-warning'>Redakte</button>";
+        psTd.innerHTML="<button style='float:left;margin-left:5%' onclick='redaStudent("+idsss+",)' class='btn btn-border btn-warning'>Redakte</button>";
  
 
         tr.appendChild(idTd);
          tr.appendChild(nTd);
-         tr.appendChild(snTd);
+        tr.appendChild(snTd);
         tr.appendChild(qTd);
          tr.appendChild(sTd);
         pppTd.appendChild(opsTd);
@@ -73,7 +88,7 @@ var s=students[i];
          tr.appendChild(pppTd);
         
         studentsTbody.appendChild(tr);
-    
+    idsss++;
         
         if(xxxxx==false){delStudent(s.id);}
         xxxxx=true;
@@ -124,30 +139,41 @@ return false;
   }
    
 }
-function redaStudent(id,nTd,snTd,qTd,sTd){
+var idred=0;;
+function redaStudent(id){
     
-    for(var i=0;i<students.length;i++){
-        
-     if(students[i].id==id)   {
-         
-     
-         snTd.innerHTML=studentSurname.value;
-         qTd.innerHTML=sqiymet.value;
-         sTd.innerHTML=ssekil.value;
-          ntd.innerHTML=studentName.value; 
-     }
-    }
-
+    newStudentModel1.style.display="block";
+var idredakte=id;
+    idred=id;
   
+}
+ 
+function saveReda(){
+ 
+
+        
+          students[idred]={id:idred,name:studentName1.value,surname:studentSurname1.value,qiymet:sqiymet1.value,sekil:ssekil1.value};
+            
+      
+    
+    
+    
+    
+    
+    
+   
+ 
+   
+   fillStudentTable(students);
+    idred=0;
+    
 }
   function validatenumer(number) {
     var x=number;
- if ( x < 0 || x > 1000) {
-    qiymetalert.innerHTML="<p>0 ile 1000  arasi eded yazin</p>";
-     return false;
-  } if(x=="")  
+ 
+   if(x=="")  
   { 
-      qiymetalert.innerHTML="<p>Qiymeti bos qoymaq olmaz</p>";
+      qiymetalert.innerHTML="<p>Tevelludu bos qoymaq olmaz</p>";
      return false;
      
   }  else {
@@ -157,6 +183,3 @@ function redaStudent(id,nTd,snTd,qTd,sTd){
      
   }
   }
-      
-    
-  
