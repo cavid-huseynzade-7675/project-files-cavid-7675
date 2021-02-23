@@ -8,6 +8,9 @@ var studentName=document.getElementById('student-name');
 var studentSurname=document.getElementById('student-surname');
 var studentSector=document.getElementById('student-sector');
 var studentBirthday=document.getElementById('student-birthday');
+var checkjs=document.getElementById('js');
+var checkjava=document.getElementById('php');
+var checkphp=document.getElementById('java');
 function    newStudent(){
     student={name:'',surname:'',sector:'Az',languages:[]};
     student.id=0;
@@ -21,6 +24,9 @@ function showNewStudentModal(){
     studentSurname.value=student.surname;
     studentSector.value=student.sector;
     studentBirthday.value=student.birthday;
+    checkjava.checked=false;
+     checkjs.checked=false;
+     checkphp.checked=false;
    
 }
 
@@ -43,7 +49,20 @@ function ChangeBirthday(sn){
     student.birthday=sn;
 }
 function saveStudent(){
+    console.log(student.languages);
     newStudentModal.style.display="none";  
+    if(checkjava.checked==true){
+       student.languages.push(checkjava.value); 
+    }
+     if(checkjs.checked==true){
+       student.languages.push(checkjs.value); 
+    }
+     if(checkphp.checked==true){
+       student.languages.push(checkphp.value); 
+    }
+    
+    
+   
     if(student.id>0){
         saveStudentsToStorage();
         loadStudents();
@@ -67,13 +86,20 @@ if(s.id>idMax){
 }
 function  loadStudents(){
     var tbodyhtml="";
+    
+   
     for (var i=0;i<students.length;i++){
         var st=students[i];
+     
+        var lan=st.languages.toLocaleString();
         tbodyhtml+="<tr><td>"+st.id;
         tbodyhtml+="</td><td>"+st.name;
          tbodyhtml+="</td><td>"+st.surname;
          tbodyhtml+="</td><td>"+st.sector;
          tbodyhtml+="</td><td>"+st.birthday;
+      
+      
+         tbodyhtml+="</td><td>"+lan;
          tbodyhtml+="</td><td> <button onclick='deleteStudent("+st.id+")' class='btn btn-border btn-danger'>Sil</button>"+
         "<button onclick='editStudent("+st.id+")' style='float:left' class='btn btn-border btn-warning'>Redakte</button> </td></tr>";
         
@@ -101,10 +127,11 @@ loadStudents();
 }
 
 function editStudent(id){
+    
  for(var i=0;students.length;i++){
     if(id==students[i].id){
-        student=students[i];break;
-        
+        student=students[i];
+        student.languages.splice(0,3);break;
     }
 }   
  showNewStudentModal();   
@@ -114,10 +141,16 @@ function saveStudentsToStorage(){
     localStorage.setItem('students',JSON.stringify(students));
 }
 
-function langChecked(lang){
-    if(lang.checked){
-console.log(lang.value+'secildi')
-    }else{
-console.log(lang.value+'legv edildi')
-    }}
+function langJava(lang){
+  
+
+    }
+function langPhp(lang){
+    
+
+    }
+function langJavaScript(lang){
+   
+
+    }
     

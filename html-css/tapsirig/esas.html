@@ -17,6 +17,7 @@
                 <th>Soyad</th> 
         <th>Sektor</th>
         <th>Tevellud </th>
+                <th>Bildiyi Diller </th>
                 <th>Emeliyyat</th></tr> </thead>
             
             <tbody id="sts"></tbody></table> 
@@ -44,9 +45,10 @@
                   <h5>Tevellud:</h5> 
                 <input  onchange="ChangeBirthday(this.value)" class="input form-control" type="date" id="student-birthday">
              <h4>Bildiyi diller</h4> <br>
-                <input type="checkbox" id="java" value="Java"  class="input form-control" style="width: 60% ;float: right;" onchange="langChecked(this)"><h5>Java</h5><br>
-                <input type="checkbox" id="php" value="PHP"  class="input form-control"  style="width: 60%;float: right;"  onchange="langChecked(this)"><h5>PHP</h5><br>
-                <input type="checkbox" id="js" value="JavaScript" class="input form-control"  style="width: 60%;float: right;" onchange="langChecked(this)"><h5>JavaScript</h5><br>
+                <input type="checkbox" id="java" value="Java"   class="input form-control" style="width: 60% ;float: right;height: 30px;" onchange="langJava(this)"><h5>Java</h5><br>
+                <input type="checkbox" id="php" value="PHP"  class="input form-control"  style="width: 60%;float: right;height: 30px;"  onchange="langPhp(this)"><h5>PHP</h5><br>
+                <input type="checkbox" id="js" value="JavaScript"  class="input form-control"  
+                       style="width: 60%;height: 30px;float: right;" onchange="langJavaScript(this)"><h5>JavaScript</h5><br>
                  <button  class=" btn btn-bordered btn-success " style="width: 100%;" onclick="saveStudent()">Yadda Saxla</button>
                 </div>
             </div>
