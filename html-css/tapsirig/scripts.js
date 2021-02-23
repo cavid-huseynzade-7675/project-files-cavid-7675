@@ -97,7 +97,7 @@ function  loadStudents(){
     for (var i=0;i<students.length;i++){
         var st=students[i];
      
-        var lan=st.languages.toLocaleString();
+      
         tbodyhtml+="<tr><td>"+st.id;
         tbodyhtml+="</td><td>"+st.name;
          tbodyhtml+="</td><td>"+st.surname;
@@ -105,7 +105,7 @@ function  loadStudents(){
          tbodyhtml+="</td><td>"+st.birthday;
       
       
-         tbodyhtml+="</td><td>"+lan;
+         tbodyhtml+="</td><td>"+st.languages;
          tbodyhtml+="</td><td> <button onclick='deleteStudent("+st.id+")' class='btn btn-border btn-danger'>Sil</button>"+
         "<button onclick='editStudent("+st.id+")' style='margin-left:15px;' class='btn btn-border btn-warning'>Redakte</button> </td></tr>";
         
