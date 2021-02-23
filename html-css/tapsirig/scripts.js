@@ -11,6 +11,12 @@ var studentBirthday=document.getElementById('student-birthday');
 var checkjs=document.getElementById('js');
 var checkjava=document.getElementById('php');
 var checkphp=document.getElementById('java');
+
+var studentString=localStorage.getItem('students');
+    if(studentString==null){localStorage.setItem('students','[]');}else{
+        students=JSON.parse(studentString);}
+
+loadStudents();
 function    newStudent(){
     student={name:'',surname:'',sector:'Az',languages:[]};
     student.id=0;
@@ -101,7 +107,7 @@ function  loadStudents(){
       
          tbodyhtml+="</td><td>"+lan;
          tbodyhtml+="</td><td> <button onclick='deleteStudent("+st.id+")' class='btn btn-border btn-danger'>Sil</button>"+
-        "<button onclick='editStudent("+st.id+")' style='float:left' class='btn btn-border btn-warning'>Redakte</button> </td></tr>";
+        "<button onclick='editStudent("+st.id+")' style='margin-left:15px;' class='btn btn-border btn-warning'>Redakte</button> </td></tr>";
         
     }
     sts.innerHTML=tbodyhtml;
