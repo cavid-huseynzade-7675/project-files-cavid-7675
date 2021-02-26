@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html ><head>  
+    
+    <title>Sifarişin təstiqlənməsi</title>
+
+<style>#confirm-order-form{width:300px;margin:auto;}
+.error-message{color:red;}
+    .error{background-color: gainsboro;margin-top: 10px;border-radius: 5px;padding:0px 28px 0 28px ;}
+    
+    </style>
+    <link rel="stylesheet" href="botsrapt/bootstrap.css" >
+</head>
+
+
+
+<body style="background-color: gray">
+<div>
+
+<div style="height: 5px;"></div>
+</div>
+<div class="container" style="width: 50%">
+
+
+
+<div class="form-group" >
+<label for="customer-name">Ad: </label>
+<input class="form-control"  oninput="customername(this.value)" id="customer-name" >
+<div id="name" class="error"><p style='color:red;'> Bos qoymaq olmaz</p></div>
+</div>
+
+<div class="form-group" >
+<label for="customer-address">Ünvan: </label>
+<input class="form-control" oninput="customeradress(this.value)" id="customer-address" >
+    <div id="adres"  class="error"><p style='color:red'> Bos qoymaq olmaz</p></div>
+</div>
+
+<div class="form-group" >
+<label for="customer-phone">Telefon: </label>
+<input class="form-control" type="number"  oninput="customerphone(this.value)" id="customer-phone" >
+<div id="phone"  class="error"><p style='color:red'> Bos qoymaq olmaz</p></div>
+</div>
+
+
+<div class="form-group">
+<label for="customer-email">Email: </label>
+<input class="form-control" oninput="customeremail(this.value)" type="email" id="customer-email">
+<div  id="email"  class="error"><p style='color:red'> Bos qoymaq olmaz</p></div>
+</div>
+
+
+<div class="form-group" >
+<label for="order-note">Qeyd: </label>
+<input class="form-control" oninput="ordernote(this.value)" id="order-note"  >
+<div id="note"  class="error"><p style='color:red'> Bos qoymaq olmaz</p></div>
+</div>
+
+
+<button class="btn btn-success" >Yadda saxla</button>
+</div>
+    <script src="script.js"></script>
+    </body></html>
+ 
