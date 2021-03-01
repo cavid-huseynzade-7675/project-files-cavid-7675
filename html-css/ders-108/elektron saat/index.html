@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+<body>
+  <h1 id="clock"> </h1>
+    
+    
+    
+    <script>
+        var counter=0; 
+        var clock=document.getElementById('clock');
+    setInterval(function(){
+       counter++;
+        
+        var now=new Date();
+        var clockString='';
+        clockString+=now.getFullYear()+'-'+(now.getMonth()+1).toString().padStart(2,0)+'-'+now.getDate();
+        clockString+=' '+now.getHours();
+        clock.innerHTML=clockString +':'+now.getMinutes()+':'+now.getSeconds()+'.'+now.getMilliseconds();
+        
+    },100);
+        
+    </script>
+    </body>
+</html>
