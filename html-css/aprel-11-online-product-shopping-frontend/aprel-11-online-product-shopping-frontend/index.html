@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="css/styles.css" />
+<script src="js/scripts.js" defer></script>
+<style>
+ul,li{margin:0;padding:0;}
+ul{list-style-type:none;background-color:transparent;}
+ul *{background-color:transparent;}
+li{float:left;}
+a{display:block;padding:5px;margin-right:3px;
+text-decoration:none;color:white;}
+#right-menu{float:right;}
+#menu{background-color:rgb(52, 83, 86);
+overflow:auto;}
+#main-frame{border-width:0;width:100%;height:100%;overflow:auto;}
+#content{box-sizing:border-box;height:500px;}
+</style>
+<title>Online Shopping</title>
+</head>
+<body>
+<div id="menu">
+<ul id="left-menu">
+<li><a href="../index.html">Əsas səhifə</a></li>
+<li><a href="customer/index.html">Məhsullar</a></li>
+<li><a href="#">Sifarişlər</a></li>
+<li><a href="#">Alıcı</a></li>
+</ul>
+<ul id="right-menu">
+<li><a href="login/login.html" target="main-frame">Giriş</a></li>
+<li><a href="#">Çıxış</a></li>
+</ul>
+</div>
+<div class="table-div">
+    <table>
+        <tr>
+            <td>İstifadəçi adı:</td>
+            <td><input type="text" id="user-name"></td>
+        </tr>
+        <tr>
+            <td>Şifrə:</td>
+            <td><input type="password" id="user-password"></td>
+        </tr>
+        <tr>
+            <td><button class="create-account" onclick="window.location.href='signup/signup.html'"
+			  >Hesab Yarat</button></td>
+            <td><button class="login"  onclick="login()">Daxil Ol</button></td>
+        </tr>
+    </table>
+    </div>
+
+
+</body>
+</html>
