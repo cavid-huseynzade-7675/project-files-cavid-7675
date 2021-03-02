@@ -16,7 +16,8 @@ text-decoration:none;color:white;}
 overflow:auto;}
 #main-frame{border-width:0;width:100%;height:100%;overflow:auto;}
 #content{box-sizing:border-box;height:500px;}</style>
- <link rel="stylesheet" href="css/login-css.css"> 
+ <link rel="stylesheet" href="css/signup-css.css"> 
+         
     </head>
 <body>
 <div id="menu">
@@ -33,44 +34,53 @@ overflow:auto;}
 </div>
 
 
- <form>
+  <div id="new-student-modal" class="modal" style=" background-color: bisque;width: 26%;margin-left: 37%;margin-right: 37%;">
+	<div id="modal-content" >
+		<span id="modal-close-button" class="btn btn-danger" >X</span>
+        <div id="error-modal" style=" text-align: center;font-size: 20px;" ></div>
+	</div>
+</div> 
     <fieldset>
 <legend>Yeni Istifadeci Qeydiyyati</legend>
         <hr>
+       
      <div>
-     <label for="product-name"> Ad:</label>
-        <input id="product-name" class="form-control"  pattern=".*\S.*"required>
+     <label for="user-name"> Ad:</label>
+        <input id="user-name" oninput="validation123(this.value,'error-name')"  class="form-control" >
+         <div id="error-name" class="error" ><p style='color:red'> Bos qoymaq olmaz</p></div>
          </div>
         <hr> 
         <div>
-            <label for="product-surname">Soyad:</label>
-        <input id="product-surname" class="form-control" pattern=".*\S.*" required>
+            <label for="user-surname">Soyad:</label>
+        <input id="user-surname" oninput="validation123(this.value,'error-surname')" class="form-control" >
+             <div id="error-surname"  class="error"><p style='color:red'> Bos qoymaq olmaz</p></div>
         </div>
          <hr>
         <div>    
-     <label for="product-istifadeci-name">Istifadeci Ad:</label>
-        <input id="product-istifadeci-name" class="form-control" pattern=".*\S.*" required>
+     <label for="user-istifadeci-name">Istifadeci Ad:</label>
+        <input id="user-istifadeci-name" oninput="validation123(this.value,'error-user-name')" class="form-control" >
+             <div id="error-user-name"  class="error"><p style='color:red'> Bos qoymaq olmaz</p></div>
         </div>
     <hr>
          
         <div>
-        <label for="product-sifre"> Sifre:</label>
-        <input type="password" id="product-sifre" class="form-control" pattern=".*\S.*"required>
+        <label for="user-sifre"> Sifre:</label>
+        <input type="password" id="user-sifre" oninput="validation123(this.value,'error-password')" class="form-control" >
+             <div id="error-password"  class="error"><p style='color:red'> Bos qoymaq olmaz</p></div>
         </div>
    <hr>
         <div>
-         <label for="product-email"> Email:</label>
-        <input  type="email" id="product-email" class="form-control" pattern=".*\S.*"required>
+         <label for="user-email"> Email:</label>
+        <input  type="email" id="user-email" required class="form-control">
+             
      
         </div>
      
      <hr>
-        <a id="hesab-yarat" href="">Hesab Yarat</a>
-        <h2>Or</h2> 
-     <a  href="https://www.facebook.com/"><img src="images/facebook.png"></a>
-         <a  href="https://www.twitter.com/"><img src="images/twitter.png"></a>
-         <a  href="https://www.instagram.com/accounts/login/"><img src="images/instagram.png"></a>
+        <button id="hesab-yarat" onclick="saveuser()">Hesab Yarat</button>
+      
     </fieldset>
     
-    </form>
+    
+    <script src="/aprel-11-online-product-shopping-frontend/aprel-11-online-product-shopping-frontend/js/scripts.js"></script>
  </body></html>
