@@ -1,4 +1,4 @@
-var productCard= document.getElementById('product-card');
+ 
 var productContainer= document.getElementById('container');
 
 function homePage(){
@@ -14,7 +14,8 @@ function loadProducts(){
 	products=JSON.parse(products);
 	var productsHtml='';
 	for(var i=0;i<products.length;i++){
-		productsHtml+="<div class='product-card'><div class='product-card-item'></div></div>";
+        var p = products[i];
+		productsHtml+="<div class='product-card'><div class='product-card-item'><div class='photo-div'><img class='book-photo' src='"+p.imagePath+"'></div><div class='text-div'><p class='price-text'>"+p.price+" AZN</p><p class='name-text'>"+p.name+"</p><p class='desc-text'>"+p.description+"</p></div></div></div>";
 		
 	}
 	productContainer.innerHTML=productsHtml;

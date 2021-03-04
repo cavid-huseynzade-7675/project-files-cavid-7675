@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/products.css" />
+       <link rel="stylesheet" href="css/new-product.css" />
+
+<style>
+
+</style>
+<title></title>
+</head>
+<body>
+  <br><br>
+     <a href="home.html" class="create-account">Əsas səhifə</a>
+    <button onclick="openmodal()" class="create-account">Yeni mehsul</button>
+      <div id="new-student-modal" class="modal" style=" background-color: bisque;width: 50%;height:69% ;margin-left: 25%;margin-right: 25%;">
+	<div id="modal-content" >
+		<span id="modal-close-button" class="btn btn-danger" style="background-color: red;color: white;height: 45px;width: 45px;font-size: 25px;">X</span>
+   <fieldset>
+<legend>Yeni Mehsul</legend>
+        <hr>
+       
+     <div>
+     <label for="product-name"> Adi:</label>
+        <input id="product-name"  class="form-control" >
+       
+         </div>
+        <hr> 
+        <div>
+            <label for="product-price">Qiymeti:</label>
+        <input id="product-price" type="number" class="form-control" >
+          
+        </div>
+         <hr>
+        <div>    
+     <label for="product-description">Melumat:</label>
+        <input id="product-description"  class="form-control" >
+             
+        </div>
+    <hr>
+         
+        <div>
+        <label for="product-image"> Sekli:</label>
+        <input type="file" id="product-image" class="form-control" >
+  
+        </div>
+   
+     
+     <hr>
+        <button id="saveProduct" class="create-account" onclick="saveproduct()">Qeydiyyat et</button>
+    
+      
+    </fieldset>
+	</div></div>
+    <table class="basket-table">
+        <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    Şəkil
+                </th>
+                
+                <th>
+             Ad
+                </th>
+                <th>
+                Qiymət
+                </th>
+                <th>
+                    Miqdar
+                </th>
+                <th>
+                    Ümumi qiymət
+                </th>
+                <th>
+                   Emelliyyat 
+                </th>
+            </tr>
+        </thead>
+        <tbody id="basket-products-table-body">
+
+        </tbody>
+    </table>  
+  
+    
+<script src="js/products.js" defer></script>
+</body>
+</html>

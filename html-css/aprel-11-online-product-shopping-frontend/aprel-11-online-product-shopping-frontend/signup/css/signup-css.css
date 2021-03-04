@@ -10,7 +10,7 @@ input{border: 2px solid black;border-radius:3px;box-sizing: border-box}
 div{;width:100%; height: 20%;float: right; margin-bottom: 0px;box-sizing: border-box}
 body{width: 100%;height: 100%;box-sizing: border-box}
 img{width:30%;height:30%;box-sizing: border-box  }
-#hesab-yarat{text-decoration: none;
+#hesab-yarat,#login-button{text-decoration: none;
             display: block;
             padding: 5px 10px;
             background-color: green;
@@ -24,6 +24,9 @@ img{width:30%;height:30%;box-sizing: border-box  }
     width: 50%
 }
 #hesab-yarat:hover{
+    background-color: blue
+}
+#login-button:hover{
     background-color: blue
 }
 .error{text-align: center}

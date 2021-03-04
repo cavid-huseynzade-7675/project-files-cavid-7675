@@ -1,22 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
+	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="css/styles.css" />
 <script src="js/home.js" defer></script>
 <style>
-
+#h1Des{
+	margin: 0 10 0px 0px;
+	color: black;
+	font-size: 40px;
+	font-weight: bold;
+}
 </style>
 <title></title>
 </head>
 <body>
+  
+<h1 id="h1Des">Welcome to home</h1>
+<button onclick="products()" class="btn btn-primary" id="products-button">Məhsullar</button>
+<button onclick="orders()" class="btn btn-success" id="orders-button">Sifarişlərim</button>
+<button onclick="customerPage()" class="btn btn-warning">Məhsul alış-verişinə başla</button>
 
-<h1>Welcome to home</h1>
-<button onclick="products()" id="products-button">Məhsullar</button>
-<button onclick="orders()" id="orders-button">Sifarişlərim</button>
-<button onclick="customerPage()">Kitab alış-verişinə başla</button>
-
-<button onclick="login()" id="login-button">Giriş</button>
-<button onclick="login()" id="logout-button">Çıxış</button>
+<button onclick="login()" class="btn btn-success" id="login-button">Giriş</button>
+<button onclick="logout()" class="btn btn-danger" id="logout-button">Çıxış</button>
 
 
 </body>

@@ -1,7 +1,9 @@
 
 
 var users=[
-
+{id:1,username:'u1',password:'p1'},
+{id:2,username:'u2',password:'p2'},
+{id:3,username:'u3',password:'p3'}
 ];
 
 var usersString=localStorage.getItem('users');
@@ -15,6 +17,7 @@ var products=[
 {id:5,name:'product 5',price:44,description:'',userId:3,imagePath:'images/05.jpg'},
 {id:6,name:'product 6',price:54,description:'',userId:3,imagePath:'images/06.jpg'}
 ];
+  localStorage.setItem('products',JSON.stringify(products));
 
 var basketProducts=[
 {id:1,count:3,productId:2},
@@ -54,3 +57,5 @@ saveModels();
 
 
 
+
+    

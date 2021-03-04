@@ -1,0 +1,19 @@
+#basket-products-table-body{
+text-align: center; 
+    padding: 5px;
+     border: 1px solid grey;
+
+    
+}
+img{max-height: 100px;max-width: 100px;}
+
+th,tr,td{
+ border: 1px solid grey;
+    text-align: center;
+   
+}
+thead{
+     border: 1px solid grey;
+    text-align: center;
+}
+iframe{width: 96%;height:350px; overflow-x: visible;overflow-y: visible;;margin: 2%;}
