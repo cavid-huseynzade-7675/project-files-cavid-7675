@@ -5,8 +5,17 @@ var productname=document.getElementById('product-name');
 var productprice=document.getElementById('product-price');
 var productdescription=document.getElementById('product-description');
 var productimage=document.getElementById('product-image');
+
+
+var tokentring=localStorage.getItem('token');
+    if(tokentring==null){localStorage.setItem('token','[]');}else{
+        token=JSON.parse(tokentring);} 
+var productString=localStorage.getItem('products');
+    if(productString==null){localStorage.setItem('products','{}');}else{
+        products=JSON.parse(productString);}
 modalCloseButton.addEventListener("click",function(){
     newStudentModel.style.display="none";
+    
 })
 function openmodal(){
 newStudentModel.style.display="block";
@@ -19,23 +28,45 @@ function loadProducts(){
 productsTableBodyHtml='';
 		for (let index = 0; index < products.length; index++) {
 			const p = products[index];
-			productsTableBodyHtml+='<tr><td>'+p.id;
+             var tt1=token;
+            
+              productsTableBodyHtml+='<tr><td>'+p.id;
 			productsTableBodyHtml+='</td><td><img class="basket-phone-image" src="'+p.imagePath+'"/>';
 			productsTableBodyHtml+='</td><td>'+p.name;
 			productsTableBodyHtml+='</td><td>'+p.price;
-			productsTableBodyHtml+=' AZN</td><td><input type="number"/>';
-			productsTableBodyHtml+='</td><td>'+p.price;
-			productsTableBodyHtml+='</td><td><button onclick=deleteStudent('+p.id+') class="btn-danger">Sil</button></td><tr>';
+            productsTableBodyHtml+='AZN</td><td>'+p.description;
+			productsTableBodyHtml+='</td><td><input type="number" onchange="priceall(this.value,'+p.id+')"/>';
+			productsTableBodyHtml+='</td><td>'+p.necedene+' dene <br> Cemi:'+p.totalprice;
+			productsTableBodyHtml+=' AZN</td><td><button onclick=deleteStudent('+p.id+') class="btn-danger">Sil</button></td><tr>';  
+            
+			
 		 
 		}
 		basketProductsTableBody.innerHTML=productsTableBodyHtml;
 	 
 	}
 	
-	
+
 	
  
 loadProducts();
+
+
+function priceall(deyer,id){
+for(var i=0;products.length;i++){
+    if(id==products[i].id){ 
+        products[i].totalprice=deyer*products[i].price;
+        products[i].necedene=deyer;
+       
+       break;
+    }
+}
+
+
+      localStorage.setItem('products',JSON.stringify(products));
+    loadProducts();
+
+}
 function deleteStudent(id){
 for(var i=0;products.length;i++){
     if(id==products[i].id){ 
@@ -52,20 +83,16 @@ for(var i=0;products.length;i++){
 }
 
 
-var tokentring=localStorage.getItem('token');
-    if(tokentring==null){localStorage.setItem('token','[]');}else{
-        token=JSON.parse(tokentring);} 
-var productString=localStorage.getItem('products');
-    if(productString==null){localStorage.setItem('products','{}');}else{
-        products=JSON.parse(productString);}
 
 
 
 function saveproduct(){
     var tt=token;
-  var productobyekt={id:products.length+1,name:productname.value,price:productprice.value,description:productdescription.value,userId:tt.username,imagePath:productimage.value};
+  var productobyekt={id:products.length+1,name:productname.value,price:productprice.value,description:productdescription.value,userId:tt.userId,imagePath:productimage.value,totalprice:productprice.value,necedene:1};
 products.push(productobyekt);
     localStorage.setItem('products',JSON.stringify(products));
     loadProducts();
+     newStudentModel.style.display="none";
+    
   
 }
