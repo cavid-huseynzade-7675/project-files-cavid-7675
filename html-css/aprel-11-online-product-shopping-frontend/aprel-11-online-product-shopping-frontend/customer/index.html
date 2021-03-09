@@ -2,11 +2,56 @@
 <html>
 <head>
     <script src="../js/customer.js" defer></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
+	
     <title>Məhsullar</title>
 </head>
 <body>
-    <button onclick="homePage()">Əsas səhifə</button>
-    <div id="container"></div>
+     <div id="new-student-modal3" class="modal" style=" background-color: bisque;width: 50%;height:69% ;margin-left: 25%;margin-right: 25%;overflow: scroll;">
+	<div id="modal-content3" style="margin-left: 150px;">
+		<span ><button onclick="closemodal()" class="btn btn-danger"  style="background-color: red;color: white;height: 45px;width: 45px;font-size: 25px;">X</button></span>
+        
+        <table class="basket-table">
+        <thead>
+            <tr>
+                <th>
+                   Sayi
+                </th>
+                <th>
+                   Sekli
+                </th>
+                
+                <th>
+             Adi
+                </th>
+                <th>
+                Qiyməti
+                </th>
+                <th>
+                Tesviri
+                </th>
+                
+                
+            </tr>
+        </thead>
+        <tbody id="basket-products-table-body">
+
+        </tbody>
+    </table>  
+          </div>
+          </div>
+    <button class="btn btn-primary" onclick="homePage()">Əsas səhifə</button>
+    <button class="btn btn-danger" onclick="loadNextProducts()">Novbetileri yukle</button>
+	
+    <div id="container" style="overflow:auto;"></div>
+    <div style="background-color: wheat;	position:fixed;
+	right:20px;
+	bottom:20px;"><h1 for="search" >Axtaris:</h1>
+	<input  id="search" oninput="search(this.value)">
+        <br>
+	 <button id="open-basket-button" class="btn btn-success" onclick="onOpenBasket()" style="margin-top: 40px;">
+	 Səbət (<span id="basket-count">0</span>)</button></div>
+	
 </body>
 </html>
