@@ -15,4 +15,12 @@ for(var i=7;i<=100;i++){
 	
 }
 
+for(var i=101;i<=130;i++){
+	products.push(
+	{id:i,name:'product 200',price:(3*i),description:'kitab '+i,userId:3,imagePath:'images/06.jpg'}
+	);
+	
+}
+
+
   localStorage.setItem('products',JSON.stringify(products));

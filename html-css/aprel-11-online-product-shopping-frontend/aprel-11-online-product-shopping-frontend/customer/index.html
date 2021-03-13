@@ -8,50 +8,59 @@
     <title>Məhsullar</title>
 </head>
 <body>
-     <div id="new-student-modal3" class="modal" style=" background-color: bisque;width: 50%;height:69% ;margin-left: 25%;margin-right: 25%;overflow: scroll;">
-	<div id="modal-content3" style="margin-left: 150px;">
-		<span ><button onclick="closemodal()" class="btn btn-danger"  style="background-color: red;color: white;height: 45px;width: 45px;font-size: 25px;">X</button></span>
-        
-        <table class="basket-table">
+    <button class="btn btn-primary" onclick="homePage()">Əsas səhifə</button>
+    <button class="btn btn-danger" onclick="loadNextProducts()">Novbetileri yukle</button>
+	
+    <div id="container" style="overflow:auto;"></div>
+	
+	
+	 <button id="open-basket-button" class="btn btn-success" onclick="onOpenBasket()">
+	 Səbət (<span id="basket-count">0</span>)</button>
+	 
+	 
+	 	<input class="form-control" id="search-input" onchange="searchProducts(this.value)">
+		
+		
+		
+		
+		
+		<div id="basket-modal" class="modal"> 
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span id="modal-close-button" class="close">&times;</span>
+     <table class="table table-bordered">
         <thead>
             <tr>
                 <th>
-                   Sayi
+                    ID
                 </th>
                 <th>
-                   Sekli
+                    Şəkil
+                </th>
+
+                <th>
+             Ad
+                </th>
+                <th>
+                Qiymət
                 </th>
                 
                 <th>
-             Adi
+                    Miqdar
                 </th>
                 <th>
-                Qiyməti
+                    Ümumi qiymət
                 </th>
                 <th>
-                Tesviri
+                     
                 </th>
-                
-                
             </tr>
         </thead>
         <tbody id="basket-products-table-body">
 
         </tbody>
-    </table>  
-          </div>
-          </div>
-    <button class="btn btn-primary" onclick="homePage()">Əsas səhifə</button>
-    <button class="btn btn-danger" onclick="loadNextProducts()">Novbetileri yukle</button>
+    </table> 
 	
-    <div id="container" style="overflow:auto;"></div>
-    <div style="background-color: wheat;	position:fixed;
-	right:20px;
-	bottom:20px;"><h1 for="search" >Axtaris:</h1>
-	<input  id="search" oninput="search(this.value)">
-        <br>
-	 <button id="open-basket-button" class="btn btn-success" onclick="onOpenBasket()" style="margin-top: 40px;">
-	 Səbət (<span id="basket-count">0</span>)</button></div>
-	
+		
 </body>
 </html>

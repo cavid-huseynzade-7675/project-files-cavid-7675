@@ -23,6 +23,11 @@ var products=[
 
   localStorage.setItem('products',JSON.stringify(products));
 
+var basketProducts=[
+{id:1,count:3,productId:2},
+{id:2,count:5,productId:4},
+{id:3,count:7,productId:6}
+];
 
 var order={
 id:1,basketProducts:basketProducts,

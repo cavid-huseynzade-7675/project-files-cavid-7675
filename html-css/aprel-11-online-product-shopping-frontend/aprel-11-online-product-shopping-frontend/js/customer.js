@@ -1,10 +1,10 @@
 var openBasketButton= document.getElementById('open-basket-button');
 var productContainer= document.getElementById('container');
 var basketCount= document.getElementById('basket-count');
-var newStudentModel3=document.getElementById('new-student-modal3');
-var basketProductsTableBody= document.getElementById('basket-products-table-body');
+
 var basketProducts=[];
-var productsGlobal;
+var productsGlobal=[];
+var productsGlobalForSearch=[];
 var productsHtml='';
 
 function homePage(){
@@ -14,18 +14,18 @@ function loadProducts(){
 	var products=localStorage.getItem('products');
 	products=JSON.parse(products);
 	productsGlobal=products.slice();
-	
+	productsGlobalForSearch=products.slice();
 	var initialProducts=[];
 	for(var i=0;i<20;i++){
-		initialProducts.push(productsGlobal[i]);
+		initialProducts.push(productsGlobalForSearch[i]);
 	}
 	addProductsToPage(initialProducts);
 }
 
-function addProductsToPage(products12){
+function addProductsToPage(products){
 	
-	for(var i=0;i<products12.length;i++){
-        var p = products12[i];
+	for(var i=0;i<products.length;i++){
+        var p = products[i];
 		productsHtml+="<div class='product-card'><div class='product-card-item'><div class='photo-div'>"+
 		"<img class='book-photo' src='"+p.imagePath+"'></div><div class='text-div'><p class='price-text'>"+p.price+
 		" AZN</p><p class='name-text'>"+p.name+"</p><p class='desc-text'>"+p.description+"</p>"+
@@ -36,6 +36,7 @@ function addProductsToPage(products12){
 	
 }
 loadProducts();
+
 function onAddToBasket(productId){
 	var localProduct=null;
 	for(var i=0;i<productsGlobal.length;i++){
@@ -56,6 +57,7 @@ function onAddToBasket(productId){
 	}
 	addToBasketAction();
 	console.log(basketProducts);
+	localStorage.setItem('basketProducts',JSON.stringify(basketProducts));
 }
 function addToBasketAction(){
 	openBasketButton.style.display='none';
@@ -70,20 +72,24 @@ var length=20;
 
 function loadNextProducts(){ // 1000 
 	begin+=20;
-	if((begin+length)>productsGlobal.length){
-		
-	}else{
-		
+	if((begin+length)>productsGlobalForSearch.length){
+		console.log('asdfg');
 		
 		
 		var initialProducts=[];
-	for(var i=begin;i<(begin+length);i++){
-		initialProducts.push(productsGlobal[i]);
+	for(var i=begin;i<productsGlobalForSearch.length;i++){
+		initialProducts.push(productsGlobalForSearch[i]);
 	}
 	addProductsToPage(initialProducts);
 	
 	
-	
+	}else{ 
+		var initialProducts=[];
+	for(var i=begin;i<(begin+length);i++){
+		initialProducts.push(productsGlobalForSearch[i]);
+	}
+	addProductsToPage(initialProducts);
+	 
 	}
 	
 }
@@ -110,50 +116,125 @@ window.addEventListener('scroll',function (){
 	
 });
 
- function  closemodal(){
-     console.log('ss');
-    newStudentModel3.style.display='none';
-    
-}
-function onOpenBasket(){
-    newStudentModel3.style.display='block';
-    productsTableBodyHtml='';
-    for (let index = 0; index < basketProducts.length; index++) {
-			const p = basketProducts[index];
-             
-            
-              productsTableBodyHtml+='<tr><td>'+p.count;
-			productsTableBodyHtml+='</td><td><img class="basket-phone-image" style="max-height: 60px;max-width: 80px;" src="'+p.product.imagePath+'"/>';
-			productsTableBodyHtml+='</td><td>'+p.product.name;
-			productsTableBodyHtml+='</td><td>'+p.product.price;
-            productsTableBodyHtml+='AZN</td><td>'+p.product.description;
-	
-			productsTableBodyHtml+='</td><tr>';  
-            
-			
-		 
-		}
-		basketProductsTableBody.innerHTML=productsTableBodyHtml;
-    
-    
-}
 
-function search(deyersearch){
-var products=localStorage.getItem('products');
-	products=JSON.parse(products);
-	productsGlobal123=products.slice();
-	
-	var initialProducts12=[];
-	for(var i=0;i<20;i++){
-        var denek=productsGlobal123[i];
-        
-        if(deyersearch===productsGlobal123[i].name){
-     initialProducts12.push(productsGlobal123[i])
-        }
-		
+function searchProducts(searchInputValue){
+	productsHtml='';
+	begin=0;
+	var productsLocal=productsGlobal.slice();
+	var productsLocalFinded=[];
+	for(var i=0;i<productsLocal.length;i++){
+        var p=productsLocal[i];
+        if(p.name.includes(searchInputValue)){
+          productsLocalFinded.push(p);
+        } 
 	}
-    console.log(initialProducts12);
-	addProductsToPage(initialProducts12);
-     
+	productsGlobalForSearch=productsLocalFinded.slice();
+	
+	var initialProducts=[];
+	if(productsGlobalForSearch.length<20){initialProducts=productsGlobalForSearch;}else{
+	for(var i=0;i<20;i++){
+		initialProducts.push(productsGlobalForSearch[i]);
+	}
+	}
+	addProductsToPage(initialProducts);
+	console.log('axtarisdan tapilanlarin sayi = '+productsGlobalForSearch.length);
+	 
 }
 
+var basketModal=document.getElementById('basket-modal');
+var modalCloseButton=document.getElementById('modal-close-button');
+var basketProductsTableBody=document.getElementById('basket-products-table-body');
+
+modalCloseButton.addEventListener("click",function(){
+    basketModal.style.display='none';
+
+});
+
+
+function onOpenBasket(){
+	basketModal.style.display='block';
+	refreshProductsBasket();
+	
+}
+
+
+var basketProductsString = localStorage.getItem("basketProducts");
+	if (basketProductsString == null) {
+		localStorage.setItem("basketProducts", JSON.stringify(basketProducts));
+	} else {
+		basketProducts = JSON.parse(basketProductsString);
+	}
+addToBasketAction();
+function refreshProductsBasket() {
+	basketProductsTableBody.innerHTML = '';
+	basketProductsTableBodyHtml = '';
+	for (let index = 0; index < basketProducts.length; index++) {
+		const b = basketProducts[index];
+		basketProductsTableBodyHtml += '<tr><td>' + b.product.id;
+		basketProductsTableBodyHtml += '</td><td><img class="basket-product-image" src="' +
+			b.product.imagePath + '"/>';
+		basketProductsTableBodyHtml += '</td><td>' + b.product.name;
+		basketProductsTableBodyHtml += '</td><td>' + b.product.price;
+		basketProductsTableBodyHtml += ' AZN</td><td><input min="1" max="10000" type="number" value="' +
+			b.count + '" ' +
+			' onchange="productCountChanged(this,' + b.product.id + ')" onkeypress="checkCount(event)" />';
+		basketProductsTableBodyHtml += '</td><td id="product-total-price-' +
+			b.product.id + '">' + (b.product.price * b.count);
+		basketProductsTableBodyHtml += ' AZN</td><td><button onclick="deleteBasketProduct(' +
+			b.product.id +
+			')" class="btn btn-danger">Sil</button></td><tr>';
+	}
+	basketProductsTableBody.innerHTML = basketProductsTableBodyHtml;
+}
+
+
+function checkCount(event){
+	
+var code=event.charCode;
+if(code>=48 && code<=57){
+
+}else{
+	 
+	 event.returnValue = false;
+}
+
+if(Number(event.target.value+""+event.key)>10000){
+	event.target.value="1";
+	event.returnValue = false;
+}
+	
+	
+}
+
+
+function productCountChanged(countInput, productId) 
+{if(countInput.value=='' || countInput.value=='0'){countInput.value="1";}
+
+	for (let index = 0; index < basketProducts.length; index++) {
+		const b = basketProducts[index];
+		if (b.product.id === productId) {
+			b.count = Number(countInput.value);
+			document.getElementById('product-total-price-' + b.product.id).innerHTML = "" + (b.count * b.product.price) + " AZN";
+			break;
+		}
+	}
+	localStorage.setItem('basketProducts', JSON.stringify(basketProducts));
+	 
+}
+
+function deleteBasketProduct(productId) {
+	for (let index = 0; index < basketProducts.length; index++) {
+		const b = basketProducts[index];
+		if (b.product.id === productId) {
+			basketProducts.splice(index, 1);
+			break;
+		}
+	}
+	 
+	localStorage.setItem('basketProducts', JSON.stringify(basketProducts));
+	 refreshProductsBasket();
+	 addToBasketAction();
+	if (basketProducts.length === 0) {
+		 basketModal.style.display='none';
+	}
+}
