@@ -248,9 +248,12 @@ function totalpricef(){
 for (let index = 0; index < basketProducts.length; index++) {
     const b = basketProducts[index];
 	 totalprice+=(b.product.price * b.count);
-	totalpriceH1.innerHTML='<h1 id="total-price" style="margin: 10px;font-size: 25px;">Umumi qiymet:'+totalprice+'</h1>';
+	
 	}
+    totalpriceH1.innerHTML='<h1 id="total-price" style="margin: 10px;font-size: 25px;">Umumi qiymet:'+totalprice+'</h1>';
 }
+
+
 function tesdiqPage(){
  
 	window.location.href='tesdiq.html';
