@@ -35,9 +35,7 @@ productsTableBodyHtml='';
 			productsTableBodyHtml+='</td><td>'+p.name;
 			productsTableBodyHtml+='</td><td>'+p.price;
             productsTableBodyHtml+='AZN</td><td>'+p.description;
-			productsTableBodyHtml+='</td><td><input type="number" onchange="priceall(this.value,'+p.id+')"/>';
-			productsTableBodyHtml+='</td><td>'+p.necedene+' dene <br> Cemi:'+p.totalprice;
-			productsTableBodyHtml+=' AZN</td><td><button onclick=deleteStudent('+p.id+') class="btn-danger">Sil</button></td><tr>';  
+			productsTableBodyHtml+=' </td><td><button onclick=deleteStudent('+p.id+') class="btn-danger">Sil</button></td><tr>';  
             
 			
 		 
@@ -88,7 +86,7 @@ for(var i=0;products.length;i++){
 
 function saveproduct(){
     var tt=token;
-  var productobyekt={id:products.length+1,name:productname.value,price:productprice.value,description:productdescription.value,userId:tt.userId,imagePath:productimage.value,totalprice:productprice.value,necedene:1};
+  var productobyekt={id:products.length+1,name:productname.value,price:productprice.value,description:productdescription.value,userId:tt.userId,imagePath:productimage.value};
 products.push(productobyekt);
     localStorage.setItem('products',JSON.stringify(products));
     loadProducts();

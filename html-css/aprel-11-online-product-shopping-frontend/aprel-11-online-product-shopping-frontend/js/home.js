@@ -43,7 +43,7 @@ function logout(){
 	window.location.href='';
 }
 
-function products(){
+function productsShow(){
  
 	window.location.href='products.html';
 }
