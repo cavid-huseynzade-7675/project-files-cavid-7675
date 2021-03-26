@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            p{font-size: 30px;}
+        </style>
+    </head>
+<body>
+    <button style="display: none;" id="btn" onclick="paragraf()">Basla</button>
+     <button style="display: none;" id="btns" onclick="stopCounter()">Dayandir</button>
+   
+    
+    
+    
+  <script>
+      counter=0;
+      var counterInterval=null;
+    var btn=document.getElementById('btn');
+      var btns=document.getElementById('btns');
+       setTimeout(() => {  btn.style.display='block'; 
+                         console.log('1')}, 2000);
+    
+      
+      function paragraf(){
+           btn.style.display='none';
+           btns.style.display='block';
+  counterInterval=setInterval(() => { 
+      counter++;
+       var p = document.createElement("p");
+          p.innerHTML=counter;
+      document.body.appendChild(p);
+              
+},200);
+          
+         
+        
+      }
+      function stopCounter(){
+             btn.style.display='block';
+           btns.style.display='none';
+ clearInterval(counterInterval);
+}
+    </script>
+ </body></html>
