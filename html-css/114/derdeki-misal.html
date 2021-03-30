@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(()=>{
+        $('#my-btn').click(()=>{$('#my-result').html($('#my-text').val())});    
+            
+             $('#my-btn-2').dblclick(()=>{
+                 
+               $('#my-result').addClass('my-class');  
+                 
+             });    
+            
+            
+            
+        });
+    </script>
+    <style> .my-class{
+    color: red;
+        background-color: yellow;
+        font-weight: normal;text-align: center;
+        }</style>
+</head>
+<body>
+   <input id="my-text"/> 
+   <button id="my-btn">Yazini goster</button>
+     <button id="my-btn-2">Yazini goster 2</button>
+    <h1 id="my-result"></h1>
+    
+    
+    
+  <script>
+  
+    </script>
+ </body></html>
