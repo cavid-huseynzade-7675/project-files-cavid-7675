@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+      
+        #conteriner{width: 60%;margin-left: 20%;border:  2px solid blue;}
+        h1,h2,h3,h4,h5,h6{text-align: center;}
+        button{margin-left: 30%;width: 40%;}
+    
+    
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(()=>{
+            $('#nihat-b').click(function(){
+                $('#nihat-m').fadeToggle(650);
+                if($('#nihat-b').text()=='Melumatlari gizlet'){
+                    setTimeout(function(){  $('#nihat-b').text("Melumatlari Goster");
+                                          $('#nihat-b').removeClass("btn-danger") ;
+                                         $('#nihat-b').addClass("btn-success") ;}, 650);
+                   }else{
+                      setTimeout(function(){  $('#nihat-b').text("Melumatlari gizlet")
+                                              $('#nihat-b').removeClass("btn-success") ;
+                                         $('#nihat-b').addClass("btn-danger") ;; }, 500);
+                   }
+                   
+                   
+                                });
+            
+              $('#cavid-b').click(function(){
+                $('#cavid-m').fadeToggle(650);  
+                    if($('#cavid-b').text()=='Melumatlari gizlet'){
+                    setTimeout(function(){  $('#cavid-b').text("Melumatlari Goster");
+                                          $('#cavid-b').removeClass("btn-danger") ;
+                                         $('#cavid-b').addClass("btn-success") ;}, 650);
+                   }else{
+                      setTimeout(function(){  $('#cavid-b').text("Melumatlari gizlet")
+                                              $('#cavid-b').removeClass("btn-success") ;
+                                         $('#nihat-b').addClass("btn-danger") ;; }, 500);
+                   }
+                                });
+            
+              $('#mehemmed-b').click(function(){
+                $('#mehemmed-m').fadeToggle(650);
+                    if($('#nihat-b').text()=='Melumatlari gizlet'){
+                    setTimeout(function(){  $('#nihat-b').text("Melumatlari Goster");
+                                          $('#nihat-b').removeClass("btn-danger") ;
+                                         $('#nihat-b').addClass("btn-success") ;}, 650);
+                   }else{
+                      setTimeout(function(){  $('#nihat-b').text("Melumatlari gizlet")
+                                              $('#nihat-b').removeClass("btn-success") ;
+                                         $('#nihat-b').addClass("btn-danger") ;; }, 500);
+                   }
+                                });
+            
+              $('#adil-b').click(function(){
+                $('#adil-m').fadeToggle(650);
+                     if($('#nihat-b').text()=='Melumatlari gizlet'){
+                    setTimeout(function(){  $('#nihat-b').text("Melumatlari Goster");
+                                          $('#nihat-b').removeClass("btn-danger") ;
+                                         $('#nihat-b').addClass("btn-success") ;}, 650);
+                   }else{
+                      setTimeout(function(){  $('#nihat-b').text("Melumatlari gizlet")
+                                              $('#nihat-b').removeClass("btn-success") ;
+                                         $('#nihat-b').addClass("btn-danger") ;; }, 500);
+                   }
+                                });
+            
+              $('#serxan-b').click(function(){
+                $('#serxan-m').fadeToggle(650); 
+                     if($('#nihat-b').text()=='Melumatlari gizlet'){
+                    setTimeout(function(){  $('#nihat-b').text("Melumatlari Goster");
+                                          $('#nihat-b').removeClass("btn-danger") ;
+                                         $('#nihat-b').addClass("btn-success") ;}, 650);
+                   }else{
+                      setTimeout(function(){  $('#nihat-b').text("Melumatlari gizlet")
+                                              $('#nihat-b').removeClass("btn-success") ;
+                                         $('#nihat-b').addClass("btn-danger") ;; }, 500);
+                   }
+                                });
+            
+              $('#ayxan-b').click(function(){
+                $('#ayxan-m').fadeToggle(650); 
+                     if($('#nihat-b').text()=='Melumatlari gizlet'){
+                    setTimeout(function(){  $('#nihat-b').text("Melumatlari Goster");
+                                          $('#nihat-b').removeClass("btn-danger") ;
+                                         $('#nihat-b').addClass("btn-success") ;}, 650);
+                   }else{
+                      setTimeout(function(){  $('#nihat-b').text("Melumatlari gizlet")
+                                              $('#nihat-b').removeClass("btn-success") ;
+                                         $('#nihat-b').addClass("btn-danger") ;; }, 500);
+                   }
+                                });
+            
+       
+   
+    
+    
+   });         
+   
+    </script>
+   
+</head>
+<body>
+   <div id="conteriner">
+       
+       <div id="nihat" style="margin: 20px;border: 2px solid green">
+       <h1>Nihat</h1>
+           <hr><button id="nihat-b" class="btn btn-danger">Melumatlari gizlet</button><hr>
+           <div id="nihat-m" style="margin: 20px">
+            <h3>Telefon:050-566-78-55</h3>
+               <h3>Email:nihat@gmail.com</h3>
+           
+           </div>
+       </div>
+       
+       <div id="cavid" style="margin: 20px;border: 2px solid green">
+       <h1>Cavid</h1>
+               <hr><button id="cavid-b" class="btn btn-danger">Melumatlari gizlet</button><hr>
+           <div id="cavid-m" style="margin: 20px">
+           
+            <h3>Telefon:050-216-48-06</h3>
+               <h3>Email:alicavid826@gmail.com</h3>
+           
+           </div>
+           
+       </div>
+    
+       <div id="mehemmed" style="margin: 20px;border: 2px solid green">
+       <h1>Mehemmed</h1>
+           <hr><button id="mehemmed-b" class="btn btn-danger">Melumatlari gizlet</button><hr>
+           <div id="mehemmed-m" style="margin: 20px">
+            <h3>Telefon:070-345-45-12</h3>
+               <h3>Email:mehemmed@gmail.com</h3>
+           
+           </div>
+       </div>
+    
+       <div id="adil" style="margin: 20px;border: 2px solid green">
+       <h1>Adil</h1>
+           <hr><button id="adil-b" class="btn btn-danger">Melumatlari gizlet</button><hr>
+          <div id="adil-m" style="margin: 20px">
+            <h3>Telefon:05s-428-18-45</h3>
+               <h3>Email:adil@gmail.com</h3>
+           
+           </div> 
+       </div>
+    
+       <div id="serxan" style="margin: 20px;border: 2px solid green">
+       <h1>Serxan</h1>
+               <hr><button id="serxan-b" class="btn btn-danger">Melumatlari gizlet</button><hr>
+           <div id="serxan-m" style="margin: 20px">
+            <h3>Telefon:050-867-42-07</h3>
+               <h3>Email:serxan@gmail.com</h3>
+           
+           </div>
+       </div>
+       
+        <div id="ayxan" style="margin: 20px;border: 2px solid green">
+       <h1>Ayxan</h1>
+                <hr><button id="ayxan-b" class="btn btn-danger">Melumatlari gizlet</button><hr>
+            <div id="ayxan-m" style="margin: 20px">
+            <h3>Telefon:055-456-56-45</h3>
+               <h3>Email:ayxan@gmail.com</h3>
+           
+           </div>
+       </div>
+    
+
+    
+    
+    </div>
+    
+    
+  <script>
+   
+    </script>
+ </body></html>
