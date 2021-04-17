@@ -64,13 +64,17 @@
                 
                 
   
-                <button type="button" class="send-button" id="saveTask">Yadda Saxla</button>
+                <button type="button" class="send-button"  id="saveTask">Yadda Saxla</button>
                 
                
             </form>
         </div>
     </div>
     <button type="button" class="btn btn-border btn-success"  id="new-task-open">Yeni Tapsiriq</button>
+    <label>Filter kategoriyaya gore</label>
+    <select     style="margin-bottom: 10px;width: 30%;"  id="categoriFilter" onchange="categoriFilter()">
+                  
+    </select>
     <table  class="table table-dark ">
         <thead>
 <tr><th>ID</th><th>Tapsiriq</th><th>Ne vaxt qoyulub</th><th> Ne vaxt bitmelidir</th><th>Kategoriya</th><th>Status</th><th>Emeliyyat</th></tr>

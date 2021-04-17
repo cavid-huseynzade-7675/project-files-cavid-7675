@@ -2,6 +2,9 @@
 var kategoryaB = true;
 var kategoriyaList = [];
 var kategoriyaListString = localStorage.getItem("kategoriyaList");
+var stringFilter="Hamisini goster";
+var filterTable;
+var boofilterTable=true;
 if (kategoriyaListString == null) {
 
 } else {
@@ -28,6 +31,13 @@ function deleteCategory(id) {
   kategoriyaTableShow();
 
 }
+function categoriFilter() {
+  filterTable=document.getElementById('categoriFilter').value;
+  tasktableShow(filterTable);
+console.log(filterTable);
+
+
+ };
 function deleteTask(id) {
   for (var i = 0; i < taskList.length; i++) {
     if (taskList[i].id == id) {
@@ -36,7 +46,7 @@ function deleteTask(id) {
     }
   }
   localStorage.setItem("taskList", JSON.stringify(taskList));
-  tasktableShow();
+  tasktableShow(filterTable);
 }
 
 
@@ -53,31 +63,74 @@ function kategoriyaTableShow() {
   }
   document.getElementById("kategoriyaTable").innerHTML = stringctatab;
 }
-tasktableShow();
-function tasktableShow(){
+tasktableShow(filterTable);
+function tasktableShow(filter){
+  boofilterTable=true;
  var b1,b2="";
   var string = "";
   document.getElementById("taskTable").innerHTML = string;
   for (var i = 0; i < taskList.length; i++) {
-     b1,b2="";
+    boofilterTable=true;
+    b1,b2="";
     var x = taskList[i];
     var xyz = i + 1;
+   if(filter==null){
+    boofilterTable=false;
     if(x.status==false){
-       b1="";
-       b2="checked='true'";
-      console.log("Ss");
-          }
-          if(x.status==true){
-            b2="";
-       b1="checked='true'";
-           console.log("Ss1");
-          } 
+      b1="";
+      b2="checked='true'";
+     
+         }
+         if(x.status==true){
+           b2="";
+      b1="checked='true'";
+          
+         } 
 
-    string += "<tr><td>" + xyz + "</td><td>" + x.task + "</td>"+
-    "<td>"+x.timestart+"</td><td>"+x.timefinish+"</td><td>"+x.kategoriya +"</td>"+
-    "<td><ul id='"+xyz+"'><input type='radio'name='"+xyz+"' id='"+xyz+"b' "+b1+" onclick='statusDeyismek("+xyz+")' /> Bitib "+
+   string += "<tr><td>" + xyz + "</td><td>" + x.task + "</td>"+
+   "<td>"+x.timestart+"</td><td>"+x.timefinish+"</td><td>"+x.kategoriya +"</td>"+
+   "<td><ul id='"+xyz+"'><input type='radio'name='"+xyz+"' id='"+xyz+"b' "+b1+" onclick='statusDeyismek("+xyz+")' /> Bitib "+
 "<br><input type='radio' name='"+xyz+"' id='"+xyz+"' "+b2+"    onclick='statusDeyismek(" + xyz + ")' /> Bitmeyib</ul> </td>"
-      + "<td><button  class='btn btn-border btn-danger '  onClick='deleteTask(" + x.id + ")'>Sil</button></td></tr>";
+     + "<td><button  class='btn btn-border btn-danger '  onClick='deleteTask(" + x.id + ")'>Sil</button></td></tr>";
+   }
+    if(filter==x.kategoriya){
+      boofilterTable=false;
+      if(x.status==false){
+      b1="";
+      b2="checked='true'";
+    
+         }
+         if(x.status==true){
+           b2="";
+      b1="checked='true'";
+         
+         } 
+
+   string += "<tr><td>" + xyz + "</td><td>" + x.task + "</td>"+
+   "<td>"+x.timestart+"</td><td>"+x.timefinish+"</td><td>"+x.kategoriya +"</td>"+
+   "<td><ul id='"+xyz+"'><input type='radio'name='"+xyz+"' id='"+xyz+"b' "+b1+" onclick='statusDeyismek("+xyz+")' /> Bitib "+
+"<br><input type='radio' name='"+xyz+"' id='"+xyz+"' "+b2+"    onclick='statusDeyismek(" + xyz + ")' /> Bitmeyib</ul> </td>"
+     + "<td><button  class='btn btn-border btn-danger '  onClick='deleteTask(" + x.id + ")'>Sil</button></td></tr>";
+    } if(filter==stringFilter){
+      if(x.status==false){
+        b1="";
+        b2="checked='true'";
+       
+           }
+           if(x.status==true){
+             b2="";
+        b1="checked='true'";
+            
+           } 
+  
+     string += "<tr><td>" + xyz + "</td><td>" + x.task + "</td>"+
+     "<td>"+x.timestart+"</td><td>"+x.timefinish+"</td><td>"+x.kategoriya +"</td>"+
+     "<td><ul id='"+xyz+"'><input type='radio'name='"+xyz+"' id='"+xyz+"b' "+b1+" onclick='statusDeyismek("+xyz+")' /> Bitib "+
+  "<br><input type='radio' name='"+xyz+"' id='"+xyz+"' "+b2+"    onclick='statusDeyismek(" + xyz + ")' /> Bitmeyib</ul> </td>"
+       + "<td><button  class='btn btn-border btn-danger '  onClick='deleteTask(" + x.id + ")'>Sil</button></td></tr>";
+    }
+   
+    
   }
   document.getElementById("taskTable").innerHTML = string;
 }
@@ -86,11 +139,11 @@ function statusDeyismek(id){
    if(document.getElementById(id+"b").checked ==true){
    taskList[idS].status=true;
    localStorage.setItem("taskList", JSON.stringify(taskList));
-   tasktableShow();
+   tasktableShow(filterTable);
 }else{
   taskList[idS].status=false;
   localStorage.setItem("taskList", JSON.stringify(taskList));
-  tasktableShow();
+  tasktableShow(filterTable);
 }
 
 };
@@ -100,11 +153,13 @@ $(document).ready(() => {
   function kategoriyacomboboxShow() {
     var string = "";
     $("#categori").html("");
+    $("#categoriFilter").html("<option>"+stringFilter+"</option>");
     for (var i = 0; i < kategoriyaList.length; i++) {
       var x = kategoriyaList[i];
 
 
       $("#categori").append("<option>" + x.kategoriyaName + "</option>");
+      $("#categoriFilter").append("<option>" + x.kategoriyaName + "</option>");
     }
 
 
@@ -144,6 +199,7 @@ $(document).ready(() => {
 
 
   });
+  
 
   $("#saveTask").click(function () {
     var now = new Date();
@@ -158,7 +214,7 @@ $(document).ready(() => {
 
    taskList.push(obyekt);
     localStorage.setItem("taskList", JSON.stringify(taskList));
-   tasktableShow();
+   tasktableShow(filterTable);
   });
 
 
