@@ -17,18 +17,39 @@ if (taskListString == null) {
 } else {
   taskList = JSON.parse(taskListString);
 }
+
 function deleteCategory(id) {
+  var dltcate;
+  
   for (var i = 0; i < kategoriyaList.length; i++) {
     if (kategoriyaList[i].id == id) {
+      dltcate =kategoriyaList[i].kategoriyaName;
       kategoriyaList.splice(i, 1);
+      
+
+  
+      }
+    
+    }
+    for (var i = 0; i < taskList.length; i++) { 
+     
+   
+   if (taskList[i].kategoriya == dltcate) {
+        taskList.splice(i, 3);
 
     }
+   
+   
+
   }
+  
   
 
 
   localStorage.setItem("kategoriyaList", JSON.stringify(kategoriyaList));
+  localStorage.setItem("taskList", JSON.stringify(taskList));
   kategoriyaTableShow();
+  tasktableShow(filterTable);
 
 }
 function categoriFilter() {
