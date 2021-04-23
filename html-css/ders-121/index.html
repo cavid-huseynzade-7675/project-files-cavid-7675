@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
+
+
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+    </script>
+
+</head>
+
+<body>
+
+    <div class="lightbox" id="lightboxkategoriya" style="overflow-y: scroll;">
+        <div class="lightbox-content" style="overflow-y: scroll;">
+            <button type="button" class="close-button" id="closeCategori">Bağla</button>
+            <label>Kategoriya adi</label>
+
+            <input class="form-content-error" id="kategoriyaInput">
+
+            <p id="kategoriyaP" class="err-label"> Bos qoymaq olmaz</p>
+            <table class="table table-dark ">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Kategoriyanin adi</th>
+                        <th>Emeliyyat</th>
+                    </tr>
+                </thead>
+                <tbody id="kategoriyaTable">
+
+                </tbody>
+            </table>
+            <button type="button" class="send-button" id="saveCategori">Yadda Saxla</button>
+        </div>
+    </div>
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <form>
+                <button type="button" class="close-button" id="closeTask">Bağla</button>
+
+                <label>Ad:</label>
+                <input class="form-content-error" id="taskInput">
+                <p id="task-error" class="err-label"> Adi bos qoymaq olmaz</p>
+
+                <label>Soyad:</label>
+                <input class="form-content-error" id="soyInput">
+                <p id="soy-error" class="err-label"> Soyadi bos qoymaq olmaz</p>
+
+                <label>Tevellud</label>
+
+                <input type="date" class="form-content-error" id="lastDayInput">
+
+                <p id="lastdayP" class="err-label">Tevelludu bos qoymaq olmaz</p>
+
+
+
+
+                <label>Kategoriya</label>
+                <select class="form-content" style="margin-bottom: 10px;width: 70%;" id="categori">
+
+                </select>
+
+                <button type="button" class="send-button" id="categoritenzim">Kategoriyani tenzimle</button>
+
+
+
+
+
+                <button type="button" class="send-button" id="saveTask">Yadda Saxla</button>
+
+
+            </form>
+        </div>
+    </div>
+    <button type="button" class="btn btn-border btn-success" id="new-task-open">Yeni Telebe</button>
+    <label>Filter kategoriyaya gore</label>
+    <select style="margin-bottom: 10px;width: 30%;" id="categoriFilter" onchange="categoriFilter()">
+
+    </select>
+    <table class="table table-dark ">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>AD</th>
+                <th>Soyad</th>
+                <th> Tevellud</th>
+                <th>Kategoriya</th>
+                <th>Tehsili</th>
+                <th>Emeliyyat</th>
+            </tr>
+        </thead>
+        <tbody id="taskTable">
+
+        </tbody>
+    </table>
+    <script src="script.js">
+
+    </script>
+</body>
