@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+ 
+   <form onsubmit="saveStudent(event)" class="was-validated">
+    <div class="form-group">
+      <label for="uname">ad:</label>
+      <input type="text" class="form-control" id="uname"  name="uname" required>
+      <div class="valid-feedback">Dogru.</div>
+      <div class="invalid-feedback">Yanlis</div>
+    </div>
+    <div class="form-group">
+      <label for="pwd">Soy ad:</label>
+      <input class="form-control" id="sur" name="pswd" required>
+      <div class="valid-feedback">Dogru.</div>
+      <div class="invalid-feedback">Yanlis</div>
+    </div> 
+    <div class="form-group">
+      <label for="pwd">Unvan:</label>
+      <textarea  class="form-control" id="unvan" name="unvan" required></textarea>
+      <div class="valid-feedback">Dogru.</div>
+      <div class="invalid-feedback">Yanlis</div>
+    </div> 
+    <div class="form-group">
+      <label for="pwd">Tevvellud:</label>
+      <input class="form-control" type="date" id="tvl"  name="pswd" required>
+      <div class="valid-feedback">Dogru.</div>
+      <div class="invalid-feedback">Yanlis</div>
+    </div>
+    <div class="form-group">
+      <label for="sel1">Olke:</label>
+      <select class="form-control" id="sel1" name="sellist1">
+        <option>Azerbaycan</option>
+        <option>Turkiye</option>
+        <option>Almaniya</option>
+        <option>ABS</option>
+      </select></div>
+      <div class="form-group">
+        <label for="sel1">Cinsi:</label>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" name="optradio">Qadin
+          
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" name="optradio">Kisi
+        </label>
+      </div>
+     
+    </div>
+
+    <div class="form-group form-check">
+      <label class="form-check-label">
+        <input class="form-check-input" type="checkbox" name="remember" required>Qebul edirem
+        
+        <div class="valid-feedback">Dogru</div>
+        <div class="invalid-feedback">Yanlis</div>
+      </label>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+<h3 id="h1"></h3>
+<script>
+var select=document.getElementById("sel1");
+var date=document.getElementById("tvl");
+var adress=document.getElementById("unvan");
+var sur=document.getElementById("sur");
+var username=document.getElementById("uname");
+var h1=document.getElementById("h1");
+
+ function saveStudent(event){
+event.preventDefault();
+var student={};
+student.name=username.value;
+student.surname=sur.value;
+student.adress=adress.value;
+student.date=date.value;
+student.olke=select.value;
+
+
+h1.innerHTML=JSON.stringify(student);
+ }
+</script>
+</body>
+</html>
