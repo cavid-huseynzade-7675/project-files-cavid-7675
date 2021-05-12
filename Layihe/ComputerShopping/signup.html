@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>
+        Login
+        </title>
+       
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      <style>ul,li{margin:0;padding:0;}
+ul{list-style-type:none;background-color:transparent;}
+ul *{background-color:transparent;}
+li{float:left;}
+a{display:block;padding:5px;margin-right:3px;
+text-decoration:none;color:white;}
+#right-menu{float:right;}
+#menu{background-color:rgb(52, 83, 86);
+overflow:auto;}
+#main-frame{border-width:0;width:100%;height:100%;overflow:auto;}
+#content{box-sizing:border-box;height:500px;}</style>
+
+         <script src="js/signup.js" defer></script>
+    </head>
+<body>
+ <a href="home.html">Əsas səhifə</a>
+ 
+
+
+ <div class="alert alert-danger alert-dismissible fade in" id="new-student-modal" style="display: none;position:fixed;
+ right:30%;
+ bottom:40%;;
+ width:40%;">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Diqqet!</strong><p id="error-modal"></p>
+  </div>
+
+<div class="container">
+    <fieldset>
+<legend>Yeni Istifadeci Qeydiyyati</legend>
+        <hr>
+       
+    
+        
+       
+         <hr>
+        <div>    
+     <label for="user-istifadeci-name">Istifadeci Ad:</label>
+        <input id="user-istifadeci-name"class="form-control"  oninput="validation123(this.value,'error-user-name')" class="form-control" >
+             <div id="error-user-name"  class="error"><p style='color:red'> Bos qoymaq olmaz</p></div>
+        </div>
+    <hr>
+         
+        <div>
+        <label for="user-sifre"> Sifre:</label>
+        <input type="password" id="user-sifre" class="form-control" oninput="validation123(this.value,'error-password')" class="form-control" >
+             <div id="error-password"  class="error"><p style='color:red'> Bos qoymaq olmaz</p></div>
+        </div>
+   
+     
+
+        <button id="hesab-yarat" class="btn btn-success" onclick="saveuser()">Hesab Yarat</button>
+        <button id="login-button"class="btn btn-primary" onclick="showLoginPage()">Giriş et</button>
+      
+    </fieldset>
+    
+    
+</div>
+ </body></html>
