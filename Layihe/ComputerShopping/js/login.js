@@ -1,6 +1,6 @@
 var userPassword = document.getElementById('user-password');
 var userName = document.getElementById('user-name');
-
+var newStudentModel1 = document.getElementById('new-student-modal-login');
 var successLogin = false;
 var users;
 
@@ -17,7 +17,7 @@ function onLogin() {
    
         var username = userName.value.trim();
         var password = userPassword.value.trim();
-       successLogin = false;
+       successLogin = true;
         for (var i = 0; i < users.length; i++) {
             if (users[i].username === username && users[i].password === password) {
                 localStorage.setItem('tokenLayihe', JSON.stringify({
@@ -25,12 +25,16 @@ function onLogin() {
                     password: password,
                     userId: users[i].id
                 }));
-                successLogin = true;
-                error(successLogin);
+                successLogin = false;
+            
+                window.location.href = 'home.html';
                 break;
     
             }
-    
+            if(successLogin){
+                newStudentModel1.style.display="block"
+
+            }
         }
     
     
@@ -38,11 +42,5 @@ function onLogin() {
   
 
 }
-function error(successLogin){
 
-    if (successLogin) {
-        window.location.href = 'home.html';
-    } else {
-        alert('login failed');
-    }
-};
+       

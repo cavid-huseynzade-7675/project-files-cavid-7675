@@ -12,26 +12,27 @@
  var useristifadeciname = document.getElementById('user-istifadeci-name');
  var useremail = document.getElementById('user-email');
  var userpassword = document.getElementById('user-sifre');
-var users;
+
 var id;
- var usersString = localStorage.getItem('usersLayihe');
+ var users=[];
+
+
+ 
+
+ var usersString = localStorage.getItem("usersLayihe");
  if (usersString == null) {
-     localStorage.setItem('usersLayihe', '[]');
+     users=[{id:1,username:'u1',password:'p1'},
+    {id:2,username:'u2',password:'p2'},
+    {id:3,username:'u3',password:'p3'}
+    ,{id:4,username:'u4',password:'p4'}
+    ,{id:5,username:'u5',password:'p5'}
+    ,{id:6,username:'admin',password:'admin'}]
+    localStorage.setItem('usersLayihe', JSON.stringify(users));
+
  } else {
-     users = JSON.parse(usersString);
-     id=users.length+1;
+  
+   users = JSON.parse(usersString);
  }
-
-
- var users=[{id:1,username:'u1',password:'p1'},
- {id:2,username:'u2',password:'p2'},
- {id:3,username:'u3',password:'p3'}
- ,{id:4,username:'u4',password:'p4'}
- ,{id:5,username:'u5',password:'p5'}
- ,{id:6,username:'admin',password:'admin'}]
- localStorage.setItem('usersLayihe',JSON.stringify(users));
-
-
 
 
  function validation123(deyer, name) {
@@ -109,9 +110,11 @@ var id;
      }
 
      if (booll2 == true) {
-         id++;
+      var   obyekt=users[users.length-1];
+      
+      console.log();
          var user = {
-             id: id,
+             id:obyekt.id+1 ,
              username: username12,
              password: password,
          };

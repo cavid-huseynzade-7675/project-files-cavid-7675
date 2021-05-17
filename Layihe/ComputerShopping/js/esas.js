@@ -6,6 +6,19 @@ var ordersButton = document.getElementById('orders-button');
 var signButton = document.getElementById('signup-button');
 var account = document.getElementById('account');
 var admin = document.getElementById('admin');
+var frame=document.getElementById('frame');
+function s(){
+
+	
+	var height = window.innerHeight
+	|| document.documentElement.clientHeight
+	|| document.body.clientHeight;;
+var x =document.getElementById("n").offsetHeight
+frame.height=height-x-8;
+}
+
+
+	s();
 
 setInterval(
 	
@@ -37,15 +50,15 @@ setInterval(
 			ordersButton.style.display = 'block';
 			logoutButton.style.display = 'block';
 			admin.style.display="none";
-	
+			if (token.userName == "admin") {
+				admin.style.display="block";
+							
+						}else{
+							admin.style.display="none";
+						}
 		}
 	
-		if (token.userName == "admin") {
-			admin.style.display="block";
-						
-					}else{
-						admin.style.display="none";
-					}
+	
 	
 	}, 300);
 

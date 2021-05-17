@@ -2,12 +2,17 @@
 var list=document.getElementById("list");
 var kategoriyaInput=document.getElementById("kategoriyaInput");
 var kategoriyaString=localStorage.getItem('kategoriyaCS');
+
 var kategoriya=JSON.parse(kategoriyaString);
 var showListString="";
 var buttons=document.getElementById("buttons");
 function form(event){
    event.preventDefault();
 }
+
+
+
+
 
 function showList() {
    
@@ -25,7 +30,8 @@ function showList() {
  showList();
 
  function newKategoriya(){
-var newobyekt={id:kategoriya.length+1,name:kategoriyaInput.value};
+  var   obyekt=kategoriya[kategoriya.length-1];
+var newobyekt={id:obyekt.id+1,name:kategoriyaInput.value};
 kategoriya.push(newobyekt);
 localStorage.setItem('kategoriyaCS',JSON.stringify(kategoriya));
 showList();

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="js/computers.js" defer></script>
+
+</head>
+
+
+<body>
+
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    Yeni komputer
+  </button>
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+      
+        <div class="modal-header">
+          <h4 class="modal-title">Yeni komputer</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <div class="modal-body">
+          <form class="was-validated" onsubmit="form(event)">
+         <div  style="width: 45%;margin-left: 4%;float: left;">
+          <div class="form-group">
+            <label for="kategoriyaSelect">Kategoriya:</label>
+            <select type="text" class="form-control" id="kategoriyaSelect"></select>
+          </div>
+          <div class="form-group">
+            <label for="nameInput">Ad:</label>
+            <input type="text" class="form-control" id="nameInput" minlength="2" maxlength="30" required >
+            <div class="valid-feedback">Dogrudur.</div>
+            <div class="invalid-feedback">Sehvdir.</div>
+          </div>
+          <div class="form-group">
+            <label for="priceInput">Qiymet:</label>
+            <input type="number" class="form-control" id="priceInput" minlength="2" maxlength="30" required>
+            <div class="valid-feedback">Dogrudur.</div>
+            <div class="invalid-feedback">Sehvdir.</div>
+          </div>
+          <div class="form-group">
+            <label for="descriptionInput">Tesvir:</label>
+            <input type="text" class="form-control" id="descriptionInput" minlength="2" maxlength="30" required>
+            <div class="valid-feedback">Dogrudur.</div>
+            <div class="invalid-feedback">Sehvdir.</div>
+          </div>
+          <div class="form-group">
+            <label for="yeniSelect">Yeni:</label>
+            <select type="text" class="form-control" id="yeniSelect" minlength="2" maxlength="30" required>
+<option>Beli</option>
+<option>Xeyr</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="imageInput">Sekil:</label>
+            
+            <input type="text" class="form-control" id="imageInput" minlength="2"  required>
+          
+            <div class="valid-feedback">Dogrudur.</div>
+            <div class="invalid-feedback">Sehvdir.</div></div>
+            <div class="form-group">
+              <label for="telefonInput">Telefon:</label>
+              
+              <input type="tel" class="form-control" id="telefonInput" minlength="2" maxlength="30" required>
+            
+              <div class="valid-feedback">Dogrudur.</div>
+              <div class="invalid-feedback">Sehvdir.</div></div>
+          
+        </div>
+        
+          <div style="width: 45%;margin-left: 3%;float: left;" >
+            <div class="form-group">
+              <label for="ramInput">Ram(Emeli Yaddas(GB)):</label>
+              <input type="number" class="form-control" id="ramInput" minlength="2" maxlength="30" required>
+              <div class="valid-feedback">Dogrudur.</div>
+              <div class="invalid-feedback">Sehvdir.</div>
+            </div>
+            <div class="form-group">
+              <label for="cpuInput">CPU(Merkezi prosessor):</label>
+              <input type="text" class="form-control" id="cpuInput" minlength="2" maxlength="30" required>
+              <div class="valid-feedback">Dogrudur.</div>
+            <div class="invalid-feedback">Sehvdir.</div>
+            </div>
+            <div class="form-group">
+              <label for="storageInput">Daimi Yaddas(GB):</label>
+              <input type="text" class="form-control" id="storageInput" minlength="2" maxlength="30"required >
+              <div class="valid-feedback">Dogrudur.</div>
+              <div class="invalid-feedback">Sehvdir.</div>
+            </div>
+            <div class="form-group">
+              <label for="storageselectType">Daimi Yaddas tipi:</label>
+              <select type="text" class="form-control" id="storageselectType">
+<option>SSD</option>
+<option>HDD</option>
+
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="operationSystemInput">Emeliyyat Sistemi:</label>
+              <input type="text" class="form-control" id="operationSystemInput" minlength="2" maxlength="30"required>
+              <div class="valid-feedback">Dogrudur.</div>
+            <div class="invalid-feedback">Sehvdir.</div>
+            </div>
+            <div class="form-group">
+              <label for="gpuInput">Gpu(Video Kart(GB)):</label>
+              <input type="number" class="form-control" id="gpuInput" minlength="2" maxlength="30" required>
+              <div class="valid-feedback">Dogrudur.</div>
+            <div class="invalid-feedback">Sehvdir.</div>
+            </div>
+          
+          </div>
+      
+        </form>
+        
+        
+        </div>
+        
+        <div class="modal-footer">
+          <button class="btn btn-success" onclick="saverClicked()" id="saver">Elave Et</button>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+  
+
+
+  <table  class="table table-info">
+<thead>
+<tr>
+<th>ID</th>
+<th>Ad</th>
+<th>Sekil</th>
+<th>Qiymet</th>
+<th>Emeliyyatlar</th>
+</tr>
+
+</thead>
+<tbody id="tableBody">
+
+
+</tbody>
+  </table>
+
+
+</body>
+</html>
