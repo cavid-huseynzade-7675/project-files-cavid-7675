@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+<button onclick="getStudents()">Telebeleri yukle</button>
+
+<script>
+
+function getStudents() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var jsonResponse = this.responseText;
+	  
+	  var students=JSON.parse(jsonResponse);
+	  console.log(students);
+    }
+  };
+  xhttp.open("GET", "http://localhost:8033/students", true);
+  xhttp.send();
+  
+}
+</script>
+
+</body>
+</html>
