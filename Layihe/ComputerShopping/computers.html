@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
@@ -7,7 +8,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  
+
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="js/computers.js" defer></script>
 
@@ -15,142 +16,194 @@
 
 
 <body>
-
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+<div >
+  <button type="button" style="float:left;"   class="btn btn-primary" onclick="newComputer()" data-toggle="modal" data-target="#myModal">
     Yeni komputer
   </button>
+  </div>
   <div class="modal fade" id="myModal">
     <div class="modal-dialog modal-xl">
       <div class="modal-content">
-      
+
         <div class="modal-header">
           <h4 class="modal-title">Yeni komputer</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
-        
-        <div class="modal-body">
-          <form class="was-validated" onsubmit="form(event)">
-         <div  style="width: 45%;margin-left: 4%;float: left;">
-          <div class="form-group">
-            <label for="kategoriyaSelect">Kategoriya:</label>
-            <select type="text" class="form-control" id="kategoriyaSelect"></select>
-          </div>
-          <div class="form-group">
-            <label for="nameInput">Ad:</label>
-            <input type="text" class="form-control" id="nameInput" minlength="2" maxlength="30" required >
-            <div class="valid-feedback">Dogrudur.</div>
-            <div class="invalid-feedback">Sehvdir.</div>
-          </div>
-          <div class="form-group">
-            <label for="priceInput">Qiymet:</label>
-            <input type="number" class="form-control" id="priceInput" minlength="2" maxlength="30" required>
-            <div class="valid-feedback">Dogrudur.</div>
-            <div class="invalid-feedback">Sehvdir.</div>
-          </div>
-          <div class="form-group">
-            <label for="descriptionInput">Tesvir:</label>
-            <input type="text" class="form-control" id="descriptionInput" minlength="2" maxlength="30" required>
-            <div class="valid-feedback">Dogrudur.</div>
-            <div class="invalid-feedback">Sehvdir.</div>
-          </div>
-          <div class="form-group">
-            <label for="yeniSelect">Yeni:</label>
-            <select type="text" class="form-control" id="yeniSelect" minlength="2" maxlength="30" required>
-<option>Beli</option>
-<option>Xeyr</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="imageInput">Sekil:</label>
-            
-            <input type="text" class="form-control" id="imageInput" minlength="2"  required>
-          
-            <div class="valid-feedback">Dogrudur.</div>
-            <div class="invalid-feedback">Sehvdir.</div></div>
-            <div class="form-group">
-              <label for="telefonInput">Telefon:</label>
-              
-              <input type="tel" class="form-control" id="telefonInput" minlength="2" maxlength="30" required>
-            
-              <div class="valid-feedback">Dogrudur.</div>
-              <div class="invalid-feedback">Sehvdir.</div></div>
-          
-        </div>
-        
-          <div style="width: 45%;margin-left: 3%;float: left;" >
-            <div class="form-group">
-              <label for="ramInput">Ram(Emeli Yaddas(GB)):</label>
-              <input type="number" class="form-control" id="ramInput" minlength="2" maxlength="30" required>
-              <div class="valid-feedback">Dogrudur.</div>
-              <div class="invalid-feedback">Sehvdir.</div>
-            </div>
-            <div class="form-group">
-              <label for="cpuInput">CPU(Merkezi prosessor):</label>
-              <input type="text" class="form-control" id="cpuInput" minlength="2" maxlength="30" required>
-              <div class="valid-feedback">Dogrudur.</div>
-            <div class="invalid-feedback">Sehvdir.</div>
-            </div>
-            <div class="form-group">
-              <label for="storageInput">Daimi Yaddas(GB):</label>
-              <input type="text" class="form-control" id="storageInput" minlength="2" maxlength="30"required >
-              <div class="valid-feedback">Dogrudur.</div>
-              <div class="invalid-feedback">Sehvdir.</div>
-            </div>
-            <div class="form-group">
-              <label for="storageselectType">Daimi Yaddas tipi:</label>
-              <select type="text" class="form-control" id="storageselectType">
-<option>SSD</option>
-<option>HDD</option>
 
-              </select>
+        <div class="modal-body">
+          <form class="was-validated" onsubmit="saverClicked(event)" get>
+            <div style="width: 45%;margin-left: 4%;float: left;">
+              <div class="form-group">
+                <label for="kategoriyaSelect">Kategoriya:</label>
+                <select type="text" class="form-control" id="kategoriyaSelect"></select>
+                <div class="valid-feedback">Dogrudur.</div>
+                <div class="invalid-feedback">Sehvdir.</div>
+              </div>
+              <div class="form-group">
+                <label for="nameInput">Ad:</label>
+                <input type="text" class="form-control" id="nameInput" minlength="2" maxlength="30" required>
+                <div class="valid-feedback">Dogrudur.</div>
+                <div class="invalid-feedback">Sehvdir.</div>
+              </div>
+              <div class="form-group">
+                <label for="priceInput">Qiymet:</label>
+                <input type="number" class="form-control" id="priceInput" minlength="2" maxlength="30" required>
+                <div class="valid-feedback">Dogrudur.</div>
+                <div class="invalid-feedback">Sehvdir.</div>
+              </div>
+              <div class="form-group">
+                <label for="descriptionInput">Tesvir:</label>
+                <input type="text" class="form-control" id="descriptionInput" minlength="2" maxlength="30" required>
+                <div class="valid-feedback">Dogrudur.</div>
+                <div class="invalid-feedback">Sehvdir.</div>
+              </div>
+              <div class="form-group">
+                <label for="yeniSelect">Yeni:</label>
+                <select type="text" class="form-control" id="yeniSelect" minlength="2" maxlength="30" required>
+                  <option>Beli</option>
+                  <option>Xeyr</option>
+                </select>
+                <div class="valid-feedback">Dogrudur.</div>
+                <div class="invalid-feedback">Sehvdir.</div>
+              </div>
+              <div class="form-group">
+                <label for="imageInput">Sekil:</label>
+
+                <input type="text" class="form-control" id="imageInput" oninput="imagesrc()" minlength="2" required>
+
+                <div class="valid-feedback">Dogrudur.</div>
+                <div class="invalid-feedback">Sehvdir.</div>
+              </div>
+              <div class="form-group">
+                <label for="telefonInput">Telefon:</label>
+
+                <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}" class="form-control" id="telefonInput"
+                  minlength="2" maxlength="30" required>
+
+                <div class="valid-feedback">Dogrudur.</div>
+                <div class="invalid-feedback">Sehvdir.Meselen:050-216-48-06</div>
+              </div>
+
             </div>
-            <div class="form-group">
-              <label for="operationSystemInput">Emeliyyat Sistemi:</label>
-              <input type="text" class="form-control" id="operationSystemInput" minlength="2" maxlength="30"required>
-              <div class="valid-feedback">Dogrudur.</div>
-            <div class="invalid-feedback">Sehvdir.</div>
+
+            <div style="width: 45%;margin-left: 3%;float: left;">
+              <div class="form-group">
+                <label for="ramInput">Ram(Emeli Yaddas(GB)):</label>
+                <input type="number" class="form-control" id="ramInput" minlength="2" maxlength="30" required>
+                <div class="valid-feedback">Dogrudur.</div>
+                <div class="invalid-feedback">Sehvdir.</div>
+              </div>
+              <div class="form-group">
+                <label for="cpuInput">CPU(Merkezi prosessor):</label>
+                <input type="text" class="form-control" id="cpuInput" minlength="2" maxlength="30" required>
+                <div class="valid-feedback">Dogrudur.</div>
+                <div class="invalid-feedback">Sehvdir.</div>
+              </div>
+              <div class="form-group">
+                <label for="storageInput">Daimi Yaddas(GB):</label>
+                <input type="text" class="form-control" id="storageInput" minlength="2" maxlength="30" required>
+                <div class="valid-feedback">Dogrudur.</div>
+                <div class="invalid-feedback">Sehvdir.</div>
+              </div>
+              <div class="form-group">
+                <label for="storageselectType">Daimi Yaddas tipi:</label>
+                <select type="text" class="form-control" id="storageselectType">
+                  <option>SSD</option>
+                  <option>HDD</option>
+
+                </select>
+                <div class="valid-feedback">Dogrudur.</div>
+                <div class="invalid-feedback">Sehvdir.</div>
+              </div>
+              <div class="form-group">
+                <label for="operationSystemInput">Emeliyyat Sistemi:</label>
+                <input type="text" class="form-control" id="operationSystemInput" minlength="2" maxlength="30" required>
+                <div class="valid-feedback">Dogrudur.</div>
+                <div class="invalid-feedback">Sehvdir.</div>
+              </div>
+              <div class="form-group">
+                <label for="gpuInput">Gpu(Video Kart(GB)):</label>
+                <input type="number" class="form-control" id="gpuInput" minlength="2" maxlength="30" required>
+                <div class="valid-feedback">Dogrudur.</div>
+                <div class="invalid-feedback">Sehvdir.</div>
+              </div>
+              <div class="form-group">
+
+                <img id="img" style="width: 120px;">
+
+
+              </div>
+
+
             </div>
-            <div class="form-group">
-              <label for="gpuInput">Gpu(Video Kart(GB)):</label>
-              <input type="number" class="form-control" id="gpuInput" minlength="2" maxlength="30" required>
-              <div class="valid-feedback">Dogrudur.</div>
-            <div class="invalid-feedback">Sehvdir.</div>
-            </div>
-          
-          </div>
-      
-        </form>
-        
-        
+
+
+
+
+
+
         </div>
-        
+
         <div class="modal-footer">
-          <button class="btn btn-success" onclick="saverClicked()" id="saver">Elave Et</button>
-          </div>
-        
+          <button class="btn btn-success" type="submit" id="saver">Elave Et</button>
+        </div>
+        </form>
       </div>
     </div>
   </div>
+
+
+
+  <table class="table table-info">
+    <thead style="width: 100%;">
+    
+   
+        <tr>
+    
   
+        <th style="width: 17%;">ID</th>
+        <th style="width: 17%;">Ad</th>
+        <th style="width: 17%;">Sekil</th>
+        <th style="width: 17%;">Qiymet</th>
+        <th style="width: 17%;">Emeliyyatlar</th>
+        <th style="width: 15%;"> <input   class="form-control"  id="myInput" placeholder="Axtaris"> </th>
+     
+        
+      </tr>
+      
+    </thead>
+ 
+    <tbody id="tableBody">
 
 
-  <table  class="table table-info">
-<thead>
-<tr>
-<th>ID</th>
-<th>Ad</th>
-<th>Sekil</th>
-<th>Qiymet</th>
-<th>Emeliyyatlar</th>
-</tr>
+    </tbody>
 
-</thead>
-<tbody id="tableBody">
-
-
-</tbody>
   </table>
 
 
+  <div class="modal fade" id="modalMelumat">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+
+
+        <div class="modal-header">
+          <h4 class="modal-title"></h4>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">&times;</button>
+        </div>
+
+
+        <div class="modal-body" id="modalbodymelumat">
+          Modal body..
+        </div>
+
+
+        <div class="modal-footer">
+        </div>
+
+      </div>
+    </div>
+  </div>
+
 </body>
+
 </html>
