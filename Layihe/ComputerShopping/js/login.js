@@ -26,7 +26,8 @@ function onLogin() {
         })
       );
       successLogin = false;
-
+      var x=[];
+      localStorage.setItem("basketComputers",JSON.stringify(x));
       window.location.href = "home.html";
       break;
     }

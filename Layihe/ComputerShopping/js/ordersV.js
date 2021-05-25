@@ -6,7 +6,7 @@ if (ordersString == null) {
 } else {
   orders = JSON.parse(ordersString);
 }
-var token;
+var token={};
 var tokenGlobalString = localStorage.getItem("tokenLayihe");
 if (tokenGlobalString == null) {
 } else {
@@ -16,17 +16,8 @@ if (tokenGlobalString == null) {
 function filter() {
   for (var a = 0; a < orders.length; a++) {
     var o = orders[a];
-    id = a;
-    for (var i = 0; i < o.basket.length; i++) {
-      var b = o.basket[i];
-      if (b.computer.customer.userId == token.userId) {
-      } else {
-        console.log("false");
-        orders[id].basket.splice(i, 1);
-        i -= 1;
-      }
-    }
-    if (o.basket.length == 0) {
+
+    if (o.userId !== token.userId) {
       orders.splice(a, 1);
     }
   }
@@ -66,7 +57,7 @@ function loadOrders(orders) {
         " AZN</li></ul>" +
         " </li></div> <button type='button' class='btn btn-info' data-toggle='collapse' data-target='#c" +
         index+a+
-        "'>Etrafli</button>";
+        "'>Etrafli</button><br><br>";
 
       totalPrice += parseInt(
         orderNumber.basket[a].count * computerCustomer.price
@@ -74,51 +65,26 @@ function loadOrders(orders) {
     }
 
     computerString += "" + "</ol>";
-    var o1="";
-    var  o2="";
-    var  o3="";
-    var  o4="";
-    var   o5="";
-if (orderNumber.kargo=="Sirketde") {
-  o1="selected";
-}if (orderNumber.kargo=="Pocta tehvil verildi"){
-  o2="selected";
-}if (orderNumber.kargo=="Masina yuklendi"){
-  o3="selected";
-}if (orderNumber.kargo=="Yola cixdi"){
-  o4="selected";
-}if(orderNumber.kargo=="Tehvil verildi"){  o5="selected";}
+
+
     orderString +=
       "<tr><td>" +
       orderNumber.id +
       "</td><td>" +
       orderNumber.date +
-      "</td><td><ul><li>Ad: " +
-      orderNumber.customer.name +
-      "</li><div id='cs" +
-      index +
-      "'class='collapse'><li>Telefon: " +
-      orderNumber.customer.phone +
-      "</li><li>Adres: " +
-      orderNumber.customer.adress +
-      "</li><li>E-mail: " +
-      orderNumber.customer.email +
-      "</li></div> <button type='button' class='btn btn-info' data-toggle='collapse' data-target='#cs" +
-      index +
-      "'>Etrafli</button></ul> " +
-      "</td><td>" +
+      "</td>" +
+      "<td>" +
       computerString +
       "</td><td>" +
       totalPrice +
       " AZN</td><td>" +
+      orderNumber.kargo +
+      "</td><td>" +
       orderNumber.note +
-      "</td><td><select onchange='changedKargo("+orderNumber.id+",this.value)'  class='form-control'>"+
-      "<option "+o1+">Sirketde</option>"+
-      "<option "+o2+">Pocta tehvil verildi</option>"+
-      "<option "+o3+">Masina yuklendi</option>"+
-      "<option "+o4+">Yola cixdi</option>"+
-      "<option "+o5+">Tehvil verildi</option>"+
-      "</select></td></tr>";
+      "</td><td>" +
+      "<button  class='btn btn-danger' onclick='deleteOrder("+orderNumber.id+")'" +
+      "'>Legv et</button>"+
+      "</td></tr>";
   }
 
   tableBody.innerHTML = orderString;
@@ -135,29 +101,17 @@ $(document).ready(function () {
   });
 });
 
-function changedKargo(id,value){
-  var orders1 = [];
-var ordersString1 = localStorage.getItem("ordersLayihe");
-if (ordersString1 == null) {
-  localStorage.setItem("ordersLayihe", JSON.stringify(orders1));
-} else {
-  orders1 = JSON.parse(ordersString1);
+function deleteOrder(id){
+
+    for (let index = 0; index < orders.length; index++) {
+        const o = orders[index];
+        if (o.id === id) {
+          orders.splice(index, 1);
+          break;
+        }
+      }
+    
+      localStorage.setItem("ordersLayihe", JSON.stringify(orders));
+      loadOrders(orders);
+   
 }
-  for (let index = 0; index < orders.length; index++) {
-    const b = orders[index];
-    if (b.id === id) {
-      orders[index].kargo=value;
-     
-    }
-
-  }
-  for (let index = 0; index < orders1.length; index++) {
-    const b = orders1[index];
-    if (b.id === id) {
-      orders1[index].kargo=value;
-     
-    }
-
-  }
-  localStorage.setItem("ordersLayihe", JSON.stringify(orders1));
-  }

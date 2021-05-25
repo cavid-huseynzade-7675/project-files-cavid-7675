@@ -31,11 +31,11 @@ setInterval(function showNavbar() {
     ordersButton.style.display = "none";
     loginButton.style.display = "block";
     logoutButton.style.display = "none";
-    account.style.marginLeft = "60%";
+    account.style.marginLeft = "50%";
     signButton.style.display = "block";
     admin.style.display = "none";
   } else {
-    account.style.marginLeft = "55%";
+    account.style.marginLeft = "42%";
     loginButton.style.display = "none";
     signButton.style.display = "none";
     productsButton.style.display = "block";
@@ -53,5 +53,7 @@ setInterval(function showNavbar() {
 function logout() {
   localStorage.removeItem("tokenLayihe");
   window.location.href = "";
+  var x=[];
+  localStorage.setItem("basketComputers",JSON.stringify(x));
   showNavbar();
 }

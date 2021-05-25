@@ -55,6 +55,7 @@ function select1(id) {
     }
   }
   if (id == null) {
+   $(".panel-footer").remove();
     showComputers(computerMelumat);
   } else {
     for (var i = 0; i < computerMelumat.length; i++) {
@@ -65,7 +66,7 @@ function select1(id) {
       }
     }
     
-  document.getElementById("myInputShop").value=
+    $(".panel-footer").remove();
     showComputers(mas);
 
   }
@@ -113,7 +114,7 @@ showList();
 $(document).ready(function () {
   $("#myInput").on("keyup", function () {
     var value = $(this).val().toLowerCase();
-    $("li").filter(function () {
+    $("#kategoriya *").filter(function () {
       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
     });
   });
@@ -233,13 +234,17 @@ function showComputers(computerMelumat) {
         "</div>";
     }
 
+
+
     $(document).ready(function () {
       $("#cardsComputer").html(showcardString);
     });
+  
+var paginationNumber=computerMelumat.length%25;
 
-    $(function () {
-      $('[data-toggle="tooltip"]').tooltip();
-    });
+   $(function () {
+     $('[data-toggle="tooltip"]').tooltip();
+   });
   }, 500);
 }
 
@@ -458,9 +463,9 @@ function deleteBasketComputer(productId) {
   addToBasketAction();
  
 }
-$(function () {
-  $('[data-toggle="tooltip"]').tooltip();
-});
+//$(function () {
+ // $('[data-toggle="tooltip"]').tooltip();
+//});
 
 function saveOrder(event) {
   event.preventDefault();

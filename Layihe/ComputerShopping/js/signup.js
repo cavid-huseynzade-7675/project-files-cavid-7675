@@ -105,8 +105,8 @@ function saveuser() {
     users.push(user);
     console.log(users);
     localStorage.setItem("usersLayihe", JSON.stringify(users));
-    newStudentModel.classList.add("alert-success");
-    newStudentModel.classList.remove("alert-danger");
+
+
     showNewStudentModal("Ugurla qeyd olundu");
   }
 }
