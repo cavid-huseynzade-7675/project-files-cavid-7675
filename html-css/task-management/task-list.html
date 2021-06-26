@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Ag-Grid Basic Example</title>
+    <script src="https://unpkg.com/ag-grid-community/dist/ag-grid-community.min.js"></script>
+   
+</head>
+<body>
+    <div id="task-table" style="height: 500px; width:100%;" class="ag-theme-alpine"></div>
+
+<script>
+
+const columnDefs = [
+
+      { field: "id" ,headerName:"Kod"},
+      { field: "username" ,headerName:"Username"},
+      { field: "name" ,headerName:"Tapsiriq"},
+      { field: "description" ,headerName:"Melumat"},
+      { field: "status" ,headerName:"Status"},
+      { field: "beginDate" ,headerName:"Baslama Tarixi"},
+      { field: "endDate" ,headerName:"Bitme Tarixi"}
+    ];
+
+
+
+    
+    const gridOptions = {
+      columnDefs: columnDefs,
+      rowData: null,
+      animateRows:true,
+      pagination:true,
+      rowSelection: 'multiple',
+      
+      defaultColDef:{
+sortable:true,
+filter:true,
+floatingFilter:true,
+
+
+      }
+ 
+    };
+
+
+document.addEventListener('DOMContentLoaded',()=>{
+const gridDiv =document.querySelector('#task-table');
+new agGrid.Grid(gridDiv,gridOptions)
+});
+
+var xhttp =new XMLHttpRequest();
+xhttp.onreadystatechange=function(){
+if (this.readyState== 4 && this.status ==200) {
+var tasksJson =this.responseText;
+var tasksArray=JSON.parse(tasksJson);
+gridOptions.api.setRowData(tasksArray); 
+ 
+}
+
+    }
+        xhttp.open("GET","http://localhost:9564/tasks",true);
+        xhttp.send();
+
+
+
+</script>
+</body>
+</html>
