@@ -77,6 +77,7 @@ loadTasks();
 }
     xhttp.open("POST","http://localhost:9564/tasks/delete-task",true);
     xhttp.setRequestHeader("Content-type","application/json" );
+    xhttp.setRequestHeader("Authorization","Basic "+window.btoa('developia:1234') );
 
         var obj={};
         obj.ids=ids;
@@ -95,6 +96,7 @@ gridOptions.api.setRowData(tasksArray);
 
     }
         xhttp.open("GET","http://localhost:9564/tasks",true);
+        xhttp.setRequestHeader("Authorization","Basic "+window.btoa('developia:1234') );
         xhttp.send();
     
 }

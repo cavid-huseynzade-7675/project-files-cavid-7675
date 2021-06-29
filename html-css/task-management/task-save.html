@@ -76,6 +76,7 @@ if (this.readyState== 4 && this.status ==200) {
     }
         xhttp.open("POST","http://localhost:9564/tasks",true);
         xhttp.setRequestHeader("Content-type","application/json" );
+        xhttp.setRequestHeader("Authorization","Basic "+window.btoa('developia:1234') );
 
         var task={};  
         task.username=nameInput.value;
