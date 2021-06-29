@@ -2,17 +2,24 @@
 <html lang="en">
 <head>
     <title>Ag-Grid Basic Example</title>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="ag-grid.js"></script>
    
 </head>
 <body>
+    <button class="btn btn-danger" onclick="onDeleteTask()">Sil</button>
     <div id="task-table" style="height: 500px; width:100%;" class="ag-theme-alpine"></div>
 
 <script>
 
 const columnDefs = [
 
-      { field: "id" ,headerName:"Kod"},
+      { field: "id" ,headerName:"Kod",checkboxSelection:true},
       { field: "username" ,headerName:"Username"},
       { field: "name" ,headerName:"Tapsiriq"},
       { field: "description" ,headerName:"Melumat"},
@@ -46,8 +53,38 @@ document.addEventListener('DOMContentLoaded',()=>{
 const gridDiv =document.querySelector('#task-table');
 new agGrid.Grid(gridDiv,gridOptions)
 });
+loadTasks();
+
+function onDeleteTask(){
+var selectedTask=gridOptions.api.getSelectedRows();
+var ids=[];
+for (let index = 0; index < selectedTask.length; index++) {
+    const t = selectedTask[index];
+    ids.push(t.id);
+}
+
+
 
 var xhttp =new XMLHttpRequest();
+
+xhttp.onreadystatechange=function(){
+if (this.readyState== 4 && this.status ==200) {
+
+loadTasks();
+
+}
+
+}
+    xhttp.open("POST","http://localhost:9564/tasks/delete-task",true);
+    xhttp.setRequestHeader("Content-type","application/json" );
+
+        var obj={};
+        obj.ids=ids;
+        console.log(obj);
+        xhttp.send(JSON.stringify(obj));
+}
+function loadTasks(){
+    var xhttp =new XMLHttpRequest();
 xhttp.onreadystatechange=function(){
 if (this.readyState== 4 && this.status ==200) {
 var tasksJson =this.responseText;
@@ -59,9 +96,8 @@ gridOptions.api.setRowData(tasksArray);
     }
         xhttp.open("GET","http://localhost:9564/tasks",true);
         xhttp.send();
-
-
-
+    
+}
 </script>
 </body>
 </html>
