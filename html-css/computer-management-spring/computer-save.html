@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <button type="button" style="float:left;"   class="btn btn-primary" onclick="newComputer()" data-toggle="modal" data-target="#myModal">
+        Yeni komputer
+      </button>
+      </div>
+      <div class="modal fade" id="myModal">
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content">
+    
+            <div class="modal-header">
+              <h4 class="modal-title">Yeni komputer</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+    
+            <div class="modal-body">
+              <form class="was-validated" onsubmit="saverClicked(event)" get>
+                <div style="width: 45%;margin-left: 4%;float: left;">
+                  <div class="form-group">
+                    <label for="kategoriyaSelect">Kategoriya:</label>
+                    <select type="text" class="form-control" id="kategoriyaSelect">
+                        <option>Asus</option>
+                        <option>Acer</option>
+                        <option>Php</option>
+                    </select>
+                    <div class="valid-feedback">Dogrudur.</div>
+                    <div class="invalid-feedback">Sehvdir.</div>
+                  </div>
+                  <div class="form-group">
+                    <label for="nameInput">Ad:</label>
+                    <input type="text" class="form-control" id="nameInput" minlength="2" maxlength="30" required>
+                    <div class="valid-feedback">Dogrudur.</div>
+                    <div class="invalid-feedback">Sehvdir.</div>
+                  </div>
+                  <div class="form-group">
+                    <label for="priceInput">Qiymet:</label>
+                    <input type="number" class="form-control" id="priceInput" minlength="2" maxlength="30" required>
+                    <div class="valid-feedback">Dogrudur.</div>
+                    <div class="invalid-feedback">Sehvdir.</div>
+                  </div>
+                  <div class="form-group">
+                    <label for="descriptionInput">Tesvir:</label>
+                    <input type="text" class="form-control" id="descriptionInput" minlength="2" maxlength="30" required>
+                    <div class="valid-feedback">Dogrudur.</div>
+                    <div class="invalid-feedback">Sehvdir.</div>
+                  </div>
+                  <div class="form-group">
+                    <label for="yeniSelect">Yeni:</label>
+                    <select type="text" class="form-control" id="yeniSelect" minlength="2" maxlength="30" required>
+                      <option>Beli</option>
+                      <option>Xeyr</option>
+                    </select>
+                    <div class="valid-feedback">Dogrudur.</div>
+                    <div class="invalid-feedback">Sehvdir.</div>
+                  </div>
+                  <div class="form-group">
+                    <label for="telefonInput">Telefon:</label>
+    
+                    <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}" class="form-control" id="telefonInput"
+                      minlength="2" maxlength="30" required>
+    
+                    <div class="valid-feedback">Dogrudur.</div>
+                    <div class="invalid-feedback">Sehvdir.Meselen:050-216-48-06</div>
+                  </div>
+    
+                </div>
+    
+                <div style="width: 45%;margin-left: 3%;float: left;">
+                  <div class="form-group">
+                    <label for="ramInput">Ram(Emeli Yaddas(GB)):</label>
+                    <input type="number" class="form-control" id="ramInput" minlength="2" maxlength="30" required>
+                    <div class="valid-feedback">Dogrudur.</div>
+                    <div class="invalid-feedback">Sehvdir.</div>
+                  </div>
+                  <div class="form-group">
+                    <label for="cpuInput">CPU(Merkezi prosessor):</label>
+                    <input type="text" class="form-control" id="cpuInput" minlength="2" maxlength="30" required>
+                    <div class="valid-feedback">Dogrudur.</div>
+                    <div class="invalid-feedback">Sehvdir.</div>
+                  </div>
+                  <div class="form-group">
+                    <label for="storageInput">Daimi Yaddas(GB):</label>
+                    <input type="text" class="form-control" id="storageInput" minlength="2" maxlength="30" required>
+                    <div class="valid-feedback">Dogrudur.</div>
+                    <div class="invalid-feedback">Sehvdir.</div>
+                  </div>
+                  <div class="form-group">
+                    <label for="storageselectType">Daimi Yaddas tipi:</label>
+                    <select type="text" class="form-control" id="storageselectType">
+                      <option>SSD</option>
+                      <option>HDD</option>
+    
+                    </select>
+                    <div class="valid-feedback">Dogrudur.</div>
+                    <div class="invalid-feedback">Sehvdir.</div>
+                  </div>
+                  <div class="form-group">
+                    <label for="operationSystemInput">Emeliyyat Sistemi:</label>
+                    <input type="text" class="form-control" id="operationSystemInput" minlength="2" maxlength="30" required>
+                    <div class="valid-feedback">Dogrudur.</div>
+                    <div class="invalid-feedback">Sehvdir.</div>
+                  </div>
+                  <div class="form-group">
+                    <label for="gpuInput">Gpu(Video Kart(GB)):</label>
+                    <input type="number" class="form-control" id="gpuInput" minlength="2" maxlength="30" required>
+                    <div class="valid-feedback">Dogrudur.</div>
+                    <div class="invalid-feedback">Sehvdir.</div>
+                  </div>
+                 
+    
+    
+                </div>
+    
+    
+    
+    
+    
+    
+            </div>
+    
+            <div class="modal-footer">
+              <button class="btn btn-success" type="submit" id="saver">Elave Et</button>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <script>
+var kategoriyaSelect = document.getElementById("kategoriyaSelect");
+var nameInput = document.getElementById("nameInput");
+var priceInput = document.getElementById("priceInput");
+var descriptionInput = document.getElementById("descriptionInput");
+var yeniSelect = document.getElementById("yeniSelect");
+var telefonInput = document.getElementById("telefonInput");
+var ramInput = document.getElementById("ramInput");
+var cpuInput = document.getElementById("cpuInput");
+var storageInput = document.getElementById("storageInput");
+var storageselectType = document.getElementById("storageselectType");
+var operationSystemInput = document.getElementById("operationSystemInput");
+var gpuInput = document.getElementById("gpuInput");
+function saverClicked(event){
+    event.preventDefault();
+
+    var xhttp =new XMLHttpRequest();
+
+    xhttp.onreadystatechange=function(){
+if (this.readyState== 4 && this.status ==200) {
+
+    alert("Ugurlu");
+    
+}
+
+    }
+        xhttp.open("POST","http://localhost:9540/computers",true);
+        xhttp.setRequestHeader("Content-type","application/json" );
+        xhttp.setRequestHeader("Authorization","Basic "+window.btoa('developia:1234') );
+
+        var computer={};  
+        computer.price=priceInput.value;
+        computer.name=nameInput.value;
+        computer.description=descriptionInput.value;
+        computer.neew=yeniSelect.value;
+        computer.categoryname=kategoriyaSelect.value;
+        computer.username="cavid";
+        computer.phone=telefonInput.value;
+        computer.ram=ramInput.value;
+        computer.cpu=cpuInput.value;
+        computer.gpu=gpuInput.value;
+        computer.storage=storageInput.value;
+        computer.storagetype=storageselectType.value;
+        computer.wind=operationSystemInput.value;
+        xhttp.send(JSON.stringify(computer));
+}
+ 
+      </script>
+</body>
+</html>
