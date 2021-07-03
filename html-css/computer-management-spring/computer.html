@@ -8,6 +8,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="ag-grid.js"></script>
 </head>
 <body>
 
@@ -135,7 +136,8 @@
             </form>
           </div>
         </div>
-      </div>
+      </div><br><br>
+      <div id="computers-table" style="height: 500px; width:100%;" class="ag-theme-alpine"></div>
       <script>
 var kategoriyaSelect = document.getElementById("kategoriyaSelect");
 var nameInput = document.getElementById("nameInput");
@@ -149,6 +151,52 @@ var storageInput = document.getElementById("storageInput");
 var storageselectType = document.getElementById("storageselectType");
 var operationSystemInput = document.getElementById("operationSystemInput");
 var gpuInput = document.getElementById("gpuInput");
+
+const columnDefs = [
+
+      { field: "id" ,headerName:"Kod",},
+      { field: "username" ,headerName:"Username"},
+      { field: "name" ,headerName:"Komputer adi"},
+      { field: "phone" ,headerName:"Telefon"},
+      { field: "description" ,headerName:"Melumat"},
+      { field: "price" ,headerName:"Qiymet"},
+      { field: "neew" ,headerName:"Yeni"},
+      { field: "categoryname" ,headerName:"Sirket"},
+      { field: "ram" ,headerName:"Ram"},
+      { field: "cpu" ,headerName:"Cpu"},
+      { field: "gpu" ,headerName:"Gpu"},
+      { field: "wind" ,headerName:"Emeliyyat sistemi"},
+      { field: "storage" ,headerName:"Yaddas"},
+      { field: "storagetype" ,headerName:"Yaddas tipi"}
+    ];
+
+
+
+    
+    const gridOptions = {
+      columnDefs: columnDefs,
+      rowData: null,
+      animateRows:true,
+      pagination:true,
+      rowSelection: 'multiple',
+      
+      defaultColDef:{
+sortable:true,
+filter:true,
+floatingFilter:true,
+
+
+      }
+ 
+    };
+
+
+document.addEventListener('DOMContentLoaded',()=>{
+const gridDiv =document.querySelector('#computers-table');
+new agGrid.Grid(gridDiv,gridOptions);
+});
+loadComputers();
+
 function saverClicked(event){
     event.preventDefault();
 
@@ -158,7 +206,11 @@ function saverClicked(event){
 if (this.readyState== 4 && this.status ==200) {
 
     alert("Ugurlu");
-    
+    document.addEventListener('DOMContentLoaded',()=>{
+const gridDiv =document.querySelector('#computers-table');
+new agGrid.Grid(gridDiv,gridOptions);
+});
+loadComputers();
 }
 
     }
@@ -181,8 +233,25 @@ if (this.readyState== 4 && this.status ==200) {
         computer.storagetype=storageselectType.value;
         computer.wind=operationSystemInput.value;
         xhttp.send(JSON.stringify(computer));
+        
 }
  
+function loadComputers(){
+    var xhttp =new XMLHttpRequest();
+xhttp.onreadystatechange=function(){
+if (this.readyState== 4 && this.status ==200) {
+var computersJson =this.responseText;
+var computersArray=JSON.parse(computersJson);
+gridOptions.api.setRowData(computersArray); 
+ 
+}
+
+    }
+        xhttp.open("GET","http://localhost:9540/computers",true);
+        xhttp.setRequestHeader("Authorization","Basic "+window.btoa('developia:1234') );
+        xhttp.send();
+    
+}
       </script>
 </body>
 </html>
