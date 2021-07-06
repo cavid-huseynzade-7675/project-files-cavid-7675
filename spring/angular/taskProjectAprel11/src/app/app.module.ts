@@ -7,11 +7,13 @@ import { TaskSaveComponent } from './task-save/task-save.component';
 import { TaskListComponent } from './task-list/task-list.component';
 
 import { FormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
     TaskSaveComponent,
-    TaskListComponent
+    TaskListComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
