@@ -8,12 +8,14 @@ import { TaskListComponent } from './task-list/task-list.component';
 
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
+import { MenuComponent } from './menu/menu.component';
 @NgModule({
   declarations: [
     AppComponent,
     TaskSaveComponent,
     TaskListComponent,
-    LoginComponent
+    LoginComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
