@@ -10,8 +10,7 @@ import { TaskListComponent } from './task-list/task-list.component';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { MenuComponent } from './menu/menu.component';
-import { StudentListComponent } from './student-list/student-list.component';
-import { StudentSaveComponent } from './student-save/student-save.component';
+
 
 @NgModule({
   declarations: [
@@ -20,8 +19,7 @@ import { StudentSaveComponent } from './student-save/student-save.component';
     TaskListComponent,
     LoginComponent,
     MenuComponent,
-    StudentListComponent,
-    StudentSaveComponent,
+   
 
   ],
   imports: [
