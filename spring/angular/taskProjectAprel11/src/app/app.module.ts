@@ -10,7 +10,9 @@ import { TaskListComponent } from './task-list/task-list.component';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { MenuComponent } from './menu/menu.component';
-
+import{HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
+import { HttpInterSectorService } from './service/http-inter-sector.service';
+import { LogoutComponent } from './component/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -19,15 +21,21 @@ import { MenuComponent } from './menu/menu.component';
     TaskListComponent,
     LoginComponent,
     MenuComponent,
+    LogoutComponent,
    
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [{
+
+provide:HTTP_INTERCEPTORS,useClass:HttpInterSectorService,multi:true
+
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
