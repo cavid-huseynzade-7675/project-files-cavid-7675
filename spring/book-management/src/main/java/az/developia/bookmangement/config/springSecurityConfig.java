@@ -1,4 +1,4 @@
-package az.developia.computermangement.config;
+package az.developia.bookmangement.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;

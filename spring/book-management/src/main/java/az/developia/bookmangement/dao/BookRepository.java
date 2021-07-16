@@ -1,4 +1,4 @@
-package az.developia.computermangement.dao;
+package az.developia.bookmangement.dao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,9 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import az.developia.computermangement.model.Computer;
+import az.developia.bookmangement.model.Book;
 
-public interface ComputerRepository  extends JpaRepository<Computer,Integer> {
+public interface BookRepository  extends JpaRepository<Book,Integer> {
 
 	
 

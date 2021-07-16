@@ -1,4 +1,4 @@
-package az.developia.computermangement.model;
+package az.developia.bookmangement.model;
 
 import  lombok.Getter;
 import lombok.Setter;
@@ -11,22 +11,14 @@ import javax.persistence.Id;
 @Getter
 @Setter
 @Entity
-public class Computer {
+public class Book {
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private Integer price;
+	private String username;
 	private String name;
 	private String description;
-
-	private String neew;
-	private String username;
-	private String categoryname;
+	private String sekil;
 	private String phone;
-	private String ram;
-	private String cpu;
-	private String gpu;
-	private String wind;
-	private String storage;
-	private String storagetype;
 }

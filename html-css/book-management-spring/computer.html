@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head> 
+
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,7 +14,7 @@
 <body>
 
     <button type="button" style="float:left;"   class="btn btn-primary" onclick="newComputer()" data-toggle="modal" data-target="#myModal">
-        Yeni komputer
+        Yeni Kitab
       </button>
       </div>
       <div class="modal fade" id="myModal">
@@ -27,14 +28,11 @@
     
             <div class="modal-body">
               <form class="was-validated" onsubmit="saverClicked(event)" get>
-                <div style="width: 45%;margin-left: 4%;float: left;">
+                
                   <div class="form-group">
-                    <label for="kategoriyaSelect">Kategoriya:</label>
-                    <select type="text" class="form-control" id="kategoriyaSelect">
-                        <option>Asus</option>
-                        <option>Acer</option>
-                        <option>Php</option>
-                    </select>
+                    <label for="usernameInput">Username:</label>
+                    <input type="text" class="form-control" id="usernameInput">
+                     
                     <div class="valid-feedback">Dogrudur.</div>
                     <div class="invalid-feedback">Sehvdir.</div>
                   </div>
@@ -57,11 +55,9 @@
                     <div class="invalid-feedback">Sehvdir.</div>
                   </div>
                   <div class="form-group">
-                    <label for="yeniSelect">Yeni:</label>
-                    <select type="text" class="form-control" id="yeniSelect" minlength="2" maxlength="30" required>
-                      <option>Beli</option>
-                      <option>Xeyr</option>
-                    </select>
+                    <label for="imageInput">Sekil:</label>
+                    <input type="text" class="form-control" id="imageInput" minlength="2" maxlength="30" required>
+                     
                     <div class="valid-feedback">Dogrudur.</div>
                     <div class="invalid-feedback">Sehvdir.</div>
                   </div>
@@ -75,53 +71,8 @@
                     <div class="invalid-feedback">Sehvdir.Meselen:050-216-48-06</div>
                   </div>
     
-                </div>
-    
-                <div style="width: 45%;margin-left: 3%;float: left;">
-                  <div class="form-group">
-                    <label for="ramInput">Ram(Emeli Yaddas(GB)):</label>
-                    <input type="number" class="form-control" id="ramInput" minlength="2" maxlength="30" required>
-                    <div class="valid-feedback">Dogrudur.</div>
-                    <div class="invalid-feedback">Sehvdir.</div>
-                  </div>
-                  <div class="form-group">
-                    <label for="cpuInput">CPU(Merkezi prosessor):</label>
-                    <input type="text" class="form-control" id="cpuInput" minlength="2" maxlength="30" required>
-                    <div class="valid-feedback">Dogrudur.</div>
-                    <div class="invalid-feedback">Sehvdir.</div>
-                  </div>
-                  <div class="form-group">
-                    <label for="storageInput">Daimi Yaddas(GB):</label>
-                    <input type="text" class="form-control" id="storageInput" minlength="2" maxlength="30" required>
-                    <div class="valid-feedback">Dogrudur.</div>
-                    <div class="invalid-feedback">Sehvdir.</div>
-                  </div>
-                  <div class="form-group">
-                    <label for="storageselectType">Daimi Yaddas tipi:</label>
-                    <select type="text" class="form-control" id="storageselectType">
-                      <option>SSD</option>
-                      <option>HDD</option>
-    
-                    </select>
-                    <div class="valid-feedback">Dogrudur.</div>
-                    <div class="invalid-feedback">Sehvdir.</div>
-                  </div>
-                  <div class="form-group">
-                    <label for="operationSystemInput">Emeliyyat Sistemi:</label>
-                    <input type="text" class="form-control" id="operationSystemInput" minlength="2" maxlength="30" required>
-                    <div class="valid-feedback">Dogrudur.</div>
-                    <div class="invalid-feedback">Sehvdir.</div>
-                  </div>
-                  <div class="form-group">
-                    <label for="gpuInput">Gpu(Video Kart(GB)):</label>
-                    <input type="number" class="form-control" id="gpuInput" minlength="2" maxlength="30" required>
-                    <div class="valid-feedback">Dogrudur.</div>
-                    <div class="invalid-feedback">Sehvdir.</div>
-                  </div>
-                 
-    
-    
-                </div>
+               
+
     
     
     
@@ -137,37 +88,26 @@
           </div>
         </div>
       </div><br><br>
-      <div id="computers-table" style="height: 500px; width:100%;" class="ag-theme-alpine"></div>
+      <div id="books-table" style="height: 500px; width:100%;" class="ag-theme-alpine"></div>
       <script>
-var kategoriyaSelect = document.getElementById("kategoriyaSelect");
+var usernameInput = document.getElementById("usernameInput");
 var nameInput = document.getElementById("nameInput");
 var priceInput = document.getElementById("priceInput");
 var descriptionInput = document.getElementById("descriptionInput");
-var yeniSelect = document.getElementById("yeniSelect");
+var imageInput = document.getElementById("imageInput");
 var telefonInput = document.getElementById("telefonInput");
-var ramInput = document.getElementById("ramInput");
-var cpuInput = document.getElementById("cpuInput");
-var storageInput = document.getElementById("storageInput");
-var storageselectType = document.getElementById("storageselectType");
-var operationSystemInput = document.getElementById("operationSystemInput");
-var gpuInput = document.getElementById("gpuInput");
+
 
 const columnDefs = [
 
       { field: "id" ,headerName:"Kod",},
       { field: "username" ,headerName:"Username"},
-      { field: "name" ,headerName:"Komputer adi"},
+      { field: "name" ,headerName:"Kitab adi"},
       { field: "phone" ,headerName:"Telefon"},
       { field: "description" ,headerName:"Melumat"},
       { field: "price" ,headerName:"Qiymet"},
-      { field: "neew" ,headerName:"Yeni"},
-      { field: "categoryname" ,headerName:"Sirket"},
-      { field: "ram" ,headerName:"Ram"},
-      { field: "cpu" ,headerName:"Cpu"},
-      { field: "gpu" ,headerName:"Gpu"},
-      { field: "wind" ,headerName:"Emeliyyat sistemi"},
-      { field: "storage" ,headerName:"Yaddas"},
-      { field: "storagetype" ,headerName:"Yaddas tipi"}
+      { field: "sekil" ,headerName:"Sekil"}
+    
     ];
 
 
@@ -186,16 +126,17 @@ filter:true,
 floatingFilter:true,
 
 
-      }
+      },
+      
  
     };
 
 
 document.addEventListener('DOMContentLoaded',()=>{
-const gridDiv =document.querySelector('#computers-table');
+const gridDiv =document.querySelector('#books-table');
 new agGrid.Grid(gridDiv,gridOptions);
 });
-loadComputers();
+loadBooks();
 
 function saverClicked(event){
     event.preventDefault();
@@ -207,14 +148,14 @@ if (this.readyState== 4 && this.status ==200) {
 
     alert("Ugurlu");
     document.addEventListener('DOMContentLoaded',()=>{
-const gridDiv =document.querySelector('#computers-table');
+const gridDiv =document.querySelector('#books-table');
 new agGrid.Grid(gridDiv,gridOptions);
 });
-loadComputers();
+loadBooks();
 }
 
     }
-        xhttp.open("POST","http://localhost:9540/computers",true);
+        xhttp.open("POST","http://localhost:9541/books",true);
         xhttp.setRequestHeader("Content-type","application/json" );
         xhttp.setRequestHeader("Authorization","Basic "+window.btoa('developia:1234') );
 
@@ -222,32 +163,26 @@ loadComputers();
         computer.price=priceInput.value;
         computer.name=nameInput.value;
         computer.description=descriptionInput.value;
-        computer.neew=yeniSelect.value;
-        computer.categoryname=kategoriyaSelect.value;
-        computer.username="cavid";
+        computer.sekil=imageInput.value;
+        computer.username=usernameInput.value;
         computer.phone=telefonInput.value;
-        computer.ram=ramInput.value;
-        computer.cpu=cpuInput.value;
-        computer.gpu=gpuInput.value;
-        computer.storage=storageInput.value;
-        computer.storagetype=storageselectType.value;
-        computer.wind=operationSystemInput.value;
+
         xhttp.send(JSON.stringify(computer));
         
 }
  
-function loadComputers(){
+function loadBooks(){
     var xhttp =new XMLHttpRequest();
 xhttp.onreadystatechange=function(){
 if (this.readyState== 4 && this.status ==200) {
-var computersJson =this.responseText;
-var computersArray=JSON.parse(computersJson);
-gridOptions.api.setRowData(computersArray); 
+var bookJson =this.responseText;
+var booksArray=JSON.parse(bookJson);
+gridOptions.api.setRowData(booksArray); 
  
 }
 
     }
-        xhttp.open("GET","http://localhost:9540/computers",true);
+        xhttp.open("GET","http://localhost:9541/books",true);
         xhttp.setRequestHeader("Authorization","Basic "+window.btoa('developia:1234') );
         xhttp.send();
     

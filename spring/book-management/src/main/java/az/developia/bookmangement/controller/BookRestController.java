@@ -1,4 +1,4 @@
-	package az.developia.computermangement.controller;
+	package az.developia.bookmangement.controller;
 
 import java.util.List;
 
@@ -12,30 +12,29 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import az.developia.computermangement.model.Computer;
-
-import az.developia.computermangement.service.ComputerService;
+import az.developia.bookmangement.model.Book;
+import az.developia.bookmangement.service.BookService;
 
 @RestController
-@RequestMapping(path = "/computers")
+@RequestMapping(path = "/books")
 @CrossOrigin(origins = "*")
 
-public class ComputerRestController {
+public class BookRestController {
 
 	@Autowired
-	private ComputerService computerService;
+	private BookService bookService;
 
 
 	
 	@GetMapping
-	public List<Computer> findAll() { 
-		return computerService.findAll();
+	public List<Book> findAll() { 
+		return bookService.findAll();
 	}
 	
 	@PostMapping
-	public void add(@RequestBody Computer task){
+	public void add(@RequestBody Book book){
 		 
-		computerService.add(task);
+		bookService.add(book);
 	}
 
 
