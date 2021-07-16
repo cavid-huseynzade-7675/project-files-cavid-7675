@@ -8,14 +8,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(path = "/login")
 @CrossOrigin(origins = "*")
-public class LoginController {
+public class LoginRestController {
     
 
 
-    @GetMapping{
-
-        public void login(){
-
-        }
-    }
+    @GetMapping
+        public void login(){  }
+    
 }
