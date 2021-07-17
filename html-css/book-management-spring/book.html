@@ -13,7 +13,7 @@
 </head>
 <body>
 
-    <button type="button" style="float:left;"   class="btn btn-primary" onclick="newComputer()" data-toggle="modal" data-target="#myModal">
+    <button type="button" style="float:left;"   class="btn btn-primary"  data-toggle="modal" data-target="#myModal">
         Yeni Kitab
       </button>
       </div>
@@ -159,15 +159,15 @@ loadBooks();
         xhttp.setRequestHeader("Content-type","application/json" );
         xhttp.setRequestHeader("Authorization","Basic "+window.btoa('developia:1234') );
 
-        var computer={};  
-        computer.price=priceInput.value;
-        computer.name=nameInput.value;
-        computer.description=descriptionInput.value;
-        computer.sekil=imageInput.value;
-        computer.username=usernameInput.value;
-        computer.phone=telefonInput.value;
+        var book={};  
+        book.price=priceInput.value;
+        book.name=nameInput.value;
+        book.description=descriptionInput.value;
+        book.sekil=imageInput.value;
+        book.username=usernameInput.value;
+        book.phone=telefonInput.value;
 
-        xhttp.send(JSON.stringify(computer));
+        xhttp.send(JSON.stringify(book));
         
 }
  
