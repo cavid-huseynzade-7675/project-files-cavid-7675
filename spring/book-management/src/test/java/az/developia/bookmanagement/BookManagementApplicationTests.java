@@ -1,10 +1,10 @@
-package az.developia.taskmanagementaprel11;
+ package az.developia.bookmanagement;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class TaskManagementAprel11ApplicationTests {
+class BookManagementApplicationTests {
 
 	@Test
 	void contextLoads() {

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
 import org.springframework.web.bind.annotation.RequestBody;
@@ -38,7 +39,7 @@ public class TaskRestController {
 		taskService.add(task);
 	}
 
-	@PostMapping(value = "/delete-task")
+	@DeleteMapping(value = "/delete-task")
 	public void deleteTasks(@RequestBody taskDeleteModel t1){
 	for (int i = 0; i < t1.getIds().size(); i++) {
 		taskService.deleteById(t1.getIds().get(i));
