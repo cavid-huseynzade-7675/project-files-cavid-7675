@@ -17,6 +17,11 @@ export class TaskSaveComponent implements OnInit {
   ngOnInit(): void {}
   onSaveTask() {
    // this.service.tasks.push(this.task);
-   this.http.post(API_URL+'/tasks',this.task).subscribe();
+   this.http.post<Task>(API_URL+'/tasks',this.task).subscribe(
+resp=>{
+  this.service.TaskAdded.emit(resp);
+}
+
+   );
   }
 }

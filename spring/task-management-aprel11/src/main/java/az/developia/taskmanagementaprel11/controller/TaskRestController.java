@@ -34,9 +34,9 @@ public class TaskRestController {
 	}
 	
 	@PostMapping
-	public void add(@RequestBody Task task){
+	public Task add(@RequestBody Task task){
 		 
-		taskService.add(task);
+	 return taskService.add(task);
 	}
 
 	@DeleteMapping(value = "/delete-task")

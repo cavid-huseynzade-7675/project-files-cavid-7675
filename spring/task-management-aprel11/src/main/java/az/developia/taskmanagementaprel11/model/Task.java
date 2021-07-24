@@ -15,7 +15,7 @@ import javax.validation.constraints.Size;
 public class Task {
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
-@Size(min=1,max=20)
+
 	private Integer id;
 	private String name;
 	private String description;

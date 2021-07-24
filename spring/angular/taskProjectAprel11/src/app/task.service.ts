@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter,Injectable } from '@angular/core';
 import { Task } from './models/task';
 
 @Injectable({
@@ -6,6 +6,7 @@ import { Task } from './models/task';
 })
 export class TaskService {
 tasks:Task[]=[];
+TaskAdded:EventEmitter<Task>=new EventEmitter();
   constructor() {
 
     

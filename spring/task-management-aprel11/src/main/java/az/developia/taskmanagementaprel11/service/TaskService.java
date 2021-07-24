@@ -17,10 +17,10 @@ public class TaskService {
 	public List<Task> findAll(){
 		return taskRepository.findAll();
 	}
-	public void add(Task t){
+	public Task add(Task t){
 
-taskRepository.save(t);
-		;
+  return taskRepository.save(t);
+	
 	}
 
 	public void deleteById(Integer id){

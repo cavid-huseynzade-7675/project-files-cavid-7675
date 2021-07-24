@@ -14,11 +14,19 @@ export class TaskListComponent implements OnInit {
   constructor(private service: TaskService,private http:HttpClient) {}
 
   ngOnInit(): void {
+    this.loadTasks();
+    this.service.TaskAdded.subscribe(
+      resp=>{
+        this.tasks.push(resp);
+      }
+    );
+   
+  }
+  loadTasks(){
     this.http.get<Task[]>(API_URL+'/tasks').subscribe(
-response=>{
-  this.tasks=response;
-}
-
-    )
+      response=>{
+        this.tasks=response;
+      }
+    );
   }
 }
