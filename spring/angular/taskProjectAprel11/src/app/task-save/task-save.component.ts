@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core'
-import { Event,Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { API_URL } from '../constants';
-import { Student } from '../models/student';
 import { Task } from '../models/task';
 import { TaskService } from '../task.service';
 
@@ -18,14 +17,18 @@ export class TaskSaveComponent implements OnInit {
   task: Task = new Task();
   minimum:number=3;
 maksimum:number=20;
-  constructor(private service: TaskService,private http:HttpClient) {}
+  constructor(
+    private service: TaskService,
+    private http:HttpClient,
+    private router:Router) {}
 
   ngOnInit(): void {}
   onSaveTask() {
    // this.service.tasks.push(this.task);
    this.http.post<Task>(API_URL+'/tasks',this.task).subscribe(
 resp=>{
-  this.service.TaskAdded.emit(resp);
+ // this.service.TaskAdded.emit(resp);
+ this.router.navigate(['tasks']);
 }
 
    );

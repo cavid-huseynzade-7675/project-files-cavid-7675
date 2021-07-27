@@ -15,12 +15,11 @@ export class TaskListComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadTasks();
-    this.service.TaskAdded.subscribe(
-      resp=>{
-        this.tasks.push(resp);
-      }
-    );
-   
+   // this.service.TaskAdded.subscribe(
+   //   resp=>{
+   //     this.tasks.push(resp);
+   //   }
+   //
   }
   loadTasks(){
     this.http.get<Task[]>(API_URL+'/tasks').subscribe(
