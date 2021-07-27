@@ -7,7 +7,8 @@
       <th>Melumat</th>
       <th>Status</th>
       <th>Baslama tarixi</th>
-      <th>bitme tarixi</th>
+      <th>Bitme tarixi</th>
+      <th>Emeliyyatlar</th>
     </tr>
   </thead>
   <tbody>
@@ -19,7 +20,7 @@
       <td>{{ task.status }}</td>
       <td>{{ task.begindate }}</td>
       <td>{{ task.enddate }}</td>
-      <td><button (click)="deleteTaskById(task.id)">Sil</button></td>
+      <td><button (click)="deleteTaskById(task.id)" class="btn btn-dark btn border">Sil</button></td>
     </tr>
   </tbody>
 </table>

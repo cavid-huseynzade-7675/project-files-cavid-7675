@@ -32,7 +32,7 @@ export class TaskListComponent implements OnInit {
   deleteTaskById(id:number){
     this.http.delete(API_URL+'/tasks/'+id).subscribe(
       resp=>{
-        this.loadTasks;
+        this.loadTasks();
       }
     );
   }
