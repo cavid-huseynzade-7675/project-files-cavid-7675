@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -44,6 +45,11 @@ public class TaskRestController {
 	for (int i = 0; i < t1.getIds().size(); i++) {
 		taskService.deleteById(t1.getIds().get(i));
 	}
+	}
+
+	@DeleteMapping(value = "/{id}")
+	public void deleteTaskById(@PathVariable Integer id){
+	taskService.deleteById(id);
 	}
 
 }

@@ -19,6 +19,7 @@
       <td>{{ task.status }}</td>
       <td>{{ task.begindate }}</td>
       <td>{{ task.enddate }}</td>
+      <td><button (click)="deleteTaskById(task.id)">Sil</button></td>
     </tr>
   </tbody>
 </table>
