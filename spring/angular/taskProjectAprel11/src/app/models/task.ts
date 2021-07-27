@@ -4,6 +4,6 @@ export class Task {
   public username: string = '';
   public description: string = '';
   public status: string = '';
-  public begindate: Date = new Date();
-  public enddate: Date = new Date();
+  public beginDate: Date = new Date();
+  public endDate: Date = new Date();
 }
