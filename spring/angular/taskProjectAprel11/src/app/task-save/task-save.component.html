@@ -1,5 +1,5 @@
 <div class="container">
-  <form (ngSubmit)="onSaveTask()">
+  <form (ngSubmit)="!taskForm.invalid &&  onSaveTask()" #taskForm='ngForm'>
     <div class="form-group">
       <label for="name">Ad:</label>
       <input
@@ -18,6 +18,9 @@
         id="task-name"
         name="task-name"
         [(ngModel)]="task.name"
+        required
+        [minlength]="minimum"
+        [maxlength]="maksimum"
       />
     </div>
     <div class="form-group">
@@ -28,6 +31,9 @@
         id="description-name"
         name="description-name"
         [(ngModel)]="task.description"
+        required
+        [minlength]="minimum"
+        [maxlength]="maksimum"
       />
     </div>
     <div class="form-group">
@@ -38,6 +44,9 @@
         id="status-name"
         name="status-name"
         [(ngModel)]="task.status"
+        required
+        [minlength]="minimum"
+        [maxlength]="maksimum"
       />
     </div>
     <div class="form-group">
@@ -48,6 +57,8 @@
         id="task-begin-date"
         name="task-begin-date"
         [(ngModel)]="task.begindate"
+        required[minlength]="minimum"
+        [maxlength]="maksimum"
       />
     </div>
     <div class="form-group">
@@ -58,6 +69,9 @@
         id="task-end-date"
         name="task-enf-date"
         [(ngModel)]="task.enddate"
+        required
+        [minlength]="minimum"
+        [maxlength]="maksimum"
       />
     </div>
     <button type="submit" class="btn btn-primary">yadda saxla</button>
