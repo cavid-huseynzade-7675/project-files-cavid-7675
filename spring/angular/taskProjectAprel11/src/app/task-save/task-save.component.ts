@@ -16,7 +16,7 @@ import { TaskService } from '../task.service';
 export class TaskSaveComponent implements OnInit {
   task: Task = new Task();
   minimum:number=3;
-maksimum:number=20;
+maksimum:number=30;
   constructor(
     private service: TaskService,
     private http:HttpClient,

@@ -2,7 +2,11 @@
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,9 +39,24 @@ public class TaskRestController {
 	}
 	
 	@PostMapping
-	public Task add(@RequestBody Task task){
-		 
-	 return taskService.add(task);
+	public Task add(@Valid @RequestBody Task task,BindingResult result){
+		Task taskSaved=null;
+		if (result.hasErrors()) {
+			 System.out.println("Error var");
+			 System.out.println(result.getErrorCount());
+			 System.out.println(result.getFieldErrorCount());
+			 System.out.println(result.getFieldErrorCount("name"));
+			 System.out.println("getAllerrors"+result.getAllErrors());
+
+			 System.out.println("---------------");
+			 for (ObjectError error:result.getAllErrors()){
+				System.out.println(error.getDefaultMessage());
+			 }
+
+		}else{
+			taskSaved=taskService.add(task);
+		}
+	 return taskSaved;
 	}
 
 	@DeleteMapping(value = "/delete-task")
