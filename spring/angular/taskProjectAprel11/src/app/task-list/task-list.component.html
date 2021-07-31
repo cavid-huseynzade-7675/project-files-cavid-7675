@@ -20,7 +20,12 @@
       <td>{{ task.status }}</td>
       <td>{{ task.beginDate }}</td>
       <td>{{ task.endDate }}</td>
-      <td><button (click)="deleteTaskById(task.id)" class="btn btn-light btn border">Sil</button></td>
+      <td><button mwlConfirmationPopover placement="left" 
+        [popoverTitle]="popoverTitle" 
+        [popoverMessage]="popoverMessage" 
+        (confirm)="deleteTaskById(task.id)"
+
+         class="btn btn-danger btn border">Sil</button></td>
     </tr>
   </tbody>
 </table>

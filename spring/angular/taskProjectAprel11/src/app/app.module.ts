@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { TaskSaveComponent } from './task-save/task-save.component';
 import { TaskListComponent } from './task-list/task-list.component';
 
-
+import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { MenuComponent } from './menu/menu.component';
@@ -29,7 +29,10 @@ import { LogoutComponent } from './component/logout/logout.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ConfirmationPopoverModule.forRoot({
+confirmButtonType:'primary',cancelButtonType:'danger',confirmText:'Tesdiq',cancelText:'Legv Et'
+    })
   ],
   providers: [{
 

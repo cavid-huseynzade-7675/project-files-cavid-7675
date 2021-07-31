@@ -11,6 +11,8 @@ import { TaskService } from '../task.service';
 })
 export class TaskListComponent implements OnInit {
   tasks: Task[] = [];
+  popoverTitle:string='Təsdiq';
+  popoverMessage:string='Tələbə Silme prosesini təsdiqləməyə əminsiniz?';
   constructor(private service: TaskService,private http:HttpClient) {}
 
   ngOnInit(): void {
@@ -30,7 +32,7 @@ export class TaskListComponent implements OnInit {
   }
 
   deleteTaskById(id:number){
-    if (confirm("silmeye eminsen")) {
+  
       this.http.delete(API_URL+'/tasks/'+id).subscribe(
         resp=>{
           this.loadTasks();
@@ -38,5 +40,5 @@ export class TaskListComponent implements OnInit {
       );
     }
   
-  }
+  
 }
