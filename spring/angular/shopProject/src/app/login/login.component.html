@@ -1,1 +1,6 @@
-<p>login works!</p>
+<form class="form-input"  (ngSubmit)="onLogin()">
+    <input class="form-input" [(ngModel)]="user.username" name="username">
+    <input class="form-input" [(ngModel)]="user.password" name="password">
+    <input class="btn btn-border btn-piramry" type="submit" value="Daxil ol">
+    
+    </form>

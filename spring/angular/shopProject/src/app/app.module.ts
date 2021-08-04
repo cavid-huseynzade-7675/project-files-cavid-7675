@@ -8,6 +8,8 @@ import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { ShopSaveComponent } from './shop-save/shop-save.component';
 import { ShopListComponent } from './shop-list/shop-list.component';
+import { FormsModule } from '@angular/forms';
+import{HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { ShopListComponent } from './shop-list/shop-list.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
