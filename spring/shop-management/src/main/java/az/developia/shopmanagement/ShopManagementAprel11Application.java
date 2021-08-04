@@ -32,8 +32,9 @@ public class ShopManagementAprel11Application {
 
 
 
-	//	repository.save(shop);
-	 
+		//repository.save(shop);
+	
+
 	}
 
 }

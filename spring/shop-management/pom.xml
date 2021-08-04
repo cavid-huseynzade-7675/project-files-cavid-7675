@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>az.developia</groupId>
-	<artifactId>task-management-aprel11</artifactId>
+	<artifactId>shop-management-aprel11</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>task-management-aprel11</name>
+	<name>shop-management-aprel11</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>1.16</java.version>

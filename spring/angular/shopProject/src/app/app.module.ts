@@ -10,6 +10,7 @@ import { ShopSaveComponent } from './shop-save/shop-save.component';
 import { ShopListComponent } from './shop-list/shop-list.component';
 import { FormsModule } from '@angular/forms';
 import{HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
+import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,10 @@ import{HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ConfirmationPopoverModule.forRoot({
+      confirmButtonType:'primary',cancelButtonType:'danger',confirmText:'Tesdiq',cancelText:'Legv Et'
+          })
   ],
   providers: [],
   bootstrap: [AppComponent]

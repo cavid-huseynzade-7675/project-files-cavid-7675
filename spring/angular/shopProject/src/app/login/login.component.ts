@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { API_URL } from '../appmenu/constant';
+import { API_URL } from '../constant';
 import { User } from '../models/user';
 
 @Component({

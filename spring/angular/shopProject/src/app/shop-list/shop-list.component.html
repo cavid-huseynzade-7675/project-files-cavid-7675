@@ -1,1 +1,31 @@
-<p>shop-list works!</p>
+<table class="table table-light">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Sahibi</th>
+        <th>Mehsul</th>
+        <th>Melumat</th>
+        <th>Status</th>
+        <th>Qiymet</th>
+        <th>Tarix</th>
+        <th>Emeliyyatlar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let shop of shops">
+        <td>{{ shop.id }}</td>
+        <td>{{ shop.username }}</td>
+        <td>{{ shop.name }}</td>
+        <td>{{ shop.description }}</td>
+        <td>{{ shop.status }}</td>
+        <td>{{ shop.price }}</td>
+        <td>{{ shop.beginDate }}</td>
+        <td><button mwlConfirmationPopover placement="left" 
+          [popoverTitle]="popoverTitle" 
+          [popoverMessage]="popoverMessage" 
+          (confirm)="deleteShopById(shop.id)"
+  
+           class="btn btn-danger btn border">Sil</button></td>
+      </tr>
+    </tbody>
+  </table>
