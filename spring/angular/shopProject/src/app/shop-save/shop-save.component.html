@@ -1,1 +1,85 @@
-<p>shop-save works!</p>
+<div class="container">
+    <form (ngSubmit)="!shopForm.invalid && onSaveShop()" #shopForm="ngForm">
+      <div class="form-group">
+        <label for="name">Ad:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          name="name"
+          [(ngModel)]="shop.username"
+          required
+          [minlength]="minimum"
+          [maxlength]="maksimum"
+        />
+      </div>
+      <div class="form-group">
+        <label for="shop-name">Mehsul:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="shop-name"
+          name="shop-name"
+          [(ngModel)]="shop.name"
+          required
+          [minlength]="minimum"
+          [maxlength]="maksimum"
+        />
+      </div>
+      <div class="form-group">
+        <label for="description-name">Melumat:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="description-name"
+          name="description-name"
+          [(ngModel)]="shop.description"
+          required
+          [minlength]="minimum"
+          [maxlength]="maksimum"
+        />
+      </div>
+      <div class="form-group">
+        <label for="status-name">Status:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="status-name"
+          name="status-name"
+          [(ngModel)]="shop.status"
+          required
+          [minlength]="minimum"
+          [maxlength]="maksimum"
+        />
+      </div>
+      <div class="form-group">
+        <label for="shop-price">Qiymet</label>
+        <input
+          type="number"
+          class="form-control"
+          id="shop-price"
+          name="shop-price"
+          [(ngModel)]="shop.price"
+          required
+          [minlength]="minimum"
+          [maxlength]="maksimum"
+        />
+      </div>
+      <div class="form-group">
+        <label for="shop-begin-date">Tarix</label>
+        <input
+          type="date"
+          class="form-control"
+          id="shop-begin-date"
+          name="shop-begin-date"
+          [(ngModel)]="shop.beginDate"
+          required
+      
+        />
+      </div>
+      
+ 
+      <button type="submit" class="btn btn-primary">yadda saxla</button>
+    </form>
+  </div>
+  
