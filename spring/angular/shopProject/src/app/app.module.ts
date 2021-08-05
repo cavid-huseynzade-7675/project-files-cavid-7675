@@ -11,7 +11,6 @@ import { ShopListComponent } from './shop-list/shop-list.component';
 import { FormsModule } from '@angular/forms';
 import{HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
-import { HttpInterSectorService } from './service/http-inter-sector.service';
 
 @NgModule({
   declarations: [
@@ -31,11 +30,7 @@ import { HttpInterSectorService } from './service/http-inter-sector.service';
       confirmButtonType:'primary',cancelButtonType:'danger',confirmText:'Tesdiq',cancelText:'Legv Et'
           })
   ],
-  providers: [{
-
-    provide:HTTP_INTERCEPTORS,useClass:HttpInterSectorService,multi:true
-    
-      }],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
