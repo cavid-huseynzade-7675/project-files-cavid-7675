@@ -18,7 +18,7 @@ export class ShopListComponent implements OnInit {
   constructor(private service: ShopService,private http:HttpClient) {}
 
   ngOnInit(): void {
-  //  this.loadShops();
+   this.loadShops();
    // this.service.TaskAdded.subscribe(
    //   resp=>{
    //     this.shops.push(resp);
@@ -31,6 +31,7 @@ export class ShopListComponent implements OnInit {
       response=>{
         this.shops=response;
      }
+
     );
   }
 
