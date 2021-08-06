@@ -17,18 +17,9 @@ export class AppComponent {
     if (data) {
       var parsedData = JSON.parse(localStorage.getItem("data"));
       this.dataSource = new MatTableDataSource(parsedData);
-    } else {
-      localStorage.setItem("data", JSON.stringify(ELEMENT_DATA));
-      var parsedData = JSON.parse(localStorage.getItem("data"));
-      this.dataSource = new MatTableDataSource(parsedData);
     }
   }
-  type(ele: any, value: any, val: any) {
-    console.log(value);
-    console.log(ele["val"]);
-    ele[val] = value;
-    console.log(this.dataSource);
-  }
+
 
   delete(element: number) {
     const data = this.dataSource.data;
