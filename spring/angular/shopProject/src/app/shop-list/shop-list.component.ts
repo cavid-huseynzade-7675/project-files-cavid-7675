@@ -14,6 +14,7 @@ import { ShopService } from '../shop.service';
   styleUrls: ['./shop-list.component.css']
 })
 export class ShopListComponent implements OnInit {
+
   shops: Shop[] = [];
   popoverTitle:string='Təsdiq';
   popoverMessage:string='Tələbə Silme prosesini təsdiqləməyə əminsiniz?';
@@ -25,12 +26,10 @@ openDialog(){
 
   ngOnInit(): void {
    this.loadShops();
-   // this.service.TaskAdded.subscribe(
-   //   resp=>{
-   //     this.shops.push(resp);
-   //   }
-   //
+this.load()
   }
+
+
 
  loadShops(){
     this.http.get<Shop[]>(API_URL+'/shops').subscribe(
@@ -39,6 +38,17 @@ openDialog(){
      }
 
     );
+  }
+load(){
+  setInterval(() => {
+    if (localStorage.getItem('loadShops')=='1'){
+this.loadShops();
+localStorage.setItem('loadShops','0')
+
+    } 
+      
+    },100);
+
   }
 
 

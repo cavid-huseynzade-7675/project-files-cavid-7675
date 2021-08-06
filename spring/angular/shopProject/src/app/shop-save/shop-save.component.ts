@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { API_URL } from '../constant';
 import { Shop } from '../models/shop';
+import { ShopListComponent } from '../shop-list/shop-list.component';
 import { ShopService } from '../shop.service';
 
 @Component({
@@ -12,6 +13,7 @@ import { ShopService } from '../shop.service';
 })
 export class ShopSaveComponent implements OnInit {
 
+ 
   shop: Shop = new Shop();
   minimum:number=3;
 maksimum:number=30;
@@ -27,6 +29,7 @@ maksimum:number=30;
 resp=>{
  // this.service.TaskAdded.emit(resp);
  this.router.navigate(['shops']);
+ localStorage.setItem('loadShops','1')
 }
 
    );
