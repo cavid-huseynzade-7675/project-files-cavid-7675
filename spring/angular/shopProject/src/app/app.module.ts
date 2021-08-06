@@ -16,6 +16,11 @@ import { DialogComponent } from './dialog/dialog.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DemoMaterialModule } from './material-module';
 import { AgGridModule } from 'ag-grid-angular';  
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +33,11 @@ import { AgGridModule } from 'ag-grid-angular';
   ],
   entryComponents:[DialogComponent],
   imports: [
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatProgressSpinnerModule,
     DemoMaterialModule,
     BrowserModule,
     AppRoutingModule,
