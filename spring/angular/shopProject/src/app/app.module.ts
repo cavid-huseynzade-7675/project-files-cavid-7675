@@ -15,7 +15,7 @@ import { HttpInterSectorService } from './service/http-inter-sector.service';
 import { DialogComponent } from './dialog/dialog.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DemoMaterialModule } from './material-module';
-
+import { AgGridModule } from 'ag-grid-angular';  
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +36,8 @@ import { DemoMaterialModule } from './material-module';
     ConfirmationPopoverModule.forRoot({
       confirmButtonType:'primary',cancelButtonType:'danger',confirmText:'Tesdiq',cancelText:'Legv Et'
           }),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AgGridModule.withComponents([]), 
   ],
   providers: [{
 
