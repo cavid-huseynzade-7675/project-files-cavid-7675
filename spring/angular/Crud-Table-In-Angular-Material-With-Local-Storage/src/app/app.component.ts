@@ -7,7 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol','button'];
+  displayedColumns: string[] = [ 'name', 'weight' ,'button'];
   title = 'new';
   dataSource = new MatTableDataSource([]);
   saveBtn = true;
@@ -29,14 +29,7 @@ export class AppComponent {
     ele[val] = value;
     console.log(this.dataSource);
   }
-  save() {
-    this.saveBtn = true;
-    localStorage.setItem("data", JSON.stringify(this.dataSource.data));
-    console.log(this.dataSource);
-  }
-  edit() {
-    this.saveBtn = false;
-  }
+
   delete(element: number) {
     const data = this.dataSource.data;
     data.splice(element, 1);
