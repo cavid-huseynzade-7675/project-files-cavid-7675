@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { API_URL } from '../constant';
+import { DialogComponent } from '../dialog/dialog.component';
 import { Shop } from '../models/shop';
 import { User } from '../models/user';
 import { ShopService } from '../shop.service';
@@ -15,7 +17,11 @@ export class ShopListComponent implements OnInit {
   shops: Shop[] = [];
   popoverTitle:string='Təsdiq';
   popoverMessage:string='Tələbə Silme prosesini təsdiqləməyə əminsiniz?';
-  constructor(private service: ShopService,private http:HttpClient) {}
+  constructor(private service: ShopService,private http:HttpClient,public dialog:MatDialog) {}
+
+openDialog(){
+  this.dialog.open(DialogComponent);
+}
 
   ngOnInit(): void {
    this.loadShops();

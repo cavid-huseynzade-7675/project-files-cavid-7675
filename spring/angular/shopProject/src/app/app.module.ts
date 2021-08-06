@@ -12,6 +12,9 @@ import { FormsModule } from '@angular/forms';
 import{HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { HttpInterSectorService } from './service/http-inter-sector.service';
+import { DialogComponent } from './dialog/dialog.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DemoMaterialModule } from './material-module';
 
 @NgModule({
   declarations: [
@@ -20,16 +23,20 @@ import { HttpInterSectorService } from './service/http-inter-sector.service';
     LoginComponent,
     LogoutComponent,
     ShopSaveComponent,
-    ShopListComponent
+    ShopListComponent,
+    DialogComponent
   ],
+  entryComponents:[DialogComponent],
   imports: [
+    DemoMaterialModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
     ConfirmationPopoverModule.forRoot({
       confirmButtonType:'primary',cancelButtonType:'danger',confirmText:'Tesdiq',cancelText:'Legv Et'
-          })
+          }),
+    BrowserAnimationsModule
   ],
   providers: [{
 
