@@ -1,12 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatTableDataSource } from '@angular/material/table';
 import { API_URL } from '../constant';
 import { DialogComponent } from '../dialog/dialog.component';
 import { Shop } from '../models/shop';
 import { User } from '../models/user';
 import { ShopService } from '../shop.service';
-
 
 @Component({
   selector: 'app-shop-list',
@@ -14,11 +14,19 @@ import { ShopService } from '../shop.service';
   styleUrls: ['./shop-list.component.css']
 })
 export class ShopListComponent implements OnInit {
-
+  displayedColumns: string[] = [ 'id', 'username' ,'name','description', 'status' ,'price','beginDate','button'];
+  title = 'new';
+  dataSource = new MatTableDataSource([]);
+  saveBtn = true;
+  
   shops: Shop[] = [];
+  data: Shop[]=[]
   popoverTitle:string='Təsdiq';
   popoverMessage:string='Tələbə Silme prosesini təsdiqləməyə əminsiniz?';
-  constructor(private service: ShopService,private http:HttpClient,public dialog:MatDialog) {}
+  constructor(private service: ShopService,private http:HttpClient,public dialog:MatDialog) {
+
+
+  }
 
 openDialog(){
   this.dialog.open(DialogComponent);
@@ -26,7 +34,7 @@ openDialog(){
 
   ngOnInit(): void {
    this.loadShops();
-this.load()
+//this.load()
   }
 
 
@@ -35,6 +43,10 @@ this.load()
     this.http.get<Shop[]>(API_URL+'/shops').subscribe(
       response=>{
         this.shops=response;
+        console.log(response);
+       
+       
+        ;
      }
 
     );
@@ -56,7 +68,7 @@ localStorage.setItem('loadShops','0')
   
       this.http.delete(API_URL+'/shops/'+id).subscribe(
         resp=>{
-          this.loadShops();
+       //   this.loadShops();
         }
       );
     }
