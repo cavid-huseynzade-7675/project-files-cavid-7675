@@ -34,7 +34,7 @@ openDialog(){
 
   ngOnInit(): void {
    this.loadShops();
-//this.load()
+this.load()
   }
 
 
@@ -68,7 +68,7 @@ localStorage.setItem('loadShops','0')
   
       this.http.delete(API_URL+'/shops/'+id).subscribe(
         resp=>{
-       //   this.loadShops();
+       this.loadShops();
         }
       );
     }

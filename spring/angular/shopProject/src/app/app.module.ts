@@ -21,6 +21,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
+import { SignInComponent } from './sign-in/sign-in.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +30,8 @@ import { MatTableModule } from '@angular/material/table';
     LogoutComponent,
     ShopSaveComponent,
     ShopListComponent,
-    DialogComponent
+    DialogComponent,
+    SignInComponent
   ],
   entryComponents:[DialogComponent],
   imports: [
