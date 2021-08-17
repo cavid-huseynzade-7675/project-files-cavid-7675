@@ -22,6 +22,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { SignInComponent } from './sign-in/sign-in.component';
+import { ShopOnlineMarketComponent } from './shop-online-market/shop-online-market.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +33,9 @@ import { SignInComponent } from './sign-in/sign-in.component';
     ShopSaveComponent,
     ShopListComponent,
     DialogComponent,
-    SignInComponent
+    SignInComponent,
+    ShopOnlineMarketComponent,
+  
   ],
   entryComponents:[DialogComponent],
   imports: [
