@@ -14,13 +14,10 @@ import { ShopService } from '../shop.service';
   styleUrls: ['./shop-list.component.css']
 })
 export class ShopListComponent implements OnInit {
-  displayedColumns: string[] = [ 'id', 'username' ,'name','description', 'status' ,'price','beginDate','button'];
-  title = 'new';
-  dataSource = new MatTableDataSource([]);
-  saveBtn = true;
+
   
   shops: Shop[] = [];
-  data: Shop[]=[]
+
   popoverTitle:string='Təsdiq';
   popoverMessage:string='Tələbə Silme prosesini təsdiqləməyə əminsiniz?';
   constructor(private service: ShopService,private http:HttpClient,public dialog:MatDialog) {

@@ -11,6 +11,7 @@
         <th>Status</th>
         <th>Qiymet</th>
         <th>Tarix</th>
+        <th>Sekil</th>
         <th>Emeliyyatlar</th>
       </tr>
     </thead>
@@ -23,6 +24,7 @@
         <td>{{ shop.status }}</td>
         <td>{{ shop.price }}</td>
         <td>{{ shop.beginDate }}</td>
+        <td><img src="{{ shop.image }}" style="width: 75px;"> </td>
         <td><button mwlConfirmationPopover placement="left" 
           [popoverTitle]="popoverTitle" 
           [popoverMessage]="popoverMessage" 

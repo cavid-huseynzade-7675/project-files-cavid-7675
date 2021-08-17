@@ -7,6 +7,7 @@ export class Shop {
     public description: string = '';
     public status: string = '';
     public beginDate: Date = new Date();
+    public image: string = '';
   
   }
   

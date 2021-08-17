@@ -35,6 +35,6 @@ public class Shop {
 	private Integer price;
 	private String username;
 	private Integer categoryid;
-
+	private String image;
 
 }
