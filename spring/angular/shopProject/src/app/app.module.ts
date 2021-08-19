@@ -23,6 +23,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { ShopOnlineMarketComponent } from './shop-online-market/shop-online-market.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { ShopOnlineMarketComponent } from './shop-online-market/shop-online-mark
     DialogComponent,
     SignInComponent,
     ShopOnlineMarketComponent,
+    AdminPanelComponent,
   
   ],
   entryComponents:[DialogComponent],
