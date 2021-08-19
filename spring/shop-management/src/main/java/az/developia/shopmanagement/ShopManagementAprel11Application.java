@@ -5,7 +5,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
+import az.developia.shopmanagement.dao.CategoryRepository;
 import az.developia.shopmanagement.dao.ShopRepository;
+import az.developia.shopmanagement.model.Category;
 import az.developia.shopmanagement.model.Shop;
 
 import java.sql.Date;
@@ -18,21 +20,15 @@ public class ShopManagementAprel11Application {
 	public static void main(String[] args) {
 		ApplicationContext context = SpringApplication.run(ShopManagementAprel11Application.class, args);
 
-		ShopRepository	repository=context.getBean(ShopRepository.class);
+		CategoryRepository	repository=context.getBean(CategoryRepository.class);
 
-		Shop shop=new Shop();
-		shop.setName("Acer");
-		shop.setStatus("Yaxi");
-		shop.setBeginDate(Date.valueOf(LocalDate.now()));
-		shop.setDescription("Bla Bla");
-		shop.setCategoryid(5);
-		shop.setUsername("Cavid");
-		shop.setPrice(25);
+		Category category=new Category();
+		category.setCategory("Telefon");
+		
 
 
 
-
-		//repository.save(shop);
+		//repository.save(category);
 	
 
 	}

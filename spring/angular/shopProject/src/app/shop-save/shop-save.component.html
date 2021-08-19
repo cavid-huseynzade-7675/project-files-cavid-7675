@@ -56,6 +56,14 @@
         />
       </div>
       <div class="form-group">
+        <label for="category">Kategoriya:</label>
+       <select   class="form-control" [(ngModel)]="shop.categoryid" id="category"
+       name="category">
+<option *ngFor="let category of categories" value="{{category.id}}">{{category.category}}</option>
+
+       </select>
+      </div>
+      <div class="form-group">
         <label for="shop-price">Qiymet</label>
         <input
           type="number"

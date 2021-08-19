@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { API_URL } from '../constant';
+import { Category } from '../models/category';
 import { Shop } from '../models/shop';
 import { ShopListComponent } from '../shop-list/shop-list.component';
 import { ShopService } from '../shop.service';
@@ -13,7 +14,7 @@ import { ShopService } from '../shop.service';
 })
 export class ShopSaveComponent implements OnInit {
 
- 
+  categories: Category[] = [];
   shop: Shop = new Shop();
   minimum:number=3;
 maksimum:number=30;
@@ -22,7 +23,9 @@ maksimum:number=30;
     private http:HttpClient,
     private router:Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {this.loadCategories()}
+
+  
   onSaveShop() {
    // this.service.tasks.push(this.task);
    this.http.post<Shop>(API_URL+'/shops',this.shop).subscribe(
@@ -35,4 +38,16 @@ resp=>{
    );
   }
 
+  loadCategories(){
+    this.http.get<Category[]>(API_URL+'/categories').subscribe(
+      response=>{
+        this.categories=response;
+        console.log(response);
+       
+       
+        ;
+     }
+
+    );
+  }
 }
