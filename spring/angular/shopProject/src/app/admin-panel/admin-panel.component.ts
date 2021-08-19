@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { API_URL } from '../constant';
 import { Category } from '../models/category';
+import { Shop } from '../models/shop';
 import { ShopService } from '../shop.service';
 
 @Component({
@@ -11,6 +12,8 @@ import { ShopService } from '../shop.service';
   styleUrls: ['./admin-panel.component.css']
 })
 export class AdminPanelComponent implements OnInit {
+  shops: Shop[] = [];
+
   minimum:number=3;
   maksimum:number=30;
   categories: Category[] = [];
@@ -24,7 +27,9 @@ export class AdminPanelComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.loadCategories()
+    this.loadCategories();
+   
+   
   }
 
     
@@ -54,8 +59,41 @@ export class AdminPanelComponent implements OnInit {
   
     this.http.delete(API_URL+'/categories/'+id).subscribe(
       resp=>{
+      
      this.loadCategories();
+     this.deleteShop(id);
       }
     );
   }
+  deleteShop(categoryid1:number){
+    this.http.get<Shop[]>(API_URL+'/shops').subscribe(
+      response=>{
+        this.shops=response;    
+        for (let index = 0; index < this.shops.length; index++) {
+          const element = this.shops[index];
+          if(categoryid1=element.categoryid){
+         //   this.deleteShopById(element.id);
+            console.log(element.categoryid);
+            console.log(element.id);
+            console.log(categoryid1);
+          }
+        
+          
+        }
+     }
+
+    );
+
+   
+
 }
+
+deleteShopById(id:number){
+  this.http.delete(API_URL+'/shops/'+id).subscribe(
+    resp=>{
+  
+    }
+  );
+}
+}
+
