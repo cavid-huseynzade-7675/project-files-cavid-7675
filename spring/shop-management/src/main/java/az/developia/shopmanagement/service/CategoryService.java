@@ -22,4 +22,9 @@ public class CategoryService {
   return categoryRepository.save(s);
 	
 	}
+	public void deleteById(Integer id){
+
+		categoryRepository.deleteById(id);;
+				;
+			}
 }

@@ -1,1 +1,40 @@
-<p>admin-panel works!</p>
+<div >
+<table class="table table-light "   style="width: 45%;float: left;margin-right: 4%;;">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Kategoriya</th>
+        <th>Emeliyyatlar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr   *ngFor="let category of categories" >
+        <td>{{ category.id }}</td>
+        <td>{{ category.category }}</td>
+        <td><button mwlConfirmationPopover placement="left" 
+          [popoverTitle]="popoverTitle" 
+          [popoverMessage]="popoverMessage" 
+          (confirm)="deleteCategoryById(category.id)"
+  
+           class="btn btn-danger btn border">Sil</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <form (ngSubmit)="!categoryForm.invalid && onSaveCategory()" #categoryForm="ngForm"  style="width: 45%;float: left;">
+    <div class="form-group">
+      <label for="kategory">Kategoriya:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="kategory"
+        name="kategory"
+        [(ngModel)]="category.category"
+        required
+        [minlength]="minimum"
+        [maxlength]="maksimum"
+      />
+    </div>
+<br>
+    <button type="submit" class="btn btn-primary">Yadda saxla</button>
+  </form></div>
