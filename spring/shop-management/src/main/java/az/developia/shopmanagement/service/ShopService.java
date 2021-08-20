@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import az.developia.shopmanagement.dao.ShopRepository;
 import az.developia.shopmanagement.model.Shop;
 
-import org.hibernate.cfg.IdGeneratorResolverSecondPass;
+import org.hibernate.cfg.IdGeneratorResolverSecondPass;   
 
 @Service
 public class ShopService {

@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { API_URL } from '../constant';
 import { Shop } from '../models/shop';
+import { ShopBasketComponent } from '../shop-basket/shop-basket.component';
 import { ShopService } from '../shop.service';
 
 @Component({
@@ -11,7 +13,7 @@ import { ShopService } from '../shop.service';
 })
 export class ShopOnlineMarketComponent implements OnInit {
   shops: Shop[] = [];
-  constructor(private service: ShopService,private http:HttpClient) { }
+  constructor(private service: ShopService,private http:HttpClient,public dialog:MatDialog) { }
 
   loadShops(){
     this.http.get<Shop[]>(API_URL+'/shops').subscribe(
@@ -26,6 +28,9 @@ export class ShopOnlineMarketComponent implements OnInit {
     );
   }
 
+  openDialog(){
+    this.dialog.open(ShopBasketComponent);
+  }
   ngOnInit(): void {
     this.loadShops();
    
