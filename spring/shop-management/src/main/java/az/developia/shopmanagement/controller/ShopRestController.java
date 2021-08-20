@@ -37,7 +37,7 @@ public class ShopRestController {
 	public List<Shop> findAll() { 
 		return shopService.findAll();
 	}
-	
+
 	@PostMapping
 	public Shop add(@Valid @RequestBody Shop shop,BindingResult result){
 		Shop shopSaved=null;
@@ -70,5 +70,24 @@ public class ShopRestController {
 	public void deleteShopById(@PathVariable Integer id){
 	shopService.deleteById(id);
 	}
+	@PutMapping
+	public Shop uptade(@Valid @RequestBody Shop shop,BindingResult result){
+		Shop shopSaved=null;
+		if (result.hasErrors()) {
+			 System.out.println("Error var");
+			 System.out.println(result.getErrorCount());
+			 System.out.println(result.getFieldErrorCount());
+			 System.out.println(result.getFieldErrorCount("name"));
+			 System.out.println("getAllerrors"+result.getAllErrors());
 
+			 System.out.println("---------------");
+			 for (ObjectError error:result.getAllErrors()){
+				System.out.println(error.getDefaultMessage());
+			 }
+
+		}else{
+			shopSaved=shopService.add(shop);
+		}
+	 return shopSaved;
+	}
 }

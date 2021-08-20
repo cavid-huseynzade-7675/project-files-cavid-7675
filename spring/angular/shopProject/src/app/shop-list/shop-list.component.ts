@@ -6,6 +6,7 @@ import { API_URL } from '../constant';
 import { DialogComponent } from '../dialog/dialog.component';
 import { Shop } from '../models/shop';
 import { User } from '../models/user';
+import { ShopUptadeComponent } from '../shop-uptade/shop-uptade.component';
 import { ShopService } from '../shop.service';
 
 @Component({
@@ -27,6 +28,13 @@ export class ShopListComponent implements OnInit {
 
 openDialog(){
   this.dialog.open(DialogComponent);
+}
+openUptadeDialog(id:number){
+  this.dialog.open(ShopUptadeComponent);
+  var x = id,
+  toString = x.toString(),
+  toConcat = x + "";
+  localStorage.setItem('id',toConcat)
 }
 
   ngOnInit(): void {
