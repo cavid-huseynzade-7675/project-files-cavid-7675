@@ -26,6 +26,7 @@ import { ShopOnlineMarketComponent } from './shop-online-market/shop-online-mark
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { ShopBasketComponent } from './shop-basket/shop-basket.component';
 import { ShopUptadeComponent } from './shop-uptade/shop-uptade.component';
+import { BasketTableComponent } from './basket-table/basket-table.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { ShopUptadeComponent } from './shop-uptade/shop-uptade.component';
     AdminPanelComponent,
     ShopBasketComponent,
     ShopUptadeComponent,
+    BasketTableComponent,
   
   ],
   entryComponents:[DialogComponent],
