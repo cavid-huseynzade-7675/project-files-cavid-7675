@@ -27,7 +27,7 @@ basketCount:number=0;
     this.http.get<Shop[]>(API_URL+'/shops').subscribe(
       response=>{
         this.shops=response;
-        console.log(this.shops);
+
        
        
         ;
@@ -35,13 +35,22 @@ basketCount:number=0;
 
     );
   }
+loadBasketCount(){
+  setInterval(() => {
+   
+this.loadBaskets();
+
+
+      
+    },100);
+}
   loadBaskets(){
     this.http.get<Basket[]>(API_URL+'/baskets').subscribe(
       response=>{
         this.baskets=response;
-      console.log(this.baskets)
+
        this.basketCount=this.baskets.length;
-       
+
        
         ;
      }
@@ -57,8 +66,8 @@ basketCount:number=0;
   }
   ngOnInit(): void {
     this.loadShops();
-   this.loadBaskets()
-
+   this.loadBaskets();
+this.loadBasketCount();
   }
 addBasket(id:number){
 
@@ -70,11 +79,11 @@ addBasket(id:number){
     if (id==element) {
       this.basket.count=this.baskets[index].count+1;
       this.basket.id=this.baskets[index].id;
-console.log(id,element);
+
 this.http.put<Basket>(API_URL+'/baskets',this.basket).subscribe(
 resp=>{
  // this.service.TaskAdded.emit(resp);
- console.log(this.basket)
+
  this.loadBaskets();
  bool=false;
 }
@@ -86,7 +95,7 @@ resp=>{
     this.http.post<Basket>(API_URL+'/baskets',this.basket).subscribe(
       resp=>{
        // this.service.TaskAdded.emit(resp);
-       console.log(this.baskets)
+    
        this.loadBaskets();
       
       }

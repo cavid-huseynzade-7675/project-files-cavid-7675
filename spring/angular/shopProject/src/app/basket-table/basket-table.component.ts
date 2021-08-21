@@ -17,13 +17,14 @@ import { ShopService } from '../shop.service';
 export class BasketTableComponent implements OnInit {
   shops: Shop[] = [];
   baskets:Basket[] = [];
+  basketCount:Basket = new Basket();
 tableBaskets: Array<BasketTable>=[];
 
-
+priceAll:number=0;
 
 
   popoverTitle:string='Təsdiq';
-  popoverMessage:string='Tələbə Silme prosesini təsdiqləməyə əminsiniz?';
+  popoverMessage:string='Mehsul Silme prosesini təsdiqləməyə əminsiniz?';
   constructor(private service: ShopService,private http:HttpClient,public dialog:MatDialog) { }
 
   ngOnInit(): void {
@@ -47,7 +48,7 @@ tableBaskets: Array<BasketTable>=[];
     this.http.get<Shop[]>(API_URL+'/shops').subscribe(
       response=>{
         this.shops=response;
-        console.log(response);
+       
        
        
         ;
@@ -56,20 +57,22 @@ tableBaskets: Array<BasketTable>=[];
     );
   }
   loadTableBaskets(){
-
+    this.tableBaskets=[];
+    this.priceAll=0;
     for (let indexBasket = 0; indexBasket < this.baskets.length; indexBasket++) {
       const element = this.baskets[indexBasket].shopid;
      for (let index = 0; index < this.shops.length; index++) {
        const element1 = this.shops[index].id;
-       console.log(index,indexBasket);
        if (element==element1) {
       let  basket=new BasketTable();
-        basket.id=this.shops[index].id;
+        basket.id=this.baskets[indexBasket].id;
+        basket.shopid=this.shops[index].id;
          basket.shopname=this.shops[index].name;
          basket.price=this. shops[index].price;
          basket.count=this.baskets[indexBasket].count;
           basket.image=this.shops[index].image;
-          console.log(basket);
+          basket.allPrice=this. shops[index].price*this.baskets[indexBasket].count;
+          this.priceAll+=this. shops[index].price*this.baskets[indexBasket].count;
           this.tableBaskets.push(basket);
        
          
@@ -86,6 +89,29 @@ tableBaskets: Array<BasketTable>=[];
 
 }
 
- 
+deleteBasketById(id:number){
+  
+  this.http.delete(API_URL+'/baskets/'+id).subscribe(
+    resp=>{
+   this.loadBaskets();
+    }
+  );
+}
 
+onCountChanged(id:number,shopid:number,event:any){
+
+console.log(id,shopid,Number(event.target.value))
+this.basketCount.id=id;
+this.basketCount.shopid=shopid;
+this.basketCount.count=Number(event.target.value);
+this.http.put<Basket>(API_URL+'/baskets',this.basketCount).subscribe(
+  resp=>{
+   // this.service.TaskAdded.emit(resp);
+  
+   this.loadBaskets();
+
+  }
+  
+     );
+}
 }

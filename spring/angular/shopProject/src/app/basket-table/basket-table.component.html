@@ -7,6 +7,7 @@
         <th>Qiymet</th>
         <th>Sayi</th>
         <th>Sekil</th>
+        <th><b>Umumi Qiymet</b></th>
         <th>Emeliyyatlar</th>
       </tr>
     </thead>
@@ -15,12 +16,13 @@
         <td>{{ baskett.id }}</td>
         <td>{{ baskett.shopname }}</td>
         <td>{{ baskett.price }}</td>
-        <td>{{ baskett.count }}</td>
+        <td>  <div class="form-group"><input value="{{ baskett.count }}"   type="number" id="countInput"  name="countInput"  class="form-contol"  (blur)="onCountChanged(baskett.id,baskett.shopid,$event)"></div> </td>
         <td><img src="{{ baskett.image }}" style="width: 75px;"> </td>
+        <td><h3>{{ baskett.allPrice }}</h3></td>
         <td><button mwlConfirmationPopover placement="left" 
           [popoverTitle]="popoverTitle" 
           [popoverMessage]="popoverMessage" 
-  
+          (confirm)="deleteBasketById(baskett.id)"
   
            class="btn btn-danger btn border">Sil</button>
           
@@ -29,4 +31,5 @@
       </tr>
     </tbody>
   </table>
+  <h1>Umumi Qiymet:{{priceAll}}</h1>
 </mat-dialog-content>
