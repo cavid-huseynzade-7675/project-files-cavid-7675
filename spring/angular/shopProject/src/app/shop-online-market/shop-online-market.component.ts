@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { BasketTableComponent } from '../basket-table/basket-table.component';
 
 import { API_URL } from '../constant';
 import { Basket } from '../models/basket';
@@ -19,6 +20,7 @@ export class ShopOnlineMarketComponent implements OnInit {
   shops: Shop[] = [];
   baskets: Basket[] = [];
 basket:Basket=new Basket();
+basketCount:number=0;
   constructor(private service: ShopService,private http:HttpClient,public dialog:MatDialog, private router:Router) { }
 
   loadShops(){
@@ -38,6 +40,7 @@ basket:Basket=new Basket();
       response=>{
         this.baskets=response;
       console.log(this.baskets)
+       this.basketCount=this.baskets.length;
        
        
         ;
@@ -55,6 +58,7 @@ basket:Basket=new Basket();
   ngOnInit(): void {
     this.loadShops();
    this.loadBaskets()
+
   }
 addBasket(id:number){
 
@@ -90,6 +94,10 @@ resp=>{
          );
   }
  this.router.navigate(['sign-in']);
+
+}
+openBasket(){
+  this.dialog.open(BasketTableComponent);
 
 }
 }

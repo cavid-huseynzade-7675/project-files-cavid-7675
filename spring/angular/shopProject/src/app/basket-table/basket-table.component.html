@@ -1,1 +1,32 @@
-<p>basket-table works!</p>
+<mat-dialog-content  >
+<table class="table table-light"  style="width: 800px;">
+    <thead>
+      <tr>
+        <th>ID</th>   
+        <th>Mehsul</th>
+        <th>Qiymet</th>
+        <th>Sayi</th>
+        <th>Sekil</th>
+        <th>Emeliyyatlar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let baskett of tableBaskets" >
+        <td>{{ baskett.id }}</td>
+        <td>{{ baskett.shopname }}</td>
+        <td>{{ baskett.price }}</td>
+        <td>{{ baskett.count }}</td>
+        <td><img src="{{ baskett.image }}" style="width: 75px;"> </td>
+        <td><button mwlConfirmationPopover placement="left" 
+          [popoverTitle]="popoverTitle" 
+          [popoverMessage]="popoverMessage" 
+  
+  
+           class="btn btn-danger btn border">Sil</button>
+          
+          
+        
+      </tr>
+    </tbody>
+  </table>
+</mat-dialog-content>
