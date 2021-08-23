@@ -6,6 +6,7 @@ import { BasketTableComponent } from '../basket-table/basket-table.component';
 
 import { API_URL } from '../constant';
 import { Basket } from '../models/basket';
+import { BasketTable } from '../models/basketTable';
 import { Shop } from '../models/shop';
 
 import { ShopBasketComponent } from '../shop-basket/shop-basket.component';
@@ -17,6 +18,7 @@ import { ShopService } from '../shop.service';
   styleUrls: ['./shop-online-market.component.css']
 })
 export class ShopOnlineMarketComponent implements OnInit {
+  tableBasketsOnline: Array<Number>=[];
   shops: Shop[] = [];
   baskets: Basket[] = [];
 basket:Basket=new Basket();
@@ -49,7 +51,7 @@ this.loadBaskets();
       response=>{
         this.baskets=response;
 
-       this.basketCount=this.baskets.length;
+        this.loadTableBaskets();
 
        
         ;
@@ -57,7 +59,32 @@ this.loadBaskets();
 
     );
   }
+  loadTableBaskets(){
+    this.tableBasketsOnline=[];
 
+    for (let indexBasket = 0; indexBasket < this.baskets.length; indexBasket++) {
+      const element = this.baskets[indexBasket].shopid;
+     for (let index = 0; index < this.shops.length; index++) {
+       const element1 = this.shops[index].id;
+       if (element==element1) {
+      let  anys=1;
+     
+       
+          this.tableBasketsOnline.push(anys);
+       
+         
+          this.basketCount=this.tableBasketsOnline.length;
+        
+     }
+  
+    
+    
+    }
+
+
+  }
+
+}
   openDialog(id:number){
    this.addBasket(id);
    
