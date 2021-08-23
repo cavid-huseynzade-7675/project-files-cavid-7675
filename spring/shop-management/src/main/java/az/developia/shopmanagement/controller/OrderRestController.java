@@ -12,34 +12,35 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import az.developia.shopmanagement.model.Category;
-import az.developia.shopmanagement.service.CategoryService;
+
+import az.developia.shopmanagement.model.Orders;
+import az.developia.shopmanagement.service.OrderService;
 
 @RestController
-@RequestMapping(path = "/categories")
+@RequestMapping(path = "/orders")
 @CrossOrigin(origins = "*")
-public class CategoryRestController {
+public class OrderRestController {
     @Autowired
-	private CategoryService categoryService;
+	private OrderService orderService;
 
 
 	
 	@GetMapping
-	public List<Category> findAll() { 
-		return categoryService.findAll();
+	public List<Orders> findAll() { 
+		return orderService.findAll();
 	}
 	
 
 	@DeleteMapping(value = "/{id}")
-	public void deleteCategoryById(@PathVariable Integer id){
-	categoryService.deleteById(id);
+	public void deleteOrderById(@PathVariable Integer id){
+	orderService.deleteById(id);
 	}
 
 	
 	@PostMapping
-	public Category add( @RequestBody Category category){
+	public Orders add( @RequestBody Orders order){
 	
-		return 	categoryService.add(category);
+		return 	orderService.add(order);
 		
 
 }}

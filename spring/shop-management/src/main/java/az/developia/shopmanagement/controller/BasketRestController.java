@@ -33,7 +33,7 @@ public class BasketRestController {
 	
 
 	@DeleteMapping(value = "/{id}")
-	public void deleteShopById(@PathVariable Integer id){
+	public void deleteBasketById(@PathVariable Integer id){
 	basketService.deleteById(id);
 	}
 

@@ -7,9 +7,11 @@ import org.springframework.context.annotation.Bean;
 
 import az.developia.shopmanagement.dao.BasketRepository;
 import az.developia.shopmanagement.dao.CategoryRepository;
+import az.developia.shopmanagement.dao.OrderRepository;
 import az.developia.shopmanagement.dao.ShopRepository;
 import az.developia.shopmanagement.model.Basket;
 import az.developia.shopmanagement.model.Category;
+import az.developia.shopmanagement.model.Orders;
 import az.developia.shopmanagement.model.Shop;
 
 import java.sql.Date;
@@ -22,15 +24,18 @@ public class ShopManagementAprel11Application {
 	public static void main(String[] args) {
 		ApplicationContext context = SpringApplication.run(ShopManagementAprel11Application.class, args);
 
-		BasketRepository	repository=context.getBean(BasketRepository.class);
+		OrderRepository	repository=context.getBean(OrderRepository.class);
 
-		Basket basket=new Basket();
-		basket.setCount(2);
-		basket.setShopid(127);
+		Orders order=new Orders();
+		order.setAdress("Merdekan");
+		order.setBasketIds("1");
+		order.setEmail("alicavid");
+		order.setName("cavid");
+		order.setNote("qeyd");
+		order.setPhone("050505");
 
 
-
-		//repository.save(basket);
+	//repository.save(order);
 	
 
 	}
