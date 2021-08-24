@@ -1,0 +1,78 @@
+<h2 mat-dialog-title>Order Save</h2>
+
+<mat-dialog-content  >
+<div class="container">
+    <form (ngSubmit)="!orderForm.invalid && onSaveOrder()" #orderForm="ngForm" style="width: 800px;">
+      <div class="form-group">
+        <label for="name">Ad:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          name="name"
+          [(ngModel)]="order.name"
+          required
+          [minlength]="minimum"
+          [maxlength]="maksimum"
+        />
+      </div>
+      <div class="form-group">
+        <label for="adress">Adress:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="adress"
+          name="adress"
+          [(ngModel)]="order.adress"
+          required
+          [minlength]="minimum"
+          [maxlength]="maksimum"
+        />
+      </div>
+      <div class="form-group">
+        <label for="description-name">Email:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="description-name"
+          name="description-name"
+          [(ngModel)]="shop.description"
+          required
+          [minlength]="minimum"
+          [maxlength]="maksimum"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="shop-begin-date">Tarix</label>
+        <input
+          type="date"
+          class="form-control"
+          id="shop-begin-date"
+          name="shop-begin-date"
+          [(ngModel)]="shop.beginDate"
+          required
+          [minlength]="minimum"
+          [maxlength]="maksimum"
+        />
+      </div>
+      <div class="form-group">
+        <label for="shop-image">Sekil</label>
+        <input
+        
+          class="form-control"
+          id="shop-image"
+          name="shop-image"
+          [(ngModel)]="shop.image"
+          required
+          [minlength]="minimum"
+          [maxlength]="maksimum"
+        />
+      </div>
+      
+ <br>
+      <button type="submit" class="btn btn-primary">yadda saxla</button>
+    </form>
+  </div>
+</mat-dialog-content>
+
