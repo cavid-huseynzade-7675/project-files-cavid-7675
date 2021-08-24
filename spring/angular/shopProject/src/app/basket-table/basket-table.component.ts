@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 
 import { API_URL } from '../constant';
 import { Basket } from '../models/basket';
 import { BasketTable } from '../models/basketTable';
 import { Shop } from '../models/shop';
+import { OrderSaveComponent } from '../order-save/order-save.component';
 import { ShopService } from '../shop.service';
 
 @Component({
@@ -25,7 +26,8 @@ priceAll:number=0;
 
   popoverTitle:string='Təsdiq';
   popoverMessage:string='Mehsul Silme prosesini təsdiqləməyə əminsiniz?';
-  constructor(private service: ShopService,private http:HttpClient,public dialog:MatDialog) { }
+  constructor(private service: ShopService,private http:HttpClient,public dialog:MatDialog
+    , public dialogRef: MatDialogRef<BasketTableComponent>) { }
 
   ngOnInit(): void {
     this.loadShops();
@@ -33,6 +35,15 @@ priceAll:number=0;
 
    
   }
+  openOrderSaveDialog(){
+    this.dialog.open(OrderSaveComponent);
+    this.dialogRef.close();
+  }
+closeBasketSaveDialog(){
+    
+    this.dialogRef.close();
+  }
+  
   loadBaskets(){
     this.http.get<Basket[]>(API_URL+'/baskets').subscribe(
       response=>{

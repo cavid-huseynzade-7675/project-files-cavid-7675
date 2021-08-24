@@ -21,4 +21,5 @@ public class Orders {
     private String email;
     private String note;
     private String basketIds;
+    private Date date;
 }

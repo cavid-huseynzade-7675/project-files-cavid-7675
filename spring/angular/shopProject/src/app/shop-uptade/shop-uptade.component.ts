@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { API_URL } from '../constant';
 import { Category } from '../models/category';
@@ -20,7 +21,8 @@ export class ShopUptadeComponent implements OnInit {
   constructor(
     private service: ShopService,
     private http:HttpClient,
-    private router:Router
+    private router:Router,
+    public dialogRef: MatDialogRef<ShopUptadeComponent>
   ) { }
 
   ngOnInit(): void {this.loadCategories();
@@ -33,9 +35,13 @@ export class ShopUptadeComponent implements OnInit {
     this.http.put<Shop>(API_URL+'/shops',this.shop).subscribe(
  resp=>{
   localStorage.setItem('loadShops','1')
+  this.dialogRef.close();
  }
  
     );
+   }
+   closeUptadeSaveDialog(){
+    this.dialogRef.close();
    }
    loadShops(){
     this.http.get<Shop[]>(API_URL+'/shops').subscribe(

@@ -1,6 +1,11 @@
+<button
+          
+  
+mat-button class="btn btn-danger" (click)="closeUptadeSaveDialog()" >Bagla</button>
 <h2 mat-dialog-title>Shop Uptade</h2>
 
 <mat-dialog-content  >
+
 <div class="container">
     <form (ngSubmit)="!shopForm.invalid && onEditShop()" #shopForm="ngForm" style="width: 800px;">
       <div class="form-group">

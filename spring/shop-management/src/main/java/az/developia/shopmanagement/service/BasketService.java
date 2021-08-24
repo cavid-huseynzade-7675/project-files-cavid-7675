@@ -28,4 +28,9 @@ public class BasketService {
 		basketrepository.deleteById(id);;
 				;
 			}
+			public void deleteAll(){
+
+				basketrepository.deleteAll();
+						;
+					}
 }

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { API_URL } from '../constant';
 import { Category } from '../models/category';
@@ -21,7 +22,8 @@ maksimum:number=30;
   constructor(
     private service: ShopService,
     private http:HttpClient,
-    private router:Router) {}
+    private router:Router,
+    public dialogRef: MatDialogRef<ShopSaveComponent>) {}
 
   ngOnInit(): void {this.loadCategories()}
 
@@ -33,11 +35,14 @@ resp=>{
  // this.service.TaskAdded.emit(resp);
  this.router.navigate(['shops']);
  localStorage.setItem('loadShops','1')
+ this.dialogRef.close();
 }
 
    );
   }
-
+  closeShopSaveDialog(){
+    this.dialogRef.close();
+  }
   loadCategories(){
     this.http.get<Category[]>(API_URL+'/categories').subscribe(
       response=>{

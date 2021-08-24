@@ -36,6 +36,10 @@ public class BasketRestController {
 	public void deleteBasketById(@PathVariable Integer id){
 	basketService.deleteById(id);
 	}
+	@DeleteMapping
+	public void deleteBasketAll(){
+	basketService.deleteAll();
+	}
 
 	
 	@PostMapping
