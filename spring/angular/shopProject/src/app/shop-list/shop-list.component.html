@@ -30,13 +30,13 @@
           [popoverMessage]="popoverMessage" 
           (confirm)="deleteShopById(shop.id)"
   
-           class="btn btn-danger btn border">Sil</button>
+           class="btn btn-danger btn border"><mat-icon>delete</mat-icon></button>
           
           
           <button
           
   
-          mat-button class="btn btn-warning" (click)="openUptadeDialog(shop.id)" >Edit</button> </td>
+          mat-button class="btn btn-warning" (click)="openUptadeDialog(shop.id)" ><mat-icon>edit</mat-icon></button> </td>
       </tr>
     </tbody>
   </table>

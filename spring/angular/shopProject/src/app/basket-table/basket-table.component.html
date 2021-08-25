@@ -1,7 +1,7 @@
 <button
           
   
-mat-button class="btn btn-danger" (click)="closeBasketSaveDialog()" >Bagla</button>
+mat-button class="btn btn-danger" (click)="closeBasketSaveDialog()" ><mat-icon>close</mat-icon></button>
 <mat-dialog-content  >
  
 <table class="table table-light"  style="width: 800px;">
@@ -29,7 +29,7 @@ mat-button class="btn btn-danger" (click)="closeBasketSaveDialog()" >Bagla</butt
           [popoverMessage]="popoverMessage" 
           (confirm)="deleteBasketById(baskett.id)"
   
-           class="btn btn-danger btn border">Sil</button>
+           class="btn btn-danger btn border"><mat-icon>delete</mat-icon></button>
           
           
         

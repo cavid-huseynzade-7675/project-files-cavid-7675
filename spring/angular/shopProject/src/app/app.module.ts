@@ -29,6 +29,7 @@ import { ShopUptadeComponent } from './shop-uptade/shop-uptade.component';
 import { BasketTableComponent } from './basket-table/basket-table.component';
 import { OrderSaveComponent } from './order-save/order-save.component';
 import { OrderListComponent } from './order-list/order-list.component';
+import { FilterPipe } from './filter.pipe';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { OrderListComponent } from './order-list/order-list.component';
     BasketTableComponent,
     OrderSaveComponent,
     OrderListComponent,
+    FilterPipe,
   
   ],
   entryComponents:[DialogComponent],
