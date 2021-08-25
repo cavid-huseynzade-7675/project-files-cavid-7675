@@ -16,6 +16,7 @@ import { Shop } from '../models/shop';
 export class OrderSaveComponent implements OnInit {
   order: Order = new Order();
   ids:string= '';
+  counts:string= '';
   minimum:number=3;
   maksimum:number=30;
 
@@ -33,15 +34,7 @@ export class OrderSaveComponent implements OnInit {
   loadShops(){
     this.http.get<Shop[]>(API_URL+'/shops').subscribe(
       response=>{
-        this.shops=response;
-
-       
-       
-        ;
-     }
-
-    );
-  }
+        this.shops=response; }    ); }
   loadBaskets(){
     this.http.get<Basket[]>(API_URL+'/baskets').subscribe(
       response=>{
@@ -56,7 +49,8 @@ export class OrderSaveComponent implements OnInit {
     );
   }
   loadTableBaskets(){
-   
+      
+this.counts='';
 this.ids='';
     for (let indexBasket = 0; indexBasket < this.baskets.length; indexBasket++) {
       const element = this.baskets[indexBasket].shopid;
@@ -68,7 +62,7 @@ this.ids='';
 
       
       this.ids += this.shops[index].id + ",";
-          
+      this.counts += this.baskets[indexBasket].count + ",";  
        
          
          
@@ -83,10 +77,12 @@ this.ids='';
   console.log(this.ids)
 
   this.ids =   this.ids.substring(0,   this.ids.length - 1);
+  this.counts =   this.counts.substring(0,   this.counts.length - 1);
   console.log(this.ids)
 }
 onSaveOrder(){
   this.order.basketIds=this.ids;
+  this.order.count=this.counts;
   this.order.date=new Date();
   console.log
   this.http.post<Order>(API_URL+'/orders',this.order).subscribe(

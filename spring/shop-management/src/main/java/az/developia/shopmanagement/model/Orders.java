@@ -22,4 +22,5 @@ public class Orders {
     private String note;
     private String basketIds;
     private Date date;
+    private String count;
 }

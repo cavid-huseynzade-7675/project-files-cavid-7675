@@ -1,1 +1,73 @@
-<p>order-list works!</p>
+
+<table class="table table-info">
+    
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Tarix</th>
+        <th>Musteri</th>
+        <th>Sifaris olunanlar</th>
+        <th>Umumi Qiymet</th>   
+        <th>Qeyd</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of ordersList">
+        <td>{{ order.id }}</td>
+        <td>{{ order.date }}</td>
+        <td><mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Ad:{{ order.name }} 
+            </mat-panel-title>
+            <mat-panel-description>
+              Davami....
+             
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <ul>
+            <li>Telefon{{ order.phone }}</li> 
+            <li>Email:{{ order.email }}</li>
+            <li>Adres:{{ order.adress }}</li></ul>
+         
+        </mat-expansion-panel> </td>
+            
+            <td>
+              <mat-expansion-panel hideToggle>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                 Mehsullar
+                  </mat-panel-title>
+                  <mat-panel-description>
+                   Mesullari gormek ucun basin
+                   
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <ol >
+                  <li  *ngFor="let orderS of order.shopsOrder"> 
+                    
+                 
+                   <mat-expansion-panel hideToggle>
+                     <mat-expansion-panel-header>
+                       <mat-panel-title>
+                       ADi:  {{orderS.shopName}} 
+                       </mat-panel-title>
+                     </mat-expansion-panel-header>
+                     <ul><li> Qiymeti:{{orderS.price}}</li>
+                       <li> Sayi:{{orderS.count}}</li>
+                       <li> Umumi qiymet:{{orderS.allPrice}}</li></ul>
+                    
+                   </mat-expansion-panel> <br></li>
+                   
+                 </ol>
+               
+              </mat-expansion-panel>
+        </td>
+        <td>{{ order.allPriceInaAllpriceColumn }}</td>
+        <td>{{ order.note }}</td>
+        
+      </tr>
+    </tbody>
+  </table>
+
+ 
