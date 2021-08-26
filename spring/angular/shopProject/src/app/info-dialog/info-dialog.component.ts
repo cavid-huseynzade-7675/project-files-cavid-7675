@@ -1,7 +1,10 @@
 import { HttpClient } from '@angular/common/http';
+
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+
 import { API_URL } from '../constant';
+import { Basket } from '../models/basket';
 import { Category } from '../models/category';
 import { Shop } from '../models/shop';
 import { ShopService } from '../shop.service';
@@ -15,12 +18,15 @@ export class InfoDialogComponent implements OnInit {
   categories: Category[] = [];
   shops: Shop[] = [];
   shop: Shop = new Shop();
+  baskets: Basket[] = [];
+  basket:Basket=new Basket();
   category: Category = new Category();
   constructor(private service: ShopService,private http:HttpClient,public dialog:MatDialog
     , public dialogRef: MatDialogRef<InfoDialogComponent>) { }
 
   ngOnInit(): void {
     this.loadShops();
+    this.loadBaskets();
   }
   closeInfoDialog(){
     
@@ -66,5 +72,53 @@ this.loadCategories(this.shop.categoryid);
      }
 
     );
+  }
+  loadBaskets(){
+    this.http.get<Basket[]>(API_URL+'/baskets').subscribe(
+      response=>{
+        this.baskets=response;
+
+
+       
+        ;
+     }
+
+    );
+  }
+  addBasket(id:number){
+
+    var bool=true;
+    this.basket.shopid=id;
+    this.basket.count=1;
+    for (let index = 0; index < this.baskets.length; index++) {
+      const element = this.baskets[index].shopid;
+      if (id==element) {
+        this.basket.count=this.baskets[index].count+1;
+        this.basket.id=this.baskets[index].id;
+  
+  this.http.put<Basket>(API_URL+'/baskets',this.basket).subscribe(
+  resp=>{
+   // this.service.TaskAdded.emit(resp);
+  
+   this.loadBaskets();
+   bool=false;
+  }
+  
+     );
+      }}
+   
+    if (bool) {
+      this.http.post<Basket>(API_URL+'/baskets',this.basket).subscribe(
+        resp=>{
+         // this.service.TaskAdded.emit(resp);
+      
+         this.loadBaskets();
+        
+        }
+        
+           );
+    }
+
+  
   }
 }

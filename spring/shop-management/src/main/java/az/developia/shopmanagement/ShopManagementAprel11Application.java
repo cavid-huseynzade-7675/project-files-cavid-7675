@@ -24,18 +24,12 @@ public class ShopManagementAprel11Application {
 	public static void main(String[] args) {
 		ApplicationContext context = SpringApplication.run(ShopManagementAprel11Application.class, args);
 
-		OrderRepository	repository=context.getBean(OrderRepository.class);
+		ShopRepository	repository=context.getBean(ShopRepository.class);
 
-		Orders order=new Orders();
-		order.setAdress("Merdekan");
-		order.setBasketIds("1");
-		order.setEmail("alicavid");
-		order.setName("cavid");
-		order.setNote("qeyd");
-		order.setPhone("050505");
+		Shop order=new Shop();
+		order.setName("adini");
 
-
-	//repository.save(order);
+	repository.save(order);
 	
 
 	}

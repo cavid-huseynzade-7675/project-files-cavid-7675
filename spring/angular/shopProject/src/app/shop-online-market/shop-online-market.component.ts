@@ -97,7 +97,7 @@ openInfoDialog(id:number){
  }
 
   openDialog(id:number){
-   this.addBasket(id);
+   
    
 
     this.dialog.open(ShopBasketComponent);
@@ -107,42 +107,7 @@ openInfoDialog(id:number){
    this.loadBaskets();
 this.loadBasketCount();
   }
-addBasket(id:number){
 
-  var bool=true;
-  this.basket.shopid=id;
-  this.basket.count=1;
-  for (let index = 0; index < this.baskets.length; index++) {
-    const element = this.baskets[index].shopid;
-    if (id==element) {
-      this.basket.count=this.baskets[index].count+1;
-      this.basket.id=this.baskets[index].id;
-
-this.http.put<Basket>(API_URL+'/baskets',this.basket).subscribe(
-resp=>{
- // this.service.TaskAdded.emit(resp);
-
- this.loadBaskets();
- bool=false;
-}
-
-   );
-    }}
- 
-  if (bool) {
-    this.http.post<Basket>(API_URL+'/baskets',this.basket).subscribe(
-      resp=>{
-       // this.service.TaskAdded.emit(resp);
-    
-       this.loadBaskets();
-      
-      }
-      
-         );
-  }
- this.router.navigate(['sign-in']);
-
-}
 openBasket(){
   this.dialog.open(BasketTableComponent);
 

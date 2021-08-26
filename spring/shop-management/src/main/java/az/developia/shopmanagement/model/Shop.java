@@ -23,14 +23,8 @@ public class Shop {
 	@NotNull(message =" Mehsulun adini Bos qoymaq olmaz" )
 	@NotEmpty(message = "")
 	private String name;
-	@Size(min= 3,max=30,message ="Description  Minimum 3, Description  Maksimum 30 simvol" )
-	@NotNull(message =" Descriptionni Bos qoymaq olmaz" )
-	@NotEmpty(message = "")
 	private String description;
 	private Date beginDate;
-	@Size(min= 3,max=30,message ="Status Minimum 3, Status Maksimum 30 simvol" )
-	@NotNull(message =" Statusi Bos qoymaq olmaz" )
-	@NotEmpty(message = "")
 	private String status;
 	private Integer price;
 	private String username;

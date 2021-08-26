@@ -3,5 +3,46 @@
           
   
 mat-button class="btn btn-danger" (click)="closeInfoDialog()" ><mat-icon>close</mat-icon></button>
-<mat-dialog-content  ></mat-dialog-content>
-<div style="width: 800px;"></div>
+<mat-dialog-content  >
+
+    <div class="product-details">
+		
+        <h1>{{shop.name}}</h1>
+    
+            
+                <p class="information">{{shop.description}}</p>
+    
+            
+            <br><br> <br><br> <br><br>
+    <div class="control">
+      "
+        <button class="btn"   (click)="addBasket(shop.id)">
+         <span class="price">₼{{shop.price}}</span>
+       <span class="shopping-cart"><mat-icon>shopping_basket</mat-icon></span>
+       <span class="buy">Sebete at</span>
+     </button>
+        
+    </div>
+                
+    </div>
+        
+    <div class="product-image">
+        
+        <img src="{{shop.image}}" alt="">
+        
+    
+    <div class="info">
+        <h2> Description</h2>
+        <ul>
+            <li><strong>Sahibi: </strong>{{shop.username}}</li>
+            <li><strong>Status : </strong>{{shop.status}}</li>
+            <li><strong>Tarix: </strong>{{shop.beginDate}}</li>
+            <li><strong>Kategoriya : </strong>{{category.category}}</li>
+        
+       
+            
+        </ul>
+    </div>
+    </div>
+</mat-dialog-content>
+
