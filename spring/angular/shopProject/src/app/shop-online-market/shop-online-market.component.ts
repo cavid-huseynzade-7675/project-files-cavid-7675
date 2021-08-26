@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { BasketTableComponent } from '../basket-table/basket-table.component';
 
 import { API_URL } from '../constant';
+import { InfoDialogComponent } from '../info-dialog/info-dialog.component';
 import { Basket } from '../models/basket';
 import { BasketTable } from '../models/basketTable';
 import { Shop } from '../models/shop';
@@ -85,6 +86,16 @@ this.loadBaskets();
   }
 
 }
+openInfoDialog(id:number){
+  var x = id,
+  toString = x.toString(),
+  toConcat = x + "";
+  localStorage.setItem('idInfo',toConcat)
+  
+
+   this.dialog.open(InfoDialogComponent);
+ }
+
   openDialog(id:number){
    this.addBasket(id);
    

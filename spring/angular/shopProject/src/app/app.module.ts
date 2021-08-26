@@ -30,6 +30,7 @@ import { BasketTableComponent } from './basket-table/basket-table.component';
 import { OrderSaveComponent } from './order-save/order-save.component';
 import { OrderListComponent } from './order-list/order-list.component';
 import { FilterPipe } from './filter.pipe';
+import { InfoDialogComponent } from './info-dialog/info-dialog.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { FilterPipe } from './filter.pipe';
     OrderSaveComponent,
     OrderListComponent,
     FilterPipe,
+    InfoDialogComponent,
   
   ],
   entryComponents:[DialogComponent],

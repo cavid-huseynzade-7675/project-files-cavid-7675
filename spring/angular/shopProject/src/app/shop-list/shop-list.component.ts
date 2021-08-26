@@ -26,6 +26,7 @@ export class ShopListComponent implements OnInit {
 
   }
 
+  
 openDialog(){
   this.dialog.open(DialogComponent);
 }
