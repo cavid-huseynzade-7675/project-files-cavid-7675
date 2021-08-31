@@ -1,4 +1,18 @@
+<div style="width: 15%;float: left;position:fixed;">
 
+
+
+   <mat-selection-list #categorys [multiple]="false">
+    <mat-list-option   (click)="filterOnShops(0)"  >
+      Hamisini sec
+    </mat-list-option>
+    <mat-list-option *ngFor="let category of categories "  (click)="filterOnShops(category.id)"  [value]="category.category">
+      {{category.category}}
+    </mat-list-option>
+  </mat-selection-list>
+ 
+</div>
+<div style="width: 84%;float: right;">
 
 <div title='Sebet' data-toggle='tooltip' data-placement='right' style="position:fixed;right:20px;bottom:20px;width:120px;">
 
@@ -9,7 +23,7 @@
 
 </div>
 
-<div class="product-card"  *ngFor="let shop of shops " style="width: 18%;margin: 1%;">
+<div class="product-card"  *ngFor="let shop of filterShops " style="width: 23%;margin: 1%;">
   <div class="product-card-item">
   <div class="photo-div">
   <img class="book-photo" src="{{shop.image}}">
@@ -23,3 +37,4 @@
       <mat-icon>visibility</mat-icon></button>
  
   </div></div></div></div>
+</div>

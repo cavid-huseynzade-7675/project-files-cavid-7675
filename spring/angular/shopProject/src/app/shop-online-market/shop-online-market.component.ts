@@ -8,6 +8,7 @@ import { API_URL } from '../constant';
 import { InfoDialogComponent } from '../info-dialog/info-dialog.component';
 import { Basket } from '../models/basket';
 import { BasketTable } from '../models/basketTable';
+import { Category } from '../models/category';
 import { Shop } from '../models/shop';
 
 import { ShopBasketComponent } from '../shop-basket/shop-basket.component';
@@ -19,7 +20,20 @@ import { ShopService } from '../shop.service';
   styleUrls: ['./shop-online-market.component.css']
 })
 export class ShopOnlineMarketComponent implements OnInit {
+  searchText = '';
   tableBasketsOnline: Array<Number>=[];
+  filterShops: Array<Shop>=[];
+  categories: Category[] = [];
+  characters = [
+    'Ant-Man',
+    'Aquaman',
+    'Asterix',
+    'The Atom',
+    'The Avengers',
+    'Batgirl',
+    'Batman',
+    'Batwoman'
+  ];
   shops: Shop[] = [];
   baskets: Basket[] = [];
 basket:Basket=new Basket();
@@ -31,7 +45,7 @@ basketCount:number=0;
       response=>{
         this.shops=response;
 
-       
+       this.filterOnShops(0);
        
         ;
      }
@@ -106,10 +120,40 @@ openInfoDialog(id:number){
     this.loadShops();
    this.loadBaskets();
 this.loadBasketCount();
+this.loadCategories();
   }
 
 openBasket(){
   this.dialog.open(BasketTableComponent);
 
+}
+filterOnShops(categoryid:number){
+  this.filterShops=[];
+if (categoryid==0) {
+  this.filterShops=this.shops;
+}
+
+for (let index = 0; index < this.shops.length; index++) {
+  const element = this.shops[index];
+  
+  if (element.categoryid==categoryid) {
+    this.filterShops.push(element);
+    
+  }
+}
+
+}
+
+loadCategories(){
+  this.http.get<Category[]>(API_URL+'/categories').subscribe(
+    response=>{
+      this.categories=response;
+      console.log(response);
+     
+     
+      ;
+   }
+
+  );
 }
 }
