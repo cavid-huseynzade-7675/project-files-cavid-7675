@@ -29,7 +29,7 @@ public class ShopManagementAprel11Application {
 		Shop order=new Shop();
 		order.setName("adini");
 
-	repository.save(order);
+	//repository.save(order);
 	
 
 	}
