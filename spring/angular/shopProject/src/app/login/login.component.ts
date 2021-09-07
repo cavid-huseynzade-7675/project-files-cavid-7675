@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { API_URL } from '../constant';
 import { User } from '../models/user';
+import { LoginServiceService } from '../service/login-service.service';
 
 @Component({
   selector: 'app-login',
@@ -11,12 +12,12 @@ import { User } from '../models/user';
 })
 export class LoginComponent implements OnInit {
   user:User=new User();
-  constructor(private http:HttpClient,private router:Router) {}
+  constructor(private http:HttpClient,private router:Router,private loginS:LoginServiceService) {}
 
   ngOnInit(): void {}
   onLogin(){
     let token:string='Basic '+window.btoa(this.user.username +':'+ this.user.password);
-    this.http.get(API_URL +'/shops',{
+    this.http.get<string[]>(API_URL +'/login',{
 headers:new HttpHeaders(
 { Authorization:token}
 
@@ -26,7 +27,9 @@ headers:new HttpHeaders(
       resp =>{
       //  alert('ugurlu giris')
       localStorage.setItem('token',token)
-      this.router.navigate(['shops']);
+      this.loginS.userLogin.emit(true);
+      this.loginS.userRoles.emit(resp);
+      this.router.navigate(['main']);
       },
       error =>{
         alert('ugursuz gris')

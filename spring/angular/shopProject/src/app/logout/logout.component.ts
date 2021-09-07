@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginServiceService } from '../service/login-service.service';
 
 @Component({
   selector: 'app-logout',
@@ -7,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LogoutComponent implements OnInit {
 
-  constructor() { }
+  constructor(private loginS:LoginServiceService) { }
 
   ngOnInit(): void {
     localStorage.removeItem('token');
+    this.loginS.userLogin.emit(false);
+    this.loginS.userRoles.emit([]);
   }
 
 }

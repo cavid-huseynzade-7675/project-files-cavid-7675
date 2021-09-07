@@ -31,6 +31,7 @@ import { OrderSaveComponent } from './order-save/order-save.component';
 import { OrderListComponent } from './order-list/order-list.component';
 import { FilterPipe } from './filter.pipe';
 import { InfoDialogComponent } from './info-dialog/info-dialog.component';
+import { MainComponent } from './main/main.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { InfoDialogComponent } from './info-dialog/info-dialog.component';
     OrderListComponent,
     FilterPipe,
     InfoDialogComponent,
+    MainComponent,
   
   ],
   entryComponents:[DialogComponent],
