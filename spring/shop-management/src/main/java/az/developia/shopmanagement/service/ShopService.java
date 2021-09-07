@@ -19,6 +19,14 @@ public class ShopService {
 	public List<Shop> findAll(){
 		return shopRepository.findAll();
 	}
+
+	public List<Shop> findAllByUsername(String username){
+		return shopRepository.findAllByUsername(username);
+	}
+
+	public List<Shop> findAllByUsernameSearch(String username,String search){
+		return shopRepository.findAllByUsernameSearch(username,search);
+	}
 	public Shop add(Shop s){
 
   return shopRepository.save(s);

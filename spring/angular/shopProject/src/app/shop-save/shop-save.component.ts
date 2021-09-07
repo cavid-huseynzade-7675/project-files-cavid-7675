@@ -19,16 +19,24 @@ export class ShopSaveComponent implements OnInit {
   shop: Shop = new Shop();
   minimum:number=3;
 maksimum:number=30;
+name:any=localStorage.getItem('username');
   constructor(
     private service: ShopService,
     private http:HttpClient,
     private router:Router,
     public dialogRef: MatDialogRef<ShopSaveComponent>) {}
 
-  ngOnInit(): void {this.loadCategories()}
+  ngOnInit(): void {this.loadCategories();
+  
+  console.log();
+  }
 
   
   onSaveShop() {
+  
+
+    this.shop.username=this.name;  
+   
    // this.service.tasks.push(this.task);
    this.http.post<Shop>(API_URL+'/shops',this.shop).subscribe(
 resp=>{

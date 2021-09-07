@@ -27,6 +27,7 @@ headers:new HttpHeaders(
       resp =>{
       //  alert('ugurlu giris')
       localStorage.setItem('token',token)
+      localStorage.setItem('username',this.user.username)
       this.loginS.userLogin.emit(true);
       this.loginS.userRoles.emit(resp);
       this.router.navigate(['main']);

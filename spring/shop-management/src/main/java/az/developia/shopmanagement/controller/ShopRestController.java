@@ -38,6 +38,16 @@ public class ShopRestController {
 		return shopService.findAll();
 	}
 
+	@GetMapping(path="/user/{username}")
+	public List<Shop> findAllByUsername(@PathVariable String username) { 
+		return shopService.findAllByUsername(username);
+	}
+
+	@GetMapping(path="/user/{username}/{search}")
+	public List<Shop> findAllByUsernameSearch(@PathVariable String username,@PathVariable String search) { 
+		return shopService.findAllByUsernameSearch(username,search);
+	}
+
 	@PostMapping
 	public Shop add(@Valid @RequestBody Shop shop,BindingResult result){
 		Shop shopSaved=null;

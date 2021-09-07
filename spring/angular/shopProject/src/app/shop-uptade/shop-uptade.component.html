@@ -8,20 +8,7 @@ mat-button class="btn btn-danger" (click)="closeUptadeSaveDialog()" ><mat-icon>c
 
 <div class="container">
     <form (ngSubmit)="!shopForm.invalid && onEditShop()" #shopForm="ngForm" style="width: 800px;">
-      <div class="form-group">
-        <label for="name">Ad:</label>
-        <input
-          type="text"
-          class="form-control"
-          id="name"
-          name="name"
-          [(ngModel)]="shop.username"
-          required
-          [minlength]="minimum"
-          [maxlength]="maksimum"
-          value="{{shop.username}}"
-        />
-      </div>
+
       <div class="form-group">
         <label for="shop-name">Mehsul:</label>
         <input
