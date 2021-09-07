@@ -37,5 +37,7 @@ headers:new HttpHeaders(
       }
     );
   }
-
+  onSignUp(){
+this.router.navigate(['sign-in']);
+  }
 }

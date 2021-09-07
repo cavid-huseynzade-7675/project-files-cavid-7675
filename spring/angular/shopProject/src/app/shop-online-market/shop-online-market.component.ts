@@ -117,10 +117,7 @@ openInfoDialog(id:number){
     this.dialog.open(ShopBasketComponent);
   }
   ngOnInit(): void {
-    this.loadShops();
-   this.loadBaskets();
-this.loadBasketCount();
-this.loadCategories();
+
   }
 
 openBasket(){

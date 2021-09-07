@@ -12,6 +12,8 @@ import org.hibernate.loader.custom.Return;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import az.developia.shopmanagement.model.UserModel;
+
 @Component
 public class UserDao {
  @Autowired
@@ -39,5 +41,24 @@ c.close();
 
         return roles;
  }
+ public void createUser(UserModel user){
 
+  
+        try {
+            Connection c=dataSource.getConnection();
+PreparedStatement st=c.prepareStatement("insert into users (username,password,enabled) values(?,?,?);");
+
+st.setString(1, user.getUsername());
+st.setString(2, "{noop}"+user.getPassword());
+st.setInt(3, 1);
+st.executeUpdate();
+
+st.close();
+c.close();
+
+        } catch (Exception e) {
+           e.printStackTrace();
+        }
+
+ }
 }

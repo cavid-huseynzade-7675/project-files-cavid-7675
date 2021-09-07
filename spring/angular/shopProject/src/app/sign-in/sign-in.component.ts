@@ -1,5 +1,9 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { API_URL } from '../constant';
+import { User } from '../models/user';
+import { LoginServiceService } from '../service/login-service.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -8,11 +12,19 @@ import { Router } from '@angular/router';
 })
 export class SignInComponent implements OnInit {
 
-  constructor( private router:Router) { }
 
-  ngOnInit(): void {
-    this.router.navigate(['shop-online-market']);
+  user:User=new User();
+  constructor(private http:HttpClient,private router:Router,private loginS:LoginServiceService) {}
 
-  }
+  ngOnInit(): void {}
 
-}
+  onSignUp(){
+    console.log('ss');
+      this.http.post(API_URL +'/signup',this.user)
+   .subscribe(
+      error =>{
+      
+      }
+    );
+
+}}

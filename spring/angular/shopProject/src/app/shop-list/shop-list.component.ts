@@ -16,7 +16,7 @@ import { ShopService } from '../shop.service';
 })
 export class ShopListComponent implements OnInit {
 
-  
+  name:any=localStorage.getItem('username');
   shops: Shop[] = [];
 
   popoverTitle:string='Təsdiq';
@@ -46,7 +46,7 @@ this.load()
 
 
  loadShops(){
-    this.http.get<Shop[]>(API_URL+'/shops').subscribe(
+    this.http.get<Shop[]>(API_URL+'/shops/user/'+this.name).subscribe(
       response=>{
         this.shops=response;
         console.log(response);
