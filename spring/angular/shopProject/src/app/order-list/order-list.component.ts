@@ -16,6 +16,7 @@ export class OrderListComponent implements OnInit {
   shops: Shop[] = [];
   orders: Order[] = [];
   say:number=0;
+  name:any=localStorage.getItem('username');
   orderBasketIdsArray:Array<Number>=[];
   orderCountsIdsArray:Array<Number>=[];
   ordersList: Array<OrderList>=[];
@@ -31,7 +32,7 @@ export class OrderListComponent implements OnInit {
 
 
   loadShops(){
-    this.http.get<Shop[]>(API_URL+'/shops').subscribe(
+    this.http.get<Shop[]>(API_URL+'/shops/user/'+this.name).subscribe(
       response=>{
         this.shops=response; 
      
@@ -86,6 +87,6 @@ orderL.shopsOrder.push(orderLS);
   }
 
 }
-console.log(this.ordersList[1].shopsOrder)
+
       }
 }
