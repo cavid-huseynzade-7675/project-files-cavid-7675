@@ -79,12 +79,7 @@ orderL.shopsOrder.push(orderLS);
 
     }
   }
-  if(orderL.allPriceInaAllpriceColumn==0){
-    
-  }else{
-    this.ordersList.push(orderL);
-  }
-
+  this.ordersList.push(orderL);
 }
 console.log(this.ordersList[1].shopsOrder)
       }
