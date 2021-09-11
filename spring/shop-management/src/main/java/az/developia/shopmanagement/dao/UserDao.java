@@ -47,13 +47,15 @@ c.close();
         try {
             Connection c=dataSource.getConnection();
 PreparedStatement st=c.prepareStatement("insert into users (username,password,enabled) values(?,?,?);");
-
+PreparedStatement st1=c.prepareStatement("insert into authorities (username,authority) values(?,?);");
 st.setString(1, user.getUsername());
 st.setString(2, "{noop}"+user.getPassword());
 st.setInt(3, 1);
 st.executeUpdate();
-
+st1.setString(1, user.getUsername());
+st1.setString(2, "ROLE_ADMIN");
 st.close();
+st1.executeUpdate();
 c.close();
 
         } catch (Exception e) {
