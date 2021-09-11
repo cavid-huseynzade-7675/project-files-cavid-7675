@@ -14,7 +14,10 @@ export class LoginComponent implements OnInit {
   user:User=new User();
   constructor(private http:HttpClient,private router:Router,private loginS:LoginServiceService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+    localStorage.removeItem('token');
+  }
   onLogin(){
     let token:string='Basic '+window.btoa(this.user.username +':'+ this.user.password);
     this.http.get<string[]>(API_URL +'/login',{
