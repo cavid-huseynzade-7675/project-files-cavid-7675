@@ -1,6 +1,6 @@
 package az.developia.shopmanagement.model;
 
-import java.util.List;
+
 
 import lombok.Getter;
 import lombok.Setter;
