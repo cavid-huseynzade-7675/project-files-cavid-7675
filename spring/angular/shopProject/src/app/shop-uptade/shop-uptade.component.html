@@ -88,13 +88,11 @@ mat-button class="btn btn-danger" (click)="closeUptadeSaveDialog()" ><mat-icon>c
       <div class="form-group">
         <label for="shop-image">Sekil</label>
         <input
-        
+        type="file"
           class="form-control"
           id="shop-image"
           name="shop-image"
-          [(ngModel)]="shop.image"
-          required
-          value="{{shop.image}}"
+      (change)="onImageSelected($event)"
         />
       </div>
       

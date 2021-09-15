@@ -32,6 +32,7 @@ import { OrderListComponent } from './order-list/order-list.component';
 import { FilterPipe } from './filter.pipe';
 import { InfoDialogComponent } from './info-dialog/info-dialog.component';
 import { MainComponent } from './main/main.component';
+import { ShowImageComponent } from './show-image/show-image.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { MainComponent } from './main/main.component';
     FilterPipe,
     InfoDialogComponent,
     MainComponent,
+    ShowImageComponent,
   
   ],
   entryComponents:[DialogComponent],

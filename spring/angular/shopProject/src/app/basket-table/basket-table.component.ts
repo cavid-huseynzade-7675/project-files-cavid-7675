@@ -20,7 +20,7 @@ export class BasketTableComponent implements OnInit {
   baskets:Basket[] = [];
   basketCount:Basket = new Basket();
 tableBaskets: Array<BasketTable>=[];
-
+imagePath:string='';
 priceAll:number=0;
 
 
@@ -33,7 +33,7 @@ priceAll:number=0;
     this.loadShops();
     this.loadBaskets();
 
-   
+    this.imagePath=API_URL+'/files/files/'
   }
   openOrderSaveDialog(){
     this.dialog.open(OrderSaveComponent);

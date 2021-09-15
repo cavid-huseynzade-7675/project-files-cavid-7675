@@ -1,24 +1,23 @@
 package az.developia.shopmanagement;
 
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
-import az.developia.shopmanagement.dao.BasketRepository;
-import az.developia.shopmanagement.dao.CategoryRepository;
-import az.developia.shopmanagement.dao.OrderRepository;
+
 import az.developia.shopmanagement.dao.ShopRepository;
-import az.developia.shopmanagement.model.Basket;
-import az.developia.shopmanagement.model.Category;
-import az.developia.shopmanagement.model.Orders;
+import az.developia.shopmanagement.file.StorageProperties;
+import az.developia.shopmanagement.file.StorageService;
+
 import az.developia.shopmanagement.model.Shop;
 
-import java.sql.Date;
-import java.time.LocalDate;
+
 
 @SpringBootApplication
- 
+@EnableConfigurationProperties(StorageProperties.class)
 public class ShopManagementAprel11Application {
 
 	public static void main(String[] args) {
@@ -33,5 +32,11 @@ public class ShopManagementAprel11Application {
 	
 
 	}
+	@Bean
+    CommandLineRunner init(StorageService storageService) {
+        return (args) -> {
 
+            storageService.init();
+        };
+    }
 }

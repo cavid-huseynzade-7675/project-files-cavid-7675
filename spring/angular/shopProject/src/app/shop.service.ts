@@ -7,6 +7,7 @@ import { Shop } from './models/shop';
 })
 export class ShopService {
 shops:Shop[]=[];
+selectedImagePath:string='';
 ShopAdded:EventEmitter<Shop>=new EventEmitter();
   constructor() {
 

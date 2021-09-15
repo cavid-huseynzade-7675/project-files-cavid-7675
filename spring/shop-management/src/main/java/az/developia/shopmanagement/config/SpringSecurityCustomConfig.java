@@ -23,6 +23,7 @@ public class SpringSecurityCustomConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable().authorizeRequests()
         .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
         .antMatchers(HttpMethod.POST, "/signup/**").permitAll()
+        .antMatchers(HttpMethod.GET, "/files/**").permitAll()
         .anyRequest().authenticated()
         .and().httpBasic();
     }

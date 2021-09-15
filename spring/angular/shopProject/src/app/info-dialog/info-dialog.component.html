@@ -28,7 +28,7 @@ mat-button class="btn btn-danger" (click)="closeInfoDialog()" ><mat-icon>close</
         
     <div class="product-image">
         
-        <img src="{{shop.image}}"  style="width: 200px;" >
+        <img [src]="imagePath+shop.image"  style="width: 200px;" >
         
     
     <div class="info">

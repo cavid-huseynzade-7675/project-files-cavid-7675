@@ -8,6 +8,7 @@ import { Shop } from '../models/shop';
 import { User } from '../models/user';
 import { ShopUptadeComponent } from '../shop-uptade/shop-uptade.component';
 import { ShopService } from '../shop.service';
+import { ShowImageComponent } from '../show-image/show-image.component';
 
 @Component({
   selector: 'app-shop-list',
@@ -18,7 +19,7 @@ export class ShopListComponent implements OnInit {
 
   name:any=localStorage.getItem('username');
   shops: Shop[] = [];
-
+imagePath:string='';
   popoverTitle:string='Təsdiq';
   popoverMessage:string='Tələbə Silme prosesini təsdiqləməyə əminsiniz?';
   constructor(private service: ShopService,private http:HttpClient,public dialog:MatDialog) {
@@ -39,6 +40,7 @@ openUptadeDialog(id:number){
 }
 
   ngOnInit(): void {
+    this.imagePath=API_URL+'/files/files/'
    this.loadShops();
 this.load()
   }
@@ -79,4 +81,9 @@ localStorage.setItem('loadShops','0')
       );
     }
 
+
+    openImage(path:string){
+      this.service.selectedImagePath=path;
+      this.dialog.open(ShowImageComponent);
+    }
 }

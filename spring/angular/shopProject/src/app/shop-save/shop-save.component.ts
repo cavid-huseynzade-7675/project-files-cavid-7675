@@ -4,6 +4,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { API_URL } from '../constant';
 import { Category } from '../models/category';
+import { ImageBean } from '../models/imageBean';
 import { Shop } from '../models/shop';
 import { ShopListComponent } from '../shop-list/shop-list.component';
 import { ShopService } from '../shop.service';
@@ -20,6 +21,7 @@ export class ShopSaveComponent implements OnInit {
   minimum:number=3;
 maksimum:number=30;
 name:any=localStorage.getItem('username');
+taskImageFile:any=null;
   constructor(
     private service: ShopService,
     private http:HttpClient,
@@ -33,7 +35,14 @@ name:any=localStorage.getItem('username');
 
   
   onSaveShop() {
-  
+  let formData:FormData=new FormData();
+  formData.append('file',this.taskImageFile)
+
+  this.http.post<ImageBean>(API_URL+'/files',formData).subscribe(
+    resp=>{
+     // this.service.TaskAdded.emit(resp);
+    this.shop.image=resp.fileName;
+
 
     this.shop.username=this.name;  
    
@@ -47,7 +56,16 @@ resp=>{
 }
 
    );
+    });
+
+
+
+    
   }
+  onImageSelected(event:any){
+this.taskImageFile=event.target.files[0];
+  }
+
   closeShopSaveDialog(){
     this.dialogRef.close();
   }

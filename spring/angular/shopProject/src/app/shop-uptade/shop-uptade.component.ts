@@ -4,6 +4,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { API_URL } from '../constant';
 import { Category } from '../models/category';
+import { ImageBean } from '../models/imageBean';
 import { Shop } from '../models/shop';
 import { ShopService } from '../shop.service';
 
@@ -18,6 +19,8 @@ export class ShopUptadeComponent implements OnInit {
   shop: Shop = new Shop();
   minimum:number=3;
   maksimum:number=30;
+  taskImageFile:any=null;
+  imagePath:string='';
   constructor(
     private service: ShopService,
     private http:HttpClient,
@@ -26,20 +29,38 @@ export class ShopUptadeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {this.loadCategories();
-    this.loadShops()
+    this.loadShops();
+    this.imagePath=API_URL+'/files/files/'
 
   }
 
   onEditShop() {
+    let formData:FormData=new FormData();
+    formData.append('file',this.taskImageFile)
+  
+    this.http.post<ImageBean>(API_URL+'/files',formData).subscribe(
+      resp=>{
+       // this.service.TaskAdded.emit(resp);
+      this.shop.image=resp.fileName;
+    
+      this.http.put<Shop>(API_URL+'/shops',this.shop).subscribe(
+        resp=>{
+         localStorage.setItem('loadShops','1')
+         this.dialogRef.close();
+        }
+        
+        
+       
+           );
+    })
+
     // this.service.tasks.push(this.task);
-    this.http.put<Shop>(API_URL+'/shops',this.shop).subscribe(
- resp=>{
-  localStorage.setItem('loadShops','1')
-  this.dialogRef.close();
- }
- 
-    );
+
    }
+   onImageSelected(event:any){
+    this.taskImageFile=event.target.files[0];
+      }
+
    closeUptadeSaveDialog(){
     this.dialogRef.close();
    }
@@ -55,6 +76,7 @@ export class ShopUptadeComponent implements OnInit {
 
          if(Number(localStorage.getItem('id'))==element){
 this.shop = this.shops[index]
+
          }
        }
        

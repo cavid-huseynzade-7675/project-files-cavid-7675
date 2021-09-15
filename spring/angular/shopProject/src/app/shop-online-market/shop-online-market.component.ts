@@ -21,6 +21,7 @@ import { ShopService } from '../shop.service';
 })
 export class ShopOnlineMarketComponent implements OnInit {
   searchText = '';
+  imagePath:string='';
   tableBasketsOnline: Array<Number>=[];
   filterShops: Array<Shop>=[];
   categories: Category[] = [];
@@ -121,7 +122,9 @@ openInfoDialog(id:number){
    this.loadBaskets();
 this.loadBasketCount();
 this.loadCategories();
-  }
+this.imagePath=API_URL+'/files/files/'  
+}
+
 
 openBasket(){
   this.dialog.open(BasketTableComponent);

@@ -26,7 +26,7 @@
 <div class="product-card"  *ngFor="let shop of filterShops " style="width: 23%;margin: 1%;">
   <div class="product-card-item">
   <div class="photo-div">
-  <img class="book-photo" src="{{shop.image}}">
+  <img class="book-photo" [src]="imagePath+shop.image">
   </div>
   <div class="text-div">
   <p class="price-text">{{shop.price}} Azn</p>

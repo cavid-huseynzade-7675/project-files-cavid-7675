@@ -16,6 +16,7 @@ import { ShopService } from '../shop.service';
 })
 export class InfoDialogComponent implements OnInit {
   categories: Category[] = [];
+  imagePath:string='';
   shops: Shop[] = [];
   shop: Shop = new Shop();
   baskets: Basket[] = [];
@@ -27,6 +28,7 @@ export class InfoDialogComponent implements OnInit {
   ngOnInit(): void {
     this.loadShops();
     this.loadBaskets();
+    this.imagePath=API_URL+'/files/files/'
   }
   closeInfoDialog(){
     
