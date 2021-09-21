@@ -4,6 +4,8 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { API_URL } from '../constant';
 import { Category } from '../models/category';
+import { FieldErrorModel, ValidationEror } from '../models/error';
+import { ErrorShop } from '../models/errorShop';
 import { ImageBean } from '../models/imageBean';
 import { Shop } from '../models/shop';
 import { ShopListComponent } from '../shop-list/shop-list.component';
@@ -20,6 +22,8 @@ export class ShopSaveComponent implements OnInit {
   shop: Shop = new Shop();
   minimum:number=3;
 maksimum:number=30;
+error:ValidationEror=new ValidationEror ();
+errorShop:ErrorShop=new ErrorShop();
 name:any=localStorage.getItem('username');
 taskImageFile:any=null;
   constructor(
@@ -53,6 +57,31 @@ resp=>{
  this.router.navigate(['shops']);
  localStorage.setItem('loadShops','1')
  this.dialogRef.close();
+},error=>{
+  this.error.errors=[];
+  this.errorShop.errorDescription=[];
+  this.errorShop.errorName=[];
+  this.errorShop.errorStatus=[];
+  for (let index = 0; index < error.error.length; index++) {
+    this.error.errors.push(error.error[index]);
+    console.log(error.error[index]);
+    if(error.error[index].fieldName=="name"){
+this.errorShop.errorName.push(error.error[index].fieldError);
+
+    };
+    if(error.error[index].fieldName=="status"){
+      this.errorShop.errorStatus.push(error.error[index].fieldError);
+      
+          };
+          if(error.error[index].fieldName=="description"){
+            this.errorShop.errorDescription.push(error.error[index].fieldError);
+            
+                };
+    
+  }
+  console.log(this.errorShop);
+ 
+  
 }
 
    );

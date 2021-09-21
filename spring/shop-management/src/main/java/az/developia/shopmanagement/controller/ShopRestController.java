@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import az.developia.shopmanagement.error.ShopValidationError;
 import az.developia.shopmanagement.model.Shop;
 import az.developia.shopmanagement.model.shopDeleteModel;
 import az.developia.shopmanagement.service.ShopService;
@@ -52,16 +53,7 @@ public class ShopRestController {
 	public Shop add(@Valid @RequestBody Shop shop,BindingResult result){
 		Shop shopSaved=null;
 		if (result.hasErrors()) {
-			 System.out.println("Error var");
-			 System.out.println(result.getErrorCount());
-			 System.out.println(result.getFieldErrorCount());
-			 System.out.println(result.getFieldErrorCount("name"));
-			 System.out.println("getAllerrors"+result.getAllErrors());
-
-			 System.out.println("---------------");
-			 for (ObjectError error:result.getAllErrors()){
-				System.out.println(error.getDefaultMessage());
-			 }
+			throw new ShopValidationError(result);
 
 		}else{
 			shopSaved=shopService.add(shop);
@@ -84,16 +76,8 @@ public class ShopRestController {
 	public Shop uptade(@Valid @RequestBody Shop shop,BindingResult result){
 		Shop shopSaved=null;
 		if (result.hasErrors()) {
-			 System.out.println("Error var");
-			 System.out.println(result.getErrorCount());
-			 System.out.println(result.getFieldErrorCount());
-			 System.out.println(result.getFieldErrorCount("name"));
-			 System.out.println("getAllerrors"+result.getAllErrors());
-
-			 System.out.println("---------------");
-			 for (ObjectError error:result.getAllErrors()){
-				System.out.println(error.getDefaultMessage());
-			 }
+			throw new ShopValidationError(result);
+			 
 
 		}else{
 			shopSaved=shopService.add(shop);

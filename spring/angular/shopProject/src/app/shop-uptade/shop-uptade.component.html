@@ -17,11 +17,12 @@ mat-button class="btn btn-danger" (click)="closeUptadeSaveDialog()" ><mat-icon>c
           id="shop-name"
           name="shop-name"
           [(ngModel)]="shop.name"
-          required
-          [minlength]="minimum"
-          [maxlength]="maksimum"
+         
           value="{{shop.name}}"
         />
+        <span  class="error-message" *ngFor="let error of errorShop.errorName" > 
+          {{error}}<br>
+              </span>
       </div>
       <div class="form-group">
         <label for="description-name">Melumat:</label>
@@ -31,11 +32,12 @@ mat-button class="btn btn-danger" (click)="closeUptadeSaveDialog()" ><mat-icon>c
           id="description-name"
           name="description-name"
           [(ngModel)]="shop.description"
-          required
-          [minlength]="minimum"
-          [maxlength]="300"
+         
           value="{{shop.description}}"
         />
+        <span  class="error-message" *ngFor="let error of errorShop.errorDescription" > 
+          {{error}}<br>
+              </span>
       </div>
       <div class="form-group">
         <label for="status-name">Status:</label>
@@ -45,11 +47,12 @@ mat-button class="btn btn-danger" (click)="closeUptadeSaveDialog()" ><mat-icon>c
           id="status-name"
           name="status-name"
           [(ngModel)]="shop.status"
-          required
-          [minlength]="minimum"
-          [maxlength]="maksimum"
+         
           value="{{shop.status}}"
         />
+        <span  class="error-message" *ngFor="let error of errorShop.errorStatus" > 
+          {{error}}<br>
+              </span>
       </div>
       <div class="form-group">
         <label for="category">Kategoriya:</label>
@@ -67,9 +70,7 @@ mat-button class="btn btn-danger" (click)="closeUptadeSaveDialog()" ><mat-icon>c
           id="shop-price"
           name="shop-price"
           [(ngModel)]="shop.price"
-          required
-          [minlength]="minimum"
-          [maxlength]="maksimum"
+        
           value="{{shop.price}}"
         />
       </div>
@@ -81,7 +82,7 @@ mat-button class="btn btn-danger" (click)="closeUptadeSaveDialog()" ><mat-icon>c
           id="shop-begin-date"
           name="shop-begin-date"
           [(ngModel)]="shop.beginDate"
-          required
+       
           value="{{shop.beginDate}}"
         />
       </div>
