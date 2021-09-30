@@ -21,4 +21,9 @@ public class BookController {
         model.addAttribute("books", books);
         return "books";
     }
+
+    @GetMapping(path = "/books/new")
+    public String  openNewBookPage() {
+     return "new-book";
+    }
 }
