@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="en" xmlns:th="http://www.thymeleaf.org"> 
 <head>
 
     <title>Yeni Kitab</title>
@@ -8,6 +8,12 @@
     <h1>
       Yeni kitab
     </h1>
+
+    <form th:action="@{/books/new-book-procces}" method="POST" th:object="${book}">
+    <label for="book-name">Ad:</label>
+    <input id="book-name" th:field="*{name}">
+    <input type="submit" value="Qeydiyyat">
+    </form>
 </body>
 
 </html>
