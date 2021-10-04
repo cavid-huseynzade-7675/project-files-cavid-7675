@@ -9,18 +9,33 @@
     <title>Yeni Kitab</title>
 </head>
 <body>
-    <form class="form-group" th:action="@{/books/new-book-procces}" method="POST" th:object="${book}">
+    <form  th:action="@{/books/new-book-procces}" method="POST" th:object="${book}">
+     <div class="form-group">
         <label for="book-name">Ad:</label>
-        <input id="book-name" th:field="*{name}"/>
+        <input  class="form-control" id="book-name" th:field="*{name}"/>
+     </div>
+     <div class="form-group">
         <label for="book-desc">Tesvir:</label>
-        <input id="book-desc" th:field="*{description}"/>
+        <input  class="form-control" id="book-desc" th:field="*{description}"/>
+     
+     </div>
+     <div class="form-group">
         <label for="book-price">Qiymet:</label>
-        <input type="number" id="book-price" th:field="*{price}"/>
+        <input   class="form-control" type="number" id="book-price" th:field="*{price}"/>
+     
+    </div>
+    <div class="form-group">
         <label for="book-auth">Muellif:</label>
-        <input id="book-auth" th:field="*{author}"/>
+        <input  class="form-control" id="book-auth" th:field="*{author}"/>
+       
+    </div>
+    <div class="form-group">
         <label for="book-page-count">Sehife sayi:</label>
-        <input type="number" id="book-page-count" th:field="*{pageCount}"/>
-        <input type="submit" value="Qeydiyyat">
+        <input  class="form-control" type="number" id="book-page-count" th:field="*{pageCount}"/>
+        
+    </div>
+        
+         <input type="submit" value="Qeydiyyat">
         </form>
 </body>
 
