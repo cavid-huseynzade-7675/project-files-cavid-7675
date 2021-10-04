@@ -8,6 +8,7 @@
   
     <title>Yeni Kitab</title>
 </head>
+<a th:href="@{/books}">Kitablarin siyahisi</a>
 <body><div style="margin-left: 25%;width: 50%;">
     <form  th:action="@{/books/new-book-procces}" method="POST" th:object="${book}">
      <div class="form-group">
