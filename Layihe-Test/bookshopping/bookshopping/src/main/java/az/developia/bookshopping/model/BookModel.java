@@ -8,7 +8,7 @@ import javax.persistence.Id;
 
 
 @Entity
-public class Book {
+public class BookModel {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

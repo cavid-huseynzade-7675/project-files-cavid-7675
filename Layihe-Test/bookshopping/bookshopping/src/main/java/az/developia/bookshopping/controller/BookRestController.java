@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import az.developia.bookshopping.dao.BookDao;
-import az.developia.bookshopping.model.Book;
+import az.developia.bookshopping.model.BookModel;
 
 
 @RestController
@@ -21,7 +21,7 @@ private BookDao bookDao;
 
 
     @GetMapping
-    public List<Book> findAll() {
+    public List<BookModel> findAll() {
         return bookDao.findAll();
     }
 }

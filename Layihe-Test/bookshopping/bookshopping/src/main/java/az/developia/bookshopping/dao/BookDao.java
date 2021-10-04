@@ -1,9 +1,11 @@
 package az.developia.bookshopping.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import az.developia.bookshopping.model.Book;
+import az.developia.bookshopping.model.BookModel;
 
-public interface BookDao extends JpaRepository<Book,Integer>  {
+@Repository
+public interface BookDao extends JpaRepository<BookModel,Integer>  {
 	
 }
