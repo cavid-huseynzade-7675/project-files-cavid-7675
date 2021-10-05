@@ -45,7 +45,7 @@ bookDao.save(book);
 List<BookModel> books=bookDao.findAll();
 
 model.addAttribute("books", books);
-     return "books";
+     return "redirect:/books";
     }
 
     @GetMapping(path = "/books/delete/{id}")
