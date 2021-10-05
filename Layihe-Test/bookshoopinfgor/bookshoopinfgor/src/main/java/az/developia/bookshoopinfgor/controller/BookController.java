@@ -31,6 +31,7 @@ public class BookController {
     public String  openNewBookPage(Model model) {
         BookModel book=new BookModel();
 model.addAttribute("book", book);
+model.addAttribute("header", "Yeni Kitab");
      return "new-book";
     }
 
@@ -42,6 +43,7 @@ model.addAttribute("book", book);
         book.setUsername("dea");
 bookDao.save(book);
 List<BookModel> books=bookDao.findAll();
+
 model.addAttribute("books", books);
      return "books";
     }
@@ -73,7 +75,7 @@ if (bookExsist) {
     
 }
  
-
+model.addAttribute("header", "Redakte Et");
 model.addAttribute("book", book);
 
      return "new-book";
