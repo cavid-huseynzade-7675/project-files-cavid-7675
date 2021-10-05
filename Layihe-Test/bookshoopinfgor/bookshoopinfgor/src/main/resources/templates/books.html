@@ -20,10 +20,10 @@ $(document).ready( function () {
 } );
     </script>
 </head>
-<body>
+<body>    <div th:replace="menu :: menu"></div>
     <a th:href="@{/books/new}" id="new-book-button" class="btn btn-primary">Yeni kitab</a>
     <a th:href="@{/home}">home</a>
-    <div th:replace="menu :: menu"></div>
+
  <table  id="table_id" class="display">
      
 <thead>
