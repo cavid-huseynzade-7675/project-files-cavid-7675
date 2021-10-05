@@ -11,6 +11,7 @@
 <a th:href="@{/books}">Kitablarin siyahisi</a>
 <body><div style="margin-left: 25%;width: 50%;">
     <form  th:action="@{/books/new-book-procces}" method="POST" th:object="${book}">
+        <input   type="hidden" th:field="*{id}"/>
      <div class="form-group">
         <label for="book-name">Ad:</label>
         <input  class="form-control" id="book-name" th:field="*{name}"/>
