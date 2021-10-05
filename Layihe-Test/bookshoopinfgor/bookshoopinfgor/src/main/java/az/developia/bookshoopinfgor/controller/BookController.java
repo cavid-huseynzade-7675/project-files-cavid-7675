@@ -1,6 +1,7 @@
 package az.developia.bookshoopinfgor.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -59,5 +60,22 @@ List<BookModel> books=bookDao.findAll();
 model.addAttribute("books", books);
 
      return "redirect:/books";
+    }
+
+    @GetMapping(path = "/books/edit/{id}")
+    public String  editBook(@PathVariable(name = "id")Integer id,Model model) {
+        Optional<BookModel> bookOptional=bookDao.findById(id);
+boolean bookExsist=bookOptional.isPresent();
+BookModel book=new BookModel();
+if (bookExsist) {
+    book=bookOptional.get();
+} else {
+    
+}
+ 
+
+model.addAttribute("book", book);
+
+     return "new-book";
     }
 }
