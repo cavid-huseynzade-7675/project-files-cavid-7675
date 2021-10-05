@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"> <head>
-
+    <meta charset="utf-8">
     <title>Home page</title>
 </head>
 <body>
@@ -9,6 +9,7 @@
     </h1>
     <a th:href="@{/books}">Kitablarin siyahisi</a>
     <a th:href="@{/logout}">Cixis</a>
+    <div th:replace="menu :: menu"></div>
 </body>
 
 </html>
