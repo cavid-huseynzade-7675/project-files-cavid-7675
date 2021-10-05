@@ -26,7 +26,8 @@ $(document).ready( function () {
  <table  id="table_id" class="display">
      
 <thead>
-    <tr><th>Id</th><th>Ad</th><th>Tesvir</th><th>Qiymet</th><th>Muellif</th><th>Sehife sayi</th><th>Sekil</th></tr>
+    <tr><th>Id</th><th>Ad</th><th>Tesvir</th><th>Qiymet</th><th>Muellif</th><th>Sehife sayi</th><th>Sekil</th>
+    <th>Emeliyyat</th></tr>
 </thead>
 <tbody>
     <tr th:each="book :${books}">
@@ -37,7 +38,9 @@ $(document).ready( function () {
 <td th:text="${book.author}"></td>
 <td th:text="${book.pageCount}"></td>
 <td th:text="${book.image}"></td>
-
+<td><a th:href="@{/books/delete/{id}(id=${book.id})}" class="btn btn-danger">Sil</a>
+    <a  class="btn btn-warning">Redakte</a>
+</td>
     </tr>
 </tbody>
 
