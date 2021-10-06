@@ -7,6 +7,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
   
     <title>Yeni Kitab</title>
+    <style>
+        .error-span{
+            color: red;
+        }
+    </style>
 </head>
 
 
@@ -19,6 +24,7 @@
      <div class="form-group">
         <label for="book-name">Ad:</label>
         <input  class="form-control" id="book-name" th:field="*{name}"/>
+        <span  class="error-span" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
      </div>
      <div class="form-group">
         <label for="book-desc">Tesvir:</label>

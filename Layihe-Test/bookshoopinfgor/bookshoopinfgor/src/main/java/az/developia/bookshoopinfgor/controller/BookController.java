@@ -3,9 +3,12 @@ package az.developia.bookshoopinfgor.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -38,7 +41,12 @@ model.addAttribute("header", "Yeni Kitab");
   
     
     @PostMapping(path = "/books/new-book-procces")
-    public String  saveBook(@ModelAttribute(name = "book")BookModel book,Model model) {
+    public String  saveBook(@Valid @ModelAttribute(name = "book")BookModel book
+    ,BindingResult result,Model model) {
+
+        if (result.hasErrors()) {
+            return "new-book";
+        }
         book.setImage("book.image");
         book.setUsername("dea");
 bookDao.save(book);
