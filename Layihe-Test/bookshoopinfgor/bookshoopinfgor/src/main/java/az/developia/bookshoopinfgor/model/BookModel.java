@@ -34,6 +34,8 @@ public class BookModel {
     @NotNull(message = "Bos qoymaq olmaz")
     private Double price;
 
+    @Min(value = 0,message = "Minimum 0 yazmaq olar")
+    @Max(value = 10000,message = "Maximum 10000 yazmaq olar")
     private Integer pageCount;
     private String username;
     private String image;

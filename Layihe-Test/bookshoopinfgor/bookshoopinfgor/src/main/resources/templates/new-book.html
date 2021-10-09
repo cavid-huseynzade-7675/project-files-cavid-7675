@@ -47,7 +47,8 @@
     <div class="form-group">
         <label for="book-page-count">Sehife sayi:</label>
         <input  class="form-control" type="number" id="book-page-count" th:field="*{pageCount}"/>
-        
+        <span  class="error-span" th:if="${#fields.hasErrors('pageCount')}" th:errors="*{pageCount}"></span>
+
     </div>
         
          <input type="submit" class="btn btn-success" value="Qeydiyyat">
