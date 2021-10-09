@@ -309,3 +309,10 @@ padding: 5px 10px;
 .page-text::before{
     content: "Sehife Sayi:";
 }
+.price-text,.name-text,.desc-text,.auth-text,.page-text{
+
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
