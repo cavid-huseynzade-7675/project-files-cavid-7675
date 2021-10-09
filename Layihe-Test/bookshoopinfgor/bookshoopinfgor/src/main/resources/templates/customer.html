@@ -17,11 +17,11 @@
         <img class="book-photo"  th:src="@{/images/java.jpg}">
         </div>
         <div class="text-div">
-        <p class="price-text"  style=""> Azn</p>
-        <p class="name-text"  >ssssss</p>
-        <p class="desc-text" >sssss</p>
-        <p class="auth-text"> Azn</p>
-        <p class="page-text"  >ssssss</p>
+        <p class="price-text"  th:text="${book.price}"> </p>
+        <p class="name-text" th:text="${book.name}"  ></p>
+        <p class="desc-text"  th:text="${book.description}"></p>
+        <p class="auth-text" th:text="${book.author}"> </p>
+        <p class="page-text"   th:text="${book.pageCount}"></p>
      
         <div style="text-align:center;">
           <button class="btn btn-primary add-to-basket-btn"> Sebete at</button>
