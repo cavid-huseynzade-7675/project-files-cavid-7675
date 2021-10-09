@@ -35,7 +35,8 @@
      <div class="form-group">
         <label for="book-price">Qiymet:</label>
         <input   class="form-control" type="number" id="book-price" th:field="*{price}"/>
-     
+        <span  class="error-span" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></span>
+
     </div>
     <div class="form-group">
         <label for="book-auth">Muellif:</label>

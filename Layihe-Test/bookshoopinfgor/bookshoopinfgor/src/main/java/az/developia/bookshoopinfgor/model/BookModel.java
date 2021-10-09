@@ -6,8 +6,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.springframework.lang.NonNull;
 
 @Entity
 public class BookModel {
@@ -24,6 +29,10 @@ public class BookModel {
     @Column(columnDefinition = "VARCHAR(300)")
     @Size(max=300,message = "Maximum 300 simvol yazmaq lazimdir")
     private String description;
+
+    @Min(value = 0,message = "Minimum 0 yazmaq olar")
+    @Max(value = 1000,message = "Maximum 1000 yazmaq olar")
+    @NotNull(message = "Bos qoymaq olmaz")
     private Double price;
 
     private Integer pageCount;
