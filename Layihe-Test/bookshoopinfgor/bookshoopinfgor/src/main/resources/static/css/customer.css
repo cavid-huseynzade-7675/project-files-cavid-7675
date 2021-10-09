@@ -151,11 +151,17 @@ img {
 
 .product-card {
     height: auto;
-    width: 25%;
+    width: 20%;
     float: left;
     padding: 10px;
     box-sizing: border-box;
 
+}
+@media screen and (max-width:1176px) {
+  
+    .product-card{
+        width: 25%;
+    }
 }
 @media screen and (max-width:960px) {
     #container{
