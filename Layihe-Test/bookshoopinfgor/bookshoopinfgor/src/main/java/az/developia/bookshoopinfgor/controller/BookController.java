@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import az.developia.bookshoopinfgor.config.Mysession;
 import az.developia.bookshoopinfgor.dao.BookDao;
 import az.developia.bookshoopinfgor.model.BookModel;
 
@@ -23,6 +24,9 @@ public class BookController {
 
     @Autowired
     private BookDao bookDao;
+
+    @Autowired
+    private Mysession mysession;
 
     @GetMapping(path = "/books")
     public String  showBooks(Model model) {
@@ -48,7 +52,7 @@ model.addAttribute("header", "Yeni Kitab");
             return "new-book";
         }
         book.setImage("book.image");
-        book.setUsername("dea");
+        book.setUsername(mysession.getUsername());
 bookDao.save(book);
 List<BookModel> books=bookDao.findAll();
 
