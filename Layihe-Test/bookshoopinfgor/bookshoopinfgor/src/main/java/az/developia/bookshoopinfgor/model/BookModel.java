@@ -1,6 +1,7 @@
 package az.developia.bookshoopinfgor.model;
 
 import javax.annotation.Generated;//adi sehvdi sadece
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,7 +18,11 @@ public class BookModel {
     @NotEmpty(message = "Bos qoymaq olmaz")
     @Size(min=2,message = "Minimum 2 simvol yazmaq lazimdir")
     @Size(max=30,message = "Maximum 30 simvol yazmaq lazimdir")
+    @Column(columnDefinition = "VARCHAR(30)")
     private String name;
+ 
+    @Column(columnDefinition = "VARCHAR(300)")
+    @Size(max=300,message = "Maximum 300 simvol yazmaq lazimdir")
     private String description;
     private Double price;
 
