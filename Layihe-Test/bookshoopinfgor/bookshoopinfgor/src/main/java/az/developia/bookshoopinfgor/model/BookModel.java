@@ -26,8 +26,7 @@ public class BookModel {
     @Column(columnDefinition = "VARCHAR(30)")
     private String name;
  
-    @Column(columnDefinition = "VARCHAR(300)")
-    @Size(max=300,message = "Maximum 300 simvol yazmaq lazimdir")
+
     private String description;
 
     @Min(value = 0,message = "Minimum 0 yazmaq olar")
@@ -38,6 +37,9 @@ public class BookModel {
     private Integer pageCount;
     private String username;
     private String image;
+    @Column(columnDefinition = "VARCHAR(30)")
+    @Size(max=30,message = "Maximum 30 simvol yazmaq lazimdir")
+    private String author;
     public Integer getPageCount() {
         return pageCount;
     }
@@ -62,7 +64,7 @@ public class BookModel {
     public void setAuthor(String author) {
         this.author = author;
     }
-    private String author;
+
 
     
     public Double getPrice() {

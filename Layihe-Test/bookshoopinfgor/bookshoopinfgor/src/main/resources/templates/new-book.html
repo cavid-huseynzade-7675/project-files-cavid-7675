@@ -41,7 +41,8 @@
     <div class="form-group">
         <label for="book-auth">Muellif:</label>
         <input  class="form-control" id="book-auth" th:field="*{author}"/>
-       
+        <span  class="error-span" th:if="${#fields.hasErrors('author')}" th:errors="*{author}"></span>
+
     </div>
     <div class="form-group">
         <label for="book-page-count">Sehife sayi:</label>
