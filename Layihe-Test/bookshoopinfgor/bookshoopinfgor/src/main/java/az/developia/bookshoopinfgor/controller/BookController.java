@@ -33,6 +33,7 @@ public class BookController {
      //   List<BookModel> books=bookDao.findAll();
      List<BookModel> books=bookDao.findAllByUsername(mysession.getUsername());
         model.addAttribute("books", books);
+        model.addAttribute("username", "Istifadeci adi:"+mysession.getUsername());
         return "books";
     }
     @GetMapping(path = "/books/new")

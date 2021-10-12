@@ -23,6 +23,8 @@ $(document).ready( function () {
 <body>    <div th:replace="menu :: menu"></div>
     <a th:href="@{/books/new}" id="new-book-button" class="btn btn-primary">Yeni kitab</a>
     <a th:href="@{/home}">home</a>
+    <span th:text="${username}" style="display: inline-block;padding: 5px;font-size: 24px;
+    font-weight: bold;"></span>
 
  <table  id="table_id" class="display">
      
