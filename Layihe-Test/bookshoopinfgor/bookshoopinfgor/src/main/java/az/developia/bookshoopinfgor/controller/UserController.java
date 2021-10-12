@@ -2,6 +2,7 @@ package az.developia.bookshoopinfgor.controller;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -9,11 +10,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import az.developia.bookshoopinfgor.dao.UserDao;
 import az.developia.bookshoopinfgor.model.User;
 
 @Controller
 public class UserController {
     
+    @Autowired
+    private UserDao userDao;
      
     private boolean userCreated=false;
 
@@ -40,6 +44,11 @@ return "create-account";
 if (result.hasErrors()) {
     return "create-account";
 };
+ boolean userExists=userDao.createUser(user);
+ if (userExists) {
+     model.addAttribute("userExsist", "");
+     return "create-account";
+ }
 userCreated=true;
 return "redirect:/show-login";
     }
