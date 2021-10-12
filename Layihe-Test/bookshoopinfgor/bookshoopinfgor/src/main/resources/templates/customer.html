@@ -15,12 +15,20 @@
     
    </div>
    
-   <button id='open-basket-btn' class='btn-primary btn'>Sebet<span  class='badge badge-light'>4</span></button>
+   <button id='open-basket-btn' class='btn-primary btn'>Sebet
+       <span  class='badge badge-light' id="basket-book-count">0</span></button>
    <input id='search-input' class='form-control' placeholder='Axtaris'> 
 <script>
     var xht=new XMLHttpRequest();
     var booksArrayGlobal=[];
     var basketBooks=[];
+    var basketBooksFromStorage=localStorage.getItem('basketBooks');
+    if(basketBooksFromStorage==null){
+        localStorage.setItem('basketBooks',[])}else{
+            basketBooks=JSON.parse(basketBooksFromStorage);
+        }
+    var openBasketButton=document.getElementById('open-basket-btn')
+    var basketBookCount=document.getElementById('basket-book-count')
     xht.onreadystatechange=function () {
         if (this.readyState==4 && this.status == 200) {
             var responseJSON=this.responseText;
@@ -75,7 +83,13 @@ break;
             }
         }
     
-    alert(JSON.stringify(basketBooks));
+    //alert(JSON.stringify(basketBooks));
+    openBasketButton.style.display='none';
+    basketBookCount.innerHTML=basketBooks.length;
+    localStorage.setItem('basketBooks',JSON.stringify(basketBooks));
+    setTimeout( function (){
+        openBasketButton.style.display='block'; 
+    }, 300);
     }
 </script>
 </body>  
