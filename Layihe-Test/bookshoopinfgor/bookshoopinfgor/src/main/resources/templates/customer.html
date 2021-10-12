@@ -37,7 +37,8 @@ mainContentHTML+="<p class='name-text'    title='"+book.name+"' >"+book.name+"</
 mainContentHTML+="<p class='desc-text'    title='"+book.description+"' >"+book.description+"</p>";
 mainContentHTML+="<p class='auth-text'    title='"+book.author+"' >"+book.author+"</p> ";
 mainContentHTML+="<p class='page-text'    title='"+book.pageCount+"' >"+book.pageCount+"</p> "
-mainContentHTML+="<div style='text-align:center;'><button "+"class='add-to-basket-btn btn btn-primary'>Səbətə at</button></div>";
+mainContentHTML+="<div style='text-align:center;'><button "+
+    "class='add-to-basket-btn btn btn-primary' onclick='addToBasket("+book.id+")'>Səbətə at</button></div>";
 mainContentHTML+="</div></div></div></div>";
 }
 
