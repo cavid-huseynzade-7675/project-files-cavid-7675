@@ -15,8 +15,14 @@ import az.developia.bookshoopinfgor.model.User;
 public class UserController {
     
      
+    private boolean userCreated=false;
+
     @GetMapping(path = "/show-login")
-    public String showCustomersPage(){
+    public String showCustomersPage(Model model){
+if (userCreated) {
+    model.addAttribute("userCreated", "");
+    userCreated=false;
+}
 
         return "my-custom-login";
     }
@@ -34,7 +40,7 @@ return "create-account";
 if (result.hasErrors()) {
     return "create-account";
 };
-System.out.println(user);
-return "redirect:/show-user";
+userCreated=true;
+return "redirect:/show-login";
     }
 }
