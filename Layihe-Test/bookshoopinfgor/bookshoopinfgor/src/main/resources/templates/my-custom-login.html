@@ -10,6 +10,7 @@
 
 </head>
 <body><div th:replace="menu :: menu"></div>
+    <div style="margin-left: 25%;width: 50%;">
 <form th:action="@{/authenticate-user}" method="POST" class="form">
     <div th:if="${param.error}"
 class="alert alert-danger alert-dismissible">
@@ -33,8 +34,10 @@ Hesabınızdan uğurla çıxdınız
 <input  class="form-control" type="password" id="password" name="password"/>
 </div>
 <button class="btn btn-success" type="submit">Giris</button>
+<a th:href="@{/create-account}" class="btn btn-primary">Hesab yarat</a>
 </form>
 
+</div>
 </body>
 
 </html>
