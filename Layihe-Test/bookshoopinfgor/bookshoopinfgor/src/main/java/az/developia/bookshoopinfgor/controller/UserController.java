@@ -46,7 +46,7 @@ if (result.hasErrors()) {
 };
  boolean userExists=userDao.createUser(user);
  if (userExists) {
-     model.addAttribute("userExsist", "");
+     model.addAttribute("userExists", "");
      return "create-account";
  }
 userCreated=true;
