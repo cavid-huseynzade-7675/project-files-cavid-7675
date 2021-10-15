@@ -7,6 +7,8 @@
          <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link th:href="@{/css/customer.css}" rel="stylesheet">
+ 
+ 
     <style>
 
     </style>
@@ -17,96 +19,40 @@
     
    </div>
    <div class="modal fade" id="basketModal">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
     <div class="modal-content">
     <div class="modal-header">
     <h1 class="modal-title">Səbət</h1>
     <button type="button" class="close" data-dismiss="modal">x</button>
     </div>
     <div class="modal-body">
-    Səbət cədvəli burada olacaq
+<table class="table table-hover table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Ad</th>
+            <th>Qiymet</th>
+            <th>Miqdar</th>
+            <th>Umumi Qiymet</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="basket-books-table">
+
+    </tbody>
+
+</table>
     </div>
     <div class="modal-footer">
     <button type="button" class="btn btn-danger" data-dismiss="modal">Bağla</button>
     </div>
     </div></div></div>
    <button id='open-basket-btn' class='btn-primary btn' type="button" data-toggle="modal" data-target="#basketModal"
-   >Sebet
+   onclick="openBasket()">Sebet
        <span  class='badge badge-light' id="basket-book-count">0</span></button>
    <input id='search-input' class='form-control' placeholder='Axtaris'> 
-<script>
-    var xht=new XMLHttpRequest();
-    var booksArrayGlobal=[];
-    var basketBooks=[];
-    var basketBooksFromStorage=localStorage.getItem('basketBooks');
-    if(basketBooksFromStorage==null){
-        localStorage.setItem('basketBooks',[])}else{
-            basketBooks=JSON.parse(basketBooksFromStorage);
-        }
-    var openBasketButton=document.getElementById('open-basket-btn')
-    var basketBookCount=document.getElementById('basket-book-count')
-    xht.onreadystatechange=function () {
-        if (this.readyState==4 && this.status == 200) {
-            var responseJSON=this.responseText;
-            var booksArray=JSON.parse(responseJSON);
-           booksArrayGlobal=booksArray.slice();
-            var mainContent=document.getElementById('main-content');
-var mainContentHTML="";
-for(var i=0;i<booksArray.length;i++){
-var book=booksArray[i];
-mainContentHTML+="<div class='product-card'>";
-mainContentHTML+="   <div class='product-card-item'>";
-mainContentHTML+=" <div class='photo-div'>";
-mainContentHTML+="     <img class='book-photo'  src='images/java.jpg'></div>";
-mainContentHTML+="<div class='text-div'><p class='price-text' title="+book.price+" > "+book.price+" </p>";
-mainContentHTML+="<p class='name-text'    title='"+book.name+"' >"+book.name+"</p>";
-mainContentHTML+="<p class='desc-text'    title='"+book.description+"' >"+book.description+"</p>";
-mainContentHTML+="<p class='auth-text'    title='"+book.author+"' >"+book.author+"</p> ";
-mainContentHTML+="<p class='page-text'    title='"+book.pageCount+"' >"+book.pageCount+"</p> "
-mainContentHTML+="<div style='text-align:center;'><button "+
-    "class='add-to-basket-btn btn btn-primary' onclick='addToBasket("+book.id+")'>Səbətə at</button></div>";
-mainContentHTML+="</div></div></div></div>";
-}
-
-mainContent.innerHTML=mainContentHTML;
-        }
-    }
-    xht.open("GET","/rest/books",true);
-    xht.send();    
-
-
-    function addToBasket(bookId){
-              var bookExistsInBasket=false;
-    for (var i = 0; i < basketBooks.length; i++) {
-        var basketBook = basketBooks[i];
-        if (basketBook.book.id==bookId) {
-            basketBook.count++;bookExistsInBasket=true;
-            break;
-        }}
-
-        if (bookExistsInBasket) {
-            
-        }else{
-            
-            for (var i = 0; i < booksArrayGlobal.length; i++) {
-          
-              if (booksArrayGlobal[i].id==bookId) {
-                var basketBook={count:1,book:booksArrayGlobal[i]} ;
-basketBooks.push(basketBook);
-break;
-
-              }
-            }
-        }
-    
-    //alert(JSON.stringify(basketBooks));
-    openBasketButton.style.display='none';
-    basketBookCount.innerHTML=basketBooks.length;
-    localStorage.setItem('basketBooks',JSON.stringify(basketBooks));
-    setTimeout( function (){
-        openBasketButton.style.display='block'; 
-    }, 300);
-    }
+<script type="text/javascript" th:src="@{/js/customer.js}">
+  
 </script>
 </body>  
 
