@@ -1,13 +1,17 @@
 package az.developia.bookshoopinfgor.file;
 
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.util.UUID;
 
 import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 @Service
@@ -50,7 +54,25 @@ public FileSystemStorageService(StorageProperties properties){
     @Override
     public String store(MultipartFile file) {
         
-        return null;
+      String fileName=StringUtils.cleanPath(file.getOriginalFilename());
+      String randomFilename="";
+      try {
+        try(InputStream inputStream=file.getInputStream()){
+String originalFileName=file.getOriginalFilename();
+UUID uuid=UUID.randomUUID();
+randomFilename=originalFileName
+.replace(originalFileName.substring(0,originalFileName.lastIndexOf(".")),
+uuid.toString());
+Files.copy(inputStream, this.rootlocation.resolve(randomFilename),
+  StandardCopyOption.REPLACE_EXISTING);
+
+
+        }  
+
+      } catch (Exception e) {
+       throw new StorageException("Fayl yadda saxlana bilmedi"+fileName,e);
+      }
+      return randomFilename;
     }
     
 }
