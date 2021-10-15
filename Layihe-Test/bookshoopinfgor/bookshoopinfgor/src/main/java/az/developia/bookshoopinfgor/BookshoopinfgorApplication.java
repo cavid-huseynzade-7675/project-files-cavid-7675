@@ -1,22 +1,30 @@
 package az.developia.bookshoopinfgor;
 
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
 
 import az.developia.bookshoopinfgor.dao.BookDao;
+import az.developia.bookshoopinfgor.file.StorageProperties;
+import az.developia.bookshoopinfgor.file.StorageService;
 import az.developia.bookshoopinfgor.model.BookModel;
-import javafx.application.Application;
+
 
 @SpringBootApplication
+@EnableConfigurationProperties(StorageProperties.class)
 public class BookshoopinfgorApplication {
 
 	public static void main(String[] args) {
-		ApplicationContext context = 	SpringApplication.run(BookshoopinfgorApplication.class, args);
-		BookDao	repository=context.getBean(BookDao.class);
-		BookModel bookModel=new BookModel();
-		bookModel.setName("Css");
-	//	repository.save(bookModel);
+			SpringApplication.run(BookshoopinfgorApplication.class, args);
 	}
 
+	@Bean
+	CommandLineRunner init(StorageService storage){
+		return (args)->{
+			storage.init();
+		};
+	}
 }
