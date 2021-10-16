@@ -59,8 +59,13 @@ model.addAttribute("header", "Yeni Kitab");
         if (result.hasErrors()) {
             return "new-book";
         }
-        book.setImage("book.image");
+     //   book.setImage("book.image");
         book.setUsername(mysession.getUsername());
+        if (imageFile.isEmpty() && book.getId()!=null) {
+            book.setImage(bookDao.findById(book.getId()).get().getImage());}else{
+                book.setImage(storageService.store(imageFile));
+            }
+        
         book.setImage(storageService.store(imageFile));
 bookDao.save(book);
 List<BookModel> books=bookDao.findAll();

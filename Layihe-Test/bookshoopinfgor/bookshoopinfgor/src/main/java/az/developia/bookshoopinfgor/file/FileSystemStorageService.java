@@ -69,7 +69,10 @@ public FileSystemStorageService(StorageProperties properties){
 
     @Override
     public String store(MultipartFile file) {
-        
+      if (file.isEmpty()) {
+        return "fakeimage.png";
+      }  
+
       String fileName=StringUtils.cleanPath(file.getOriginalFilename());
       String randomFilename="";
       try {
