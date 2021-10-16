@@ -40,7 +40,10 @@ $(document).ready( function () {
 <td th:text="${book.price}"></td>
 <td th:text="${book.author}"></td>
 <td th:text="${book.pageCount}"></td>
-<td th:text="${book.image}"></td>
+<td > 
+    <img style="width: 80px;"
+    th:src="@{'/files/'+${book.image}}">
+</td>
 <td><a th:href="@{/books/delete/{id}(id=${book.id})}"
     th:onclick="if(!(confirm('KItabi Silmeye Eminsiz'))) return false"
     class="btn btn-danger">Sil</a>
