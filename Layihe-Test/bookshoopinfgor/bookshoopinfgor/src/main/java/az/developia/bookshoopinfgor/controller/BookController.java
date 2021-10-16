@@ -13,14 +13,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import az.developia.bookshoopinfgor.config.Mysession;
 import az.developia.bookshoopinfgor.dao.BookDao;
+import az.developia.bookshoopinfgor.file.StorageService;
 import az.developia.bookshoopinfgor.model.BookModel;
 
 @Controller
 public class BookController {
-    
+    @Autowired
+    private StorageService storageService;
 
     @Autowired
     private BookDao bookDao;
@@ -47,14 +51,17 @@ model.addAttribute("header", "Yeni Kitab");
   
     
     @PostMapping(path = "/books/new-book-procces")
-    public String  saveBook(@Valid @ModelAttribute(name = "book")BookModel book
+    public String  saveBook(@Valid @ModelAttribute(name = "book")BookModel book,
+    @RequestParam(value = "imageFile",required = false) MultipartFile imageFile
     ,BindingResult result,Model model) {
 
+ 
         if (result.hasErrors()) {
             return "new-book";
         }
         book.setImage("book.image");
         book.setUsername(mysession.getUsername());
+        book.setImage(storageService.store(imageFile));
 bookDao.save(book);
 List<BookModel> books=bookDao.findAll();
 
