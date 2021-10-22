@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import az.developia.bookshoopinfgor.dao.BookDao;
 import az.developia.bookshoopinfgor.model.BookModel;
+import az.developia.bookshoopinfgor.model.SearchModel;
 
 @RestController
 @RequestMapping(path = "/rest/books")
@@ -29,5 +30,9 @@ public class BookRestController {
     public List<BookModel> findAll() {
         return bookDao.findAll();
     }
+@PostMapping(path = "/search")
+public List<BookModel> FindAllSearch(@RequestBody SearchModel search){
+    return bookDao.findALLSearch(search.getSearch());
+}
 
 }

@@ -180,3 +180,11 @@ function deleteBasketBook(bookId) {
     }, 300);
     fillBasketTable();
 }
+function searchBook(searchText){
+    xht.open("POST","/rest/books/search",true)
+    xht.setRequestHeader("Content-type","application/json");
+
+    var searchObject={search:searchText};
+
+    xht.send(JSON.stringify(searchObject))
+}
