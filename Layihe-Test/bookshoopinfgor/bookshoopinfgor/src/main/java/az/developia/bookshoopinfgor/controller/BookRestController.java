@@ -32,7 +32,7 @@ public class BookRestController {
     }
 @PostMapping(path = "/search")
 public List<BookModel> FindAllSearch(@RequestBody SearchModel search){
-    return bookDao.findALLSearch(search.getSearch());
+    return bookDao.findALLSearchField(search.getSearch());
 }
 
 }
