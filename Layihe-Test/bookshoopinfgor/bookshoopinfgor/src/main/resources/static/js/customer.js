@@ -9,9 +9,10 @@ if (basketBooksFromStorage == null) {
 } else {
     basketBooks = JSON.parse(basketBooksFromStorage);
 }
-var openBasketButton = document.getElementById('open-basket-btn')
-var basketBooksTable = document.getElementById('basket-books-table')
-var basketBookCount = document.getElementById('basket-book-count')
+var openBasketButton = document.getElementById('open-basket-btn');
+var basketBooksTable = document.getElementById('basket-books-table');
+var basketBookCount = document.getElementById('basket-book-count');
+var totalPrice = document.getElementById('total-price');
 xht.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
         var responseJSON = this.responseText;
@@ -81,19 +82,69 @@ function addToBasket(bookId) {
 }
 
 function openBasket() {
- var basketBooksTableHTml="";
+ 
+fillBasketTable();
+}
+function fillBasketTable() {
+    var basketBooksTableHTml="";
  for (let i = 0; i < basketBooks.length; i++) {
      var basketBook = basketBooks[i];
      basketBooksTableHTml+="<tr><td>"+basketBook.book.id;
      basketBooksTableHTml+="</td><td><img  style='width: 80px'  src='/files/"+basketBook.book.image+"'"
      basketBooksTableHTml+="'></td><td>"+basketBook.book.name;
      basketBooksTableHTml+="</td><td>"+basketBook.book.price;
-     basketBooksTableHTml+="</td><td>"+basketBook.count;
-     basketBooksTableHTml+="</td><td>"+(basketBook.book.price*basketBook.count);
-     basketBooksTableHTml+="</td><td><button class='btn btn-danger'>X</button>";
+     basketBooksTableHTml+="</td><td><input type='number' value='"+basketBook.count+"'" +
+     "oninput='bookCountChange("+basketBook.book.id+",this.value)'>";
+
+
+     basketBooksTableHTml+="</td><td id='book"+basketBook.book.id+"'>"+(basketBook.book.price*basketBook.count);
+     basketBooksTableHTml+="</td><td><button onclick='deleteBasketBook("+basketBook.book.id+")' class='btn btn-danger'>X</button>";
      basketBooksTableHTml+="</td></tr>";
      
     
  }
  basketBooksTable.innerHTML=basketBooksTableHTml;
+ calculateTotalPrice();
 }
+function bookCountChange(bookId,count){
+
+for (let index = 0; index < basketBooks.length; index++) {
+    var basketBook = basketBooks[index];
+    if (basketBook.book.id==bookId) {
+        
+        basketBook.count=count;
+
+        document.getElementById('book'+basketBook.book.id)
+        .innerHTML=(count*basketBook.book.price);
+        localStorage.setItem('basketBooks',JSON.stringify(basketBooks));
+        calculateTotalPrice();
+        break;    }
+
+}
+}
+function calculateTotalPrice(){
+    var totalpricenumber=0;
+    for (let index = 0; index < basketBooks.length; index++) {
+        var basketBook = basketBooks[index];
+        
+        totalpricenumber+=basketBook.count*basketBook.book.price;
+    }
+    totalPrice.innerHTML="Umumi Qiymet:"+totalpricenumber+"AZN";
+}
+
+function deleteBasketBook(bookId){
+
+    for (let index = 0; index < basketBooks.length; index++) {
+       if (basketBooks[index].book.id==bookId) {
+           basketBooks.splice(index,1)
+       }
+        
+          }
+          openBasketButton.style.display = 'none';
+          basketBookCount.innerHTML = basketBooks.length;
+          localStorage.setItem('basketBooks', JSON.stringify(basketBooks));
+          setTimeout(function () {
+              openBasketButton.style.display = 'block';
+          }, 300);
+          fillBasketTable();
+    }

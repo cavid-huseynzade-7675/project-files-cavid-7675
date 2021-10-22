@@ -51,9 +51,10 @@ model.addAttribute("header", "Yeni Kitab");
   
     
     @PostMapping(path = "/books/new-book-procces")
-    public String  saveBook(@Valid @ModelAttribute(name = "book")BookModel book,
+    public String  saveBook(@Valid @ModelAttribute(name = "book")BookModel book 
+    ,BindingResult result,
     @RequestParam(value = "imageFile",required = false) MultipartFile imageFile
-    ,BindingResult result,Model model) {
+   ,Model model) {
 
  
         if (result.hasErrors()) {
