@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import az.developia.bookshoopinfgor.model.Order;
 
 public interface OrderDAO extends JpaRepository<Order,Integer> {
- //   public List<Order> findAllByUsername(String username);
+  public List<Order> findAllByUsername(String username);
 }

@@ -1,6 +1,7 @@
 var customerName = document.getElementById("customer-name");
 var customerAdress = document.getElementById("customer-adress");
 var customerPhone = document.getElementById("customer-phone");
+var orderNote = document.getElementById("order-note");
 
 var order = {};
 var basketBooksFromStorage = localStorage.getItem("basketBooks");
@@ -17,6 +18,7 @@ function confirmOrder() {
   order.customer.name = customerName.value;
   order.customer.adress = customerAdress.value;
   order.customer.phone = customerPhone.value;
+  order.note=orderNote.value;
   console.log(order);
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {

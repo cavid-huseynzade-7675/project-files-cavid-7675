@@ -16,12 +16,37 @@
         <tr>
           <th>ID</th>
           <th>Tarix</th>
+          <th>Musteri</th>
+          <th>Sifaris olunanlar</th>
+          <th>Umumi Qiymet</th>
+          <th>Qeyd</th>
         </tr>
       </thead>
       <tbody>
         <tr th:each="order :${orders}">
           <td th:text="${order.id}"></td>
           <td th:text="${order.register}"></td>
+          <td>
+            <ul>
+              <li th:text="${'Ad: '+order.customer.name}"></li>
+              <li th:text="${'Telefon: '+order.customer.phone}"></li>
+              <li th:text="${'Unvan: '+order.customer.adress}"></li>
+              <li th:text="${'Email: '+order.customer.email}"></li>
+            </ul>
+          </td>
+          <td>
+            <ol>
+              <li th:each="basketBook :${order.basketBooks}">
+                <span
+                  th:text="${basketBook.book.name+'('+basketBook.count+'eded)('+
+basketBook.book.price+'AZN)(Cem:'+(basketBook.book.price*basketBook.count)+'AZN)'}"
+                >
+                </span>
+              </li>
+            </ol>
+          </td>
+          <td th:text="${order.totalPrice}">    </td>
+          <td th:text="${order.note}">    </td>
         </tr>
       </tbody>
     </table>

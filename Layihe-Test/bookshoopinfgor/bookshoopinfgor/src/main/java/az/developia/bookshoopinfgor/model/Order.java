@@ -1,6 +1,7 @@
 package az.developia.bookshoopinfgor.model;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -74,6 +75,9 @@ public class Order {
     }
 
     public List<BasketBook> getBasketBooks() {
+        if (basketBooks==null) {
+            basketBooks=new ArrayList<BasketBook>();
+        }
         return basketBooks;
     }
 
