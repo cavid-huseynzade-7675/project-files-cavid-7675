@@ -1,46 +1,64 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"> <head>
-    <meta charset="utf-8">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8" />
     <title>Home page</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  
-</head>
-<body><div th:replace="menu :: menu"></div>  
-  <div style="width: 300px;margin: auto;"> 
+  </head>
+  <body>
+    <div th:replace="menu :: menu"></div>
+    <div style="width: 300px; margin: auto">
+      <form
+        th:action="@{/create-account-procces}"
+        method="POST"
+        class="form"
+        th:object="${user}"
+      >
+        <div
+          th:if="${userExists}"
+          class="alert alert-success alert-dismissible"
+        >
+          <button type="button" class="close" data-dismiss="alert">
+            &times;
+          </button>
+          Istifadeci artiq yarailib
+        </div>
 
-    <form th:action="@{/create-account-procces}" method="POST" class="form" th:object="${user}"> 
+        <div class="form-group">
+          <label for="username">Istifadeci adi:</label>
+          <input class="form-control" id="username" th:field="*{username}" />
+          <span
+            class="error-span"
+            th:if="${#fields.hasErrors('username')}"
+            th:errors="*{username}"
+          ></span>
+        </div>
+        <div class="form-group">
+          <label for="password">Sifre:</label>
+          <input
+            class="form-control"
+            type="password"
+            id="password"
+            th:field="*{password}"
+          />
+          <span
+            class="error-span"
+            th:if="${#fields.hasErrors('password')}"
+            th:errors="*{password}"
+          ></span>
+        </div>
 
-      <div th:if="${userExists}"
-      class="alert alert-success alert-dismissible">
-      <button type="button" class="close" data-dismiss="alert">&times;</button>
-      Istifadeci artiq yarailib
-      </div>
-      
-      <div class="form-group">
-        <label for="username">Istifadeci adi:</label>
-        <input  class="form-control" id="username" th:field="*{username}"/>
-        <span  class="error-span" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
-
+        <button class="btn btn-success" type="submit">Hesabi yarat</button>
+        <a th:href="@{/show-login}" class="btn btn-primary">Giris</a>
+      </form>
     </div>
-    <div class="form-group">
-        <label for="password">Sifre:</label>
-        <input  class="form-control" type="password" id="password" th:field="*{password}"/>
-        <span  class="error-span" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
-
-    </div>
-
-    <button class="btn btn-success" type="submit">Hesabi yarat</button>
-    <a th:href="@{/show-login}" class="btn btn-primary">Giris</a>
-    </form>
-
-</div>
-  
-    
-</body>
-
+  </body>
 </html>

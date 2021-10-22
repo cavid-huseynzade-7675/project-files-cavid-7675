@@ -12,21 +12,21 @@ import az.developia.bookshoopinfgor.model.Order;
 
 @Controller
 public class OrderController {
-    
+
     @Autowired
     private OrderDAO orderDAO;
 
-
     @GetMapping(path = "/orders")
-    public String showOrdersPage( Model model){
-        List<Order> orders=orderDAO.findAll();
+    public String showOrdersPage(Model model) {
+        List<Order> orders = orderDAO.findAll();
         model.addAttribute("orders", orders);
         return "orders";
     }
+
     @GetMapping(path = "/confirm-order")
-        public String showConfirmOrderPage(){
-         
-            return "confirm-order";
-        }
-    
+    public String showConfirmOrderPage() {
+
+        return "confirm-order";
+    }
+
 }

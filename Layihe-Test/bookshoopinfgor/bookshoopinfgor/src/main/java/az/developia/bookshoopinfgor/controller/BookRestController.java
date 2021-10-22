@@ -1,7 +1,5 @@
 package az.developia.bookshoopinfgor.controller;
 
-
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +16,12 @@ import az.developia.bookshoopinfgor.model.BookModel;
 @RestController
 @RequestMapping(path = "/rest/books")
 public class BookRestController {
-    
+
     @Autowired
     private BookDao bookDao;
 
     @GetMapping(path = "/{id}")
-    public BookModel findById(@PathVariable(name="id") Integer id) {
+    public BookModel findById(@PathVariable(name = "id") Integer id) {
         return bookDao.findById(id).get();
     }
 

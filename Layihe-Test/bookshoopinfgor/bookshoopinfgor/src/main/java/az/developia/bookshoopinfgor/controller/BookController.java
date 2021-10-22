@@ -33,78 +33,75 @@ public class BookController {
     private Mysession mysession;
 
     @GetMapping(path = "/books")
-    public String  showBooks(Model model) {
-     //   List<BookModel> books=bookDao.findAll();
-     List<BookModel> books=bookDao.findAllByUsername(mysession.getUsername());
+    public String showBooks(Model model) {
+        // List<BookModel> books=bookDao.findAll();
+        List<BookModel> books = bookDao.findAllByUsername(mysession.getUsername());
         model.addAttribute("books", books);
-        model.addAttribute("username", "Istifadeci adi:"+mysession.getUsername());
+        model.addAttribute("username", "Istifadeci adi:" + mysession.getUsername());
         return "books";
     }
+
     @GetMapping(path = "/books/new")
-    public String  openNewBookPage(Model model) {
-        BookModel book=new BookModel();
-model.addAttribute("book", book);
-model.addAttribute("header", "Yeni Kitab");
-     return "new-book";
+    public String openNewBookPage(Model model) {
+        BookModel book = new BookModel();
+        model.addAttribute("book", book);
+        model.addAttribute("header", "Yeni Kitab");
+        return "new-book";
     }
 
-  
-    
     @PostMapping(path = "/books/new-book-procces")
-    public String  saveBook(@Valid @ModelAttribute(name = "book")BookModel book 
-    ,BindingResult result,
-    @RequestParam(value = "imageFile",required = false) MultipartFile imageFile
-   ,Model model) {
+    public String saveBook(@Valid @ModelAttribute(name = "book") BookModel book, BindingResult result,
+            @RequestParam(value = "imageFile", required = false) MultipartFile imageFile, Model model) {
 
- 
         if (result.hasErrors()) {
             return "new-book";
         }
-     //   book.setImage("book.image");
+        // book.setImage("book.image");
         book.setUsername(mysession.getUsername());
-        if (imageFile.isEmpty() && book.getId()!=null) {
-            book.setImage(bookDao.findById(book.getId()).get().getImage());}else{
-                book.setImage(storageService.store(imageFile));
-            }
-        
-        book.setImage(storageService.store(imageFile));
-bookDao.save(book);
-List<BookModel> books=bookDao.findAll();
+        if (imageFile.isEmpty() && book.getId() != null) {
+            book.setImage(bookDao.findById(book.getId()).get().getImage());
+        } else {
+            book.setImage(storageService.store(imageFile));
+        }
 
-model.addAttribute("books", books);
-     return "redirect:/books";
+        book.setImage(storageService.store(imageFile));
+        bookDao.save(book);
+        List<BookModel> books = bookDao.findAll();
+
+        model.addAttribute("books", books);
+        return "redirect:/books";
     }
 
     @GetMapping(path = "/books/delete/{id}")
-    public String  deleteBook(@PathVariable(name = "id")Integer id,Model model) {
-boolean bookExsist=bookDao.findById(id).isPresent();
+    public String deleteBook(@PathVariable(name = "id") Integer id, Model model) {
+        boolean bookExsist = bookDao.findById(id).isPresent();
 
-if (bookExsist) {
-    bookDao.deleteById(id);
-} else {
-    
-}
- 
-List<BookModel> books=bookDao.findAll();
-model.addAttribute("books", books);
+        if (bookExsist) {
+            bookDao.deleteById(id);
+        } else {
 
-     return "redirect:/books";
+        }
+
+        List<BookModel> books = bookDao.findAll();
+        model.addAttribute("books", books);
+
+        return "redirect:/books";
     }
 
     @GetMapping(path = "/books/edit/{id}")
-    public String  editBook(@PathVariable(name = "id")Integer id,Model model) {
-        Optional<BookModel> bookOptional=bookDao.findById(id);
-boolean bookExsist=bookOptional.isPresent();
-BookModel book=new BookModel();
-if (bookExsist) {
-    book=bookOptional.get();
-} else {
-    
-}
- 
-model.addAttribute("header", "Redakte Et");
-model.addAttribute("book", book);
+    public String editBook(@PathVariable(name = "id") Integer id, Model model) {
+        Optional<BookModel> bookOptional = bookDao.findById(id);
+        boolean bookExsist = bookOptional.isPresent();
+        BookModel book = new BookModel();
+        if (bookExsist) {
+            book = bookOptional.get();
+        } else {
 
-     return "new-book";
+        }
+
+        model.addAttribute("header", "Redakte Et");
+        model.addAttribute("book", book);
+
+        return "new-book";
     }
 }

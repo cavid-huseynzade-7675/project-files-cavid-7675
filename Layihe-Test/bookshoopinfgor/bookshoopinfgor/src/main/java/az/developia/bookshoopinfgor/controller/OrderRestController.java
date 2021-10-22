@@ -16,28 +16,28 @@ import az.developia.bookshoopinfgor.model.Order;
 @RestController
 @RequestMapping(path = "/rest/orders")
 public class OrderRestController {
-   
+
     @Autowired
     private OrderDAO orderDAO;
 
     @GetMapping(path = "/{id}")
-    public Order findById(@PathVariable(name="id") Integer id) {
+    public Order findById(@PathVariable(name = "id") Integer id) {
         return orderDAO.findById(id).get();
     }
 
-    
-@PostMapping
-public Order save(@RequestBody Order order){
-    return orderDAO.save(order);
-}
+    @PostMapping
+    public Order save(@RequestBody Order order) {
+        return orderDAO.save(order);
+    }
 
     @GetMapping
     public List<Order> findAll() {
         return orderDAO.findAll();
     }
 
- //   @GetMapping(path = "/{username}")
-   // public List<Order> findByAllUsername(@PathVariable(name="username") String username) {
-  //      return orderDAO.findAllByUsername(username);
-  //  }
+    // @GetMapping(path = "/{username}")
+    // public List<Order> findByAllUsername(@PathVariable(name="username") String
+    // username) {
+    // return orderDAO.findAllByUsername(username);
+    // }
 }

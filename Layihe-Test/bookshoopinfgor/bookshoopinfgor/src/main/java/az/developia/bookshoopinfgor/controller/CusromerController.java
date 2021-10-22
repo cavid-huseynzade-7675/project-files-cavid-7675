@@ -14,20 +14,19 @@ import az.developia.bookshoopinfgor.model.BookModel;
 
 @Controller
 public class CusromerController {
-    
+
     @Autowired
     private Mysession mysession;
-    
+
     @Autowired
     private BookDao bookDao;
-     
+
     @GetMapping(path = "/customer")
-    public String showCustomersPage( Model model){
+    public String showCustomersPage(Model model) {
 
-
-        List<BookModel> books=bookDao.findAll();
-model.addAttribute("books", books);
-System.out.println(mysession.getUsername());
+        List<BookModel> books = bookDao.findAll();
+        model.addAttribute("books", books);
+        System.out.println(mysession.getUsername());
         return "customer";
     }
 }

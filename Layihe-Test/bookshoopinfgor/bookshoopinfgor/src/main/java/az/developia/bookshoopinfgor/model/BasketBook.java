@@ -14,23 +14,29 @@ public class BasketBook {
     private Integer id;
     private Integer count;
     @OneToOne
-    @JoinColumn(name="book_id")
+    @JoinColumn(name = "book_id")
     private BookModel book;
+
     public Integer getId() {
         return id;
     }
+
     public void setId(Integer id) {
         this.id = id;
     }
+
     public Integer getCount() {
         return count;
     }
+
     public void setCount(Integer count) {
         this.count = count;
     }
+
     public BookModel getBook() {
         return book;
     }
+
     public void setBook(BookModel book) {
         this.book = book;
     }

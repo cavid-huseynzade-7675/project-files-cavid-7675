@@ -15,41 +15,41 @@ import az.developia.bookshoopinfgor.model.User;
 
 @Controller
 public class UserController {
-    
+
     @Autowired
     private UserDao userDao;
-     
-    private boolean userCreated=false;
+
+    private boolean userCreated = false;
 
     @GetMapping(path = "/show-login")
-    public String showCustomersPage(Model model){
-if (userCreated) {
-    model.addAttribute("userCreated", "");
-    userCreated=false;
-}
+    public String showCustomersPage(Model model) {
+        if (userCreated) {
+            model.addAttribute("userCreated", "");
+            userCreated = false;
+        }
 
         return "my-custom-login";
     }
 
     @GetMapping(path = "create-account")
-    public String showCreateAccountPage(Model model){
-        User  user=new User();
-model.addAttribute("user", user);
-return "create-account";
+    public String showCreateAccountPage(Model model) {
+        User user = new User();
+        model.addAttribute("user", user);
+        return "create-account";
     }
 
     @PostMapping(path = "/create-account-procces")
-    public String saveUser(@Valid @ModelAttribute(name = "user") User user
-    ,BindingResult result,Model model){
-if (result.hasErrors()) {
-    return "create-account";
-};
- boolean userExists=userDao.createUser(user);
- if (userExists) {
-     model.addAttribute("userExists", "");
-     return "create-account";
- }
-userCreated=true;
-return "redirect:/show-login";
+    public String saveUser(@Valid @ModelAttribute(name = "user") User user, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return "create-account";
+        }
+        ;
+        boolean userExists = userDao.createUser(user);
+        if (userExists) {
+            model.addAttribute("userExists", "");
+            return "create-account";
+        }
+        userCreated = true;
+        return "redirect:/show-login";
     }
 }

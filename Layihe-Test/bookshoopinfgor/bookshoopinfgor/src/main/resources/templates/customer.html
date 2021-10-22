@@ -1,62 +1,70 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"> <head>
-    <meta charset="utf-8">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8" />
     <title>Home page</title>
-         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link th:href="@{/css/customer.css}" rel="stylesheet">
- 
- 
-    <style>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link th:href="@{/css/customer.css}" rel="stylesheet" />
 
-    </style>
-</head>
-<body><div th:replace="menu :: menu"></div>
-   <div id="main-content">
-       
-    
-   </div>
-   <div class="modal fade" id="basketModal">
-    <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-    <div class="modal-header">
-    <h1 class="modal-title">Səbət</h1>
-    <button type="button" class="close" data-dismiss="modal">x</button>
+    <style></style>
+  </head>
+  <body>
+    <div th:replace="menu :: menu"></div>
+    <div id="main-content"></div>
+    <div class="modal fade" id="basketModal">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title">Səbət</h1>
+            <button type="button" class="close" data-dismiss="modal">x</button>
+          </div>
+          <div class="modal-body">
+            <table class="table table-hover table-bordered">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Sekil</th>
+                  <th>Ad</th>
+                  <th>Qiymet</th>
+                  <th>Miqdar</th>
+                  <th>Umumi Qiymet</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="basket-books-table"></tbody>
+            </table>
+            <span id="total-price"></span>
+          </div>
+          <div class="modal-footer">
+            <a th:href="@{/confirm-order}" class="btn btn-success"
+              >Sifarisi Tesdiqlw</a
+            >
+            <button type="button" class="btn btn-danger" data-dismiss="modal">
+              Bağla
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="modal-body">
-<table class="table table-hover table-bordered">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Sekil</th>
-            <th>Ad</th>
-            <th>Qiymet</th>
-            <th>Miqdar</th>
-            <th>Umumi Qiymet</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody id="basket-books-table">
-
-    </tbody>
-
-</table>
-<span id="total-price"></span>
-    </div>
-    <div class="modal-footer">
-        <a th:href="@{/confirm-order}" class="btn btn-success">Sifarisi Tesdiqlw</a>
-    <button type="button" class="btn btn-danger" data-dismiss="modal">Bağla</button>
-    </div>
-    </div></div></div>
-   <button id='open-basket-btn' class='btn-primary btn' type="button" data-toggle="modal" data-target="#basketModal"
-   onclick="openBasket()">Sebet
-       <span  class='badge badge-light' id="basket-book-count">0</span></button>
-   <input id='search-input' class='form-control' placeholder='Axtaris'> 
-<script type="text/javascript" th:src="@{/js/customer.js}">
-  
-</script>
-</body>  
-
+    <button
+      id="open-basket-btn"
+      class="btn-primary btn"
+      type="button"
+      data-toggle="modal"
+      data-target="#basketModal"
+      onclick="openBasket()"
+    >
+      Sebet <span class="badge badge-light" id="basket-book-count">0</span>
+    </button>
+    <input id="search-input" class="form-control" placeholder="Axtaris" />
+    <script type="text/javascript" th:src="@{/js/customer.js}"></script>
+  </body>
 </html>
