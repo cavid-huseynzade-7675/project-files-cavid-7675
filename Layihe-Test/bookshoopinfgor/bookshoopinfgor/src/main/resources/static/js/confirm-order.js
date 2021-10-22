@@ -23,6 +23,8 @@ function confirmOrder() {
     xhttp.onreadystatechange=function(){
         if (this.readyState==4 && this.status==200) {
             var respone=this.responseText;
+            localStorage.setItem('basketBooks','[]');
+            window.location.href='/customer'
         }
     };
     xhttp.open("POST","/rest/orders",true)
