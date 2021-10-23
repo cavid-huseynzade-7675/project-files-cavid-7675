@@ -102,7 +102,7 @@ function addToBasket(bookId) {
         }
     }
 
-    //alert(JSON.stringify(basketBooks));
+  // alert(JSON.stringify(bookId));
     openBasketButton.style.display = "none";
     basketBookCount.innerHTML = basketBooks.length;
     localStorage.setItem("basketBooks", JSON.stringify(basketBooks));

@@ -25,6 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/js/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/files/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/confirm-order").permitAll()
+                .antMatchers(HttpMethod.GET, "/confirm-order-mesasge").permitAll()
                 .antMatchers(HttpMethod.POST, "/rest/orders").permitAll()
                 .antMatchers(HttpMethod.POST, "/rest/books/search").permitAll()
                 .antMatchers(HttpMethod.POST, "/rest/books/search-find-partial").permitAll()
