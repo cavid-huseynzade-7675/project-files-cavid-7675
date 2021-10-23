@@ -35,4 +35,10 @@ public List<BookModel> FindAllSearch(@RequestBody SearchModel search){
     return bookDao.findALLSearchField(search.getSearch());
 }
 
+@PostMapping(path = "/search-find-partial")
+public List<BookModel> FindAllSearchFindPartial(@RequestBody SearchModel search){
+    return bookDao.findALLSearchFieldFindPartial(search.getSearch(),search.getBegin(),search.getLength());
+}
+
+
 }
