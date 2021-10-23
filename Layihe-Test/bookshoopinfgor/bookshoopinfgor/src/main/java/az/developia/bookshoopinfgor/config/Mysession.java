@@ -1,5 +1,8 @@
 package az.developia.bookshoopinfgor.config;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.security.core.Authentication;
@@ -18,7 +21,15 @@ public class Mysession {
         String username = loggedInUser.getName();
         this.username = username;
     }
+@PostConstruct
+public void initSession() {
+    System.out.println("MySession>initSession");
+}
 
+@PreDestroy
+public void destroySession() {
+    System.out.println("MySession>destroySession");
+}
     public String getUsername() {
         return username;
     }
