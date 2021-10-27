@@ -1,5 +1,7 @@
 package az.developia.bookshoopinfgor.config;
 
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
@@ -9,10 +11,13 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
+import az.developia.bookshoopinfgor.model.BasketBook;
+
 @Component
 @Scope(value = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class Mysession {
 
+    private List<BasketBook> basketBooks;
     private String username;
 
     public Mysession() {
@@ -20,6 +25,12 @@ public class Mysession {
         Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
         String username = loggedInUser.getName();
         this.username = username;
+    }
+public List<BasketBook> getBasketBooks() {
+        return basketBooks;
+    }
+    public void setBasketBooks(List<BasketBook> basketBooks) {
+        this.basketBooks = basketBooks;
     }
 @PostConstruct
 public void initSession() {

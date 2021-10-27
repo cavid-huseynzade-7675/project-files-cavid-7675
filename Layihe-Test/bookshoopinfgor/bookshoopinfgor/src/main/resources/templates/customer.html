@@ -3,15 +3,29 @@
   <head>
     <meta charset="utf-8" />
     <title>Home page</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link th:href="@{/css/customer.css}" rel="stylesheet" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>   <link th:href="@{/css/customer.css}" rel="stylesheet" />
+    <link
+    rel="stylesheet"
+    type="text/css"
+    href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css"
+  />
 
+  <script
+    type="text/javascript"
+    charset="utf8"
+    src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"
+  ></script>
+
+  <script>
+    $(document).ready(function () {
+      $("#table_id").DataTable();
+    });
+  </script>
     <style></style>
   </head>
   <body>
@@ -25,7 +39,7 @@
             <button type="button" class="close" data-dismiss="modal">x</button>
           </div>
           <div class="modal-body">
-            <table class="table table-hover table-bordered">
+            <table class="table table-hover table-bordered" >
               <thead>
                 <tr>
                   <th>ID</th>
@@ -42,8 +56,8 @@
             <span id="total-price"></span>
           </div>
           <div class="modal-footer">
-            <a th:href="@{/confirm-order}" class="btn btn-success"
-              >Sifarisi Tesdiqlw</a
+            <button onclick="confirmOrder()" class="btn btn-success"
+              >Sifarisi Tesdiqle</button
             >
             <button type="button" class="btn btn-danger" data-dismiss="modal">
               Bağla

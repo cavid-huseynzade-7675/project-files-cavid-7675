@@ -93,4 +93,10 @@ public class Order {
         this.username = username;
     }
 
+    @Override
+    public String toString() {
+        return "Order [basketBooks=" + basketBooks + ", customer=" + customer + ", id=" + id + ", note=" + note
+                + ", register=" + register + ", totalPrice=" + totalPrice + ", username=" + username + "]";
+    }
+
 }

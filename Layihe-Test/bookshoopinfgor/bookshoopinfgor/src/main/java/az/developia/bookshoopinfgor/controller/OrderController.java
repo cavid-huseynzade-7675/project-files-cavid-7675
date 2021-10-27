@@ -2,20 +2,30 @@ package az.developia.bookshoopinfgor.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import az.developia.bookshoopinfgor.config.Mysession;
 import az.developia.bookshoopinfgor.dao.OrderDAO;
+import az.developia.bookshoopinfgor.model.Customer;
 import az.developia.bookshoopinfgor.model.Order;
+import az.developia.bookshoopinfgor.service.OrderService;
 
 @Controller
 public class OrderController {
 
     @Autowired
     private Mysession mysession;
+
+    @Autowired
+    private OrderService orderService;
 
     @Autowired
     private OrderDAO orderDAO;
@@ -28,8 +38,9 @@ public class OrderController {
     }
 
     @GetMapping(path = "/confirm-order")
-    public String showConfirmOrderPage() {
-
+    public String showConfirmOrderPage(Model model) {
+Customer customer=new Customer();
+model.addAttribute("customer", customer);
         return "confirm-order";
     }
 
@@ -39,4 +50,13 @@ public class OrderController {
         return "order-confirmation-message";
     }
 
+
+    @PostMapping(path = "/confirm-order-procces")
+    public String confirmOrderProcces(@Valid @ModelAttribute(name = "customer") Customer customer,BindingResult result) {
+        if (result.hasErrors()) {
+            return "confirm-order";
+        }
+        orderService.save(customer);
+        return "order-confirmation-message";
+    }
 }

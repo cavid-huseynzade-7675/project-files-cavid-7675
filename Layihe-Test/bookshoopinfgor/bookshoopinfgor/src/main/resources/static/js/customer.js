@@ -21,7 +21,7 @@ xht.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
         var responseJSON = this.responseText;
         var booksArray = JSON.parse(responseJSON);
-        booksArrayGlobal = booksArray.slice();
+        booksArrayGlobal.push(...booksArray)
 
         var mainContent = document.getElementById("main-content");
       
@@ -85,7 +85,7 @@ function addToBasket(bookId) {
         if (basketBook.book.id == bookId) {
             basketBook.count++;
             bookExistsInBasket = true;
-            break;
+           
         }
     }
 
@@ -97,7 +97,7 @@ function addToBasket(bookId) {
                     book: booksArrayGlobal[i],
                 };
                 basketBooks.push(basketBook);
-                break;
+           
             }
         }
     }
@@ -189,6 +189,7 @@ function deleteBasketBook(bookId) {
     fillBasketTable();
 }
 function searchBook(searchText){
+    var booksArrayGlobal = [];
     searchextGlobal=searchText;
      mainContentHTML = "";
     xht.open("POST", "/rest/books/search-find-partial", true);
@@ -224,3 +225,18 @@ function onScroll() {
     }
 }
 window.addEventListener("scroll",onScroll);
+
+function confirmOrder() {
+ 
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+     
+        window.location.href = "/confirm-order";
+      }
+    };
+    xhttp.open("POST", "/rest/orders/save-basket-books", true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send(JSON.stringify(basketBooks));
+  }
+  

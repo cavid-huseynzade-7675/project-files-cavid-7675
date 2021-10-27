@@ -105,4 +105,10 @@ public class BookModel {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "BookModel [author=" + author + ", description=" + description + ", id=" + id + ", image=" + image
+                + ", name=" + name + ", pageCount=" + pageCount + ", price=" + price + ", username=" + username + "]";
+    }
 }

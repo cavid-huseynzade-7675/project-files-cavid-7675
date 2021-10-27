@@ -77,7 +77,7 @@ public class BookController {
         boolean bookExsist = bookDao.findById(id).isPresent();
 
         if (bookExsist) {
-            bookDao.deleteById(id);
+         bookDao.deleteById(id);
         } else {
 
         }
