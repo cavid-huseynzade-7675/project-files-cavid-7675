@@ -113,6 +113,11 @@ function addToBasket(bookId) {
 
 function openBasket() {
     fillBasketTable();
+    if (basketBooks.length==0) {
+        document.getElementById('confirm-order-btn').style.display='none';
+    } else {
+        document.getElementById('confirm-order-btn').style.display='block';
+    }
 }
 
 function fillBasketTable() {
@@ -127,7 +132,7 @@ function fillBasketTable() {
         basketBooksTableHTml += "'></td><td>" + basketBook.book.name;
         basketBooksTableHTml += "</td><td>" + basketBook.book.price;
         basketBooksTableHTml +=
-            "</td><td><input type='number' value='" +
+            "</td><td><input min='0' max='10000' class='form-control' type='number' value='" +
             basketBook.count +
             "'" +
             "oninput='bookCountChange(" +
@@ -175,6 +180,8 @@ function calculateTotalPrice() {
 }
 
 function deleteBasketBook(bookId) {
+
+    
     for (let index = 0; index < basketBooks.length; index++) {
         if (basketBooks[index].book.id == bookId) {
             basketBooks.splice(index, 1);
@@ -183,6 +190,9 @@ function deleteBasketBook(bookId) {
     openBasketButton.style.display = "none";
     basketBookCount.innerHTML = basketBooks.length;
     localStorage.setItem("basketBooks", JSON.stringify(basketBooks));
+    if (basketBooks.length==0) {
+        document.getElementById('confirm-order-btn').style.display='none';
+    }
     setTimeout(function () {
         openBasketButton.style.display = "block";
     }, 300);
