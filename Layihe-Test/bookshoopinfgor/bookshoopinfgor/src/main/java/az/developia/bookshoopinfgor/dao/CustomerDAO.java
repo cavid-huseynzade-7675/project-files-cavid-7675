@@ -9,4 +9,5 @@ import az.developia.bookshoopinfgor.model.Order;
 
 public interface CustomerDAO extends JpaRepository<Customer,Integer> {
   public Customer findByPhone(String phone);
+  public Customer findByEmail(String email);
 }

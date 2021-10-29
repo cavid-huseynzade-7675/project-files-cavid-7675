@@ -63,6 +63,16 @@ model.addAttribute("customer", customer);
         Customer customerFindByPhone=customerDAO.findByPhone(customer.getPhone());
         if (customerFindByPhone==null) {
             
+            Customer customerFindByEmail=customerDAO.findByEmail(customer.getEmail());
+            if (customerFindByEmail==null) {
+                
+            } else {
+                Integer id=customerFindByEmail.getId();
+                customer.setId(id);
+                customerDAO.save(customer);
+                    customer=customerDAO.findById(id).get();
+            }
+
         } else {
             Integer id=customerFindByPhone.getId();
             customer.setId(id);
