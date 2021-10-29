@@ -12,7 +12,10 @@
   <body>
     <div th:replace="menu :: menu"></div>
     <h1>Welcome new</h1>
-    <a th:href="@{/books}">Kitablarin siyahisi</a>
-    <a th:href="@{/logout}">Cixis</a>
+    <a  th:if="${username}" th:href="@{/books}" class="btn btn-primary">Kitablarin siyahisi</a>
+    <a  th:href="@{/customer}"  class="btn btn-danger">Alisveris</a>
+    <a th:if="${username}"  th:href="@{/orders}"  class="btn btn-warning">Sifarisler</a>
+    <a  th:if="${username}" th:href="@{/logout}"  class="btn btn-danger">Cixis</a>
+    <a  th:unless="${username}" th:href="@{/show-login}"  class="btn btn-success">Giris</a>
   </body>
 </html>
