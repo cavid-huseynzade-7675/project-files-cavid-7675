@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import az.developia.bookshoopinfgor.config.Mysession;
+import az.developia.bookshoopinfgor.dao.CustomerDAO;
 import az.developia.bookshoopinfgor.dao.OrderDAO;
 import az.developia.bookshoopinfgor.model.Customer;
 import az.developia.bookshoopinfgor.model.Order;
@@ -29,6 +30,9 @@ public class OrderController {
 
     @Autowired
     private OrderDAO orderDAO;
+
+    @Autowired
+    private CustomerDAO customerDAO;
 
     @GetMapping(path = "/orders")
     public String showOrdersPage(Model model) {
@@ -55,6 +59,15 @@ model.addAttribute("customer", customer);
     public String confirmOrderProcces(@Valid @ModelAttribute(name = "customer") Customer customer,BindingResult result) {
         if (result.hasErrors()) {
             return "confirm-order";
+        }
+        Customer customerFindByPhone=customerDAO.findByPhone(customer.getPhone());
+        if (customerFindByPhone==null) {
+            
+        } else {
+            Integer id=customerFindByPhone.getId();
+            customer.setId(id);
+            customerDAO.save(customer);
+                customer=customerDAO.findById(id).get();
         }
         orderService.save(customer);
         return "order-confirmation-message";
