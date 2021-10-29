@@ -31,7 +31,7 @@ xht.onreadystatechange = function () {
             mainContentHTML += "   <div class='product-card-item'>";
             mainContentHTML += " <div class='photo-div'>";
             mainContentHTML +=
-                "     <img class='book-photo'  src='/files/" + book.image + "'></div>";
+                "     <img class='book-photo'  src='files/" + book.image + "'></div>";
             mainContentHTML +=
                 "<div class='text-div'><p class='price-text' title=" +
                 book.price +
@@ -73,7 +73,7 @@ xht.onreadystatechange = function () {
         mainContent.innerHTML = mainContentHTML;
     }
 };
-xht.open("POST", "/rest/books/search-find-partial", true);
+xht.open("POST", "rest/books/search-find-partial", true);
 xht.setRequestHeader("Content-type","application/json");
 var searchObject={search:'',begin:begin,length:length};
 xht.send(JSON.stringify(searchObject));
@@ -126,7 +126,7 @@ function fillBasketTable() {
         var basketBook = basketBooks[i];
         basketBooksTableHTml += "<tr><td>" + basketBook.book.id;
         basketBooksTableHTml +=
-            "</td><td><img  style='width: 80px'  src='/files/" +
+            "</td><td><img  style='width: 80px'  src='files/" +
             basketBook.book.image +
             "'";
         basketBooksTableHTml += "'></td><td>" + basketBook.book.name;
@@ -202,7 +202,7 @@ function searchBook(searchText){
     var booksArrayGlobal = [];
     searchextGlobal=searchText;
      mainContentHTML = "";
-    xht.open("POST", "/rest/books/search-find-partial", true);
+    xht.open("POST", "rest/books/search-find-partial", true);
     xht.setRequestHeader("Content-type","application/json");
     begin=0;
     var searchObject={search:searchText,begin:begin,length:length};
@@ -222,7 +222,7 @@ function onScroll() {
             counter++;
             begin+=20;
 
-            xht.open("POST", "/rest/books/search-find-partial", true);
+            xht.open("POST", "rest/books/search-find-partial", true);
             xht.setRequestHeader("Content-type","application/json");
 
             var searchObject={search:searchextGlobal,begin:begin,length:length};
@@ -242,10 +242,10 @@ function confirmOrder() {
     xhttp.onreadystatechange = function () {
       if (this.readyState == 4 && this.status == 200) {
      
-        window.location.href = "/confirm-order";
+        window.location.href = "confirm-order";
       }
     };
-    xhttp.open("POST", "/rest/orders/save-basket-books", true);
+    xhttp.open("POST", "rest/orders/save-basket-books", true);
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send(JSON.stringify(basketBooks));
   }

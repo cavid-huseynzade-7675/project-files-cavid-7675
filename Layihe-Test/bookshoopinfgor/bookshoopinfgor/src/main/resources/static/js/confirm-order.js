@@ -26,7 +26,7 @@ function confirmOrder() {
     if (this.readyState == 4 && this.status == 200) {
       var respone = this.responseText;
       localStorage.setItem("basketBooks", "[]");
-      window.location.href = "/confirm-order-mesasge";
+      window.location.href = "confirm-order-mesasge";
     }
   };
   xhttp.open("POST", "/rest/orders", true);
