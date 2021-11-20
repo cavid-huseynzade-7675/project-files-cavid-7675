@@ -23,8 +23,12 @@ public class UserController {
     private boolean userCreated = false;
 
     @GetMapping(path = "/show-login")
-    public String showCustomersPage(Model model) {
-  
+    public String showCustomersPage(Model model,HttpServletRequest request) {
+        if (userCreated) {
+            model.addAttribute("userCreated", "");
+            userCreated = false;
+        }
+request.getSession().invalidate();
         return "custom-login";
     }
 
