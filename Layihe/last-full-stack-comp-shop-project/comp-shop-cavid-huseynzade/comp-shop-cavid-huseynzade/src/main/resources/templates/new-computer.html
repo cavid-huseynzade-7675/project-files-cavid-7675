@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8" />
+    <title>Home page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
+ <style> .error-span{color: red;}
+ label{margin-left: 15px;    font-size: 16px;
+      font-weight: bold;}
+     </style> </head>
+    <body>
+    <div th:replace="menu :: menu"></div>
+    <a th:href="@{/computers}" class="btn btn-primary">Komputerlerin siyahisi</a>
+    <h1 th:text="${header}" style="text-align: center">Yeni KItab</h1>
+ 
+
+    <form
+    th:action="@{/computers/new-computer-procces}"
+    method="POST"
+    th:object="${computer}"
+    id="computer-register-form"
+    enctype="multipart/form-data"
+  >
+    <input type="hidden" th:field="*{id}" />
+    <div style="width: 45%;float: left;margin-right: 4%;">  
+        <div class="form-group">
+            <label for="computer-marka">Marka:</label>
+            <input class="form-control" id="computer-marka" th:field="*{marka}" />
+            <span
+              class="error-span"
+              th:if="${#fields.hasErrors('marka')}"
+              th:errors="*{marka}"
+            ></span>
+          </div>
+        
+          <div class="form-group">
+              <label for="computer-model">Model:</label>
+              <input class="form-control" id="computer-model" th:field="*{model}" />
+            </div>
+            <div class="form-group">
+              <label for="computer-price">Qiymet:</label>
+              <input class="form-control" id="computer-price" th:field="*{price}" />
+              <span
+                class="error-span"
+                th:if="${#fields.hasErrors('price')}"
+                th:errors="*{price}"
+              ></span>
+            </div>
+      
+            <div class="form-group">
+              <label for="computer-desc">Tesvir:</label>
+              <input class="form-control" id="computer-desc" th:field="*{description}" />
+            </div>
+      
+            <div class="form-group">
+                <label for="computer-ram">Ram:</label>
+                <input class="form-control" id="computer-ram" th:field="*{ram}" />
+              </div>
+
+            <div class="form-group">
+              <label for="computer-new">Yenilik:</label><br>
+              <select th:field="*{newOrOld}"  class="form-control" id="computer-new">
+                  <option th:value="Yeni" th:text="Yeni"></option>
+                  <option th:value="Kohne" th:text="Kohne"></option>
+              </select>   </div>
+      
+      
+           
+      
+    
+    </div>
+    <div style="width: 45%;float: left;"> 
+   
+          <div class="form-group">
+            <label for="computer-cpu">Cpu:</label>
+            <input class="form-control" id="computer-cpu" th:field="*{cpu}" />
+          </div>
+
+          <div class="form-group">
+            <label for="computer-yaddas">Yaddas:</label>
+            <input class="form-control" id="computer-yaddas" th:field="*{yaddas}" />
+          </div>
+
+          <div class="form-group">
+            <label for="computer-yaddastipi">Yaddas Tipi:</label>
+            <select th:field="*{yaddastipi}"  class="form-control" id="computer-yaddastipi">
+                <option th:value="SSD" th:text="SSD"></option>
+                <option th:value="HDD" th:text="HDD"></option>
+            </select>
+             </div>
+
+          <div class="form-group">
+            <label for="computer-emeliyyatsistemi">Emeliyyat Sistemi:</label>
+            <input class="form-control" id="computer-emeliyyatsistemi" th:field="*{emeliyyatsistemi}" />
+          </div>
+          <div class="form-group">
+            <label for="computer-gpu">Gpu:</label>
+            <input class="form-control" id="computer-gpu" th:field="*{gpu}" />
+          </div>
+
+    <div class="form-group">
+      <label for="computer-image">Sekil:</label>
+      <input
+        class="form-control"
+        type="file"
+        id="computer-image"
+        name="imageFile"
+        accept="image/x-png,image/jpeg,image/jpg"
+      />
+    </div>
+    </div>
+    <input type="submit" class="btn btn-success" style="width: 30%;margin-left: 35%;margin-bottom: 3%;" value="Qeydiyyat" />
+  </form>
+  </body>
+</html>

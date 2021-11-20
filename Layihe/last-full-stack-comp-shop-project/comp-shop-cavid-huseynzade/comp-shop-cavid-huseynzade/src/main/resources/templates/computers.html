@@ -11,7 +11,20 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>  </head>
   <body>
     <div th:replace="menu :: menu"></div>
+    <a th:href="@{/computers/new}" class="btn btn-primary"
+    >Yeni kitab</a
+  >
+
     <h1>Welcome Computers </h1>
-   
+    <span
+    th:text="${username}"
+    style="
+      display: inline-block;
+      padding: 5px;
+      font-size: 24px;
+      font-weight: bold;
+    "
+  ></span>
+  <a></a>
   </body>
 </html>
