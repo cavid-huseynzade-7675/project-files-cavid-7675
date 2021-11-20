@@ -9,13 +9,31 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>  </head>
-  <body>
+  
+    <link
+    rel="stylesheet"
+    type="text/css"
+    href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css"
+  />
+
+  <script
+    type="text/javascript"
+    charset="utf8"
+    src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"
+  ></script>
+
+  <script>
+    $(document).ready(function () {
+      $("#table_id").DataTable();
+    });
+  </script>
+    <body>
     <div th:replace="menu :: menu"></div>
     <a th:href="@{/computers/new}" class="btn btn-primary"
     >Yeni kitab</a
   >
 
-    <h1>Welcome Computers </h1>
+
     <span
     th:text="${username}"
     style="
@@ -25,6 +43,62 @@
       font-weight: bold;
     "
   ></span>
+
   <a></a>
+  <table id="table_id" class="display">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Marka</th>
+        <th>Model</th>
+        <th>Qiymet</th>
+        <th>Tesvir</th>
+        <th>Yenilik</th>
+
+        <th>Ram</th>
+        <th>Cpu</th>
+        <th>Gpu</th>
+        <th>Yaddas</th>
+        <th>Yaddas Tipi</th>
+        <th>Emeliyyat Sistemi</th>
+        <th>Sekil</th>
+        <th>Emeliyyat</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="computer :${computers}">
+        <td th:text="${computer.id}"></td>
+        <td th:text="${computer.marka}"></td>
+        <td th:text="${computer.model}"></td>
+        <td th:text="${computer.price}"></td>
+        <td th:text="${computer.description}"></td>
+        <td th:text="${computer.newOrOld}"></td>
+        <td th:text="${computer.ram}"></td>
+        <td th:text="${computer.cpu}"></td>
+        <td th:text="${computer.gpu}"></td>
+        <td th:text="${computer.yaddas}"></td>
+        <td th:text="${computer.yaddastipi}"></td>
+        <td th:text="${computer.emeliyyatsistemi}"></td>
+        <td>
+          <img style="width: 80px" th:src="@{'/files/'+${computer.image}}" />
+        </td>
+        <td>
+          
+         
+          <a
+            th:href="@{/computers/delete/{id}(id=${computer.id})}"
+            th:onclick="if(!(confirm('Komputeri Silmeye Eminsiz'))) return false"
+            class="btn btn-danger"
+            >Sil</a
+          >
+          <a
+            th:href="@{/computers/edit/{id}(id=${computer.id})}"
+            class="btn btn-warning"
+            >Redakte</a
+          >
+        </td>
+      </tr>
+    </tbody>
+  </table>
   </body>
 </html>
