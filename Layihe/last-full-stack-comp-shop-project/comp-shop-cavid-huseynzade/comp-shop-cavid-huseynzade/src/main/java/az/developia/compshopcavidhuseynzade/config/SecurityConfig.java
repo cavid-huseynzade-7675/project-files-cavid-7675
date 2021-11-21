@@ -21,6 +21,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable().authorizeRequests().antMatchers(HttpMethod.GET, "/").permitAll()
                 .antMatchers(HttpMethod.GET, "/create-account").permitAll().
                 antMatchers(HttpMethod.POST, "/create-account-procces").permitAll().
+                antMatchers(HttpMethod.GET, "/shopping").permitAll()
+                .antMatchers(HttpMethod.GET, "/css/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/js/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/files/**").permitAll().
+                antMatchers(HttpMethod.POST, "/rest/computers/search-find-partial").permitAll().
+                antMatchers(HttpMethod.GET, "/rest/users/**").permitAll().
                             anyRequest().authenticated().and()
                 .formLogin().loginPage("/show-login").loginProcessingUrl("/authenticate-user").permitAll().and()
                 .logout().permitAll();

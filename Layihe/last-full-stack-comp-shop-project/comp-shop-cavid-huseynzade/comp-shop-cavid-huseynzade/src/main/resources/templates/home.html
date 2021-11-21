@@ -11,7 +11,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>  </head>
   <body>
     <div th:replace="menu :: menu"></div>
-    <h1>Welcome Home</h1>
+    <h1>Welcome Home</h1><h1 th:text="${username}"></h1>
+    <a  th:if="${username}" th:href="@{/computers}" class="btn btn-primary">Komputerlerin siyahisi</a>
+    <a  th:href="@{/shopping}"  class="btn btn-danger">Alisveris</a>
    
+    <a  th:if="${username}" th:href="@{/logout}"  class="btn btn-danger">Cixis</a>
+    <a  th:unless="${username}" th:href="@{/show-login}"  class="btn btn-success">Giris</a>
+
   </body>
 </html>

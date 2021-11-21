@@ -4,6 +4,9 @@ package az.developia.compshopcavidhuseynzade.daos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.sql.DataSource;
 
@@ -14,7 +17,7 @@ import org.springframework.stereotype.Component;
 import az.developia.compshopcavidhuseynzade.model.UserModel;
 
 @Component
-public class UserDao {
+public class UserDao  {
     
     @Autowired
     private DataSource dataSource;
@@ -60,6 +63,32 @@ conn.close();
             e.printStackTrace();
         }
         return userExists;
+    }
+
+    public List<UserModel> allUsers(){
+        UserModel user=new UserModel();
+       List<UserModel> users = new ArrayList<>();
+        try {
+            Connection c = dataSource.getConnection();
+        Statement s=c.createStatement();
+        ResultSet result = s.executeQuery("SELECT * FROM users ");
+
+     
+  while (result.next()) {
+      user=new UserModel();
+      user.setUsername(result.getString("username"));
+      user.setPhone(result.getString("phone"));
+      user.setEmail(result.getString("email"));
+      user.setPassword(result.getString("password"));
+      user.setNameandsurname(result.getString("nameandsurname"));
+      users.add(user);
+  }
+ 
+        System.out.println(user);
+        } catch (Exception e) {
+            //TODO: handle exception
+        }
+        return users;
     }
 }
 
