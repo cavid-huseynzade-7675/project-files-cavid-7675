@@ -153,27 +153,26 @@
       ></span>
           </div>
 
-    <div class="form-group" >
-      <label for="computer-image">Sekil:</label>
+          <label for="computer-image">Sekil:</label>
+    <div >
+     
       <input
-        class="form-control"
+      class="form-control"
         type="file"
         id="computer-image"
         name="imageFile"
         accept="image/x-png,image/jpeg,image/jpg"
-        
+        style="width: 40%;float: left;"
         onchange="preview_2(this);"
+        
       />
-      <img id="imageShowOn"   th:src="'/files/'+*{image}"
-      style="    width: 80px;height: 80px;  "data-toggle='modal' data-target='#myModal' 
+      <img id="imageShowOn"    th:src="'/files/'+*{image}"
+      style="    width: 80px;height: 38px; float: left ;"data-toggle='modal' data-target='#myModal' 
      
 
-      > <p> ustune basanda boyuyur</p>
-      <span
-      class="error-span"
-      th:if="${#fields.hasErrors('image')}"
-      th:errors="*{image}"
-    ></span>
+      > <p style="float: left;"> ustune basanda boyuyur</p>
+    
+     
     </div>
     </div>
     
