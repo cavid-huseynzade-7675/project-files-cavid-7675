@@ -4,6 +4,7 @@ var length = 20;
 var xht = new XMLHttpRequest();
 var xhttp = new XMLHttpRequest();
 var users=[];
+var searchextGlobal='';
 var computeraArrayGlobal = [];
 var userXht;
 xhttp.onreadystatechange = function() {
@@ -65,10 +66,10 @@ xht.onreadystatechange = function () {
            "' >" +
            computerModel.substring(0,6) + modelN
            "</p>";
-        console.log(users);
+     //   console.log(users);
 for (let index = 0; index < users.length; index++) {
     var element = users[index];
-   console.log(element.username,computer.username)
+   //console.log(element.username,computer.username)
     if (computer.username==element.username) {
         var nameandsurname= element.nameandsurname;
         var phone=element.phone;
@@ -191,5 +192,49 @@ function showInfo(Computerid) {
     }
 }
 
+var counter=0;
+var allowScroll=true;
+function onScroll() {
+    if (allowScroll) {
+     
+        const distanceToBottom=document.body.getBoundingClientRect().bottom;
+        const documentHeight=document.documentElement.clientHeight;
+
+        if (distanceToBottom< documentHeight+150) {
+           if (begin>computeraArrayGlobal.length) {
+               
+           }else{
+
+            allowScroll=false;
+            counter++;
+            begin+=20;
+
+            xht.open("POST", "rest/computers/search-find-partial", true);
+            xht.setRequestHeader("Content-type","application/json");
+
+            var searchObject={search:searchextGlobal,begin:begin,length:length};
+            xht.send(JSON.stringify(searchObject));
+
+            setTimeout(function() {
+        
+                allowScroll=true;
+            }, 1000);
+
+           }
+           
+        }
+    }
+}
+window.addEventListener("scroll",onScroll);
 
 
+function searchComputer(searchText){
+    var booksArrayGlobal = [];
+    searchextGlobal=searchText;
+     mainContentHTML = "";
+    xht.open("POST", "rest/computers/search-find-partial", true);
+    xht.setRequestHeader("Content-type","application/json");
+    begin=0;
+    var searchObject={search:searchText,begin:begin,length:length};
+    xht.send(JSON.stringify(searchObject));
+}

@@ -22,11 +22,7 @@
     src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"
   ></script>
 
-  <script>
-    $(document).ready(function () {
-      $("#table_id").DataTable();
-    });
-  </script>
+
     <body>
     <div th:replace="menu :: menu"></div>
     <a th:href="@{/computers/new}" class="btn btn-primary"
@@ -80,7 +76,7 @@
         <td th:text="${computer.yaddastipi}"></td>
         <td th:text="${computer.emeliyyatsistemi}"></td>
         <td>
-          <img style="width: 80px" th:src="@{'/files/'+${computer.image}}" />
+          <img style="width: 80px;height: 80px;" th:src="@{'/files/'+${computer.image}}" data-toggle='modal' data-target='#myModal'  th:id=${computer.image} />
         </td>
         <td>
           
@@ -99,6 +95,46 @@
         </td>
       </tr>
     </tbody>
+
+
   </table>
+
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog  ">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title"></h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body" id="modal">
+     <img    id="imageShowOnModel"  >
+     
+    </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      $("#table_id").DataTable();
+    
+    
+      $("img").click(function(event) {
+     
+      
+      $('#imageShowOnModel').attr('src','/files/'+event.target.id);
+  });
+    });
+  </script>
   </body>
 </html>

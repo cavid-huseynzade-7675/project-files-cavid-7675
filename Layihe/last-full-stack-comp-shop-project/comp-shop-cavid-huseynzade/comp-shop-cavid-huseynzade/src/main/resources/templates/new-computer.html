@@ -42,6 +42,11 @@
           <div class="form-group">
               <label for="computer-model">Model:</label>
               <input class="form-control" id="computer-model" th:field="*{model}" />
+              <span
+              class="error-span"
+              th:if="${#fields.hasErrors('model')}"
+              th:errors="*{model}"
+            ></span>
             </div>
             <div class="form-group">
               <label for="computer-price">Qiymet:</label>
@@ -56,11 +61,21 @@
             <div class="form-group">
               <label for="computer-desc">Tesvir:</label>
               <input class="form-control" id="computer-desc" th:field="*{description}" />
+              <span
+              class="error-span"
+              th:if="${#fields.hasErrors('description')}"
+              th:errors="*{description}"
+            ></span>
             </div>
       
             <div class="form-group">
                 <label for="computer-ram">Ram:</label>
                 <input class="form-control" id="computer-ram" th:field="*{ram}" />
+                <span
+                class="error-span"
+                th:if="${#fields.hasErrors('ram')}"
+                th:errors="*{ram}"
+              ></span>
               </div>
 
             <div class="form-group">
@@ -68,7 +83,13 @@
               <select th:field="*{newOrOld}"  class="form-control" id="computer-new">
                   <option th:value="Yeni" th:text="Yeni"></option>
                   <option th:value="Kohne" th:text="Kohne"></option>
-              </select>   </div>
+              </select> 
+              <span
+              class="error-span"
+              th:if="${#fields.hasErrors('newOrOld')}"
+              th:errors="*{newOrOld}"
+            ></span>
+            </div>
       
       
            
@@ -80,11 +101,21 @@
           <div class="form-group">
             <label for="computer-cpu">Cpu:</label>
             <input class="form-control" id="computer-cpu" th:field="*{cpu}" />
+            <span
+              class="error-span"
+              th:if="${#fields.hasErrors('cpu')}"
+              th:errors="*{cpu}"
+            ></span>
           </div>
 
           <div class="form-group">
             <label for="computer-yaddas">Yaddas:</label>
             <input class="form-control" id="computer-yaddas" th:field="*{yaddas}" />
+            <span
+            class="error-span"
+            th:if="${#fields.hasErrors('yaddas')}"
+            th:errors="*{yaddas}"
+          ></span>
           </div>
 
           <div class="form-group">
@@ -93,15 +124,33 @@
                 <option th:value="SSD" th:text="SSD"></option>
                 <option th:value="HDD" th:text="HDD"></option>
             </select>
-             </div>
+          
+            <span
+            class="error-span"
+            th:if="${#fields.hasErrors('yaddastipi')}"
+            th:errors="*{yaddastipi}"
+          ></span>
+          </div>
 
           <div class="form-group">
             <label for="computer-emeliyyatsistemi">Emeliyyat Sistemi:</label>
             <input class="form-control" id="computer-emeliyyatsistemi" th:field="*{emeliyyatsistemi}" />
+         
+            <span
+            class="error-span"
+            th:if="${#fields.hasErrors('emeliyyatsistemi')}"
+            th:errors="*{emeliyyatsistemi}"
+          ></span>
           </div>
           <div class="form-group">
             <label for="computer-gpu">Gpu:</label>
             <input class="form-control" id="computer-gpu" th:field="*{gpu}" />
+        
+        <span
+        class="error-span"
+        th:if="${#fields.hasErrors('gpu')}"
+        th:errors="*{gpu}"
+      ></span>
           </div>
 
     <div class="form-group" >
@@ -112,6 +161,7 @@
         id="computer-image"
         name="imageFile"
         accept="image/x-png,image/jpeg,image/jpg"
+        
         onchange="preview_2(this);"
       />
       <img id="imageShowOn"   th:src="'/files/'+*{image}"
@@ -119,6 +169,11 @@
      
 
       > <p> ustune basanda boyuyur</p>
+      <span
+      class="error-span"
+      th:if="${#fields.hasErrors('image')}"
+      th:errors="*{image}"
+    ></span>
     </div>
     </div>
     
