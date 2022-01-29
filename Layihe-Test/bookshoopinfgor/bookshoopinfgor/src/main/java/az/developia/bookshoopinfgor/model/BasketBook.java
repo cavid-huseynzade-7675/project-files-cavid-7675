@@ -13,6 +13,7 @@ public class BasketBook {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private Integer count;
+    
     @OneToOne
     @JoinColumn(name = "book_id")
     private BookModel book;

@@ -21,12 +21,8 @@ import az.developia.shopmanagement.model.Shop;
 public class ShopManagementAprel11Application {
 
 	public static void main(String[] args) {
-		ApplicationContext context = SpringApplication.run(ShopManagementAprel11Application.class, args);
+		SpringApplication.run(ShopManagementAprel11Application.class, args);
 
-		ShopRepository	repository=context.getBean(ShopRepository.class);
-
-		Shop order=new Shop();
-		order.setName("adini");
 
 	//repository.save(order);
 	

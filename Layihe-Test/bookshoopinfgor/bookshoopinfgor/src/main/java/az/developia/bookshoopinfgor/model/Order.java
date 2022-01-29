@@ -29,9 +29,12 @@ public class Order {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "customer_id")
     private Customer customer;
+
+    
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "order_id")
     private List<BasketBook> basketBooks;
+
     private String username;
 
     public Integer getId() {
